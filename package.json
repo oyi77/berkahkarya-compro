@@ -1,0 +1,23 @@
+{
+  "name": "berkah-karya-website",
+  "version": "1.0.0",
+  "description": "Berkah Karya Digital Marketing & Agency Website",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Build completed - static website ready for deployment'",
+    "start": "echo 'Starting development server...' && python3 -m http.server 3000",
+    "dev": "python3 -m http.server 3000"
+  },
+  "keywords": [
+    "digital-marketing",
+    "seo",
+    "ecommerce",
+    "shopee",
+    "tiktok",
+    "trading-bot"
+  ],
+  "author": "Berkah Karya",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
