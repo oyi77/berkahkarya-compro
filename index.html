@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berkah Karya - Digital Marketing & Agency</title>
+    <title>Berkah Karya - Digital Growth Agency</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="main_website/styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/grapesjs/dist/css/grapes.min.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#hero">
-                <img src="main_website/images/logo.png" alt="Berkah Karya" class="logo-img">
+            <a class="navbar-brand" href="#">
+                <img src="images/logo.png" alt="Berkah Karya Logo" class="logo-img">
                 <span class="brand-text">Berkah Karya</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -28,13 +29,13 @@
                         <a class="nav-link" href="#services">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="#results">Results</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link contact-btn" href="#contact">Contact Us</a>
@@ -45,35 +46,34 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero">
+    <section id="hero" class="d-flex align-items-center">
         <div class="container">
-            <div class="row align-items-center min-vh-100">
+            <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="hero-content">
-                        <div class="hero-badge">
-                            <i class="fas fa-rocket"></i> Digital Marketing Excellence
-                        </div>
-                        <h1>Transform Your Business with Data-Driven Digital Marketing</h1>
-                        <p class="lead">We specialize in Shopee & TikTok optimization, SEO strategies, and automated trading solutions to accelerate your business growth in Indonesia's digital landscape.</p>
+                        <span class="hero-badge">Digital Growth Agency</span>
+                        <h1>Kami Bantu Brand Anda Tumbuh Lewat Strategi Digital yang Terbukti</h1>
+                        <p class="hero-subtitle">Spesialis dalam digital campaign, konten kreatif, dan iklan performa tinggi</p>
+                        <p class="hero-text">Kami menggabungkan strategi berbasis data dengan untuk memberikan hasil yang terukur bagi bisnis di Indonesia.</p>
                         <div class="hero-buttons">
                             <a href="#contact" class="btn btn-primary">
-                                <i class="fas fa-comments"></i> Get Free Consultation
+                                <i class="fas fa-rocket"></i> Dapatkan Konsultasi Gratis
                             </a>
                             <a href="#services" class="btn btn-outline">
-                                <i class="fas fa-play"></i> Explore Services
+                                <i class="fas fa-arrow-right"></i> Jelajahi Layanan Kami
                             </a>
                         </div>
                         <div class="hero-stats">
                             <div class="stat-item">
-                                <span class="stat-number">150</span>
-                                <span class="stat-label">Clients Served</span>
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Projects Completed</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-number">300</span>
-                                <span class="stat-label">Average ROI Increase</span>
+                                <span class="stat-number">98%</span>
+                                <span class="stat-label">Client Satisfaction</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-number">5</span>
+                                <span class="stat-number">3+</span>
                                 <span class="stat-label">Years Experience</span>
                             </div>
                         </div>
@@ -81,64 +81,68 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="hero-image">
+                        <div class="hero-shape"></div>
+                        <div class="hero-illustration">
+                            <div class="tech-element tech-element-1"></div>
+                            <div class="tech-element tech-element-2"></div>
+                            <div class="tech-element tech-element-3"></div>
+                        </div>
                         <div class="floating-card card-1">
                             <i class="fas fa-chart-line"></i>
-                            <span>+187% Sales Growth</span>
+                            <span>Growth Analytics</span>
                         </div>
                         <div class="floating-card card-2">
-                            <i class="fas fa-users"></i>
-                            <span>24/7 Support</span>
+                            <i class="fas fa-bullseye"></i>
+                            <span>Target Marketing</span>
                         </div>
                         <div class="floating-card card-3">
-                            <i class="fas fa-trophy"></i>
-                            <span>Award Winning</span>
+                            <i class="fas fa-users"></i>
+                            <span>Client Success</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="hero-wave">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="#2563eb"></path>
-                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="#2563eb"></path>
-                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#2563eb"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
             </svg>
         </div>
     </section>
 
     <!-- Problem Statement Section -->
-    <section id="problems" class="section-padding bg-light">
+    <section id="problems" class="section-padding">
         <div class="container">
             <div class="section-header text-center">
-                <h2>Common Digital Marketing Challenges</h2>
-                <p>We understand the pain points that Indonesian businesses face in today's competitive digital landscape</p>
+                <h2>Mengalami Tantangan Tumbuh Digital?</h2>
+                <p>Dalam dunia digital yang berkembang pesat, untuk bertahan diperlukan keahlian khusus</p>
             </div>
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-md-4">
                     <div class="problem-card">
                         <div class="problem-icon">
-                            <i class="fas fa-search-minus"></i>
+                            <i class="fas fa-store"></i>
                         </div>
-                        <h3>Low Online Visibility</h3>
-                        <p>Your products get lost in the crowded marketplace. Despite having quality offerings, you struggle to reach your target audience on platforms like Shopee and TikTok Shop.</p>
+                        <h3>Kesulitan E-commerce</h3>
+                        <p>Apakah Shopee atau TikTok Shop Anda kesulitan mengubah pengunjung menjadi pelanggan? Kami bisa membantu Anda mengoptimalkan penjualan melalui strategi yang tepat.</p>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-md-4">
                     <div class="problem-card">
                         <div class="problem-icon">
-                            <i class="fas fa-chart-line-down"></i>
+                            <i class="fas fa-search"></i>
                         </div>
-                        <h3>Poor Conversion Rates</h3>
-                        <p>Traffic doesn't translate to sales. Your marketing efforts bring visitors, but they leave without making a purchase, resulting in wasted ad spend and missed opportunities.</p>
+                        <h3>Kesulitan SEO</h3>
+                        <p>Apakah Anda tidak terlihat oleh pelanggan potensial di Internet? Kami bisa membantu Anda meningkatkan visibilitas melalui strategi SEO yang tepat.</p>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-md-4">
                     <div class="problem-card">
                         <div class="problem-icon">
-                            <i class="fas fa-money-bill-wave"></i>
+                            <i class="fas fa-chart-line"></i>
                         </div>
-                        <h3>Inefficient Ad Spending</h3>
-                        <p>Marketing budgets drain quickly with little return. Without proper optimization, your advertising campaigns fail to deliver the ROI your business needs to grow.</p>
+                        <h3>Kesulitan Trading</h3>
+                        <p>Apakah volatilitas pasar dan keputusan emosional mempengaruhi kinerja trading Anda? Kami bisa membantu Anda mengoptimalkan trading melalui strategi yang tepat.</p>
                     </div>
                 </div>
             </div>
@@ -146,134 +150,154 @@
     </section>
 
     <!-- Services Overview Section -->
-    <section id="services" class="section-padding">
+    <section id="services" class="section-padding bg-light">
         <div class="container">
             <div class="section-header text-center">
-                <div class="section-badge">
-                    <i class="fas fa-cogs"></i> Our Expertise
-                </div>
-                <h2>Comprehensive Digital Solutions</h2>
-                <p class="section-description">We offer specialized services designed to maximize your digital presence and drive measurable results across Indonesia's most important platforms.</p>
+                <h2>Solusi Digital yang Komprehensif</h2>
+                <p class="section-description">Kami menawarkan layanan khusus yang dirancang untuk menangani tantangan tumbuh digital Anda dengan pendekatan berbasis data dan hasil yang terukur.</p>
             </div>
+            
             <div class="services-grid">
+                <!-- Shopee & TikTok Service -->
                 <div class="service-card" data-service="shopee-tiktok">
                     <div class="service-header">
                         <div class="service-icon">
-                            <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-shopping-bag"></i>
                         </div>
-                        <div class="service-badge">E-commerce</div>
+                        <div class="service-badge">Terlaris</div>
                     </div>
+                    
                     <div class="service-content">
-                        <h3>Shopee & TikTok Shop Optimization</h3>
-                        <p class="service-description">Dominate Indonesia's leading e-commerce platforms with our specialized optimization strategies that drive visibility, engagement, and sales.</p>
+                        <h3>Optimasi Shopee & TikTok</h3>
+                        <p class="service-description">Maksimalkan kinerja e-commerce Anda dengan strategi optimasi platform yang spesifik dan terukur.</p>
                         
                         <div class="service-highlights">
                             <div class="highlight-item">
-                                <i class="fas fa-store"></i>
-                                <span>Store Setup & Design</span>
+                                <i class="fas fa-chart-line"></i>
+                                <span>Peningkatan Penjualan</span>
                             </div>
                             <div class="highlight-item">
-                                <i class="fas fa-tags"></i>
-                                <span>Product Optimization</span>
+                                <i class="fas fa-bullseye"></i>
+                                <span>Target Pasar Tepat</span>
                             </div>
                             <div class="highlight-item">
-                                <i class="fas fa-video"></i>
-                                <span>Live Shopping</span>
+                                <i class="fas fa-users"></i>
+                                <span>Engagement Tinggi</span>
                             </div>
                         </div>
                         
                         <div class="service-features">
-                            <h4>What's Included:</h4>
+                            <h4>Fitur Utama</h4>
                             <ul>
-                                <li><i class="fas fa-check"></i> Complete store redesign and branding</li>
-                                <li><i class="fas fa-check"></i> Product listing optimization with SEO</li>
-                                <li><i class="fas fa-check"></i> Strategic ad campaign management</li>
-                                <li><i class="fas fa-check"></i> Live shopping strategy and execution</li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Optimasi toko dan produk secara menyeluruh</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Strategi iklan performa tinggi</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Manajemen live shopping profesional</span>
+                                </li>
                             </ul>
                         </div>
                         
                         <div class="service-stats">
                             <div class="stat">
-                                <span class="stat-number">215</span>
-                                <span class="stat-label">Average Sales Increase</span>
+                                <span class="stat-number">150%</span>
+                                <span class="stat-label">Peningkatan Visibilitas</span>
                             </div>
                             <div class="stat">
-                                <span class="stat-number">67</span>
-                                <span class="stat-label">Market Share Growth</span>
+                                <span class="stat-number">30%</span>
+                                <span class="stat-label">Konversi Lebih Tinggi</span>
                             </div>
                         </div>
                         
-                        <a href="/ecommerce" class="btn-service">
-                            <span>View Portfolio</span>
+                        <a href="#shopee-tiktok" class="btn btn-service">
+                            <span>Optimasi E-commerce Anda</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- SEO Service -->
                 <div class="service-card" data-service="seo">
                     <div class="service-header">
                         <div class="service-icon">
                             <i class="fas fa-search"></i>
                         </div>
-                        <div class="service-badge">SEO</div>
+                        <div class="service-badge">Terpercaya</div>
                     </div>
+                    
                     <div class="service-content">
-                        <h3>Advanced SEO Optimization</h3>
-                        <p class="service-description">Boost your Google rankings and organic traffic with our comprehensive SEO strategies tailored for the Indonesian market.</p>
+                        <h3>Optimasi SEO</h3>
+                        <p class="service-description">Naikkan peringkat pencarian dengan strategi SEO kami yang berbasis data dan analisis mendalam.</p>
                         
                         <div class="service-highlights">
                             <div class="highlight-item">
-                                <i class="fas fa-chart-line"></i>
-                                <span>Ranking Improvement</span>
+                                <i class="fas fa-trophy"></i>
+                                <span>Peringkat Teratas</span>
                             </div>
                             <div class="highlight-item">
-                                <i class="fas fa-users"></i>
-                                <span>Traffic Growth</span>
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Trafik Organik</span>
                             </div>
                             <div class="highlight-item">
-                                <i class="fas fa-bullseye"></i>
-                                <span>Local SEO</span>
+                                <i class="fas fa-globe"></i>
+                                <span>Jangkauan Luas</span>
                             </div>
                         </div>
                         
                         <div class="service-features">
-                            <h4>What's Included:</h4>
+                            <h4>Fitur Utama</h4>
                             <ul>
-                                <li><i class="fas fa-check"></i> Comprehensive SEO audit and strategy</li>
-                                <li><i class="fas fa-check"></i> On-page and technical optimization</li>
-                                <li><i class="fas fa-check"></i> Content creation and optimization</li>
-                                <li><i class="fas fa-check"></i> Local SEO for Indonesian market</li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Audit SEO menyeluruh dan analisis kompetitor</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Optimasi konten strategis dan teknis</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>SEO lokal dan internasional</span>
+                                </li>
                             </ul>
                         </div>
                         
                         <div class="service-stats">
                             <div class="stat">
-                                <span class="stat-number">340</span>
-                                <span class="stat-label">Organic Traffic Boost</span>
+                                <span class="stat-number">85%</span>
+                                <span class="stat-label">Peningkatan Trafik</span>
                             </div>
                             <div class="stat">
-                                <span class="stat-number">85</span>
-                                <span class="stat-label">First Page Rankings</span>
+                                <span class="stat-number">15</span>
+                                <span class="stat-label">Kata Kunci Top 10</span>
                             </div>
                         </div>
                         
-                        <a href="/seo" class="btn-service">
-                            <span>View Portfolio</span>
+                        <a href="#seo" class="btn btn-service">
+                            <span>Tingkatkan Visibilitas Anda</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- FlashRobs Service -->
                 <div class="service-card" data-service="flashrobs">
                     <div class="service-header">
                         <div class="service-icon">
                             <i class="fas fa-robot"></i>
                         </div>
-                        <div class="service-badge">Trading</div>
+                        <div class="service-badge">Inovatif</div>
                     </div>
+                    
                     <div class="service-content">
                         <h3>FlashRobs Trading Bot</h3>
-                        <p class="service-description">Automated forex and cryptocurrency trading solution that works 24/7 to optimize your investment returns with advanced algorithms.</p>
+                        <p class="service-description">Otomatisasi trading Forex & Crypto dengan algoritma canggih dan manajemen risiko terintegrasi.</p>
                         
                         <div class="service-highlights">
                             <div class="highlight-item">
@@ -282,39 +306,263 @@
                             </div>
                             <div class="highlight-item">
                                 <i class="fas fa-shield-alt"></i>
-                                <span>Risk Management</span>
+                                <span>Risiko Terkelola</span>
                             </div>
                             <div class="highlight-item">
-                                <i class="fas fa-chart-area"></i>
-                                <span>AI Algorithms</span>
+                                <i class="fas fa-chart-pie"></i>
+                                <span>Analisis Real-time</span>
                             </div>
                         </div>
                         
                         <div class="service-features">
-                            <h4>What's Included:</h4>
+                            <h4>Fitur Utama</h4>
                             <ul>
-                                <li><i class="fas fa-check"></i> Automated trading algorithms</li>
-                                <li><i class="fas fa-check"></i> Advanced risk management system</li>
-                                <li><i class="fas fa-check"></i> Real-time performance monitoring</li>
-                                <li><i class="fas fa-check"></i> Multi-asset trading capabilities</li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Trading otomatis 24/7 tanpa emosi</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Manajemen risiko terintegrasi</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Analisis performa real-time</span>
+                                </li>
                             </ul>
                         </div>
                         
                         <div class="service-stats">
                             <div class="stat">
-                                <span class="stat-number">18.7</span>
-                                <span class="stat-label">Annual Return Rate</span>
+                                <span class="stat-number">28%</span>
+                                <span class="stat-label">ROI Rata-rata</span>
                             </div>
                             <div class="stat">
-                                <span class="stat-number">68</span>
-                                <span class="stat-label">Win Rate</span>
+                                <span class="stat-number">65%</span>
+                                <span class="stat-label">Efisiensi Waktu</span>
                             </div>
                         </div>
                         
-                        <a href="/trading" class="btn-service">
-                            <span>View Portfolio</span>
+                        <a href="#flashrobs" class="btn btn-service">
+                            <span>Otomatisasi Trading Anda</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopee & TikTok Optimization Section -->
+    <section id="shopee-tiktok" class="service-detail section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="service-detail-content">
+                        <h2>Dominasi Pasar E-commerce Indonesia</h2>
+                        <p class="lead">Optimasi khusus untuk Shopee dan TikTok Shop untuk memaksimalkan potensi penjualan Anda</p>
+                        
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Pengaturan dan optimasi toko secara menyeluruh</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Strategi penempatan produk dan optimasi kata kunci</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Manajemen dan optimasi iklan digital</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Strategi dan pelaksanaan live shopping</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Integrasi lintas platform</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Analisis performa dan pelaporan rutin</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-container">
+                            <div class="stat-item">
+                                <h4>TikTok</h4>
+                                <p>Tiktok Shop sedang merevolusi lanskap e-commerce Indonesia di tahun 2025</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>150%</h4>
+                                <p>Toko Shopee yang di optimasi mengalami peningkatan visibilitas hingga 150%</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>30%</h4>
+                                <p>Konversi melalui live shopping melampaui e-commerce tradisional hingga 30%</p>
+                            </div>
+                        </div>
+                        
+                        <a href="#contact" class="btn btn-primary">Transformasikan Bisnis E-commerce Anda</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-detail-image">
+                        <div class="image-container">
+                            <div class="image-element shopee-tiktok-image"></div>
+                            <div class="stats-overlay">
+                                <div class="stat">
+                                    <span class="stat-number">150%</span>
+                                    <span class="stat-label">Peningkatan Visibilitas</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">30%</span>
+                                    <span class="stat-label">Konversi Lebih Tinggi</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO Optimization Section -->
+    <section id="seo" class="service-detail section-padding bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="service-detail-content">
+                        <h2>Ditemukan Saat Momen Terpenting</h2>
+                        <p class="lead">Strategi SEO komprehensif yang disesuaikan dengan karakteristik pencarian di Indonesia</p>
+                        
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Audit dan implementasi SEO teknis</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Optimasi konten untuk mesin pencari</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>SEO lokal untuk bisnis Indonesia</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Optimasi pencarian suara dan visual</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Strategi SEO berbasis AI</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Analisis dan laporan menyeluruh</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-container">
+                            <div class="stat-item">
+                                <h4>$106.9B</h4>
+                                <p>Pasar layanan SEO diperkirakan mencapai $106,9 miliar pada tahun 2025</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>13.8%</h4>
+                                <p>Pengeluaran iklan digital di Indonesia meningkat sebesar 13,8% pada tahun 2025</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>30%</h4>
+                                <p>Optimasi pencarian suara dapat meningkatkan visibilitas hingga 30%</p>
+                            </div>
+                        </div>
+                        
+                        <a href="#contact" class="btn btn-primary">Climb the Search Rankings!</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="service-detail-image">
+                        <div class="image-container">
+                            <div class="image-element seo-image"></div>
+                            <div class="graph-overlay">
+                                <div class="graph-line"></div>
+                                <div class="graph-point" style="bottom: 20%; left: 20%"></div>
+                                <div class="graph-point" style="bottom: 40%; left: 40%"></div>
+                                <div class="graph-point" style="bottom: 70%; left: 60%"></div>
+                                <div class="graph-point active" style="bottom: 85%; left: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FlashRobs Trading Bot Section -->
+    <section id="flashrobs" class="service-detail section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="service-detail-content">
+                        <h2>Trade Smarter, Not Harder</h2>
+                        <p class="lead">Solusi trading otomatis canggih untuk pasar Forex & Cryptocurrency</p>
+                        
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Trading otomatis berbasis algoritma terbukti</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Pengembangan strategi khusus sesuai kebutuhan</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Fitur manajemen risiko yang terintegrasi</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Analisis kinerja dan laporan real-time</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Pelatihan dan dukungan teknis</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Integrasi dengan platform dan bursa terkemuka</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-container">
+                            <div class="stat-item">
+                                <h4>$154B</h4>
+                                <p>Pasar bot trading kripto diperkirakan mencapai $154 miliar pada tahun 2033</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>24/7</h4>
+                                <p>Trading otomatis menghilangkan pengambilan keputusan emosional</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>100%</h4>
+                                <p>Pemantauan pasar 24/7 menangkap peluang yang mungkin Anda lewatkan</p>
+                            </div>
+                        </div>
+                        
+                        <a href="#contact" class="btn btn-primary">Otomatisasi Kesuksesan Trading Anda</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-detail-image">
+                        <div class="image-container">
+                            <div class="image-element trading-image"></div>
+                            <div class="dashboard-overlay">
+                                <div class="dashboard-element"></div>
+                                <div class="dashboard-chart"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -325,31 +573,31 @@
     <section id="results" class="section-padding bg-light">
         <div class="container">
             <div class="section-header text-center">
-                <h2>Proven Results That Speak for Themselves</h2>
-                <p>Real success stories from Indonesian businesses that trusted us with their digital transformation</p>
+                <h2>Hasil Nyata untuk Bisnis Nyata</h2>
+                <p>OStrategi kami menghadirkan pertumbuhan yang terukur dan hasil yang nyata</p>
             </div>
             <div class="row">
                 <div class="col-lg-4">
                     <div class="case-study-card">
                         <div class="case-study-tag">E-commerce</div>
-                        <h3>Batik Fashion Brand</h3>
+                        <h3>Indonesian Fashion Brand</h3>
                         <div class="case-study-challenge">
                             <h4>Challenge:</h4>
-                            <p>Low visibility on Shopee despite premium products</p>
+                            <p>Visibilitas dan penjualan rendah di Shopee</p>
                         </div>
-                        <div class="case-study-solution">
+                        <div class="case-study-solution"> 
                             <h4>Solution:</h4>
-                            <p>Complete store optimization, strategic campaigns, and influencer partnerships</p>
+                            <p>Optimasi toko secara menyeluruh dan strategi iklan terstruktur</p>
                         </div>
                         <div class="case-study-result">
-                            <h4>Results:</h4>
+                            <h4>Result:</h4>
                             <div class="result-metric">
-                                <span class="result-number">215</span>
-                                <span class="result-label">Sales Increase</span>
+                                <span class="result-number">200%</span>
+                                <span class="result-label">Peningkatan trafik ke toko</span>
                             </div>
                             <div class="result-metric">
-                                <span class="result-number">4.9</span>
-                                <span class="result-label">Store Rating</span>
+                                <span class="result-number">175%</span>
+                                <span class="result-label">Pertumbuhan penjualan dalam 3 bulan</span>
                             </div>
                         </div>
                     </div>
@@ -357,24 +605,24 @@
                 <div class="col-lg-4">
                     <div class="case-study-card">
                         <div class="case-study-tag">SEO</div>
-                        <h3>Property Developer</h3>
+                        <h3>Local Service Business</h3>
                         <div class="case-study-challenge">
                             <h4>Challenge:</h4>
-                            <p>Poor Google rankings for competitive real estate keywords</p>
+                            <p>Visibilitas pencarian yang rendah untuk layanan utama</p>
                         </div>
                         <div class="case-study-solution">
                             <h4>Solution:</h4>
-                            <p>Comprehensive SEO strategy with local optimization and content marketing</p>
+                            <p>Strategi SEO menyeluruh dengan fokus lokal</p>
                         </div>
                         <div class="case-study-result">
-                            <h4>Results:</h4>
-                            <div class="result-metric">
-                                <span class="result-number">340</span>
-                                <span class="result-label">Organic Traffic</span>
-                            </div>
+                            <h4>Result:</h4>
                             <div class="result-metric">
                                 <span class="result-number">15</span>
-                                <span class="result-label">Top 3 Rankings</span>
+                                <span class="result-label">Peringkat halaman pertama untuk kata kunci utama</span>
+                            </div>
+                            <div class="result-metric">
+                                <span class="result-number">85%</span>
+                                <span class="result-label">Peningkatan trafik organik</span>
                             </div>
                         </div>
                     </div>
@@ -382,28 +630,30 @@
                 <div class="col-lg-4">
                     <div class="case-study-card">
                         <div class="case-study-tag">Trading</div>
-                        <h3>Investment Firm</h3>
+                        <h3>Investment Group</h3>
                         <div class="case-study-challenge">
                             <h4>Challenge:</h4>
-                            <p>Inconsistent trading results and emotional decision-making</p>
+                            <p>Hasil trading yang tidak konsisten dan banyak peluang yang terlewat</p>
                         </div>
                         <div class="case-study-solution">
                             <h4>Solution:</h4>
-                            <p>FlashRobs automated trading system with custom risk parameters</p>
+                            <p>Penerapan bot trading FlashRobs</p>
                         </div>
                         <div class="case-study-result">
-                            <h4>Results:</h4>
+                            <h4>Result:</h4>
                             <div class="result-metric">
-                                <span class="result-number">18.7</span>
-                                <span class="result-label">Annual Return</span>
+                                <span class="result-number">28%</span>
+                                <span class="result-label">Peningkatan ROI</span>
                             </div>
                             <div class="result-metric">
-                                <span class="result-number">68</span>
-                                <span class="result-label">Win Rate</span>
-                            </div>
+                                <span class="result-number">65%</span>
+                                <span class="result-label">Pengurangan waktu memantau pasar</span>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#contact" class="btn btn-primary">Join Our Success Stories</a>
             </div>
         </div>
     </section>
@@ -412,48 +662,48 @@
     <section id="testimonials" class="section-padding">
         <div class="container">
             <div class="section-header text-center">
-                <h2>What Our Clients Say</h2>
-                <p>Hear from Indonesian business owners who have transformed their digital presence with our help</p>
+                <h2>Apa Kata Klien Kami</h2>
+                <p class="section-description">Pengalaman nyata dari para pelaku bisnis yang telah berkembang bersama kami</p>
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-content">
                         <i class="fas fa-quote-left"></i>
-                        <p>"Berkah Karya transformed our Shopee store completely. Our sales increased by 215% in just 3 months, and we're now one of the top sellers in our category."</p>
+                        <p>Berkah Karya berhasil mengubah toko Shopee kami menjadi sumber pendapatan utama dengan strategi optimasi yang tepat sasaran.</p>
                     </div>
                     <div class="testimonial-author">
-                        <div class="author-image" style="background-image: url('https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop');"></div>
+                        <div class="author-image e-commerce-client"></div>
                         <div class="author-info">
-                            <h4>Sari Dewi</h4>
-                            <p>Owner, Batik Modern Indonesia</p>
+                            <h4>Salma Aufadina</h4>
+                            <p>E-commerce Manager</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="testimonial-card">
                     <div class="testimonial-content">
                         <i class="fas fa-quote-left"></i>
-                        <p>"Their SEO expertise is unmatched. We went from page 5 to top 3 rankings for our main keywords, and our organic traffic increased by 340%."</p>
+                        <p>Pendekatan transparan dan berbasis data mereka memberikan dampak nyata bagi pertumbuhan bisnis kami.</p>
                     </div>
                     <div class="testimonial-author">
-                        <div class="author-image" style="background-image: url('https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop');"></div>
+                        <div class="author-image seo-client"></div>
                         <div class="author-info">
                             <h4>Budi Santoso</h4>
-                            <p>CEO, Jakarta Property Group</p>
+                            <p>Marketing Director</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="testimonial-card">
                     <div class="testimonial-content">
                         <i class="fas fa-quote-left"></i>
-                        <p>"FlashRobs has been a game-changer for our investment strategy. The consistent 18.7% annual returns speak for themselves."</p>
+                        <p>Bot trading FlashRobs mengubah cara saya melihat pasar dengan otomatisasi yang efektif dan hasil yang memuaskan.</p>
                     </div>
                     <div class="testimonial-author">
-                        <div class="author-image" style="background-image: url('https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop');"></div>
+                        <div class="author-image trading-client"></div>
                         <div class="author-info">
-                            <h4>Ahmad Rahman</h4>
-                            <p>Investment Manager, Capital Ventures</p>
+                            <h4>Andi Pratama</h4>
+                            <p>Investment Manager</p>
                         </div>
                     </div>
                 </div>
@@ -467,31 +717,44 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="about-content">
-                        <h2>About Berkah Karya</h2>
-                        <p class="lead">We are Indonesia's premier digital marketing agency, specializing in e-commerce optimization, SEO, and automated trading solutions.</p>
-                        <p>Founded with a mission to empower Indonesian businesses in the digital age, we combine local market expertise with cutting-edge technology to deliver exceptional results.</p>
+                        <h2>Keunggulan Berkah Karya</h2>
+                        <p class="lead">Didirikan dengan visi untuk membantu bisnis Indonesia berkembang di era digital, Berkah Karya telah tumbuh menjadi agensi pertumbuhan digital yang melayani berbagai industri.</p>
                         
-                        <h3>Our Approach</h3>
+                        <h3>OPendekatan Kami</h3>
                         <div class="approach-list">
                             <div class="approach-item">
                                 <i class="fas fa-chart-bar"></i>
                                 <div>
-                                    <h4>Data-Driven Strategies</h4>
-                                    <p>Every decision is backed by comprehensive data analysis and market research.</p>
+                                    <h4>Strategi berbasis data</h4>
+                                    <p>Setiap rekomendasi kami dibuat berdasarkan data dan analitik yang solid</p>
                                 </div>
                             </div>
                             <div class="approach-item">
-                                <i class="fas fa-users"></i>
+                                <i class="fas fa-file-alt"></i>
                                 <div>
-                                    <h4>Client-Centric Focus</h4>
-                                    <p>Your success is our success. We work as an extension of your team.</p>
+                                    <h4>Laporan transparan</h4>
+                                    <p>Komunikasi yang jujur dan jelas terkait performa dan hasil</p>
                                 </div>
                             </div>
                             <div class="approach-item">
-                                <i class="fas fa-rocket"></i>
+                                <i class="fas fa-sync-alt"></i>
                                 <div>
-                                    <h4>Innovation First</h4>
-                                    <p>We stay ahead of trends and leverage the latest technologies for maximum impact.</p>
+                                    <h4>Optimasi berkelanjutan</h4>
+                                    <p>Kami terus menyempurnakan strategi untuk hasil yang lebih baik</p>
+                                </div>
+                            </div>
+                            <div class="approach-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Keahlian pasar lokal</h4>
+                                    <p>Pemahaman mendalam terhadap lanskap digital Indonesia</p>
+                                </div>
+                            </div>
+                            <div class="approach-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div>
+                                    <h4>Edukasi untuk klien</h4>
+                                    <p>Kami membekali Anda dengan pengetahuan agar paham strategi kami</p>
                                 </div>
                             </div>
                         </div>
@@ -499,14 +762,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="about-image">
-                        <div class="story-image">
-                            <div class="video-frame">
-                                <video controls poster="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop">
-                                    <source src="main_website/images/office-tour.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                        </div>
+                        <div class="team-image"><img src="images/team/teams.jpeg" alt="Our Team" style="width:100%;height:auto;object-fit:cover;" /></div>
                         <div class="about-shape"></div>
                     </div>
                 </div>
@@ -514,12 +770,217 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section-padding">
+    <!-- Our Story Section -->
+    <section id="our-story" class="section-padding">
         <div class="container">
             <div class="section-header text-center">
-                <h2>Ready to Transform Your Business?</h2>
-                <p>Get in touch for a free consultation and discover how we can help you achieve your digital marketing goals</p>
+                <h2>Cerita Kami</h2>
+                <p>Membangun Kisah Sukses Digital Sejak 2020</p>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="story-content">
+                        <h3>Dari Visi Menjadi Realita</h3>
+                        <p>Berkah Karya didirikan dengan visi sederhana namun kuat: membantu bisnis di Indonesia berkembang di era digital. Perjalanan kami dimulai dari tim kecil yang dipenuhi semangat digital marketing, hingga kini menjadi agensi digital layanan penuh.</p>
+                        <p>Saat ini, kami bangga telah membantu ratusan bisnis di seluruh Indonesia mencapai tujuan digital mereka, mulai dari optimalisasi e-commerce hingga strategi pemasaran digital yang menyeluruh.</p>
+                        <div class="story-stats">
+                            <div class="stat-item">
+                                <h4>500+</h4>
+                                <p>Proyek Diselesaikan</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>98%</h4>
+                                <p>Tingkat Kepuasan Klien</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>3+</h4>
+                                <p>Tahun Pengalaman</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="story-image">
+                        <div class="video-frame">
+                            <video class="img-fluid rounded" controls>
+                                <source src="images/office-tour.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Team Section -->
+    <section id="team" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Tim Ahli Kami</h2>
+                <p>Para Profesional yang Membawa Keahlian dan Inovasi ke Setiap Proyek</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-member">
+                        <div class="team-image">
+                            <img src="images/team/member1.jpg" alt="Andik Verris" class="img-fluid">
+                            <div class="team-overlay">
+                                <div class="team-social">
+                                    <a href="https://linkedin.com/in/andikverris" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                    <a href="https://twitter.com/andikverris" target="_blank"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h3>Andik Verris</h3>
+                            <p class="team-position">CEO & Founder</p>
+                            <p class="team-description">Lebih dari 10 tahun pengalaman dalam digital marketing dan strategi pertumbuhan bisnis. Memimpin tim dengan visi untuk mengubah lanskap digital Indonesia.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-member">
+                        <div class="team-image">
+                            <img src="images/team/member2.jpg" alt="Sony Kurniawan" class="img-fluid">
+                            <div class="team-overlay">
+                                <div class="team-social">
+                                    <a href="https://linkedin.com/in/sonykurniawan" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                    <a href="https://twitter.com/sonykurniawan" target="_blank"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h3>Sony Prayoga</h3>
+                            <p class="team-position">Chief Operations Officer</p>
+                            <p class="team-description">Ahli dalam optimasi operasional dan manajemen proyek. Memastikan setiap strategi diimplementasikan dengan sempurna untuk hasil maksimal.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="team-member">
+                        <div class="team-image">
+                            <img src="images/team/member3.jpg" alt="Fikri Izzudin" class="img-fluid">
+                            <div class="team-overlay">
+                                <div class="team-social">
+                                    <a href="https://linkedin.com/in/fikriizzuddin" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                    <a href="https://github.com/fikriizzuddin" target="_blank"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h3>Fikri Izzudin</h3>
+                            <p class="team-position">Chief Technology Officer</p>
+                            <p class="team-description">Pakar dalam pengembangan teknologi dan inovasi digital. Memimpin pengembangan solusi teknologi yang mengubah cara bisnis beroperasi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <div class="team-values">
+                        <h3>Nilai-Nilai Kami</h3>
+                        <div class="row mt-4">
+                            <div class="col-md-4">
+                                <div class="value-item">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <h4>Inovasi</h4>
+                                    <p>Selalu mencari cara baru untuk memberikan hasil terbaik</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="value-item">
+                                    <i class="fas fa-handshake"></i>
+                                    <h4>Integritas</h4>
+                                    <p>Menjunjung tinggi kejujuran dan transparansi dalam setiap aspek</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="value-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <h4>Hasil</h4>
+                                    <p>Fokus pada pencapaian tujuan dan pertumbuhan yang terukur</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Gallery Section -->
+    <section id="gallery" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Our Work Gallery</h2>
+                <p>Showcasing Our Team's Success Stories</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="images/gallery/work1.jpeg" alt="Project 1" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <h4>E-commerce Optimization</h4>
+                            <p>Shopee Store Transformation</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="images/gallery/work2.jpeg" alt="Project 2" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <h4>Digital Campaign</h4>
+                            <p>Brand Awareness Campaign</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="images/gallery/work3.jpeg" alt="Project 3" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <h4>SEO Success</h4>
+                            <p>Search Ranking Improvement</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="images/gallery/work4.jpeg" alt="Project 4" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <h4>Social Media</h4>
+                            <p>Viral Campaign Strategy</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="images/gallery/work5.jpeg" alt="Project 5" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <h4>Content Creation</h4>
+                            <p>Brand Storytelling</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="images/gallery/work6.jpeg" alt="Project 6" class="img-fluid">
+                        <div class="gallery-overlay">
+                            <h4>Analytics</h4>
+                            <p>Performance Optimization</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Contact Section -->
+     <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Start Your Digital Growth Journey</h2>
+                <p>Hubungi kami untuk mendiskusikan bagaimana kami dapat membantu bisnis Anda berkembang di dunia digital</p>
             </div>
             <div class="row">
                 <div class="col-lg-6">
@@ -539,59 +1000,49 @@
                             </div>
                             <div class="form-group">
                                 <label for="company">Company</label>
-                                <input type="text" id="company" name="company" class="form-control">
+                                <input type="text" id="company" name="company" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="service">Service Interest</label>
+                                <label for="service">Service of Interest</label>
                                 <select id="service" name="service" class="form-control" required>
                                     <option value="" selected disabled>Select a service</option>
                                     <option value="shopee-tiktok">Shopee & TikTok Optimization</option>
                                     <option value="seo">SEO Optimization</option>
                                     <option value="flashrobs">FlashRobs Trading Bot</option>
-                                    <option value="all">All Services</option>
+                                    <option value="multiple">Multiple Services</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="message">Message</label>
                                 <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                            <button type="submit" class="btn btn-primary btn-block">Let's Talk Growth</button>
                         </form>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="contact-info">
-                        <div class="contact-info-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h3>Email</h3>
-                                <p>hello@berkahkarya.id</p>
+                                                    <div class="contact-info-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h3>Email</h3>
+                                    <p>contact@berkahkarya.org</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="contact-info-item">
-                            <i class="fas fa-phone-alt"></i>
-                            <div>
-                                <h3>Phone</h3>
-                                <p>+62 857 3274 0006</p>
+                            <div class="contact-info-item">
+                                <i class="fas fa-phone-alt"></i>
+                                <div>
+                                    <h3>Phone</h3>
+                                    <p>+62 857 3274 0006</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="contact-info-item">
-                            <i class="fab fa-whatsapp"></i>
-                            <div>
-                                <h3>WhatsApp</h3>
-                                <p>Connect instantly via WhatsApp</p>
-                                <a href="https://wa.me/6285732740006?text=Hi%20Berkah%20Karya,%20I'm%20interested%20in%20your%20digital%20marketing%20services." class="btn btn-primary" target="_blank">
-                                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-                                </a>
+                            <div class="contact-info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h3>Address</h3>
+                                    <p>Plandi, Jombang<br>Jawa Timur, Indonesia 61419</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="contact-info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h3>Address</h3>
-                                <p>Jl. Sudirman No. 123<br>Jakarta Pusat, Indonesia</p>
-                            </div>
-                        </div>
                         <div class="social-links">
                             <h3>Connect With Us</h3>
                             <div class="social-icons">
@@ -614,17 +1065,16 @@
                 <div class="col-lg-4">
                     <div class="footer-brand">
                         <h3>Berkah Karya</h3>
-                        <p>Transforming Indonesian businesses through innovative digital marketing strategies and cutting-edge technology solutions.</p>
+                        <p>Elevating digital presence through data-driven strategies and local expertise.</p>
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <div class="footer-links">
                         <h4>Services</h4>
                         <ul>
-                            <li><a href="/ecommerce">Shopee & TikTok</a></li>
-                            <li><a href="/seo">SEO Optimization</a></li>
-                            <li><a href="/trading">FlashRobs Trading</a></li>
-                            <li><a href="#contact">Consultation</a></li>
+                            <li><a href="#shopee-tiktok">Shopee & TikTok</a></li>
+                            <li><a href="#seo">SEO Optimization</a></li>
+                            <li><a href="#flashrobs">FlashRobs Trading Bot</a></li>
                         </ul>
                     </div>
                 </div>
@@ -635,14 +1085,13 @@
                             <li><a href="#about">About Us</a></li>
                             <li><a href="#results">Case Studies</a></li>
                             <li><a href="#testimonials">Testimonials</a></li>
-                            <li><a href="#contact">Contact</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="footer-newsletter">
                         <h4>Stay Updated</h4>
-                        <p>Subscribe to our newsletter for the latest digital marketing insights and trends</p>
+                        <p>Subscribe to our newsletter for the latest digital marketing insights</p>
                         <form class="newsletter-form">
                             <input type="email" placeholder="Your email address">
                             <button type="submit"><i class="fas fa-paper-plane"></i></button>
@@ -661,9 +1110,56 @@
     <!-- Back to top button -->
     <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="main_website/script.js"></script>
+    <script>
+        const isEditMode = window.location.search.includes('edit=true');
+        if (isEditMode) {
+          // Load GrapesJS
+          const grapesScript = document.createElement('script');
+          grapesScript.src = 'https://unpkg.com/grapesjs';
+          grapesScript.onload = () => {
+            const initScript = document.createElement('script');
+            initScript.src = 'grapesjs-init.js';
+            document.body.appendChild(initScript);
+          };
+          document.head.insertAdjacentHTML('beforeend',
+            '<link rel="stylesheet" href="https://unpkg.com/grapesjs/dist/css/grapes.min.css">'
+          );
+          document.body.innerHTML = ''; // Kosongkan agar tidak dobel render
+        } else {
+          // Muat konten default
+          fetch('editor-content.json')
+            .then(res => {
+              if (!res.ok) {
+                throw new Error('Editor content not found');
+              }
+              return res.json();
+            })
+            .then(data => {
+              document.body.innerHTML = data.html;
+              const style = document.createElement('style');
+              style.innerHTML = data.css;
+              document.head.appendChild(style);
+            })
+            .catch(error => {
+              // If editor content is not available, continue with normal page load
+              console.log('Editor content not available, using default page content');
+            });
+        }
+      </script>
+      
+
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6856a535552cdd190f7b5186/1iu97amv4';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 </body>
 </html>
