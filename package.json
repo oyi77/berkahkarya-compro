@@ -5,8 +5,8 @@
   "main": "index.html",
   "scripts": {
     "build": "echo 'Build completed - static website ready for deployment'",
-    "start": "echo 'Starting development server...' && python3 -m http.server 3000",
-    "dev": "python3 -m http.server 3000"
+    "start": "npx serve . -p 3000",
+    "dev": "npx serve . -p 3000"
   },
   "keywords": [
     "digital-marketing",
@@ -19,5 +19,7 @@
   "author": "Berkah Karya",
   "license": "MIT",
   "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
 }
