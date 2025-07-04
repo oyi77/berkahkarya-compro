@@ -2,8 +2,8 @@
 # This configuration sets up the main website and portfolio sub-sites
 
 [build]
-  # Set the main website as the primary publish directory
-  publish = "main_website"
+  # Set the root directory as the publish directory
+  publish = "."
   
   # Build command (optional - for static sites)
   command = "echo 'Static website - no build required'"
@@ -11,10 +11,26 @@
 # Redirect rules for portfolio sites
 # These allow accessing portfolio sites as subdirectories
 
+# Main website files
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
+
 # Shopee & TikTok Portfolio
+[[redirects]]
+  from = "/ecommerce"
+  to = "/portfolio_sites/shopee_tiktok/index.html"
+  status = 200
+
 [[redirects]]
   from = "/ecommerce/*"
   to = "/portfolio_sites/shopee_tiktok/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/shopee-tiktok"
+  to = "/portfolio_sites/shopee_tiktok/index.html"
   status = 200
 
 [[redirects]]
@@ -24,14 +40,29 @@
 
 # SEO Portfolio
 [[redirects]]
+  from = "/seo"
+  to = "/portfolio_sites/seo/index.html"
+  status = 200
+
+[[redirects]]
   from = "/seo/*"
   to = "/portfolio_sites/seo/:splat"
   status = 200
 
 # FlashRobs Trading Portfolio
 [[redirects]]
+  from = "/trading"
+  to = "/portfolio_sites/flashrobs/index.html"
+  status = 200
+
+[[redirects]]
   from = "/trading/*"
   to = "/portfolio_sites/flashrobs/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/flashrobs"
+  to = "/portfolio_sites/flashrobs/index.html"
   status = 200
 
 [[redirects]]
@@ -39,22 +70,10 @@
   to = "/portfolio_sites/flashrobs/:splat"
   status = 200
 
-# Handle portfolio site assets (CSS, JS, images)
-[[redirects]]
-  from = "/portfolio_sites/*"
-  to = "/portfolio_sites/:splat"
-  status = 200
-
 # Handle main website assets
 [[redirects]]
   from = "/main_website/*"
   to = "/main_website/:splat"
-  status = 200
-
-# Fallback for any unmatched routes to main site
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
   status = 200
 
 # Headers for better performance and security
