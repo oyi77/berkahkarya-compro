@@ -1,4 +1,4 @@
-// Specific JavaScript for Shopee & TikTok Optimization portfolio
+// Specific JavaScript for SEO Optimization portfolio
 document.addEventListener('DOMContentLoaded', function() {
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
@@ -55,62 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1500);
         });
     }
-    
-    // Before-After slider functionality
-    const sliders = document.querySelectorAll('.before-after-slider');
-    
-    sliders.forEach(slider => {
-        const handle = slider.querySelector('.slider-handle');
-        const afterImage = slider.querySelector('.after-image');
-        
-        if (!handle || !afterImage) return;
-        
-        let isDragging = false;
-        
-        // Mouse events
-        handle.addEventListener('mousedown', startDrag);
-        document.addEventListener('mousemove', drag);
-        document.addEventListener('mouseup', endDrag);
-        
-        // Touch events for mobile
-        handle.addEventListener('touchstart', startDrag);
-        document.addEventListener('touchmove', drag);
-        document.addEventListener('touchend', endDrag);
-        
-        function startDrag(e) {
-            e.preventDefault();
-            isDragging = true;
-        }
-        
-        function drag(e) {
-            if (!isDragging) return;
-            
-            let x;
-            
-            if (e.type === 'touchmove') {
-                x = e.touches[0].clientX;
-            } else {
-                x = e.clientX;
-            }
-            
-            const sliderRect = slider.getBoundingClientRect();
-            const sliderWidth = sliderRect.width;
-            const sliderLeft = sliderRect.left;
-            
-            let position = (x - sliderLeft) / sliderWidth * 100;
-            
-            // Constrain position between 0% and 100%
-            position = Math.max(0, Math.min(100, position));
-            
-            // Update slider position
-            afterImage.style.width = `${position}%`;
-            handle.style.left = `${position}%`;
-        }
-        
-        function endDrag() {
-            isDragging = false;
-        }
-    });
     
     // Animate stats on scroll
     const statNumbers = document.querySelectorAll('.stat-number');
