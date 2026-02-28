@@ -1,0 +1,138 @@
+<section id="pricing" class="py-5 content-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-badge"><i class="fas fa-tags"></i> Paket Harga</span>
+            <h2 class="section-title">Investasi Terbaik untuk Bisnis Anda</h2>
+            <p class="section-subtitle">Pilih paket yang sesuai dengan kebutuhan pertumbuhan bisnis Anda</p>
+        </div>
+
+        <!-- TikTok Content Pricing -->
+        <h3 class="text-center mb-4">TikTok Content Agency (Shopee Sellers)</h3>
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="pricing-card starter">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Starter</h3>
+                        <div class="pricing-price">
+                            <span class="price-amount">IDR 3,000,000</span>
+                            <span class="price-period">/bulan</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> 20 videos/bulan</li>
+                            <li><i class="fas fa-check"></i> 1 video/hari</li>
+                            <li><i class="fas fa-check"></i> 24 jam turnaround</li>
+                            <li><i class="fas fa-check"></i> Format TikTok 9:16</li>
+                            <li><i class="fas fa-check"></i> Hyperrealistic Quality</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <div class="price-per-video">
+                            <small>Price per video</small>
+                            <span class="price-highlight">IDR 150,000</span>
+                        </div>
+                        <a href="#contact" onclick="navigateTo('contact'); return false;" class="btn btn-outline-primary btn-lg w-100">Pilih Starter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="pricing-card growth">
+                    <div class="pricing-badge">POPULAR</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Growth</h3>
+                        <div class="pricing-price">
+                            <span class="price-amount">IDR 5,000,000</span>
+                            <span class="price-period">/bulan</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> 40 videos/bulan</li>
+                            <li><i class="fas fa-check"></i> 2 video/hari</li>
+                            <li><i class="fas fa-check"></i> 12 jam turnaround</li>
+                            <li><i class="fas fa-check"></i> Format TikTok 9:16</li>
+                            <li><i class="fas fa-check"></i> Hyperrealistic Quality</li>
+                            <li><i class="fas fa-check"></i> Prioritas Produksi</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <div class="price-per-video">
+                            <small>Price per video</small>
+                            <span class="price-highlight">IDR 125,000</span>
+                        </div>
+                        <a href="#contact" onclick="navigateTo('contact'); return false;" class="btn btn-primary btn-lg w-100">Pilih Growth</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="pricing-card scale">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Scale</h3>
+                        <div class="pricing-price">
+                            <span class="price-amount">IDR 8,000,000</span>
+                            <span class="price-period">/bulan</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> 80 videos/bulan</li>
+                            <li><i class="fas fa-check"></i> 4 video/hari</li>
+                            <li><i class="fas fa-check"></i> 6 jam turnaround</li>
+                            <li><i class="fas fa-check"></i> Format TikTok 9:16</li>
+                            <li><i class="fas fa-check"></i> Hyperrealistic Quality</li>
+                            <li><i class="fas fa-check"></i> Dedicated Manager</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <div class="price-per-video">
+                            <small>Price per video</small>
+                            <span class="price-highlight">IDR 100,000</span>
+                        </div>
+                        <a href="#contact" onclick="navigateTo('contact'); return false;" class="btn btn-outline-primary btn-lg w-100">Pilih Scale</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROI Calculator -->
+        <div class="roi-calculator-wrapper mt-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="roi-calculator bg-white p-4 rounded-3 shadow-sm">
+                        <h3 class="text-center mb-4">Hitung ROI Anda</h3>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Harga Produk (IDR)</label>
+                                <input type="number" class="form-control" id="productPrice" value="125000">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Target Sales Tambahan/Hari</label>
+                                <input type="number" class="form-control" id="targetSales" value="10">
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-secondary w-100" onclick="calculateROI()">Hitung Estimasi Profit</button>
+                            </div>
+                        </div>
+                        <div class="roi-results mt-4" id="roiResults" style="display:none;">
+                            <div class="alert alert-success">
+                                <h4 class="alert-heading text-center mb-0">Potensi Revenue: <span id="potentialRevenue">IDR 0</span> / bulan</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateROI() {
+            const price = document.getElementById('productPrice').value;
+            const sales = document.getElementById('targetSales').value;
+            const monthlyRevenue = price * sales * 30;
+            
+            document.getElementById('potentialRevenue').innerText = 'IDR ' + new Intl.NumberFormat('id-ID').format(monthlyRevenue);
+            document.getElementById('roiResults').style.display = 'block';
+        }
+    </script>
+</section>
