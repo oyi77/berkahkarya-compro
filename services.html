@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Berkah Karya Digital Agency</title>
+    <meta name="description" content="Layanan digital agency berkarakter - TikTok Content Agency, E-commerce Optimization, dan FlashRobs Trading Bot">
+    <meta name="facebook-domain-verification" content="vo4g6nsn3kqvqmmzxd9rx2gt62dy07" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #f59e0b;
+            --accent-hover: #fbbf24;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --text: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 2rem 80px;
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title span {
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 80px 2rem;
+            background: var(--secondary);
+        }
+
+        .services-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--accent);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.75rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-features li i {
+            color: var(--success);
+        }
+
+        .service-cta {
+            display: block;
+            text-align: center;
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent);
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .service-cta:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        /* Why Choose Us */
+        .why-us-section {
+            padding: 80px 2rem;
+        }
+
+        .why-us-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .why-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .why-card h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .why-card p {
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            background: var(--primary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">B</div>
+                <span>Berkah Karya</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="ai-agent-pro.html" class="nav-link">AI Agent Pro</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="https://wa.me/6285732740006" class="nav-cta">Jadwalkan Demo</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <h1 class="hero-title">Layanan <span>Digital</span> Berkarakter</h1>
+            <p class="hero-subtitle">
+                Kami membantu bisnis berkembang dengan layanan digital yang terbukti dan berdampak nyata.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="services-container">
+            <h2 class="section-title">Apa yang Kami Tawarkan</h2>
+            <p class="section-subtitle">
+                Solusi digital komprehensif untuk membantu bisnis Anda tumbuh dan berkembang
+            </p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3> TikTok Content Agency</h3>
+                    <p>
+                        Jasa pembuatan konten TikTok viral dan engaging untuk meningkatkan engagement brand Anda
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Content creator profesional</li>
+                        <li><i class="fas fa-check"></i> Viral strategy optimization</li>
+                        <li><i class="fas fa-check"></i> TikTok ads management</li>
+                    </ul>
+                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20tanya%20TikTok%20Content%20Agency" class="service-cta">
+                        Pelajari Lebih Lanjut →
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3> E-commerce Optimization</h3>
+                    <p>
+                        Optimasi performa e-commerce untuk meningkatkan konversi dan penjualan online
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> UX/UI improvement</li>
+                        <li><i class="fas fa-check"></i> Conversion rate optimization</li>
+                        <li><i class="fas fa-check"></i> SEO untuk e-commerce</li>
+                    </ul>
+                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20tanya%20E-commerce%20Optimization" class="service-cta">
+                        Pelajari Lebih Lanjut →
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3> FlashRobs Trading Bot</h3>
+                    <p>
+                        Trading bot otomatis untuk XAUUSD dengan strategi Asia session yang terbukti
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> 7-candle breakout strategy</li>
+                        <li><i class="fas fa-check"></i> Paper trading available</li>
+                        <li><i class="fas fa-check"></i> Real-time monitoring</li>
+                    </ul>
+                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20tanya%20FlashRobs%20Trading%20Bot" class="service-cta">
+                        Pelajari Lebih Lanjut →
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3> AI Agent Pro</h3>
+                    <p>
+                        Sistem AI Agent untuk otomatisasi chat, lead qualification, dan follow-up 24/7
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Respon < 2 detik</li>
+                        <li><i class="fas fa-check"></i> Lead follow-up otomatis</li>
+                        <li><i class="fas fa-check"></i> 24/7 active AI</li>
+                    </ul>
+                    <a href="ai-agent-pro.html" class="service-cta">
+                        Lihat Detail →
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3> SEO Optimization</h3>
+                    <p>
+                        Optimasi SEO untuk meningkatkan ranking di search engine dan organic traffic
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Technical SEO audit</li>
+                        <li><i class="fas fa-check"></i> Keyword optimization</li>
+                        <li><i class="fas fa-check"></i> Link building strategy</li>
+                    </ul>
+                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20tanya%20SEO%20Optimization" class="service-cta">
+                        Pelajari Lebih Lanjut →
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3> Digital Marketing</h3>
+                    <p>
+                        Strategi marketing digital komprehensif untuk meningkatkan brand awareness dan leads
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Social media marketing</li>
+                        <li><i class="fas fa-check"></i> Paid ads management</li>
+                        <li><i class="fas fa-check"></i> Content strategy</li>
+                    </ul>
+                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20tanya%20Digital%20Marketing" class="service-cta">
+                        Pelajari Lebih Lanjut →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us-section">
+        <div class="why-us-container">
+            <h2 class="section-title">Mengapa Memilih Kami?</h2>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>Quality Guaranteed</h4>
+                    <p>Kami komitmen memberikan hasil terbaik dengan standar kualitas tinggi</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4>On-Time Delivery</h4>
+                    <p>Kami menghargai waktu Anda dengan delivery tepat waktu</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4>24/7 Support</h4>
+                    <p>Tim kami siap membantu Anda kapan saja</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">Berkah Karya</div>
+            <p class="footer-description">
+                Digital Growth Agency membantu brand tumbuh melalui TikTok Content Agency, E-commerce Optimization, dan FlashRobs Trading Bot
+            </p>
+            <div class="footer-bottom">
+                <p>© 2026 Berkah Karya Digital Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

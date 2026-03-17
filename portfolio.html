@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Berkah Karya Digital Agency</title>
+    <meta name="description" content="Portfolio proyek berkarakter - TikTok viral, e-commerce conversion, trading automation, dan lebih banyak">
+    <meta name="facebook-domain-verification" content="vo4g6nsn3kqvqmmzxd9rx2gt62dy07" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #f59e0b;
+            --accent-hover: #fbbf24;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --text: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 2rem 80px;
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title span {
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio-section {
+            padding: 80px 2rem;
+            background: var(--secondary);
+        }
+
+        .portfolio-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent);
+            color: var(--primary);
+            border-color: var(--accent);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+
+        .portfolio-image {
+            height: 250px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .portfolio-image i {
+            font-size: 5rem;
+            color: var(--accent);
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-category {
+            color: var(--accent);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .portfolio-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .portfolio-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .portfolio-stat i {
+            color: var(--success);
+        }
+
+        .portfolio-link {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .portfolio-link:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            background: var(--primary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">B</div>
+                <span>Berkah Karya</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="ai-agent-pro.html" class="nav-link">AI Agent Pro</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="https://wa.me/6285732740006" class="nav-cta">Jadwalkan Demo</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <h1 class="hero-title">Portfolio <span>Karya</span></h1>
+            <p class="hero-subtitle">
+                Beberapa proyek berkarakter yang kami kerjakan dengan dedikasi dan hasil nyata
+            </p>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section">
+        <div class="portfolio-container">
+            <h2 class="section-title">Proyek Kami</h2>
+            <p class="section-subtitle">
+                Bukti nyata hasil kerja kami untuk berbagai klien dengan berbagai industri
+            </p>
+            <div class="portfolio-filters">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">TikTok</button>
+                <button class="filter-btn">E-commerce</button>
+                <button class="filter-btn">Trading</button>
+                <button class="filter-btn">AI</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-category">TikTok Content Agency</p>
+                        <h3 class="portfolio-title">Viral TikTok Campaign</h3>
+                        <p class="portfolio-description">
+                            Campaign TikTok viral untuk brand fashion lokal dengan reach 2M+ dan engagement rate 15%
+                        </p>
+                        <div class="portfolio-stats">
+                            <div class="portfolio-stat">
+                                <i class="fas fa-eye"></i>
+                                <span>2.1M Reach</span>
+                            </div>
+                            <div class="portfolio-stat">
+                                <i class="fas fa-heart"></i>
+                                <span>320K Engagement</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20lihat%20case%20study%20TikTok" class="portfolio-link">
+                            Lihat Detail →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-category">E-commerce Optimization</p>
+                        <h3 class="portfolio-title">Shopify Conversion Boost</h3>
+                        <p class="portfolio-description">
+                            Optimasi UX/UI dan CRO untuk e-commerce fashion dengan peningkatan conversion rate 45%
+                        </p>
+                        <div class="portfolio-stats">
+                            <div class="portfolio-stat">
+                                <i class="fas fa-chart-line"></i>
+                                <span>+45% Conversion</span>
+                            </div>
+                            <div class="portfolio-stat">
+                                <i class="fas fa-dollar-sign"></i>
+                                <span>Rp 150M Revenue</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20lihat%20case%20study%20E-commerce" class="portfolio-link">
+                            Lihat Detail →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <i class="fas fa-chart-candlestick"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-category">FlashRobs Trading Bot</p>
+                        <h3 class="portfolio-title">XAUUSD Strategy Backtest</h3>
+                        <p class="portfolio-description">
+                            Backtesting strategy XAUUSD 7-candle breakout dengan accuracy 78% dalam 1 tahun
+                        </p>
+                        <div class="portfolio-stats">
+                            <div class="portfolio-stat">
+                                <i class="fas fa-bullseye"></i>
+                                <span>78% Accuracy</span>
+                            </div>
+                            <div class="portfolio-stat">
+                                <i class="fas fa-percentage"></i>
+                                <span>+45% Profit</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20lihat%20case%20study%20Trading" class="portfolio-link">
+                            Lihat Detail →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-category">AI Agent Pro</p>
+                        <h3 class="portfolio-title">WhatsApp Bot Implementation</h3>
+                        <p class="portfolio-description">
+                            Implementasi AI Agent Pro untuk chat automation dengan 24/7 response time
+                        </p>
+                        <div class="portfolio-stats">
+                            <div class="portfolio-stat">
+                                <i class="fas fa-bolt"></i>
+                                <span>< 2 detik</span>
+                            </div>
+                            <div class="portfolio-stat">
+                                <i class="fas fa-users"></i>
+                                <span>500+ leads</span>
+                            </div>
+                        </div>
+                        <a href="ai-agent-pro.html" class="portfolio-link">
+                            Lihat Detail →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-category">SEO Optimization</p>
+                        <h3 class="portfolio-title">Google Ranking Boost</h3>
+                        <p class="portfolio-description">
+                            SEO optimization untuk website e-commerce dengan peningkatan ranking di Google halaman 1
+                        </p>
+                        <div class="portfolio-stats">
+                            <div class="portfolio-stat">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+150% Organic</span>
+                            </div>
+                            <div class="portfolio-stat">
+                                <i class="fas fa-users"></i>
+                                <span>100K+ Traffic</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20lihat%20case%20study%20SEO" class="portfolio-link">
+                            Lihat Detail →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-category">Digital Marketing</p>
+                        <h3 class="portfolio-title">Social Media Ads Campaign</h3>
+                        <p class="portfolio-description">
+                            Campaign paid ads dengan ROI 5x untuk startup fintech dengan spend Rp 50M
+                        </p>
+                        <div class="portfolio-stats">
+                            <div class="portfolio-stat">
+                                <i class="fas fa-coins"></i>
+                                <span>ROI 5x</span>
+                            </div>
+                            <div class="portfolio-stat">
+                                <i class="fas fa-percentage"></i>
+                                <span>+500% ROAS</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20lihat%20case%20study%20Digital%20Marketing" class="portfolio-link">
+                            Lihat Detail →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">Berkah Karya</div>
+            <p class="footer-description">
+                Dari TikTok Content Agency, E-commerce Optimization, FlashRobs Trading Bot, hingga AI Agent Pro
+            </p>
+            <div class="footer-bottom">
+                <p>© 2026 Berkah Karya Digital Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - Berkah Karya Digital Agency</title>
+    <meta name="description" content="Pricing layanan digital berkarakter - TikTok Agency, E-commerce, Trading Bot, AI Agent Pro">
+    <meta name="facebook-domain-verification" content="vo4g6nsn3kqvqmmzxd9rx2gt62dy07" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #f59e0b;
+            --accent-hover: #fbbf24;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --text: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 2rem 80px;
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title span {
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 80px 2rem;
+            background: var(--secondary);
+        }
+
+        .pricing-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent);
+            color: var(--primary);
+            border-color: var(--accent);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--accent);
+            position: relative;
+        }
+
+        .pricing-card.popular::before {
+            content: '🔥 PALING POPULER';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-category {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-amount span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .pricing-subtitle {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .pricing-features li i {
+            color: var(--success);
+        }
+
+        .pricing-cta {
+            display: block;
+            text-align: center;
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent);
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .pricing-cta:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            background: var(--primary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .pricing-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">B</div>
+                <span>Berkah Karya</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="ai-agent-pro.html" class="nav-link">AI Agent Pro</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="https://wa.me/6285732740006" class="nav-cta">Jadwalkan Demo</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <h1 class="hero-title">Pricing <span>Kami</span></h1>
+            <p class="hero-subtitle">
+                Pilihan paket layanan berkarakter untuk kebutuhan bisnis Anda
+            </p>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="pricing-container">
+            <h2 class="section-title">Pilihan Paket</h2>
+            <p class="section-subtitle">
+                Investasi terbaik untuk bisnis Anda. Pikirkan seperti ROI, bukan biaya.
+            </p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">STARTER</h3>
+                        <p class="pricing-category">Untuk usaha kecil yang baru mulai</p>
+                        <div class="pricing-amount">Rp 499K<span>/bulan</span></div>
+                        <p class="pricing-subtitle">Cocok untuk testing & learning</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 1 Account WhatsApp</li>
+                        <li><i class="fas fa-check"></i> 100 Chat/hari</li>
+                        <li><i class="fas fa-check"></i> Basic FAQ</li>
+                        <li><i class="fas fa-check"></i> Manual Training</li>
+                        <li><i class="fas fa-check"></i> Priority Support</li>
+                    </ul>
+                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20mulai%20paket%20STARTER%20AI%20Agent%20Pro" class="pricing-cta">
+                        Mulai Trial 7 Hari →
+                    </a>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">GROWTH 🔥</h3>
+                        <p class="pricing-category">Untuk bisnis yang siap scale</p>
+                        <div class="pricing-amount">Rp 499K<span>/bulan</span></div>
+                        <p class="pricing-subtitle" style="color: var(--danger); font-size: 0.875rem;">Normal: Rp 1.999K/bulan (Hemat Rp 1.5M)</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 5 Account WhatsApp</li>
+                        <li><i class="fas fa-check"></i> 500 Chat/hari</li>
+                        <li><i class="fas fa-check"></i> Advanced AI Engine</li>
+                        <li><i class="fas fa-check"></i> Auto Training</li>
+                        <li><i class="fas fa-check"></i> Priority Support</li>
+                        <li><i class="fas fa-check"></i> Dashboard Monitoring</li>
+                    </ul>
+                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20jadwalkan%20demo%20GROWTH%20AI%20Agent%20Pro" class="pricing-cta">
+                        Jadwalkan Demo Gratis →
+                    </a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">PROFESSIONAL</h3>
+                        <p class="pricing-category">Untuk enterprise custom</p>
+                        <div class="pricing-amount">Custom<span>/bulan</span></div>
+                        <p class="pricing-subtitle">Flexible pricing sesuai kebutuhan</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Unlimited Accounts</li>
+                        <li><i class="fas fa-check"></i> Unlimited Chat</li>
+                        <li><i class="fas fa-check"></i> Custom AI Engine</li>
+                        <li><i class="fas fa-check"></i> Dedicated Team</li>
+                        <li><i class="fas fa-check"></i> 24/7 Priority Support</li>
+                        <li><i class="fas fa-check"></i> API Access</li>
+                        <li><i class="fas fa-check"></i> NDA Protected</li>
+                    </ul>
+                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20hubungi%20tim%20Sales%20Professional" class="pricing-cta">
+                        Hubungi Tim Sales →
+                    </a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">TIKTOK AGENCY</h3>
+                        <p class="pricing-category">Content creation & management</p>
+                        <div class="pricing-amount">Rp 2.5Juta<span>/bulan</span></div>
+                        <p class="pricing-subtitle">10-15 konten per bulan</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 10-15 konten TikTok</li>
+                        <li><i class="fas fa-check"></i> Script writing</li>
+                        <li><i class="fas fa-check"></i> Content planning</li>
+                        <li><i class="fas fa-check"></i> Caption & hashtag</li>
+                        <li><i class="fas fa-check"></i> Monthly analytics</li>
+                        <li><i class="fas fa-check"></i> Ad account management</li>
+                    </ul>
+                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20tanya%20TikTok%20Agency" class="pricing-cta">
+                        Selengkapnya →
+                    </a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">E-COMMERCE OPT</h3>
+                        <p class="pricing-category">Optimasi konversi e-commerce</p>
+                        <div class="pricing-amount">Rp 3Juta<span>/bulan</span></div>
+                        <p class="pricing-subtitle">Setup + maintenance 6 bulan</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> UX/UI improvement</li>
+                        <li><i class="fas fa-check"></i> CRO implementation</li>
+                        <li><i class="fas fa-check"></i> Speed optimization</li>
+                        <li><i class="fas fa-check"></i> Mobile optimization</li>
+                        <li><i class="fas fa-check"></i> Monthly reporting</li>
+                        <li><i class="fas fa-check"></i> Ongoing support</li>
+                    </ul>
+                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20tanya%20E-commerce%20Optimization" class="pricing-cta">
+                        Selengkapnya →
+                    </a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">TRADING BOT</h3>
+                        <p class="pricing-category">Automasi trading XAUUSD</p>
+                        <div class="pricing-amount">Rp 500K<span>/bulan</span></div>
+                        <p class="pricing-subtitle">Paper trading + live deployment</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 7-candle strategy</li>
+                        <li><i class="fas fa-check"></i> Paper trading account</li>
+                        <li><i class="fas fa-check"></i> Live deployment</li>
+                        <li><i class="fas fa-check"></i> Daily signals</li>
+                        <li><i class="fas fa-check"></i> Performance report</li>
+                        <li><i class="fas fa-check"></i> Strategy optimization</li>
+                    </ul>
+                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20tanya%20Trading%20Bot" class="pricing-cta">
+                        Selengkapnya →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">Berkah Karya</div>
+            <p class="footer-description">
+                Pilihan paket berkarakter untuk setiap kebutuhan bisnis Anda
+            </p>
+            <div class="footer-bottom">
+                <p>© 2026 Berkah Karya Digital Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
