@@ -5,317 +5,1517 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Agent Pro - Berkah Karya Digital Agency</title>
     <meta name="description" content="AI Agent Pro - Sistem AI Agent untuk otomatisasi chat, lead qualification, follow-up 24/7 untuk bisnis Indonesia">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
         :root {
-            --primary: #D97706;
-            --secondary: #64748B;
-            --dark: #1E293B;
-            --light: #F8FAFC;
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #f59e0b;
+            --accent-hover: #fbbf24;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --text: #ffffff;
+            --text-muted: #94a3b8;
         }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            color: #333;
-            background-color: #fff;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
         }
+
+        /* Navigation */
         .navbar {
-            background: rgba(255,255,255,0.95);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .navbar-brand .brand-text {
-            font-weight: 700;
+
+        .navbar-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent);
             color: var(--primary);
-        }
-        .hero-section {
-            padding: 100px 0 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        .hero-badge {
-            background: rgba(255,255,255,0.2);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: 600;
-            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 2rem 80px;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at top, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .scarcity-banner {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        .badge {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
             display: inline-block;
         }
+
+        .badge i {
+            color: var(--accent);
+        }
+
+        .pre-headline {
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
         .hero-title {
             font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 20px;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
         }
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
+
+        .hero-title span {
+            color: var(--accent);
         }
-        .hero-stats {
+
+        .hero-subheadline {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+
+        .pain-visualization {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.1) 100%);
+            border-left: 4px solid var(--danger);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .pain-visualization p {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--danger);
+        }
+
+        .key-benefits {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .key-benefits li {
+            padding: 0.75rem 0;
+            font-size: 1.1rem;
             display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 40px;
+            align-items: center;
+            gap: 0.75rem;
         }
+
+        .key-benefits li i {
+            color: var(--success);
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            color: var(--primary);
+            padding: 1.25rem 3rem;
+            border-radius: 50px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
+        }
+
+        .cta-subtext {
+            margin-top: 1rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .countdown-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .social-proof {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .avatar-stack {
+            display: flex;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            margin-left: -10px;
+        }
+
+        .avatar:first-child {
+            margin-left: 0;
+        }
+
+        .social-proof-text {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .social-proof-text i {
+            color: var(--accent);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
         .stat-item {
             text-align: center;
         }
+
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #fff;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
             display: block;
         }
+
         .stat-label {
-            font-size: 14px;
-            opacity: 0.8;
+            font-size: 0.875rem;
+            color: var(--text-muted);
         }
-        .btn-whatsapp {
-            background: #25D366;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
+
+        /* Problem Section */
+        .problem-section {
+            padding: 80px 2rem;
+            background: var(--secondary);
+        }
+
+        .problem-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .story-hook {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--danger);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .story-time {
             font-weight: 600;
+            color: var(--danger);
+            margin-bottom: 0.5rem;
+        }
+
+        .story-content {
             font-size: 1.1rem;
-            transition: all 0.3s;
-            border: none;
+            margin-bottom: 0.5rem;
         }
-        .btn-whatsapp:hover {
-            background: #128C7E;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
-            color: white;
+
+        .story-result {
+            font-weight: 600;
+            color: var(--danger);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(239, 68, 68, 0.2);
         }
-        .section-padding {
-            padding: 80px 0;
+
+        .impact-statement {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
         }
-        .feature-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
-            height: 100%;
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
         }
-        .feature-card:hover {
-            transform: translateY(-10px);
+
+        .problem-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+        .problem-card h3 {
+            color: var(--danger);
+            margin-bottom: 0.75rem;
+        }
+
+        .problem-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .problem-card .warning {
+            color: var(--danger);
+            font-size: 0.8rem;
+            margin-top: 0.75rem;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            padding: 80px 2rem;
+        }
+
+        .solution-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .solution-headline {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+        }
+
+        .before-after-table {
+            width: 100%;
+            margin: 3rem 0;
+            border-collapse: collapse;
+        }
+
+        .before-after-table th,
+        .before-after-table td {
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .before-after-table th {
+            background: rgba(255, 255, 255, 0.05);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .before-after-table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .before {
+            color: var(--danger);
+        }
+
+        .after {
+            color: var(--success);
+        }
+
+        .how-it-works {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            color: white;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 auto 1.5rem;
         }
-        .problem-card {
-            background: white;
-            border: 2px solid #ffe4e6;
-            border-radius: 15px;
-            padding: 30px;
-            margin-top: 30px;
+
+        .step-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
         }
-        .problem-card h2 {
-            color: #DC2626;
-            margin-bottom: 20px;
+
+        .step-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
-        .alert-warning-custom {
-            background: #FEF3C7;
-            border-left: 4px solid #F59E0B;
-            padding: 15px 20px;
-            margin-top: 20px;
-            border-radius: 8px;
+
+        /* Results Section */
+        .results-section {
+            padding: 80px 2rem;
+            background: var(--secondary);
         }
-        .cta-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 100px 0;
+
+        .results-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
             text-align: center;
         }
-        .btn-light-custom {
-            background: white;
-            color: #667eea;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            border: none;
+
+        .result-card .icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
         }
-        .btn-light-custom:hover {
-            background: #f0f0f0;
+
+        .result-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-card p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .case-studies {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .case-study {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .case-study h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .case-study .industry {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study .metric {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-study .before {
+            color: var(--danger);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-study .after {
+            color: var(--success);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study .result {
+            background: rgba(34, 197, 94, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .case-study .result-text {
+            color: var(--success);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 80px 2rem;
+        }
+
+        .pricing-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .pricing-card.starter {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .pricing-card.growth {
+            border: 2px solid var(--accent);
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .pricing-card.growth::before {
+            content: '🔥 PALING POPULER';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .pricing-card.professional {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .pricing-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .pricing-features li i {
+            color: var(--success);
+        }
+
+        .pricing-cta {
+            display: block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .pricing-cta:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Risk Reversal Section */
+        .risk-reversal-section {
+            padding: 80px 2rem;
+            background: var(--secondary);
+        }
+
+        .risk-reversal-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .risk-reversal-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+        }
+
+        .risk-guarantees {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .risk-guarantee {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .risk-guarantee i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .risk-guarantee h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .risk-guarantee p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .satisfaction-guarantee {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+            border: 2px solid var(--success);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .satisfaction-guarantee h4 {
+            color: var(--success);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .satisfaction-guarantee p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 2rem;
+        }
+
+        .faq-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .faq-section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .faq-answer {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Final CTA Section */
+        .final-cta-section {
+            padding: 80px 2rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+        }
+
+        .final-cta-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .final-cta-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .final-cta-subtitle {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .final-cta-urgency {
+            background: var(--primary);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: var(--danger);
+        }
+
+        .final-cta-cta {
+            background: var(--primary);
+            color: var(--accent);
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .final-cta-cta:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            color: #667eea;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            color: var(--primary);
+            font-size: 0.875rem;
+        }
+
+        .trust-badges i {
+            margin-right: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            background: var(--primary);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-column a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .problems-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .how-it-works {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .case-studies {
+                grid-template-columns: 1fr;
+            }
+
+            .risk-guarantees {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card {
+                padding: 2rem;
+            }
+
+            .pricing-amount {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero-section {
+                padding: 100px 1rem 60px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subheadline {
+                font-size: 1rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .scarcity-banner {
+                font-size: 0.75rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .problems-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .how-it-works {
+                grid-template-columns: 1fr;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-studies {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.75rem;
+            }
+
+            .key-benefits li {
+                font-size: 1rem;
+            }
+
+            .problems-grid,
+            .how-it-works,
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+
+            .countdown {
+                flex-wrap: wrap;
+            }
+
+            .hero-stats {
+                gap: 1rem;
+            }
+
+            .stat-item {
+                padding: 1rem;
+            }
+
+            .pricing-card {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <span class="brand-text">Berkah Karya</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">AI Agent Pro</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="services.html">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ai-agent-pro.html">AI Agent Pro</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="portfolio.html">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="ai-agent-pro.html" class="nav-link">AI Agent Pro</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="https://wa.me/6285732740006" class="nav-cta">Jadwalkan Demo</a></li>
+            </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-10 mx-auto text-center">
-                    <span class="hero-badge">🔥 PENAWARAN TERBATAS</span>
-                    <h1 class="hero-title">AI AGENT PRO</h1>
-                    <p class="hero-subtitle">Sistem AI Agent untuk Bisnis Indonesia</p>
-                    <p style="font-size: 1.2rem; margin-bottom: 30px;">
-                        <i class="fab fa-whatsapp"></i> Chat Otomatis • Lead Qualification • Follow-up 24/7
-                    </p>
-                    <a href="https://wa.me/6285732740006" target="_blank" class="btn btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i> JADWALKAN DEMO GRATIS SEKARANG
-                    </a>
-                    <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
-                        <i class="fas fa-lock"></i> Tanpa kartu kredit • Tanpa commitment • Gratis 100%
-                    </p>
-
-                    <!-- Stats -->
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">24/7</span>
-                            <span class="stat-label">AI Aktif</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">98.2%</span>
-                            <span class="stat-label">Kepuasan Klien</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">2-3x</span>
-                            <span class="stat-label">Tingkat Konversi</span>
-                        </div>
-                    </div>
+        <div class="hero-container">
+            <div class="scarcity-banner">
+                🔥 PENAWARAN TERBATAS — Kuota demo bulan ini hampir penuh. Tersisa 7 slot dari 50 slot.
+            </div>
+            <div class="badge">
+                👑 Eksklusif untuk Pemilik Bisnis Serius di Indonesia
+            </div>
+            <div class="pre-headline">
+                Jika Anda pemilik bisnis yang serius ingin meningkatkan penjualan...
+            </div>
+            <h1 class="hero-title">
+                Setiap Hari Anda <span>MEMBAKAR UANG</span> Karena Chat Tidak Terbalas
+            </h1>
+            <p class="hero-subheadline">
+                Fakta mengejutkan: 65% lead yang masuk ke bisnis Anda HILANG karena tidak di-follow up. Itu artinya dari 100 prospect, 65 orang potensial pergi ke kompetitor — setiap bulan.
+            </p>
+            <div class="pain-visualization">
+                <p>
+                    💰 Jika nilai customer Anda Rp 500.000, Anda kehilangan Rp 32.500.000 per bulan hanya karena tidak follow up lead!
+                </p>
+            </div>
+            <ul class="key-benefits">
+                <li><i class="fas fa-check-circle"></i> Respon < 2 detik, 24/7</li>
+                <li><i class="fas fa-check-circle"></i> Hemat 60% biaya operasional</li>
+                <li><i class="fas fa-check-circle"></i> 2-3x tingkat konversi</li>
+            </ul>
+            <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20jadwalkan%20demo%20AI%20Agent%20Pro" target="_blank" class="cta-primary">
+                📅 JADWALKAN DEMO GRATIS SEKARANG
+            </a>
+            <p class="cta-subtext">
+                🔒 Tanpa kartu kredit • Tanpa commitment • Gratis 100%
+            </p>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">23</div>
+                    <div class="countdown-label">Hari</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">59</div>
+                    <div class="countdown-label">Jam</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">59</div>
+                    <div class="countdown-label">Menit</div>
+                </div>
+            </div>
+            <div class="social-proof">
+                <div class="avatar-stack">
+                    <div class="avatar"></div>
+                    <div class="avatar"></div>
+                    <div class="avatar"></div>
+                </div>
+                <div class="social-proof-text">
+                    <i class="fas fa-star"></i> ⭐⭐⭐⭐⭐ 500+ bisnis sudah merasakan hasilnya
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">Rp 12M+</span>
+                    <span class="stat-label">Revenue Dibangkitkan</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2.5M+</span>
+                    <span class="stat-label">Chat Ditangani</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98.2%</span>
+                    <span class="stat-label">Kepuasan Klien</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">AI Aktif</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Problem Section -->
-    <section class="section-padding bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <h2 class="text-center mb-5">Setiap Hari Anda MEMBAKAR UANG Karena Chat Tidak Terbalas</h2>
-                    <div class="problem-card">
-                        <p style="font-size: 1.1rem; line-height: 1.8;">
-                            Fakta mengejutkan: <strong>65% lead yang masuk ke bisnis Anda HILANG karena tidak di-follow up.</strong> Itu artinya dari 100 prospect, 65 orang potensial pergi ke kompetitor — setiap bulan.
-                        </p>
-                        <div class="alert-warning-custom">
-                            <i class="fas fa-exclamation-triangle"></i>
-                            <strong>Peringatan:</strong> Jika nilai customer Anda Rp 500.000, Anda kehilangan Rp 32.500.000 per bulan hanya karena tidak follow up lead!
-                        </div>
-                    </div>
+    <section class="problem-section">
+        <div class="problem-container">
+            <h2 class="solution-headline">Masalah Yang Anda Hadapi Setiap Hari</h2>
+            <div class="story-hook">
+                <div class="story-time">09:15 Pagi</div>
+                <div class="story-content">Seorang prospect TERTARIK dengan produk Anda. Dia chat via WhatsApp, tanya harga dan detail. Dia siap beli.</div>
+                <div class="story-content">09:20 - 14:00</div>
+                <div class="story-content">Tim CS sedang sibuk handle chat lain, meeting, makan siang. Prospect BEGITU SAJA tidak direspon.</div>
+                <div class="story-content">14:30 Sore</div>
+                <div class="story-content">Prospect sudah MENUNGGU 4.5 jam. Dia chat ke kompetitor dan segera order.</div>
+                <div class="story-result">RESULT: Customer yang seharusnya MILIK ANDA, sekarang jadi customer kompetitor.</div>
+            </div>
+            <p class="impact-statement">Ini terjadi SETIAP HARI. Setiap lead yang tidak di-follow up = Rp 32.5M kerugian per bulan untuk bisnis dengan average ticket Rp 500K.</p>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <h3>1. Lead Tidak Terbalas</h3>
+                    <p>65% lead hilang karena tidak di-follow up dalam 5 menit pertama</p>
+                    <p class="warning">⚠️ Loss Rp 21.25M per bulan</p>
+                </div>
+                <div class="problem-card">
+                    <h3>2. CS Overloaded</h3>
+                    <p>Tim CS sibuk handle repetitive questions seharusnya otomatis</p>
+                    <p class="warning">⚠️ Loss Rp 8M per bulan (gaji)</p>
+                </div>
+                <div class="problem-card">
+                    <h3>3. Prospcet Go to Competitor</h3>
+                    <p>Customer yang siap beli memilih kompetitor karena respons lebih cepat</p>
+                    <p class="warning">⚠️ Loss Rp 3M+ per bulan</p>
+                </div>
+                <div class="problem-card">
+                    <h3>4. Busy Period Lost</h3>
+                    <p>Saat meeting/sibuk, lead yang masuk TIDAK DILAYANI</p>
+                    <p class="warning">⚠️ Loss Rp 2M+ per bulan</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Solution Section -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <h2 class="text-center mb-5">Solusi: AI Agent Pro</h2>
-                    <p class="text-center mb-5" style="font-size: 1.1rem; color: #64748B;">
-                        AI Agent Pro adalah sistem otomatisasi AI yang memecahkan masalah lead yang terbuang
-                    </p>
-                    <div class="row">
-                        <div class="col-md-4 mb-4">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-robot"></i>
-                                </div>
-                                <h4>Respon &lt; 2 detik</h4>
-                                <p style="color: #64748B;">AI merespon lead dalam 2 detik, 24/7 tanpa lelah, tanpa istirahat</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-chart-line"></i>
-                                </div>
-                                <h4>Hemat 60% biaya</h4>
-                                <p style="color: #64748B;">Menggantikan tim CS untuk tugas repetitive dengan efisiensi tinggi</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <i class="fas fa-bolt"></i>
-                                </div>
-                                <h4>2-3x konversi</h4>
-                                <p style="color: #64748B;">Follow-up konsisten meningkatkan closing rate hingga 2-3x lipat</p>
-                            </div>
-                        </div>
-                    </div>
+    <section class="solution-section">
+        <div class="solution-container">
+            <h2 class="solution-headline">Solusi: AI Agent Pro</h2>
+            <p class="hero-subheadline" style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+                Transformasi dari chaos ke automation. Dari lead yang terbuang ke revenue yang bertambah.
+            </p>
+            <table class="before-after-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">❌ SEBELUM</th>
+                        <th style="width: 50%;">✅ SESUDAH</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="before">Lead tidak terbalas < 5 menit</td>
+                        <td class="after">Respon < 2 detik, 24/7</td>
+                    </tr>
+                    <tr>
+                        <td class="before">CS sibuk handle repetitive</td>
+                        <td class="after">CS fokus handle high-value</td>
+                    </tr>
+                    <tr>
+                        <td class="before">Lead hilang saat busy</td>
+                        <td class="after">AI tangani semua lead 24/7</td>
+                    </tr>
+                    <tr>
+                        <td class="before">Kompetitor dapat customer</td>
+                        <td class="after">Revenue meningkat 2-3x</td>
+                    </tr>
+                    <tr>
+                        <td class="before">Rp 32.5M kerugian/bulan</td>
+                        <td class="after">Rp 65M+ revenue tambahan</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 class="solution-headline" style="font-size: 1.75rem;">Bagaimana Cara Kerjanya</h3>
+            <div class="how-it-works">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h4>Setup Akun WhatsApp</h4>
+                    <p>Link nomor bisnis Anda ke sistem AI Agent Pro</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h4>Training Bot</h4>
+                    <p>Upload knowledge base & FAQ untuk training AI</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <h4>Live Activation</h4>
+                    <p>AI aktif 24/7 menghandle chat, follow-up lead</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">04</div>
+                    <h4>Monitor & Optimize</h4>
+                    <p>Dashboard realtime untuk monitoring & optimasi</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <h2 class="mb-4">Jangan Biarkan Lead Berharga Hilang Lagi</h2>
-                    <p class="mb-5" style="font-size: 1.2rem; opacity: 0.95;">
-                        Dapatkan demo GRATIS tanpa kartu kredit, tanpa commitment, tanpa biaya tersembunyi.
-                    </p>
-                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20jadwalkan%20demo%20AI%20Agent%20Pro" target="_blank" class="btn btn-light-custom">
-                        <i class="fab fa-whatsapp"></i> JADWALKAN DEMO SEKARANG
-                    </a>
-                    <p class="mt-4" style="font-size: 0.9rem; opacity: 0.9;">
-                        <i class="fas fa-info-circle"></i> Tersisa 7 slot dari 50 slot bulan ini
+    <!-- Results Section -->
+    <section class="results-section">
+        <div class="results-container">
+            <h2 class="solution-headline">Hasil yang Dicapai</h2>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="icon">⚡</div>
+                    <h3>< 2 detik</h3>
+                    <p>Waktu Respon</p>
+                </div>
+                <div class="result-card">
+                    <div class="icon">💰</div>
+                    <h3>60%</h3>
+                    <p>Penghematan Biaya</p>
+                </div>
+                <div class="result-card">
+                    <div class="icon">📈</div>
+                    <h3>2-3x</h3>
+                    <p>Peningkatan Konversi</p>
+                </div>
+                <div class="result-card">
+                    <div class="icon">🔄</div>
+                    <h3>168 jam</h3>
+                    <p>Operasional/Minggu</p>
+                </div>
+            </div>
+            <h3 class="solution-headline" style="font-size: 1.75rem;">Case Studies</h3>
+            <div class="case-studies">
+                <div class="case-study">
+                    <h3>E-Commerce Indonesia</h3>
+                    <p class="industry">Industri: E-commerce • Metric: +200% conversion</p>
+                    <p class="metric">Rp 15M+/bulan</p>
+                    <p class="before">Lead tidak terbalas</p>
+                    <p class="after">Revenue meningkat 250%</p>
+                    <p class="result">
+                        <span class="result-text">"+150% penjualan dalam 3 bulan"</span>
                     </p>
                 </div>
+                <div class="case-study">
+                    <h3>Agency Digital</h3>
+                    <p class="industry">Industri: Agency • Metric: -80% CS workload</p>
+                    <p class="metric">Rp 12M+/bulan</p>
+                    <p class="before">CS sibuk handle repetitive</p>
+                    <p class="after">CS fokus high-value task</p>
+                    <p class="result">
+                        <span class="result-text">"-3 staff yang bisa direkrut"</span>
+                    </p>
+                </div>
+                <div class="case-study">
+                    <h3>Trading Company</h3>
+                    <p class="industry">Industri: Trading • Metric: +300% lead conversion</p>
+                    <p class="metric">Rp 8M+/bulan</p>
+                    <p class="before">Lead hilang saat busy</p>
+                    <p class="after">24/7 follow-up lead</p>
+                    <p class="result">
+                        <span class="result-text">"+280% closing rate"</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="pricing-container">
+            <h2 class="solution-headline" style="text-align: center; margin-bottom: 2rem;">Pilihan Paket</h2>
+            <p class="hero-subheadline" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                Investasi terbaik untuk bisnis Anda. Hemat Rp 1.500.000/bulan dengan paket Growth.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto;">
+                <div class="pricing-card starter">
+                    <h3 class="pricing-title">STARTER</h3>
+                    <p class="pricing-subtitle">Untuk usaha kecil yang baru mulai</p>
+                    <div class="pricing-amount">Rp 499K</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 1 Account WhatsApp</li>
+                        <li><i class="fas fa-check"></i> 100 Chat/hari</li>
+                        <li><i class="fas fa-check"></i> Basic FAQ</li>
+                        <li><i class="fas fa-check"></i> Manual Training</li>
+                    </ul>
+                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20mulai%20paket%20STARTER" target="_blank" class="pricing-cta">Mulai Trial 7 Hari →</a>
+                </div>
+                <div class="pricing-card growth">
+                    <h3 class="pricing-title">GROWTH 🔥</h3>
+                    <p class="pricing-subtitle">Untuk bisnis yang siap scale</p>
+                    <div class="pricing-amount">Rp 499K</div>
+                    <p class="pricing-subtitle" style="color: var(--danger); font-size: 0.875rem;">Normal: Rp 1.999K/bulan (Hemat Rp 1.5M)</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 5 Account WhatsApp</li>
+                        <li><i class="fas fa-check"></i> 500 Chat/hari</li>
+                        <li><i class="fas fa-check"></i> Advanced AI Engine</li>
+                        <li><i class="fas fa-check"></i> Auto Training</li>
+                        <li><i class="fas fa-check"></i> Priority Support</li>
+                    </ul>
+                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20jadwalkan%20demo%20GROWTH" target="_blank" class="pricing-cta">Jadwalkan Demo Gratis →</a>
+                </div>
+                <div class="pricing-card professional">
+                    <h3 class="pricing-title">PROFESSIONAL</h3>
+                    <p class="pricing-subtitle">Untuk enterprise custom</p>
+                    <div class="pricing-amount">Custom</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Unlimited Accounts</li>
+                        <li><i class="fas fa-check"></i> Unlimited Chat</li>
+                        <li><i class="fas fa-check"></i> Custom AI Engine</li>
+                        <li><i class="fas fa-check"></i> Dedicated Team</li>
+                        <li><i class="fas fa-check"></i> 24/7 Priority Support</li>
+                    </ul>
+                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20hubungi%20tim%20Sales" target="_blank" class="pricing-cta">Hubungi Tim Sales →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk Reversal Section -->
+    <section class="risk-reversal-section">
+        <div class="risk-reversal-container">
+            <h2 class="risk-reversal-title">Garansi Nyata Tanpa Risiko</h2>
+            <div class="risk-guarantees">
+                <div class="risk-guarantee">
+                    <i class="fas fa-calendar-check"></i>
+                    <h4>📅 Demo Gratis (30 menit)</h4>
+                    <p>Lihat AI Agent Pro bekerja untuk bisnis Anda tanpa commit apa pun</p>
+                </div>
+                <div class="risk-guarantee">
+                    <i class="fas fa-headset"></i>
+                    <h4>🎧 Konsultasi Personal (Gratis)</h4>
+                    <p>Tim ahli analisis bisnis dan rekomendasikan solusi optimal</p>
+                </div>
+                <div class="risk-guarantee">
+                    <i class="fas fa-rocket"></i>
+                    <h4>🚀 Setup Terbimbing (3 jam)</h4>
+                    <p>Tim kami setup dan training hingga sistem berjalan lancar</p>
+                </div>
+            </div>
+            <div class="satisfaction-guarantee">
+                <h4>🏆 GARANSI KEPUASAN 7 HARI</h4>
+                <p>Jika dalam 7 hari Anda tidak merasakan peningkatan signifikan, kami akan: Review mendalam strategi Anda, Optimasi tanpa biaya tambahan, Atau refund penuh (termasuk setup fee)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <h2 class="faq-section-title">Pertanyaan yang Sering Ditanyakan</h2>
+            <div class="faq-item">
+                <h3 class="faq-question">Q: Berapa investasi awalnya?</h3>
+                <p class="faq-answer">A: Paket Growth hanya Rp 499K/bulan (normal Rp 1.999K). Paket Starter Rp 499K/bulan. Ada trial gratis 7 hari untuk semua paket. Setup fee tidak ada.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Q: Apakah AI bisa menggantikan tim CS saya?</h3>
+                <p class="faq-answer">A: TIDAK. AI Agent Pro adalah alat bantu, BUKAN pengganti. AI tangani repetitive task (FAQ, lead follow-up), CS fokus high-value task (upsell, complex problems, relationship building).</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Q: Berapa lama setup-nya?</h3>
+                <p class="faq-answer">A: Setup complete dalam 1-3 hari kerja. Demo gratis 30 menit sebelum setup dimulai untuk memastikan semua sesuai kebutuhan.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Q: Apakah cocok untuk bisnis saya?</h3>
+                <p class="faq-answer">A: Jika Anda memiliki lead yang masuk via WhatsApp dan tidak terbalas → YA 100%. Kasus lain (email, chat lainnya) bisa kita evaluasi lewat demo gratis dulu.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Q: Apakah keamanan data terjamin?</h3>
+                <p class="faq-answer">A: Ya. Menggunakan enkripsi end-to-end, seluruh data diharuskan berada di server Anda (on-premise), support NDA dan compliance regulasi.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Q: Apakah ada garansi hasil?</h3>
+                <p class="faq-answer">A: Ada 7-day satisfaction guarantee. Jika tidak ada peningkatan signifikan, kami akan review, optimize, atau refund penuh (termasuk setup fee). Terbukti dengan 500+ klien puas (98.2% satisfaction).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta-section">
+        <div class="final-cta-container">
+            <h2 class="final-cta-title">Jangan Biarkan Lead Berharga Hilang Lagi</h2>
+            <p class="final-cta-subtitle">
+                Dapatkan demo GRATIS, lihat sistem bekerja untuk bisnis Anda dalam 30 menit. Upgrade ke paket Growth setelah melihat hasilnya.
+            </p>
+            <div class="final-cta-urgency">
+                🔥 KUOTA TERBATAS: Hanya menerima 7 klien baru/bulan untuk menjaga kualitas service
+            </div>
+            <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20jadwalkan%20demo%20AI%20Agent%20Pro" target="_blank" class="final-cta-cta">
+                📅 JADWALKAN DEMO GRATIS SEKARANG
+            </a>
+            <div class="trust-badges">
+                <span><i class="fas fa-lock"></i> SSL Secured</span>
+                <span><i class="fas fa-shield-alt"></i> PSE Compliant</span>
+                <span><i class="fas fa-star"></i> 4.9/5 Rating</span>
+                <span><i class="fas fa-users"></i> 500+ Klien</span>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-4 bg-dark text-white text-center">
-        <div class="container">
-            <p class="mb-0">© 2026 Berkah Karya Digital Agency. All rights reserved.</p>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">AI Agent Pro</div>
+            <p class="footer-description">Sistem AI Agent untuk otomatisasi chat, lead qualification, follow-up 24/7 untuk bisnis Indonesia</p>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Produk</h4>
+                    <ul>
+                        <li><a href="ai-agent-pro.html">Fitur</a></li>
+                        <li><a href="pricing.html">Harga</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Tentang Kami</h4>
+                    <ul>
+                        <li><a href="about.html">Tentang Berkah Karya</a></li>
+                        <li><a href="services.html">Layanan</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Hubungi Kami</h4>
+                    <ul>
+                        <li><a href="tel:+6285732740006"><i class="fas fa-phone"></i> +62 857 3274 0006</a></li>
+                        <li><a href="mailto:info@berkahkarya.org"><i class="fas fa-envelope"></i> info@berkahkarya.org</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">NDA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 AI Agent Pro - Berkah Karya Digital Agency. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date();
+            const target = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 23, 59, 59);
+            const diff = target - now;
+
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
