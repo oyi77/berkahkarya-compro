@@ -36,6 +36,10 @@
         }
 
         /* Navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+
         .navbar {
             position: fixed;
             top: 0;
@@ -45,6 +49,7 @@
             background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .navbar-container {
@@ -1147,18 +1152,19 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="ai-agent-pro.html" class="nav-link">AI Agent Pro</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
-                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#masalah" class="nav-link">Masalah</a></li>
+                <li><a href="#solusi" class="nav-link">Solusi</a></li>
+                <li><a href="#hasil" class="nav-link">Hasil</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <li><a href="#harga" class="nav-link">Harga</a></li>
                 <li><a href="https://wa.me/6285732740006" class="nav-cta">Jadwalkan Demo</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section id="home" class="hero-section">
         <div class="hero-container">
             <div class="hero-content">
                 <div class="scarcity-banner">
@@ -1239,7 +1245,7 @@
     </section>
 
     <!-- Problem Section -->
-    <section class="problem-section">
+    <section id="masalah" class="problem-section">
         <div class="problem-container">
             <h2 class="solution-headline">Masalah Yang Anda Hadapi Setiap Hari</h2>
             <div class="story-hook">
@@ -1278,7 +1284,7 @@
     </section>
 
     <!-- Solution Section -->
-    <section class="solution-section">
+    <section id="solusi" class="solution-section">
         <div class="solution-container">
             <h2 class="solution-headline">Solusi: AI Agent Pro</h2>
             <p class="hero-subheadline" style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">
@@ -1341,7 +1347,7 @@
     </section>
 
     <!-- Results Section -->
-    <section class="results-section">
+    <section id="hasil" class="results-section">
         <div class="results-container">
             <h2 class="solution-headline">Hasil yang Dicapai</h2>
             <div class="results-grid">
@@ -1403,7 +1409,7 @@
     </section>
 
     <!-- Pricing Section -->
-    <section class="pricing-section">
+    <section id="harga" class="pricing-section">
         <div class="pricing-container">
             <h2 class="solution-headline" style="text-align: center; margin-bottom: 2rem;">Pilihan Paket</h2>
             <p class="hero-subheadline" style="text-align: center; max-width: 800px; margin: 0 auto;">
@@ -1482,7 +1488,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq-section">
+    <section id="faq" class="faq-section">
         <div class="faq-container">
             <h2 class="faq-section-title">Pertanyaan yang Sering Ditanyakan</h2>
             <div class="faq-item">
