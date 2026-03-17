@@ -57,10 +57,26 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
             font-weight: 800;
             color: var(--accent);
             text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 800;
         }
 
         .nav-menu {
@@ -110,7 +126,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 120px 2rem 80px;
+            padding: 100px 2rem 60px;
             overflow: hidden;
         }
 
@@ -130,6 +146,15 @@
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .scarcity-banner {
@@ -956,6 +981,8 @@
                 display: none;
                 flex-direction: column;
                 gap: 1rem;
+                width: 100%;
+                text-align: center;
             }
 
             .nav-menu.active {
@@ -963,24 +990,91 @@
             }
 
             .hero-section {
-                padding: 100px 1rem 60px;
+                padding: 80px 1rem 50px;
+                min-height: auto;
             }
 
             .hero-title {
                 font-size: 2rem;
+                line-height: 1.2;
             }
 
             .hero-subheadline {
                 font-size: 1rem;
+                line-height: 1.7;
             }
 
             .hero-stats {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .stat-item {
+                padding: 1rem;
+            }
+
+            .stat-number {
+                font-size: 1.75rem;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
             }
 
             .scarcity-banner {
                 font-size: 0.75rem;
                 padding: 0.5rem 1rem;
+            }
+
+            .badge {
+                font-size: 0.75rem;
+                padding: 0.375rem 0.75rem;
+            }
+
+            .pre-headline {
+                font-size: 1rem;
+            }
+
+            .pain-visualization {
+                padding: 1rem;
+            }
+
+            .pain-visualization p {
+                font-size: 1rem;
+            }
+
+            .key-benefits li {
+                font-size: 0.9rem;
+            }
+
+            .cta-primary {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+
+            .cta-subtext {
+                font-size: 0.8rem;
+            }
+
+            .social-proof-text {
+                font-size: 0.8rem;
+            }
+
+            .countdown {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .countdown-item {
+                padding: 0.75rem 1rem;
+            }
+
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+
+            .countdown-label {
+                font-size: 0.7rem;
             }
 
             .problems-grid {
@@ -1045,7 +1139,10 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="index.html" class="logo">AI Agent Pro</a>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">B</div>
+                <span>Berkah Karya</span>
+            </a>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
             </button>
@@ -1063,72 +1160,74 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-container">
-            <div class="scarcity-banner">
-                🔥 PENAWARAN TERBATAS — Kuota demo bulan ini hampir penuh. Tersisa 7 slot dari 50 slot.
-            </div>
-            <div class="badge">
-                👑 Eksklusif untuk Pemilik Bisnis Serius di Indonesia
-            </div>
-            <div class="pre-headline">
-                Jika Anda pemilik bisnis yang serius ingin meningkatkan penjualan...
-            </div>
-            <h1 class="hero-title">
-                Setiap Hari Anda <span>MEMBAKAR UANG</span> Karena Chat Tidak Terbalas
-            </h1>
-            <p class="hero-subheadline">
-                Fakta mengejutkan: 65% lead yang masuk ke bisnis Anda HILANG karena tidak di-follow up. Itu artinya dari 100 prospect, 65 orang potensial pergi ke kompetitor — setiap bulan.
-            </p>
-            <div class="pain-visualization">
-                <p>
-                    💰 Jika nilai customer Anda Rp 500.000, Anda kehilangan Rp 32.500.000 per bulan hanya karena tidak follow up lead!
+            <div class="hero-content">
+                <div class="scarcity-banner">
+                    🔥 PENAWARAN TERBATAS — Kuota demo bulan ini hampir penuh. Tersisa 7 slot dari 50 slot.
+                </div>
+                <div class="badge">
+                    👑 Eksklusif untuk Pemilik Bisnis Serius di Indonesia
+                </div>
+                <div class="pre-headline">
+                    Jika Anda pemilik bisnis yang serius ingin meningkatkan penjualan...
+                </div>
+                <h1 class="hero-title">
+                    Setiap Hari Anda <span>MEMBAKAR UANG</span> Karena Chat Tidak Terbalas
+                </h1>
+                <p class="hero-subheadline">
+                    Fakta mengejutkan: 65% lead yang masuk ke bisnis Anda HILANG karena tidak di-follow up. Itu artinya dari 100 prospect, 65 orang potensial pergi ke kompetitor — setiap bulan.
                 </p>
+                <div class="pain-visualization">
+                    <p>
+                        💰 Jika nilai customer Anda Rp 500.000, Anda kehilangan Rp 32.500.000 per bulan hanya karena tidak follow up lead!
+                    </p>
+                </div>
+                <ul class="key-benefits">
+                    <li><i class="fas fa-check-circle"></i> Respon < 2 detik, 24/7</li>
+                    <li><i class="fas fa-check-circle"></i> Hemat 60% biaya operasional</li>
+                    <li><i class="fas fa-check-circle"></i> 2-3x tingkat konversi</li>
+                </ul>
+                <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20jadwalkan%20demo%20AI%20Agent%20Pro" target="_blank" class="cta-primary">
+                    📅 JADWALKAN DEMO GRATIS SEKARANG
+                </a>
+                <p class="cta-subtext">
+                    🔒 Tanpa kartu kredit • Tanpa commitment • Gratis 100%
+                </p>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">23</div>
+                        <div class="countdown-label">Hari</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">59</div>
+                        <div class="countdown-label">Jam</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">59</div>
+                        <div class="countdown-label">Menit</div>
+                    </div>
+                </div>
+                <div class="social-proof">
+                    <div class="avatar-stack">
+                        <div class="avatar"></div>
+                        <div class="avatar"></div>
+                        <div class="avatar"></div>
+                    </div>
+                    <div class="social-proof-text">
+                        <i class="fas fa-star"></i> ⭐⭐⭐⭐⭐ 500+ bisnis sudah merasakan hasilnya
+                    </div>
+                </div>
             </div>
-            <ul class="key-benefits">
-                <li><i class="fas fa-check-circle"></i> Respon < 2 detik, 24/7</li>
-                <li><i class="fas fa-check-circle"></i> Hemat 60% biaya operasional</li>
-                <li><i class="fas fa-check-circle"></i> 2-3x tingkat konversi</li>
-            </ul>
-            <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20jadwalkan%20demo%20AI%20Agent%20Pro" target="_blank" class="cta-primary">
-                📅 JADWALKAN DEMO GRATIS SEKARANG
-            </a>
-            <p class="cta-subtext">
-                🔒 Tanpa kartu kredit • Tanpa commitment • Gratis 100%
-            </p>
-            <div class="countdown" id="countdown">
-                <div class="countdown-item">
-                    <div class="countdown-number" id="hours">23</div>
-                    <div class="countdown-label">Hari</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="minutes">59</div>
-                    <div class="countdown-label">Jam</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="seconds">59</div>
-                    <div class="countdown-label">Menit</div>
+            <div class="hero-image">
+                <div class="hero-image-placeholder">
+                    <i class="fas fa-robot"></i>
+                    <div class="hero-image-content">
+                        <h3>AI Agent Pro</h3>
+                        <p>24/7 Active & Ready</p>
+                    </div>
                 </div>
             </div>
-            <div class="social-proof">
-                <div class="avatar-stack">
-                    <div class="avatar"></div>
-                    <div class="avatar"></div>
-                    <div class="avatar"></div>
-                </div>
-                <div class="social-proof-text">
-                    <i class="fas fa-star"></i> ⭐⭐⭐⭐⭐ 500+ bisnis sudah merasakan hasilnya
-                </div>
-            </div>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number">Rp 12M+</span>
-                    <span class="stat-label">Revenue Dibangkitkan</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">2.5M+</span>
-                    <span class="stat-label">Chat Ditangani</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">98.2%</span>
+        </div>
+    </section>
                     <span class="stat-label">Kepuasan Klien</span>
                 </div>
                 <div class="stat-item">
