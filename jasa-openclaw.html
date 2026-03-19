@@ -1,168 +1,238 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jasa Setup OpenClaw — Berkah Karya</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jasa Setup OpenClaw — AI Agent Automation | BerkahKarya</title>
+  <meta name="description" content="Otomasi workflow bisnis Anda dengan AI Agent berbasis OpenClaw. Lebih dari 140 agen spesialis siap bekerja 24/7 — tanpa coding, tanpa ribet." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 
-<link rel="stylesheet" href="style.css">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#faf8f4;--bg-2:#f2ede3;--mustard:#c8920a;--mustard-bg:#fef9ec;--text-1:#1a1a18;--text-2:#3a3a38;--text-3:#6a6a68;--border:rgba(0,0,0,0.07);--r:2px;}
-html{scroll-behavior:smooth}body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text-1);line-height:1.6}a{text-decoration:none;color:inherit}
-.container{max-width:1100px;margin:0 auto;padding:0 24px}
-nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1100px;margin:0 auto;padding:0 24px}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700}.nav-logo span{color:var(--mustard)}
-.nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.875rem;font-weight:500;color:var(--text-3)}.nav-links a:hover{color:var(--text-1)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:var(--r);font-family:'Outfit',sans-serif;font-weight:500;font-size:.875rem;cursor:pointer;border:none;transition:all .2s}
-.btn-mustard{background:var(--mustard);color:#fff}.btn-mustard:hover{background:#a87208}
-.btn-outline{background:transparent;border:1.5px solid var(--mustard);color:var(--mustard)}.btn-outline:hover{background:var(--mustard-bg)}
-.btn-lg{padding:14px 32px;font-size:1rem}.btn-sm{padding:8px 16px;font-size:.8rem}
-#hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
-#hamburger span{display:block;width:22px;height:2px;background:var(--text-1)}
-.mobile-menu{display:none;flex-direction:column;gap:12px;padding:16px 24px;background:var(--bg);border-bottom:1px solid var(--border)}
-.mobile-menu a{font-size:.9rem;color:var(--text-2);padding:8px 0;border-bottom:1px solid var(--border)}.mobile-menu.open{display:flex}
-.hero{padding:100px 0 80px;text-align:center}
-.hero-tag{display:inline-block;background:var(--mustard-bg);color:var(--mustard);font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:20px}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;line-height:1.15;max-width:780px;margin:0 auto 20px}
-.hero p{font-size:1.05rem;color:var(--text-3);max-width:560px;margin:0 auto 36px;line-height:1.7}
-.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-section{padding:80px 0}
-.section-label{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mustard);margin-bottom:12px}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.2;margin-bottom:16px}
-.overview{background:var(--bg-2)}
-.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
-.overview-box h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;margin-bottom:16px}
-.overview-box ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.overview-box li{padding-left:20px;position:relative;color:var(--text-2);font-size:.95rem}
-.overview-box li::before{content:'—';position:absolute;left:0;color:var(--mustard)}
-.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
-.card{background:#fff;border:1px solid var(--border);border-radius:4px;padding:28px 24px}
-.card-icon{font-size:1.6rem;margin-bottom:14px}
-.card h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;margin-bottom:8px}
-.card p{font-size:.875rem;color:var(--text-3);line-height:1.6}
-.proses{background:var(--bg-2)}
-.steps{display:flex;gap:0;margin-top:48px;position:relative}
-.steps::before{content:'';position:absolute;top:28px;left:0;right:0;height:1px;background:var(--border)}
-.step{flex:1;text-align:center;padding:0 12px}
-.step-num{width:56px;height:56px;border-radius:50%;border:2px solid var(--mustard);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--mustard);margin:0 auto 16px;position:relative;z-index:1;background:var(--bg-2)}
-.step h4{font-weight:600;font-size:.9rem;margin-bottom:6px}.step p{font-size:.8rem;color:var(--text-3)}
-.benefit-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:48px}
-.benefit-card{background:var(--bg-2);border-radius:4px;padding:28px}
-.benefit-card h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;margin-bottom:8px}
-.benefit-card p{font-size:.875rem;color:var(--text-3);line-height:1.6}
-.usecase{background:var(--bg-2)}
-.usecase-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
-.usecase-item{background:#fff;border-left:3px solid var(--mustard);padding:20px 24px;border-radius:0 4px 4px 0}
-.usecase-item h4{font-weight:600;font-size:.95rem;margin-bottom:6px}.usecase-item p{font-size:.85rem;color:var(--text-3)}
-.cta-closing{text-align:center;padding:100px 0}
-.cta-closing h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:16px;max-width:600px;margin-left:auto;margin-right:auto}
-.cta-closing p{color:var(--text-3);margin-bottom:32px}
-footer{background:var(--text-1);color:#fff;padding:48px 0 32px}
-.footer-inner{display:flex;flex-direction:column;gap:24px}
-.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700}.footer-logo span{color:var(--mustard)}
-.footer-links{display:flex;flex-wrap:wrap;gap:20px}.footer-links a{font-size:.85rem;color:rgba(255,255,255,.6)}.footer-links a:hover{color:#fff}
-.footer-copy{font-size:.8rem;color:rgba(255,255,255,.3);border-top:1px solid rgba(255,255,255,.08);padding-top:20px}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}.reveal.visible{opacity:1;transform:none}
-@media(max-width:768px){
-  .nav-links,.nav-cta{display:none}#hamburger{display:flex}
-  .overview-grid,.cards-grid,.benefit-grid,.usecase-list{grid-template-columns:1fr}
-  .steps{flex-direction:column;gap:20px}.steps::before{display:none}
-  .step{display:flex;align-items:flex-start;gap:16px;text-align:left}.step-num{flex-shrink:0;margin:0}
-}
+  <style>
+    /* ── Page-specific styles ───────────────────────────────── */
 
-/* ===== DESIGN SYSTEM OVERRIDES ===== */
-/* Font override — use Plus Jakarta Sans from style.css */
-body { font-family: var(--font) !important; background: var(--bg) !important; color: var(--text) !important; }
+    /* Hero */
+    .oc-hero {
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+      padding: calc(64px + 5rem) 1.5rem 5rem;
+    }
+    .oc-hero-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 4rem;
+      align-items: center;
+    }
+    .oc-hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mustard);
+      margin-bottom: 1.5rem;
+    }
+    .oc-hero-tag span { width: 6px; height: 6px; background: var(--mustard); border-radius: 50%; display: inline-block; }
+    .oc-hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+      color: var(--text);
+      margin: 0 0 1.25rem;
+    }
+    .oc-hero h1 em { font-style: normal; color: var(--mustard); }
+    .oc-hero-sub {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin: 0 0 2rem;
+      max-width: 520px;
+    }
+    .oc-hero-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    .oc-hero-visual {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .oc-agent-chip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .oc-agent-chip:hover { border-color: var(--mustard); box-shadow: 0 2px 12px rgba(200,146,10,0.10); }
+    .oc-agent-icon {
+      width: 36px; height: 36px;
+      background: var(--mustard-pale, #fdf3d9);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .oc-agent-info { flex: 1; }
+    .oc-agent-name { font-size: 0.85rem; font-weight: 800; color: var(--text); line-height: 1.2; }
+    .oc-agent-role { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+    .oc-agent-status {
+      font-size: 0.7rem; font-weight: 700;
+      background: #d1fae5; color: #065f46;
+      border-radius: 999px; padding: 2px 8px;
+    }
+    .oc-visual-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--text-light);
+      text-align: center; padding-top: 0.5rem;
+    }
 
-/* Remap old vars to new design system */
-:root {
-  --bg-2: var(--bg-muted);
-  --bg-3: var(--bg-muted);
-  --text-1: var(--text);
-  --text-2: var(--text);
-  --text-3: var(--text-muted);
-  --text-4: var(--text-light);
-  --mustard-bg: var(--mustard-pale);
-  --r: var(--radius-sm);
-}
+    /* About section */
+    .oc-about { background: var(--bg); padding: 5rem 1.5rem; }
+    .oc-about-inner { max-width: var(--max-width); margin: 0 auto; }
+    .oc-about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .oc-about-text h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 900; letter-spacing: -0.03em; margin: 0 0 1.25rem; }
+    .oc-about-text h2 em { font-style: normal; color: var(--mustard); }
+    .oc-about-text p { color: var(--text-muted); line-height: 1.75; margin: 0 0 1.5rem; }
+    .oc-highlights { display: flex; flex-direction: column; gap: 1rem; }
+    .oc-hl {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 1.25rem;
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .oc-hl:hover { border-color: var(--mustard); box-shadow: 0 2px 16px rgba(200,146,10,0.08); }
+    .oc-hl-icon { font-size: 1.3rem; margin-top: 2px; flex-shrink: 0; }
+    .oc-hl-body h4 { font-size: 0.9rem; font-weight: 800; color: var(--text); margin: 0 0 4px; }
+    .oc-hl-body p { font-size: 0.85rem; color: var(--text-muted); margin: 0; line-height: 1.55; }
 
-/* Section title — replace Cormorant with system font */
-.section-title, .section-title *, h1, h2, h3, h4 {
-  font-family: var(--font) !important;
-}
-h1 { font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; }
-h2.section-title { font-weight: 900; letter-spacing: -0.03em; }
+    /* Section label */
+    .sec-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--mustard);
+      margin-bottom: 0.75rem; display: block;
+    }
 
-/* Section padding */
-section { padding: 5rem 0; }
-.hero { padding: calc(64px + 4rem) 0 4rem; }
-.container { max-width: var(--max-width); }
+    /* Divisions */
+    .oc-divisions { background: var(--bg-muted); padding: 5rem 1.5rem; }
+    .oc-divisions-inner { max-width: var(--max-width); margin: 0 auto; }
+    .oc-section-head { text-align: center; margin-bottom: 3rem; }
+    .oc-section-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 900; letter-spacing: -0.03em; margin: 0 0 0.75rem; }
+    .oc-section-head h2 em { font-style: normal; color: var(--mustard); }
+    .oc-section-head p { color: var(--text-muted); line-height: 1.65; max-width: 580px; margin: 0 auto; }
 
-/* Section label */
-.section-label {
-  color: var(--mustard); font-size: 0.72rem; font-weight: 700;
-  letter-spacing: 0.16em; text-transform: uppercase;
-}
+    .oc-div-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+    .oc-div-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .oc-div-card:hover { box-shadow: 0 6px 30px rgba(0,0,0,0.07); border-color: var(--mustard-light, #e8a90d); }
+    .oc-div-head {
+      padding: 1.5rem 1.5rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .oc-div-emoji { font-size: 1.6rem; margin-bottom: 0.75rem; display: block; }
+    .oc-div-title { font-size: 1.05rem; font-weight: 900; color: var(--text); margin: 0 0 4px; }
+    .oc-div-tagline { font-size: 0.8rem; color: var(--mustard); font-weight: 600; font-style: italic; }
+    .oc-agents-list { padding: 1rem 1.5rem 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .oc-ag {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 0.75rem 1rem;
+      background: var(--bg-muted);
+      border-radius: var(--radius-sm);
+    }
+    .oc-ag-dot { width: 8px; height: 8px; background: var(--mustard); border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .oc-ag-name { font-size: 0.82rem; font-weight: 800; color: var(--text); margin-bottom: 2px; }
+    .oc-ag-desc { font-size: 0.77rem; color: var(--text-muted); line-height: 1.45; }
+    .oc-div-note {
+      text-align: center; margin-top: 2.5rem;
+      font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;
+    }
+    .oc-div-note strong { color: var(--text); }
 
-/* Cards update */
-.card {
-  background: var(--bg-white); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 1.75rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-.card:hover { border-color: var(--mustard); box-shadow: 0 4px 20px var(--shadow-md); }
-.card h4 { font-family: var(--font) !important; font-weight: 800; letter-spacing: -0.02em; }
+    /* Process */
+    .oc-process { background: var(--bg-white); padding: 5rem 1.5rem; }
+    .oc-process-inner { max-width: var(--max-width); margin: 0 auto; }
+    .oc-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+    .oc-step {
+      padding: 2rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg);
+      position: relative;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .oc-step:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); border-color: var(--mustard-light, #e8a90d); }
+    .oc-step-num {
+      font-size: 4rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(200,146,10,0.12); line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .oc-step-icon { font-size: 1.8rem; margin-bottom: 0.75rem; display: block; }
+    .oc-step h3 { font-size: 1.05rem; font-weight: 900; color: var(--text); margin: 0 0 0.6rem; }
+    .oc-step p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; margin: 0; }
 
-/* Benefit cards */
-.benefit-card {
-  background: var(--bg-muted); border-radius: var(--radius); padding: 1.75rem;
-  border: 1px solid var(--border);
-}
-.benefit-card h4 { font-family: var(--font) !important; font-weight: 800; }
+    /* Use Cases */
+    .oc-usecases { background: var(--bg-muted); padding: 5rem 1.5rem; }
+    .oc-usecases-inner { max-width: var(--max-width); margin: 0 auto; }
+    .oc-uc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+    .oc-uc {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .oc-uc:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); border-color: var(--mustard); }
+    .oc-uc-icon { font-size: 1.6rem; margin-bottom: 0.75rem; display: block; }
+    .oc-uc h4 { font-size: 0.95rem; font-weight: 800; color: var(--text); margin: 0 0 0.5rem; }
+    .oc-uc p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.55; margin: 0; }
 
-/* Use case items */
-.usecase-item {
-  background: var(--bg-white); border-left: 3px solid var(--mustard);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  border-top: 1px solid var(--border); border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 1.5rem;
-}
-.usecase-item h4 { font-family: var(--font) !important; font-weight: 700; }
+    /* CTA closing */
+    .oc-cta { background: var(--bg-white); border-top: 1px solid var(--border); padding: 6rem 1.5rem; text-align: center; }
+    .oc-cta-inner { max-width: 640px; margin: 0 auto; }
+    .oc-cta h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; letter-spacing: -0.04em; margin: 0 0 1.25rem; }
+    .oc-cta h2 em { font-style: normal; color: var(--mustard); }
+    .oc-cta p { color: var(--text-muted); line-height: 1.7; margin: 0 0 2.5rem; font-size: 1.05rem; }
+    .oc-cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .oc-cta-note { margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-light); }
 
-/* Overview boxes */
-.overview-box h3 { font-family: var(--font) !important; font-weight: 800; letter-spacing: -0.02em; }
-
-/* Step numbers */
-.step-num {
-  background: var(--bg-muted) !important;
-  border-color: var(--mustard) !important;
-  font-family: var(--font) !important;
-  font-weight: 900 !important;
-  color: var(--mustard) !important;
-}
-.step h4 { font-family: var(--font) !important; font-weight: 700; }
-
-/* Hero tag */
-.hero-tag {
-  background: var(--mustard-pale) !important;
-  color: var(--mustard-dark) !important;
-  border-radius: var(--radius-full);
-  font-weight: 700; letter-spacing: 0.1em;
-}
-
-/* CTA closing section */
-.cta-closing h2 { font-family: var(--font) !important; font-weight: 900; letter-spacing: -0.03em; }
-
-/* Mobile nav override — hide old nav elements */
-#hamburger, .mobile-menu { display: none !important; }
-
-</style>
+    /* Responsive */
+    @media (max-width: 900px) {
+      .oc-hero-inner { grid-template-columns: 1fr; }
+      .oc-hero-visual { display: none; }
+      .oc-about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .oc-steps { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .oc-hero { padding: calc(64px + 3rem) 1.25rem 3.5rem; }
+      .oc-about, .oc-divisions, .oc-process, .oc-usecases, .oc-cta { padding: 3.5rem 1.25rem; }
+      .oc-div-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-<body class="page-jasa">
+<body>
+
+<!-- ── Nav ───────────────────────────────────────────────────── -->
 <nav class="bk-nav">
   <div class="bk-nav-inner">
     <a href="index.html" class="bk-logo">Berkah<span>Karya</span></a>
@@ -172,115 +242,457 @@ section { padding: 5rem 0; }
       <li><a href="tools.html">Tools</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
-    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Setup%20OpenClaw%20AI.%20Bisa%20konsultasi%3F" class="bk-nav-cta" target="_blank">WhatsApp →</a>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20Setup%20OpenClaw%20AI%20Agent%20untuk%20bisnis%20saya.%20Bisa%20konsultasi%20workflow%20yang%20ingin%20diotomasi%3F"
+       class="bk-nav-cta" target="_blank" rel="noopener">Setup OpenClaw →</a>
     <button class="bk-nav-mobile" aria-label="Menu">☰</button>
   </div>
 </nav>
 
-<section class="hero">
-  <div class="container">
-    <div class="hero-tag">Jasa Setup OpenClaw AI Agent</div>
-    <h1>AI Agent Pribadi untuk Bisnis Kamu,<br>Setup Selesai dalam 48 Jam</h1>
-    <p>OpenClaw adalah platform AI agent yang bisa otomatisasi tugas bisnis kamu. Kami setup, konfigurasi, dan train agent sesuai kebutuhan spesifik kamu.</p>
-    <div class="hero-cta">
-      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Setup%20OpenClaw." class="btn-primary btn-lg" target="_blank">💬 Konsultasi Gratis</a>
-      <a href="#fitur" class="btn-secondary btn-lg">Lihat Layanan</a>
-    </div>
-  </div>
-</section>
-
-<section class="overview">
-  <div class="container">
-    <div class="section-label">Overview</div>
-    <h2 class="section-title">Masalah yang Kami Selesaikan</h2>
-    <div class="overview-grid reveal">
-      <div class="overview-box">
-        <h3>Tantangan Operasional Bisnis</h3>
-        <ul>
-          <li>Terlalu banyak tugas admin dan repetitif yang menghabiskan waktu</li>
-          <li>Customer service tidak bisa handle volume tinggi</li>
-          <li>Butuh tambah staff tapi budget tidak ada</li>
-          <li>Proses manual yang rawan human error</li>
-          <li>Tidak ada sistem yang berjalan otomatis saat kamu offline</li>
-        </ul>
-      </div>
-      <div class="overview-box">
-        <h3>Untuk Siapa Layanan Ini</h3>
-        <ul>
-          <li>Bisnis dengan banyak tugas admin repetitif</li>
-          <li>Founder dan operator yang mau leverage AI</li>
-          <li>Agency yang perlu scale tanpa tambah headcount</li>
-          <li>Bisnis dengan volume customer service tinggi</li>
-          <li>Tim yang ingin otomasi workflow internal</li>
-        </ul>
+<!-- ── Hero ──────────────────────────────────────────────────── -->
+<section class="oc-hero">
+  <div class="oc-hero-inner">
+    <div class="oc-hero-text">
+      <div class="oc-hero-tag"><span></span> AI Agent Automation</div>
+      <h1>Jasa Setup <em>OpenClaw</em> —<br>AI Agent Automation</h1>
+      <p class="oc-hero-sub">
+        Otomasi workflow bisnis Anda menggunakan AI Agent berbasis OpenClaw — 
+        lebih dari 140 agen spesialis siap bekerja 24/7. Tanpa coding, tanpa tim teknis besar.
+        Kami setup, integrasi, dan training tim Anda.
+      </p>
+      <div class="oc-hero-btns">
+        <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20Setup%20OpenClaw%20AI%20Agent%20untuk%20bisnis%20saya.%20Bisa%20konsultasi%20workflow%20yang%20ingin%20diotomasi%3F"
+           class="btn-primary" target="_blank" rel="noopener">
+          💬 Konsultasi via WhatsApp
+        </a>
+        <a href="#daftar-agent" class="btn-secondary">
+          Lihat Daftar Agent ↓
+        </a>
       </div>
     </div>
-  </div>
-</section>
 
-<section id="fitur">
-  <div class="container">
-    <div class="section-label">Deliverables</div>
-    <h2 class="section-title">Yang Kamu Dapatkan</h2>
-    <div class="cards-grid reveal">
-      <div class="card"><div class="card-icon">⚙️</div><h4>Instalasi & Konfigurasi</h4><p>Setup OpenClaw dari awal hingga running di server atau device kamu. Siap operasional penuh.</p></div>
-      <div class="card"><div class="card-icon">🤖</div><h4>AI Agent Custom</h4><p>Agent dikonfigurasi dengan persona, knowledge base, dan instruksi spesifik bisnis kamu.</p></div>
-      <div class="card"><div class="card-icon">📲</div><h4>Integrasi Telegram/WhatsApp</h4><p>Agent terhubung ke channel komunikasi yang sudah kamu pakai. Tidak perlu pindah platform.</p></div>
-      <div class="card"><div class="card-icon">🔄</div><h4>Workflow Automation</h4><p>Automasi tugas-tugas spesifik: scheduling, reporting, follow-up, dan proses bisnis lainnya.</p></div>
-      <div class="card"><div class="card-icon">📚</div><h4>Training & Dokumentasi</h4><p>Kamu dan tim ditraining cara menggunakan dan maintain agent. Dokumentasi lengkap disertakan.</p></div>
-      <div class="card"><div class="card-icon">🛡️</div><h4>30 Hari Support</h4><p>Support penuh selama 30 hari pasca setup. Fix bugs, fine-tune agent, dan tambah fitur minor.</p></div>
+    <!-- Visual: Agent preview cards -->
+    <div class="oc-hero-visual" aria-hidden="true">
+      <div class="oc-agent-chip">
+        <div class="oc-agent-icon">⚛️</div>
+        <div class="oc-agent-info">
+          <div class="oc-agent-name">Frontend Developer</div>
+          <div class="oc-agent-role">Engineering Division</div>
+        </div>
+        <div class="oc-agent-status">Active</div>
+      </div>
+      <div class="oc-agent-chip">
+        <div class="oc-agent-icon">📣</div>
+        <div class="oc-agent-info">
+          <div class="oc-agent-name">TikTok Strategist</div>
+          <div class="oc-agent-role">Marketing Division</div>
+        </div>
+        <div class="oc-agent-status">Active</div>
+      </div>
+      <div class="oc-agent-chip">
+        <div class="oc-agent-icon">💰</div>
+        <div class="oc-agent-info">
+          <div class="oc-agent-name">PPC Campaign Strategist</div>
+          <div class="oc-agent-role">Paid Media Division</div>
+        </div>
+        <div class="oc-agent-status">Active</div>
+      </div>
+      <div class="oc-agent-chip">
+        <div class="oc-agent-icon">🎨</div>
+        <div class="oc-agent-info">
+          <div class="oc-agent-name">Brand Guardian</div>
+          <div class="oc-agent-role">Design Division</div>
+        </div>
+        <div class="oc-agent-status">Active</div>
+      </div>
+      <div class="oc-agent-chip">
+        <div class="oc-agent-icon">📈</div>
+        <div class="oc-agent-info">
+          <div class="oc-agent-name">Deal Strategist</div>
+          <div class="oc-agent-role">Sales Division</div>
+        </div>
+        <div class="oc-agent-status">Active</div>
+      </div>
+      <div class="oc-visual-label">140+ agen spesialis tersedia</div>
     </div>
   </div>
 </section>
 
-<section class="proses">
-  <div class="container">
-    <div class="section-label">Proses Kerja</div>
-    <h2 class="section-title">Dari Discovery ke Agent Live</h2>
-    <div class="steps reveal">
-      <div class="step"><div class="step-num">01</div><div><h4>Discovery</h4><p>Pemetaan kebutuhan bisnis, workflow yang ingin diotomasi</p></div></div>
-      <div class="step"><div class="step-num">02</div><div><h4>Desain Workflow</h4><p>Rancang automation flows dan definisikan capability agent</p></div></div>
-      <div class="step"><div class="step-num">03</div><div><h4>Setup & Konfigurasi</h4><p>Instalasi, konfigurasi, dan integrasi dengan tools kamu</p></div></div>
-      <div class="step"><div class="step-num">04</div><div><h4>Testing</h4><p>QA menyeluruh — edge cases, error handling, performance</p></div></div>
-      <div class="step"><div class="step-num">05</div><div><h4>Handover + Training</h4><p>Serah terima, training tim, dan dokumentasi lengkap</p></div></div>
+<!-- ── Apa itu Agency Agents? ────────────────────────────────── -->
+<section class="oc-about">
+  <div class="oc-about-inner">
+    <div class="oc-about-grid">
+      <div class="oc-about-text">
+        <span class="sec-label">Tentang Agency Agents</span>
+        <h2>Tim AI Impian<br>yang <em>Tidak Pernah Tidur</em></h2>
+        <p>
+          The Agency adalah koleksi agen AI spesialis yang siap mengubah alur kerja bisnis Anda — 
+          mulai dari pengembang front-end, ninjas Reddit, hingga pakar optimasi iklan yang tak kenal lelah.
+        </p>
+        <p>
+          Koleksi ini adalah hasil iterasi berbulan-bulan: setiap agen memiliki keahlian mendalam di 
+          bidangnya, gaya komunikasi unik, fokus pada deliverable nyata, dan sudah siap produksi.
+          Pikirkan seperti membangun tim impian, tapi berisi spesialis AI yang tidak pernah libur, 
+          tidak pernah sakit, dan tidak perlu gaji.
+        </p>
+      </div>
+      <div class="oc-highlights">
+        <div class="oc-hl">
+          <div class="oc-hl-icon">🎯</div>
+          <div class="oc-hl-body">
+            <h4>Keahlian Mendalam</h4>
+            <p>Setiap agen memiliki spesialisasi mendalam di domainnya — bukan sekadar template generik yang bisa-bisa saja.</p>
+          </div>
+        </div>
+        <div class="oc-hl">
+          <div class="oc-hl-icon">🧠</div>
+          <div class="oc-hl-body">
+            <h4>Personality-Driven</h4>
+            <p>Setiap agen punya suara dan gaya komunikasinya sendiri — output terasa natural, bukan kaku seperti bot generik.</p>
+          </div>
+        </div>
+        <div class="oc-hl">
+          <div class="oc-hl-icon">📦</div>
+          <div class="oc-hl-body">
+            <h4>Deliverable-Focused</h4>
+            <p>Mereka menghasilkan kode nyata, dokumen proses, dan hasil terukur — bukan cuma laporan atau saran abstrak.</p>
+          </div>
+        </div>
+        <div class="oc-hl">
+          <div class="oc-hl-icon">🚀</div>
+          <div class="oc-hl-body">
+            <h4>Siap Produksi</h4>
+            <p>Workflow mereka sudah teruji dan langsung bisa diimplementasikan di bisnis Anda tanpa penyesuaian besar.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="container">
-    <div class="section-label">Keunggulan</div>
-    <h2 class="section-title">Kenapa Setup OpenClaw dengan Kami</h2>
-    <div class="benefit-grid reveal">
-      <div class="benefit-card"><h4>⏰ AI Bekerja 24/7</h4><p>Agent tidak pernah tidur, tidak pernah cuti, dan tidak pernah minta naik gaji.</p></div>
-      <div class="benefit-card"><h4>🔁 Automasi Tugas Repetitif</h4><p>Tugas yang kamu ulang setiap hari bisa dihandle agent dalam hitungan detik.</p></div>
-      <div class="benefit-card"><h4>💰 Tidak Perlu Hire Staff Tambahan</h4><p>Kapasitas kerja naik tanpa biaya rekrut, gaji, dan benefit karyawan baru.</p></div>
-      <div class="benefit-card"><h4>📈 ROI dalam 1–2 Minggu</h4><p>Penghematan waktu langsung terasa sejak hari pertama agent live.</p></div>
+<!-- ── Divisi & Daftar Agent ─────────────────────────────────── -->
+<section class="oc-divisions" id="daftar-agent">
+  <div class="oc-divisions-inner">
+    <div class="oc-section-head">
+      <span class="sec-label">Daftar Agent</span>
+      <h2>5 Divisi Utama,<br><em>Ratusan Keahlian</em></h2>
+      <p>Setiap divisi punya spesialis tersendiri. Di bawah ini sebagian contoh agen yang bisa langsung Anda setup untuk bisnis.</p>
+    </div>
+
+    <div class="oc-div-grid">
+
+      <!-- Engineering -->
+      <div class="oc-div-card">
+        <div class="oc-div-head">
+          <span class="oc-div-emoji">⚙️</span>
+          <div class="oc-div-title">Engineering Division</div>
+          <div class="oc-div-tagline">"Building the future, one commit at a time"</div>
+        </div>
+        <div class="oc-agents-list">
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">Frontend Developer</div>
+              <div class="oc-ag-desc">Ahli React/Vue/Angular, implementasi UI pixel-perfect, performa dan aksesibilitas.</div>
+            </div>
+          </div>
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">Backend Architect</div>
+              <div class="oc-ag-desc">Desain API, arsitektur database, skalabilitas sistem untuk traffic tinggi.</div>
+            </div>
+          </div>
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">AI Engineer</div>
+              <div class="oc-ag-desc">Pengembangan dan integrasi model machine learning ke dalam produk Anda.</div>
+            </div>
+          </div>
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">DevOps Automator</div>
+              <div class="oc-ag-desc">Otomasi CI/CD, infrastruktur cloud, monitoring, dan deployment pipeline.</div>
+            </div>
+          </div>
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">Autonomous Optimization Architect</div>
+              <div class="oc-ag-desc">Routing LLM, optimasi biaya AI, shadow testing, dan evaluasi model.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Design -->
+      <div class="oc-div-card">
+        <div class="oc-div-head">
+          <span class="oc-div-emoji">🎨</span>
+          <div class="oc-div-title">Design Division</div>
+          <div class="oc-div-tagline">"Making it beautiful, usable, and delightful"</div>
+        </div>
+        <div class="oc-agents-list">
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">UI Designer</div>
+              <div class="oc-ag-desc">Desain visual antarmuka, library komponen, konsistensi brand di semua platform.</div>
+            </div>
+          </div>
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">UX Researcher</div>
+              <div class="oc-ag-desc">Riset perilaku pengguna, usability testing, rekomendasi berbasis data nyata.</div>
+            </div>
+          </div>
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">Brand Guardian</div>
+              <div class="oc-ag-desc">Menjaga identitas visual dan positioning brand tetap konsisten dan kuat.</div>
+            </div>
+          </div>
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">Visual Storyteller</div>
+              <div class="oc-ag-desc">Narasi visual, konten multimedia, dan komunikasi brand yang memorable.</div>
+            </div>
+          </div>
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">Inclusive Visuals Specialist</div>
+              <div class="oc-ag-desc">Representasi autentik, mitigasi bias visual, aksesibilitas desain untuk semua.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paid Media -->
+      <div class="oc-div-card">
+        <div class="oc-div-head">
+          <span class="oc-div-emoji">💰</span>
+          <div class="oc-div-title">Paid Media Division</div>
+          <div class="oc-div-tagline">"Turning ad spend into measurable business outcomes"</div>
+        </div>
+        <div class="oc-agents-list">
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">PPC Campaign Strategist</div>
+              <div class="oc-ag-desc">Merancang kampanye Google Ads, Microsoft Ads, dan Amazon Ads yang efisien dan terukur.</div>
+            </div>
+          </div>
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">Search Query Analyst</div>
+              <div class="oc-ag-desc">Analisis kata kunci mendalam, eliminasi wasted spend, optimasi bidding strategy.</div>
+            </div>
+          </div>
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">Ad Creative Strategist</div>
+              <div class="oc-ag-desc">Copy iklan RSA, kreatif Meta Ads, dan Performance Max yang convert tinggi.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sales -->
+      <div class="oc-div-card">
+        <div class="oc-div-head">
+          <span class="oc-div-emoji">📈</span>
+          <div class="oc-div-title">Sales Division</div>
+          <div class="oc-div-tagline">"Turning pipeline into revenue through craft, not CRM busywork"</div>
+        </div>
+        <div class="oc-agents-list">
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">Outbound Strategist</div>
+              <div class="oc-ag-desc">Prospecting berbasis sinyal & riset mendalam — bukan spam blast, tapi targeted outreach.</div>
+            </div>
+          </div>
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">Discovery Coach</div>
+              <div class="oc-ag-desc">Strategi discovery call yang tajam, kualifikasi peluang lebih akurat dan efisien.</div>
+            </div>
+          </div>
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">Deal Strategist</div>
+              <div class="oc-ag-desc">Perencanaan kemenangan deal, positioning kompetitif, dan close rate yang lebih tinggi.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marketing -->
+      <div class="oc-div-card">
+        <div class="oc-div-head">
+          <span class="oc-div-emoji">📣</span>
+          <div class="oc-div-title">Marketing Division</div>
+          <div class="oc-div-tagline">"Growing your audience, one authentic interaction at a time"</div>
+        </div>
+        <div class="oc-agents-list">
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">Growth Hacker</div>
+              <div class="oc-ag-desc">Akuisisi pengguna cepat, eksperimen viral, dan loop pertumbuhan yang terukur.</div>
+            </div>
+          </div>
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">Content Creator</div>
+              <div class="oc-ag-desc">Strategi konten multi-platform, storytelling, dan kalender editorial yang konsisten.</div>
+            </div>
+          </div>
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">TikTok Strategist</div>
+              <div class="oc-ag-desc">Konten viral TikTok, optimasi algoritma, hooks yang bikin scroll berhenti.</div>
+            </div>
+          </div>
+          <div class="oc-ag">
+            <div class="oc-ag-dot"></div>
+            <div>
+              <div class="oc-ag-name">Reddit Community Builder</div>
+              <div class="oc-ag-desc">Engagement autentik di Reddit, membangun kepercayaan komunitas tanpa terasa promosi.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /grid -->
+
+    <div class="oc-div-note">
+      <strong>Dan masih banyak lagi.</strong><br>
+      Ada divisi Data Science, Community Management, AI Research, Customer Success, dan lebih —<br>
+      total lebih dari <strong>140 agen spesialis</strong> siap disetup untuk bisnis Anda.
     </div>
   </div>
 </section>
 
-<section class="usecase">
-  <div class="container">
-    <div class="section-label">Use Case</div>
-    <h2 class="section-title">Cocok Untuk Siapa</h2>
-    <div class="usecase-list reveal">
-      <div class="usecase-item"><h4>🏢 Bisnis dengan Admin Repetitif</h4><p>Laporan harian, follow-up, scheduling, dan tugas rutin bisa dihandle agent.</p></div>
-      <div class="usecase-item"><h4>🧠 Founder yang Mau Leverage AI</h4><p>Mau punya "staff AI" yang bekerja tanpa henti untuk bisnis kamu.</p></div>
-      <div class="usecase-item"><h4>🏭 Agency yang Mau Scale</h4><p>Handle lebih banyak klien tanpa proportional increase di headcount.</p></div>
-      <div class="usecase-item"><h4>💬 Bisnis dengan CS Volume Tinggi</h4><p>Agent handle pertanyaan berulang 24/7, tim CS fokus ke isu kompleks.</p></div>
+<!-- ── Proses Setup ───────────────────────────────────────────── -->
+<section class="oc-process">
+  <div class="oc-process-inner">
+    <div class="oc-section-head">
+      <span class="sec-label">Cara Kerja</span>
+      <h2>Setup dalam <em>3 Langkah</em></h2>
+      <p>Dari konsultasi hingga bisnis Anda berjalan dengan AI Agent — prosesnya sederhana dan terbimbing penuh.</p>
+    </div>
+    <div class="oc-steps">
+      <div class="oc-step">
+        <div class="oc-step-num">01</div>
+        <span class="oc-step-icon">🗣️</span>
+        <h3>Konsultasi Workflow</h3>
+        <p>
+          Kami duduk bersama (via WhatsApp / Zoom) untuk memahami proses bisnis Anda — 
+          apa yang ingin diotomasi, pain point terbesar, dan target hasil yang ingin dicapai.
+          Tidak perlu tahu teknis apapun.
+        </p>
+      </div>
+      <div class="oc-step">
+        <div class="oc-step-num">02</div>
+        <span class="oc-step-icon">⚡</span>
+        <h3>Setup & Integrasi</h3>
+        <p>
+          Tim kami mengkonfigurasi OpenClaw dan memilih kombinasi agen AI yang tepat sesuai kebutuhan.
+          Integrasi dengan tools yang sudah Anda pakai (WhatsApp, email, spreadsheet, CRM, dll) 
+          dilakukan penuh oleh kami.
+        </p>
+      </div>
+      <div class="oc-step">
+        <div class="oc-step-num">03</div>
+        <span class="oc-step-icon">🎓</span>
+        <h3>Training & Support</h3>
+        <p>
+          Kami training tim Anda cara mengelola, memberi instruksi, dan memantau para agen AI.
+          Termasuk 30 hari support after-setup agar sistem berjalan optimal dan tim Anda 
+          benar-benar nyaman menggunakannya.
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="cta-closing">
-  <div class="container">
-    <h2>Siap Punya AI Agent yang Bekerja untuk Bisnis Kamu?</h2>
-    <p>Konsultasi gratis. Kami petakan otomasi yang paling berdampak untuk bisnis kamu.</p>
-    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Setup%20OpenClaw." class="btn-primary btn-lg" target="_blank">💬 Chat WhatsApp Sekarang</a>
+<!-- ── Use Cases ─────────────────────────────────────────────── -->
+<section class="oc-usecases">
+  <div class="oc-usecases-inner">
+    <div class="oc-section-head">
+      <span class="sec-label">Use Cases</span>
+      <h2>Bisnis Apa yang<br>Bisa <em>Diotomasi?</em></h2>
+      <p>Dari customer support hingga laporan harian — hampir semua workflow berulang bisa diserahkan ke AI Agent.</p>
+    </div>
+    <div class="oc-uc-grid">
+      <div class="oc-uc">
+        <span class="oc-uc-icon">💬</span>
+        <h4>Customer Support 24/7</h4>
+        <p>Agen menjawab pertanyaan pelanggan, menangani komplain, dan meng-escalate isu kompleks ke tim manusia — otomatis, 24 jam nonstop.</p>
+      </div>
+      <div class="oc-uc">
+        <span class="oc-uc-icon">🎯</span>
+        <h4>Lead Nurturing Otomatis</h4>
+        <p>Follow-up calon pelanggan secara personal dan tepat waktu, kualifikasi lead, dan jadwalkan demo — tanpa Sales mengangkat telepon satu per satu.</p>
+      </div>
+      <div class="oc-uc">
+        <span class="oc-uc-icon">📊</span>
+        <h4>Reporting & Analitik</h4>
+        <p>Agen mengumpulkan data dari berbagai sumber, menyusun laporan harian/mingguan, dan mengirimnya ke tim Anda secara otomatis.</p>
+      </div>
+      <div class="oc-uc">
+        <span class="oc-uc-icon">📝</span>
+        <h4>Data Entry & Admin</h4>
+        <p>Tugas-tugas admin berulang seperti input data, update spreadsheet, dan filing dokumen diserahkan ke agen agar tim fokus ke pekerjaan bernilai tinggi.</p>
+      </div>
+      <div class="oc-uc">
+        <span class="oc-uc-icon">📅</span>
+        <h4>Penjadwalan & Reminder</h4>
+        <p>Agen mengatur jadwal meeting, mengirim reminder otomatis, dan mengkoordinasikan kalender tim tanpa bolak-balik pesan manual.</p>
+      </div>
+      <div class="oc-uc">
+        <span class="oc-uc-icon">🔗</span>
+        <h4>Integrasi Multi-Platform</h4>
+        <p>Menghubungkan WhatsApp, email, Notion, spreadsheet, CRM, dan platform lain agar data mengalir otomatis tanpa copy-paste manual.</p>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- ── CTA Penutup ───────────────────────────────────────────── -->
+<section class="oc-cta">
+  <div class="oc-cta-inner">
+    <span class="sec-label" style="display:block;text-align:center;margin-bottom:1rem;">Mulai Sekarang</span>
+    <h2>Otomasi Bisnis Anda<br><em>Mulai dari Sekarang</em></h2>
+    <p>
+      Ceritakan workflow yang ingin Anda otomasi — berapa jam per minggu yang terbuang untuk tugas berulang,
+      bagian mana yang paling memperlambat tim Anda. Kami akan rekomendasikan kombinasi agen yang paling pas,
+      dan estimasi waktu serta biaya setup secara transparan.
+    </p>
+    <div class="oc-cta-btns">
+      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20Setup%20OpenClaw%20AI%20Agent%20untuk%20bisnis%20saya.%20Bisa%20konsultasi%20workflow%20yang%20ingin%20diotomasi%3F"
+         class="btn-primary" target="_blank" rel="noopener">
+        💬 Konsultasi via WhatsApp
+      </a>
+      <a href="index.html" class="btn-secondary">← Kembali ke Beranda</a>
+    </div>
+    <p class="oc-cta-note">Konsultasi gratis. Tidak ada commitment. Kami jelaskan dulu semua opsi yang tersedia.</p>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────────────── -->
 <footer class="bk-footer">
   <div class="bk-footer-inner">
     <div class="bk-footer-brand">
@@ -323,11 +735,15 @@ section { padding: 5rem 0; }
     <span>Made with ❤️ + 🤖 AI in Indonesia</span>
   </div>
 </footer>
+
 <script>
-document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('mobileMenu').classList.toggle('open');});
-const reveals=document.querySelectorAll('.reveal');
-const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.1});
-reveals.forEach(el=>io.observe(el));
+  // Mobile nav toggle
+  const btn = document.querySelector('.bk-nav-mobile');
+  const nav = document.querySelector('.bk-nav');
+  if (btn && nav) {
+    btn.addEventListener('click', () => nav.classList.toggle('open'));
+  }
 </script>
+
 </body>
 </html>
