@@ -211,6 +211,183 @@ footer { border-top: 0.5px solid var(--line-2); padding: clamp(2rem, 5vw, 3.5rem
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 0.5px solid var(--line-2); flex-wrap: wrap; gap: 0.5rem; }
 .footer-copy { font-size: 0.68rem; color: var(--text-5); letter-spacing: 0.05em; }
 
+/* ===== OMNIROUTE FEATURED PLATFORM ===== */
+#omniroute {
+  background: #050505;
+  border-top: 0.5px solid var(--line);
+  border-bottom: 0.5px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+#omniroute::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(196,163,90,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+.omni-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+.omni-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.67rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+  border: 0.5px solid var(--gold-border);
+  padding: 0.3rem 0.85rem;
+  border-radius: 1px;
+  background: rgba(196,163,90,0.04);
+}
+.omni-eyebrow-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.omni-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--text-1);
+  font-weight: 600;
+  line-height: 1.07;
+  margin-bottom: 1rem;
+}
+.omni-desc {
+  font-size: 0.9rem;
+  color: var(--text-4);
+  line-height: 1.85;
+  margin-bottom: 2rem;
+  max-width: 420px;
+}
+.omni-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 2.25rem;
+}
+.omni-feat {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--text-3);
+  line-height: 1.5;
+}
+.omni-feat-icon {
+  width: 18px;
+  height: 18px;
+  border: 0.5px solid var(--gold-border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  color: var(--gold);
+  margin-top: 1px;
+}
+.omni-providers {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg-2);
+  border: 0.5px solid var(--line);
+  border-radius: var(--r);
+}
+.omni-provider-lbl {
+  font-size: 0.63rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-5);
+  margin-right: 0.25rem;
+  white-space: nowrap;
+}
+.omni-provider-chip {
+  font-size: 0.68rem;
+  padding: 0.2rem 0.65rem;
+  background: var(--bg-3);
+  border: 0.5px solid var(--line);
+  color: var(--text-4);
+  border-radius: 1px;
+  letter-spacing: 0.04em;
+}
+.omni-ctarow { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+/* Omniroute visual side */
+.omni-visual { position: relative; }
+.omni-screen-main {
+  background: #0a0a08;
+  border: 0.5px solid var(--gold-border);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 0.5px rgba(196,163,90,0.08);
+}
+.omni-screen-bar {
+  background: #0d0d0a;
+  border-bottom: 0.5px solid rgba(196,163,90,0.12);
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.omni-screen-dot { width: 8px; height: 8px; border-radius: 50%; }
+.omni-screen-title { font-size: 0.65rem; letter-spacing: 0.1em; color: var(--text-5); margin-left: auto; }
+.omni-screen-body { padding: 1.25rem; }
+.omni-dash-header {
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.5px solid rgba(196,163,90,0.12);
+}
+.omni-provider-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  border-bottom: 0.5px solid rgba(255,255,255,0.03);
+  font-size: 0.7rem;
+}
+.omni-provider-row:last-child { border-bottom: none; }
+.omni-provider-name { color: var(--text-3); }
+.omni-provider-status {
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: #4caf50;
+}
+.omni-provider-latency { font-size: 0.6rem; color: var(--text-5); }
+.omni-mini-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+.omni-mini-card {
+  background: var(--bg-3);
+  border: 0.5px solid var(--line);
+  border-radius: 2px;
+  padding: 0.75rem;
+}
+.omni-mini-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-5);
+  margin-bottom: 0.3rem;
+}
+.omni-mini-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  color: var(--gold);
+}
+.omni-mini-sub { font-size: 0.58rem; color: var(--text-5); margin-top: 0.1rem; }
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .nav-links { display: none; }
@@ -224,6 +401,9 @@ footer { border-top: 0.5px solid var(--line-2); padding: clamp(2rem, 5vw, 3.5rem
   .stat-item:nth-child(2) { border-right: none; }
   .stat-item:nth-child(3) { border-top: 0.5px solid var(--line); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .omni-inner { grid-template-columns: 1fr; }
+  .omni-visual { order: -1; }
+  .omni-features { grid-template-columns: 1fr; gap: 0.6rem; }
 }
 @media (max-width: 600px) {
   .jasa-grid { grid-template-columns: 1fr; }
@@ -242,13 +422,14 @@ footer { border-top: 0.5px solid var(--line-2); padding: clamp(2rem, 5vw, 3.5rem
 <nav id="nav">
   <a href="index.html" class="nav-logo">Berkah Karya</a>
   <div class="nav-links">
+    <a href="#omniroute" class="nav-link">Platform</a>
     <a href="#solusi-bisnis" class="nav-link">Solusi Bisnis</a>
     <a href="#tools-ai" class="nav-link">Tools AI</a>
     <a href="portfolio.html" class="nav-link">Portfolio</a>
     <a href="about.html" class="nav-link">Tentang</a>
   </div>
   <div class="nav-cta">
-    <a href="services.html" class="btn btn-outline btn-sm">Lihat Semua Layanan</a>
+    <a href="omniroute.html" class="btn btn-outline btn-sm">Omniroute →</a>
     <button id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -257,13 +438,14 @@ footer { border-top: 0.5px solid var(--line-2); padding: clamp(2rem, 5vw, 3.5rem
 
 <!-- MOBILE MENU -->
 <div id="mobile-menu">
+  <a href="#omniroute" class="mobile-link" onclick="document.getElementById('mobile-menu').classList.remove('open')">Platform — Omniroute</a>
   <a href="#solusi-bisnis" class="mobile-link" onclick="document.getElementById('mobile-menu').classList.remove('open')">Solusi Bisnis</a>
   <a href="#tools-ai" class="mobile-link" onclick="document.getElementById('mobile-menu').classList.remove('open')">Tools AI</a>
   <a href="portfolio.html" class="mobile-link">Portfolio</a>
   <a href="about.html" class="mobile-link">Tentang</a>
   <div class="mobile-cta">
-    <a href="services.html" class="btn btn-gold" style="justify-content:center;">Lihat Semua Layanan</a>
-    <a href="tools.html" class="btn btn-outline" style="justify-content:center;color:var(--gold);">Jelajahi Tools AI</a>
+    <a href="omniroute.html" class="btn btn-gold" style="justify-content:center;">Pelajari Omniroute</a>
+    <a href="#solusi-bisnis" class="btn btn-outline" style="justify-content:center;color:var(--gold);" onclick="document.getElementById('mobile-menu').classList.remove('open')">Lihat Layanan</a>
   </div>
 </div>
 
@@ -273,24 +455,24 @@ footer { border-top: 0.5px solid var(--line-2); padding: clamp(2rem, 5vw, 3.5rem
 <section id="hero">
   <div class="container">
     <div class="hero-label fade-up">Berkah Karya — Bogor, Indonesia</div>
-    <h1 class="hero-h1 fade-up">Solusi AI &amp; Digital<br>untuk Bisnis yang<br><em>Ingin Tumbuh</em></h1>
-    <p class="hero-sub fade-up-2">Kami menghadirkan jasa kreatif berbasis AI dan tools otomasi yang dirancang untuk membantu bisnis bergerak lebih cepat — dari produksi konten hingga interaksi pelanggan.</p>
+    <h1 class="hero-h1 fade-up">AI Ecosystem<br>untuk Bisnis yang<br><em>Siap Scale</em></h1>
+    <p class="hero-sub fade-up-2">Dari platform AI gateway hingga jasa kreatif dan tools operasional — kami membangun infrastruktur digital yang membantu bisnis dan developer bergerak lebih cepat.</p>
     <div class="hero-btns fade-up-2">
-      <a href="#solusi-bisnis" class="btn btn-gold">Lihat Solusi Bisnis</a>
-      <a href="#tools-ai" class="btn btn-ghost">Jelajahi Tools AI</a>
+      <a href="#omniroute" class="btn btn-gold">Lihat Platform Kami</a>
+      <a href="#solusi-bisnis" class="btn btn-ghost">Jelajahi Layanan</a>
     </div>
     <div class="hero-cats fade-up-3">
       <div class="hero-cat-item">
+        <div class="hero-cat-num">1</div>
+        <div class="hero-cat-lbl">Flagship Platform</div>
+      </div>
+      <div class="hero-cat-item">
         <div class="hero-cat-num">6</div>
-        <div class="hero-cat-lbl">Jenis Jasa Bisnis</div>
+        <div class="hero-cat-lbl">Jenis Jasa</div>
       </div>
       <div class="hero-cat-item">
         <div class="hero-cat-num">2</div>
-        <div class="hero-cat-lbl">Tools AI Aktif</div>
-      </div>
-      <div class="hero-cat-item">
-        <div class="hero-cat-num">3+</div>
-        <div class="hero-cat-lbl">Tahun Pengalaman</div>
+        <div class="hero-cat-lbl">Tools AI</div>
       </div>
       <div class="hero-cat-item">
         <div class="hero-cat-num">500+</div>
@@ -321,6 +503,123 @@ footer { border-top: 0.5px solid var(--line-2); padding: clamp(2rem, 5vw, 3.5rem
     </div>
   </div>
 </div>
+
+<div class="divider"></div>
+
+<!-- ================================================================
+     SECTION: OMNIROUTE — FLAGSHIP PLATFORM
+================================================================= -->
+<section class="section" id="omniroute">
+  <div class="container">
+    <div class="omni-inner">
+
+      <!-- LEFT: Copy -->
+      <div class="reveal">
+        <div class="omni-eyebrow"><span class="omni-eyebrow-dot"></span>Flagship Platform</div>
+        <h2 class="omni-h2">Satu Gateway untuk<br>Semua <em>API AI</em> Anda</h2>
+        <p class="omni-desc">Omniroute adalah AI Gateway yang memungkinkan developer dan agency mengelola, me-route, dan mengoptimalkan semua provider AI dari satu endpoint — lebih efisien, lebih hemat, lebih stabil.</p>
+
+        <div class="omni-features">
+          <div class="omni-feat">
+            <div class="omni-feat-icon">◈</div>
+            <div><strong style="color:var(--text-2);font-weight:500;">Unified Endpoint</strong><br>1 endpoint untuk semua provider</div>
+          </div>
+          <div class="omni-feat">
+            <div class="omni-feat-icon">⇄</div>
+            <div><strong style="color:var(--text-2);font-weight:500;">Smart Routing</strong><br>Priority, cost-opt, fallback otomatis</div>
+          </div>
+          <div class="omni-feat">
+            <div class="omni-feat-icon">🗝</div>
+            <div><strong style="color:var(--text-2);font-weight:500;">API Key Management</strong><br>Multi-key, permission, usage tracking</div>
+          </div>
+          <div class="omni-feat">
+            <div class="omni-feat-icon">⚡</div>
+            <div><strong style="color:var(--text-2);font-weight:500;">Agency Ready</strong><br>Siap scale untuk banyak klien</div>
+          </div>
+        </div>
+
+        <div class="omni-providers">
+          <span class="omni-provider-lbl">Providers:</span>
+          <span class="omni-provider-chip">OpenAI</span>
+          <span class="omni-provider-chip">Claude</span>
+          <span class="omni-provider-chip">Gemini</span>
+          <span class="omni-provider-chip">DeepSeek</span>
+          <span class="omni-provider-chip">Groq</span>
+          <span class="omni-provider-chip">+lebih banyak</span>
+        </div>
+
+        <div class="omni-ctarow">
+          <a href="omniroute.html" class="btn btn-gold">Pelajari Omniroute</a>
+          <a href="omniroute.html#fitur" class="btn btn-ghost">Lihat Fitur Lengkap</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Dashboard Visual -->
+      <div class="omni-visual reveal">
+        <div class="omni-screen-main">
+          <div class="omni-screen-bar">
+            <div class="omni-screen-dot" style="background:#ff5f57;"></div>
+            <div class="omni-screen-dot" style="background:#febc2e;"></div>
+            <div class="omni-screen-dot" style="background:#28c840;"></div>
+            <div class="omni-screen-title">Omniroute — Providers Dashboard</div>
+          </div>
+          <div class="omni-screen-body">
+            <div class="omni-dash-header">Active Providers</div>
+            <div class="omni-provider-row">
+              <span class="omni-provider-name">OpenAI GPT-4o</span>
+              <span class="omni-provider-status">● Active</span>
+              <span class="omni-provider-latency">142ms</span>
+            </div>
+            <div class="omni-provider-row">
+              <span class="omni-provider-name">Claude 3.5 Sonnet</span>
+              <span class="omni-provider-status">● Active</span>
+              <span class="omni-provider-latency">189ms</span>
+            </div>
+            <div class="omni-provider-row">
+              <span class="omni-provider-name">Gemini 2.0 Flash</span>
+              <span class="omni-provider-status">● Active</span>
+              <span class="omni-provider-latency">98ms</span>
+            </div>
+            <div class="omni-provider-row">
+              <span class="omni-provider-name">DeepSeek R1</span>
+              <span class="omni-provider-status">● Active</span>
+              <span class="omni-provider-latency">211ms</span>
+            </div>
+            <div class="omni-provider-row">
+              <span class="omni-provider-name">Groq Llama 3.3</span>
+              <span class="omni-provider-status">● Active</span>
+              <span class="omni-provider-latency">34ms</span>
+            </div>
+
+            <div class="omni-mini-grid">
+              <div class="omni-mini-card">
+                <div class="omni-mini-label">Total Requests</div>
+                <div class="omni-mini-val">48.2K</div>
+                <div class="omni-mini-sub">Bulan ini</div>
+              </div>
+              <div class="omni-mini-card">
+                <div class="omni-mini-label">Cost Savings</div>
+                <div class="omni-mini-val">-38%</div>
+                <div class="omni-mini-sub">vs single provider</div>
+              </div>
+              <div class="omni-mini-card">
+                <div class="omni-mini-label">API Keys</div>
+                <div class="omni-mini-val">12</div>
+                <div class="omni-mini-sub">Aktif, 3 tim</div>
+              </div>
+              <div class="omni-mini-card">
+                <div class="omni-mini-label">Uptime</div>
+                <div class="omni-mini-val">99.9%</div>
+                <div class="omni-mini-sub">30 hari terakhir</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <div class="divider"></div>
 
@@ -543,8 +842,8 @@ footer { border-top: 0.5px solid var(--line-2); padding: clamp(2rem, 5vw, 3.5rem
       <h2 style="margin:0.5rem 0 0.85rem;">Tidak Yakin Solusi<br><em>Mana yang Tepat?</em></h2>
       <p style="max-width:420px;margin:0 auto 2rem;font-size:0.88rem;color:var(--text-4);">Pelajari masing-masing layanan dan tools kami, atau lihat portfolio untuk memahami hasil yang bisa kami capai bersama.</p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-        <a href="services.html" class="btn btn-gold">Lihat Semua Layanan</a>
-        <a href="portfolio.html" class="btn btn-ghost">Lihat Portfolio</a>
+        <a href="omniroute.html" class="btn btn-gold">Pelajari Omniroute</a>
+        <a href="#solusi-bisnis" class="btn btn-ghost">Lihat Semua Layanan</a>
       </div>
     </div>
   </div>
@@ -582,9 +881,10 @@ footer { border-top: 0.5px solid var(--line-2); padding: clamp(2rem, 5vw, 3.5rem
       <div>
         <div class="footer-col-title">Perusahaan</div>
         <ul class="footer-links-list">
+          <li><a href="omniroute.html">Omniroute Platform</a></li>
           <li><a href="about.html">Tentang Kami</a></li>
           <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="services.html">Layanan</a></li>
+          <li><a href="services.html">Semua Layanan</a></li>
         </ul>
       </div>
     </div>
