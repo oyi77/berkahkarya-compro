@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guru Pintar AI — RPP & Modul Ajar 1 Semester — BerkahKarya</title>
+  <meta name="description" content="AI khusus guru untuk menghasilkan RPP, modul ajar, bahan evaluasi, dan aktivitas kreatif dalam satu sore." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── DP Landing Page styles ─── */
+    .dp-hero {
+      background: var(--bg-white); border-bottom: 1px solid var(--border);
+      padding: calc(64px + 5rem) 1.5rem 5rem; text-align: center;
+    }
+    .dp-hero-inner { max-width: 760px; margin: 0 auto; }
+    .dp-cat-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg-muted); border: 1px solid var(--border);
+      border-radius: 999px; padding: 6px 14px; margin-bottom: 1.5rem;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--mustard);
+    }
+    .dp-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900;
+      letter-spacing: -0.04em; line-height: 1.1; margin: 0 0 1.25rem;
+    }
+    .dp-hero-tagline {
+      font-size: 1.1rem; color: var(--text-muted); line-height: 1.7;
+      margin: 0 auto 2rem; max-width: 580px;
+    }
+    .dp-hero-price {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 2.2rem; font-weight: 900; color: var(--mustard);
+      letter-spacing: -0.03em; margin-bottom: 2rem;
+    }
+    .dp-hero-price small { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); }
+    .dp-hero-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .dp-guarantee-note { margin-top: 1rem; font-size: 0.8rem; color: var(--text-light); }
+    .dp-guarantee-note strong { color: var(--text-muted); }
+
+    /* Sections */
+    .dp-section { padding: 5rem 1.5rem; }
+    .dp-section.alt { background: var(--bg-muted); }
+    .dp-section-inner { max-width: var(--max-width); margin: 0 auto; }
+    .dp-section-head { text-align: center; margin-bottom: 3rem; }
+    .dp-section-head h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 900;
+      letter-spacing: -0.03em; margin: 0 0 0.75rem;
+    }
+    .dp-section-head h2 em { font-style: normal; color: var(--mustard); }
+    .dp-section-head p { color: var(--text-muted); line-height: 1.65; max-width: 540px; margin: 0 auto; }
+    .sec-label { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mustard); margin-bottom: 0.75rem; }
+
+    /* About */
+    .dp-about-text {
+      max-width: 700px; margin: 0 auto; font-size: 1.05rem;
+      line-height: 1.75; color: var(--text-muted); text-align: center;
+    }
+    .dp-about-text strong { color: var(--text); }
+
+    /* What you get */
+    .dp-gets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .dp-get-card {
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .dp-get-card:hover { border-color: var(--mustard); box-shadow: 0 4px 20px rgba(200,146,10,0.08); }
+    .dp-get-icon { font-size: 1.8rem; display: block; margin-bottom: 0.75rem; }
+    .dp-get-card h4 { font-size: 0.95rem; font-weight: 800; color: var(--text); margin: 0 0 0.5rem; }
+    .dp-get-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    /* Benefits */
+    .dp-benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .dp-benefit {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+    }
+    .dp-benefit-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .dp-benefit strong { display: block; font-size: 0.95rem; font-weight: 800; color: var(--text); margin-bottom: 0.3rem; }
+    .dp-benefit p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.55; margin: 0; }
+
+    /* Target */
+    .dp-targets { max-width: 600px; margin: 0 auto; }
+    .dp-targets ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+    .dp-targets li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 1rem 1.25rem; background: var(--bg-white);
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      font-size: 0.9rem; font-weight: 500; color: var(--text);
+    }
+
+    /* How to use */
+    .dp-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .dp-step {
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem; text-align: center;
+    }
+    .dp-step-num {
+      font-size: 3.5rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(200,146,10,0.15); line-height: 1; margin-bottom: 0.5rem;
+    }
+    .dp-step h4 { font-size: 0.95rem; font-weight: 800; color: var(--text); margin: 0 0 0.5rem; }
+    .dp-step p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    /* FAQ */
+    .dp-faqs { display: flex; flex-direction: column; gap: 1px; max-width: 700px; margin: 0 auto; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--border); }
+    .dp-faq-item { background: var(--bg-white); padding: 1.5rem; border-bottom: 1px solid var(--border); }
+    .dp-faq-item:last-child { border-bottom: none; }
+    .dp-faq-item h4 { font-size: 0.95rem; font-weight: 800; color: var(--text); margin: 0 0 0.5rem; }
+    .dp-faq-item p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    /* CTA Final */
+    .dp-cta-final {
+      background: var(--bg-muted); border-top: 1px solid var(--border);
+      padding: 5rem 1.5rem; text-align: center;
+    }
+    .dp-cta-inner { max-width: 640px; margin: 0 auto; }
+    .dp-cta-inner h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 900;
+      letter-spacing: -0.03em; margin: 0 0 1rem;
+    }
+    .dp-cta-inner h2 em { font-style: normal; color: var(--mustard); }
+    .dp-cta-inner p { color: var(--text-muted); line-height: 1.7; margin: 0 0 1.75rem; }
+    .dp-cta-price {
+      font-size: 2rem; font-weight: 900; color: var(--mustard);
+      letter-spacing: -0.03em; margin-bottom: 1.5rem; display: block;
+    }
+    .dp-cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .dp-back { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 1.5rem; transition: color 0.2s; }
+    .dp-back:hover { color: var(--mustard); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .dp-gets-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 700px) {
+      .dp-gets-grid, .dp-benefits-grid, .dp-steps { grid-template-columns: 1fr; }
+      .dp-hero, .dp-section, .dp-cta-final { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .dp-hero { padding-top: calc(64px + 3rem); padding-bottom: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="bk-nav">
+  <div class="bk-nav-inner">
+    <a href="index.html" class="bk-logo">Berkah<span>Karya</span></a>
+    <ul class="bk-nav-links">
+      <li><a href="services.html">Layanan</a></li>
+      <li><a href="digital-product.html">Produk Digital</a></li>
+      <li><a href="tools.html">Tools</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20konsultasi%20layanan" class="bk-nav-cta" target="_blank" rel="noopener">Konsultasi →</a>
+    <button class="bk-nav-mobile" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<section class="dp-hero">
+  <div class="dp-hero-inner">
+    <a href="digital-product.html" class="dp-back">← Kembali ke Katalog Produk</a>
+    <div class="dp-cat-tag">🎓 Edukasi</div>
+    <h1>📚 Guru Pintar AI — RPP & Modul Ajar 1 Semester</h1>
+    <p class="dp-hero-tagline">RPP 1 semester selesai dalam satu sore — guru bisa fokus ke hal yang lebih penting: mengajar.</p>
+    <div class="dp-hero-price">Rp 75.000 <small>one-time</small></div>
+    <div class="dp-hero-btns">
+      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20membeli%20Guru%20Pintar%20AI%20RPP%20&%20Modul%20Ajar%20(Rp%2075.000).%20Bagaimana%20cara%20pembeliannya%3F" class="btn-primary" target="_blank" rel="noopener">
+        🛒 Dapatkan Akses Sekarang
+      </a>
+      <a href="#tentang" class="btn-secondary">Pelajari Dulu ↓</a>
+    </div>
+    <p class="dp-guarantee-note"><strong>✓ Garansi uang kembali 7 hari</strong> · Update gratis seumur hidup · Akses langsung setelah pembayaran</p>
+  </div>
+</section>
+
+<!-- Tentang Produk -->
+<section class="dp-section alt" id="tentang">
+  <div class="dp-section-inner">
+    <div class="dp-section-head">
+      <span class="sec-label">Tentang Produk</span>
+      <h2>Kenapa Kamu <em>Butuh Ini?</em></h2>
+    </div>
+    <p class="dp-about-text">Guru Indonesia menghabiskan rata-rata 40% waktunya untuk administrasi: RPP, modul ajar, soal evaluasi, laporan. Waktu yang seharusnya bisa digunakan untuk siswa dan pengembangan diri. Guru Pintar AI hadir untuk mengubah itu — membantu guru menyelesaikan seluruh administrasi mengajar dalam waktu yang jauh lebih singkat menggunakan kekuatan AI.</p>
+  </div>
+</section>
+
+<!-- Apa yang Kamu Dapatkan -->
+<section class="dp-section" id="dapatkan">
+  <div class="dp-section-inner">
+    <div class="dp-section-head">
+      <span class="sec-label">Yang Kamu Dapatkan</span>
+      <h2>Isi <em>Lengkap</em> Produk</h2>
+    </div>
+    <div class="dp-gets-grid">
+      <div class="dp-get-card">
+        <span class="dp-get-icon">📋</span>
+        <h4>Template RPP Lengkap</h4>
+        <p>Template RPP yang sesuai format Kurikulum Merdeka dan Kurikulum 2013 — untuk semua mata pelajaran dan jenjang SD/SMP/SMA.</p>
+      </div>
+      <div class="dp-get-card">
+        <span class="dp-get-icon">📖</span>
+        <h4>Modul Ajar Generator</h4>
+        <p>Sistem prompt untuk generate modul ajar lengkap: tujuan pembelajaran, materi, kegiatan, dan asesmen dalam satu paket.</p>
+      </div>
+      <div class="dp-get-card">
+        <span class="dp-get-icon">📝</span>
+        <h4>Bank Soal Evaluasi</h4>
+        <p>Panduan dan prompt untuk membuat soal pilihan ganda, essay, dan proyek berbasis HOTS (Higher Order Thinking Skills).</p>
+      </div>
+      <div class="dp-get-card">
+        <span class="dp-get-icon">🎨</span>
+        <h4>Aktivitas Kreatif & Ice Breaker</h4>
+        <p>100+ ide aktivitas belajar yang menyenangkan dan interaktif untuk berbagai materi pelajaran dan usia siswa.</p>
+      </div>
+      <div class="dp-get-card">
+        <span class="dp-get-icon">📊</span>
+        <h4>Template Laporan & Penilaian</h4>
+        <p>Template rapor narasi, catatan perkembangan siswa, dan rubrik penilaian yang bisa langsung diisi dan dicetak.</p>
+      </div>
+      <div class="dp-get-card">
+        <span class="dp-get-icon">🔄</span>
+        <h4>Prompt Diferensiasi Pembelajaran</h4>
+        <p>Panduan membuat variasi kegiatan untuk siswa dengan kebutuhan belajar berbeda (diferensiasi konten, proses, produk).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Manfaat -->
+<section class="dp-section alt" id="manfaat">
+  <div class="dp-section-inner">
+    <div class="dp-section-head">
+      <span class="sec-label">Manfaat</span>
+      <h2>Hasil <em>Nyata</em> yang Kamu Dapat</h2>
+    </div>
+    <div class="dp-benefits-grid">
+      <div class="dp-benefit">
+        <span class="dp-benefit-icon">⏰</span>
+        <div>
+          <strong>Hemat Waktu 70%</strong>
+          <p>RPP yang biasanya makan 3-4 jam bisa diselesaikan dalam 30-45 menit dengan bantuan AI.</p>
+        </div>
+      </div>
+      <div class="dp-benefit">
+        <span class="dp-benefit-icon">✅</span>
+        <div>
+          <strong>Sesuai Standar Kurikulum</strong>
+          <p>Template dan panduan disesuaikan dengan standar Kemdikbud terbaru untuk Kurikulum Merdeka.</p>
+        </div>
+      </div>
+      <div class="dp-benefit">
+        <span class="dp-benefit-icon">🎯</span>
+        <div>
+          <strong>Kualitas Lebih Konsisten</strong>
+          <p>Framework yang terstruktur memastikan RPP dan modul selalu lengkap dan tidak ada yang terlewat.</p>
+        </div>
+      </div>
+      <div class="dp-benefit">
+        <span class="dp-benefit-icon">😌</span>
+        <div>
+          <strong>Kurangi Burnout Guru</strong>
+          <p>Beban administrasi yang berkurang = lebih banyak energi untuk mengajar dengan passion.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Target Pengguna -->
+<section class="dp-section" id="target">
+  <div class="dp-section-inner">
+    <div class="dp-section-head">
+      <span class="sec-label">Siapa yang Cocok</span>
+      <h2>Produk Ini <em>Untuk Kamu</em> Jika...</h2>
+    </div>
+    <div class="dp-targets">
+      <ul>
+      <li>✓ Guru SD, SMP, dan SMA semua mata pelajaran</li>
+      <li>✓ Kepala sekolah dan pengawas yang ingin standarisasi dokumen</li>
+      <li>✓ Guru honorer yang mengelola banyak kelas sekaligus</li>
+      <li>✓ Mahasiswa calon guru yang belajar membuat perangkat ajar</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Cara Pakai -->
+<section class="dp-section alt" id="cara-pakai">
+  <div class="dp-section-inner">
+    <div class="dp-section-head">
+      <span class="sec-label">Cara Pakai</span>
+      <h2>Mulai dalam <em>3 Langkah</em></h2>
+    </div>
+    <div class="dp-steps">
+      <div class="dp-step">
+        <div class="dp-step-num">1</div>
+        <h4>Tentukan Mata Pelajaran & Kelas</h4>
+        <p>Pilih template yang sesuai dengan mata pelajaran, kelas, dan kurikulum yang digunakan di sekolah kamu.</p>
+      </div>
+      <div class="dp-step">
+        <div class="dp-step-num">2</div>
+        <h4>Input Kompetensi Dasar</h4>
+        <p>Masukkan KD atau CP (Capaian Pembelajaran) ke dalam prompt AI untuk generate RPP lengkap secara otomatis.</p>
+      </div>
+      <div class="dp-step">
+        <div class="dp-step-num">3</div>
+        <h4>Review & Personalisasi</h4>
+        <p>Review output AI, tambahkan konteks lokal dan karakter kelas kamu, lalu simpan dalam format yang dibutuhkan (PDF/Word).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="dp-section" id="faq">
+  <div class="dp-section-inner">
+    <div class="dp-section-head">
+      <span class="sec-label">FAQ</span>
+      <h2>Pertanyaan yang <em>Sering Ditanya</em></h2>
+    </div>
+    <div class="dp-faqs">
+      <div class="dp-faq-item">
+        <h4>Bisa untuk Kurikulum Merdeka?</h4>
+        <p>Ya, template utama sudah disesuaikan untuk Kurikulum Merdeka termasuk format Modul Ajar dan ATP (Alur Tujuan Pembelajaran).</p>
+      </div>
+      <div class="dp-faq-item">
+        <h4>Semua mata pelajaran tersedia?</h4>
+        <p>Ada panduan umum yang bisa diterapkan ke semua mata pelajaran, plus template spesifik untuk Matematika, Bahasa Indonesia, IPA, IPS, dan Bahasa Inggris.</p>
+      </div>
+      <div class="dp-faq-item">
+        <h4>Apakah RPP-nya bisa langsung dicetak?</h4>
+        <p>Ya, output bisa langsung di-copy ke Word, diformat, dan dicetak. Template Word juga tersedia di dalam paket.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Final -->
+<section class="dp-cta-final">
+  <div class="dp-cta-inner">
+    <span class="sec-label" style="text-align:center;">Dapatkan Sekarang</span>
+    <h2>Siap? Mulai<br><em>Hari Ini</em></h2>
+    <p>One-time payment. Akses selamanya. Update gratis. Garansi 7 hari uang kembali.</p>
+    <span class="dp-cta-price">Rp 75.000</span>
+    <div class="dp-cta-buttons">
+      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20membeli%20Guru%20Pintar%20AI%20RPP%20&%20Modul%20Ajar%20(Rp%2075.000).%20Bagaimana%20cara%20pembeliannya%3F" class="btn-primary" target="_blank" rel="noopener">
+        🛒 Dapatkan Akses Sekarang
+      </a>
+      <a href="digital-product.html" class="btn-secondary">Lihat Produk Lain</a>
+    </div>
+  </div>
+</section>
+
+<footer class="bk-footer">
+  <div class="bk-footer-inner">
+    <div class="bk-footer-brand">
+      <div class="bk-logo">Berkah<span>Karya</span></div>
+      <p>AI Ecosystem untuk bisnis Indonesia — agency kreatif, AI tools, dan produk digital siap pakai.</p>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Produk Digital</h5>
+      <ul>
+        <li><a href="dp-parenting.html">Panduan Parenting</a></li>
+        <li><a href="dp-job-magnet.html">JobMagnet AI</a></li>
+        <li><a href="dp-ai-ad-engine.html">AI Ad Engine</a></li>
+        <li><a href="dp-food-menu.html">Food Menu AI</a></li>
+        <li><a href="dp-ai-creative-tools.html">AI Creative Tools</a></li>
+        <li><a href="dp-guru-ai.html">Guru Pintar AI</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Layanan</h5>
+      <ul>
+        <li><a href="jasa-sosmed.html">Kelola Sosmed</a></li>
+        <li><a href="jasa-video-ai.html">Jasa Video AI</a></li>
+        <li><a href="jasa-website.html">Jasa Website</a></li>
+        <li><a href="ai-agent-pro.html">AI Agent Pro</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Perusahaan</h5>
+      <ul>
+        <li><a href="about.html">Tentang Kami</a></li>
+        <li><a href="contact.html">Kontak</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="legal/privacy-policy.html">Privasi</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bk-footer-bottom">
+    <span>© 2025 BerkahKarya. All rights reserved.</span>
+    <span>Made with ❤️ + 🤖 AI in Indonesia</span>
+  </div>
+</footer>
+<script>
+  const _btn = document.querySelector('.bk-nav-mobile');
+  const _nav = document.querySelector('.bk-nav');
+  if (_btn && _nav) _btn.addEventListener('click', () => _nav.classList.toggle('open'));
+</script>
+</body>
+</html>

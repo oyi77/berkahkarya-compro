@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Menu AI Studio — BerkahKarya</title>
+  <meta name="description" content="Foto menu bintang 5 bermodal kamera HP. Dapatkan preset plating, latar belakang profesional, dan panduan pembuatan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── DP Landing Page styles ─── */
+    .dp-hero {
+      background: var(--bg-white); border-bottom: 1px solid var(--border);
+      padding: calc(64px + 5rem) 1.5rem 5rem; text-align: center;
+    }
+    .dp-hero-inner { max-width: 760px; margin: 0 auto; }
+    .dp-cat-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg-muted); border: 1px solid var(--border);
+      border-radius: 999px; padding: 6px 14px; margin-bottom: 1.5rem;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--mustard);
+    }
+    .dp-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900;
+      letter-spacing: -0.04em; line-height: 1.1; margin: 0 0 1.25rem;
+    }
+    .dp-hero-tagline {
+      font-size: 1.1rem; color: var(--text-muted); line-height: 1.7;
+      margin: 0 auto 2rem; max-width: 580px;
+    }
+    .dp-hero-price {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 2.2rem; font-weight: 900; color: var(--mustard);
+      letter-spacing: -0.03em; margin-bottom: 2rem;
+    }
+    .dp-hero-price small { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); }
+    .dp-hero-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .dp-guarantee-note { margin-top: 1rem; font-size: 0.8rem; color: var(--text-light); }
+    .dp-guarantee-note strong { color: var(--text-muted); }
+
+    /* Sections */
+    .dp-section { padding: 5rem 1.5rem; }
+    .dp-section.alt { background: var(--bg-muted); }
+    .dp-section-inner { max-width: var(--max-width); margin: 0 auto; }
+    .dp-section-head { text-align: center; margin-bottom: 3rem; }
+    .dp-section-head h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 900;
+      letter-spacing: -0.03em; margin: 0 0 0.75rem;
+    }
+    .dp-section-head h2 em { font-style: normal; color: var(--mustard); }
+    .dp-section-head p { color: var(--text-muted); line-height: 1.65; max-width: 540px; margin: 0 auto; }
+    .sec-label { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mustard); margin-bottom: 0.75rem; }
+
+    /* About */
+    .dp-about-text {
+      max-width: 700px; margin: 0 auto; font-size: 1.05rem;
+      line-height: 1.75; color: var(--text-muted); text-align: center;
+    }
+    .dp-about-text strong { color: var(--text); }
+
+    /* What you get */
+    .dp-gets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .dp-get-card {
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .dp-get-card:hover { border-color: var(--mustard); box-shadow: 0 4px 20px rgba(200,146,10,0.08); }
+    .dp-get-icon { font-size: 1.8rem; display: block; margin-bottom: 0.75rem; }
+    .dp-get-card h4 { font-size: 0.95rem; font-weight: 800; color: var(--text); margin: 0 0 0.5rem; }
+    .dp-get-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    /* Benefits */
+    .dp-benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .dp-benefit {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+    }
+    .dp-benefit-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .dp-benefit strong { display: block; font-size: 0.95rem; font-weight: 800; color: var(--text); margin-bottom: 0.3rem; }
+    .dp-benefit p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.55; margin: 0; }
+
+    /* Target */
+    .dp-targets { max-width: 600px; margin: 0 auto; }
+    .dp-targets ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+    .dp-targets li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 1rem 1.25rem; background: var(--bg-white);
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      font-size: 0.9rem; font-weight: 500; color: var(--text);
+    }
+
+    /* How to use */
+    .dp-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .dp-step {
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem; text-align: center;
+    }
+    .dp-step-num {
+      font-size: 3.5rem; font-weight: 900; letter-spacing: -0.04em;
+      color: rgba(200,146,10,0.15); line-height: 1; margin-bottom: 0.5rem;
+    }
+    .dp-step h4 { font-size: 0.95rem; font-weight: 800; color: var(--text); margin: 0 0 0.5rem; }
+    .dp-step p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    /* FAQ */
+    .dp-faqs { display: flex; flex-direction: column; gap: 1px; max-width: 700px; margin: 0 auto; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--border); }
+    .dp-faq-item { background: var(--bg-white); padding: 1.5rem; border-bottom: 1px solid var(--border); }
+    .dp-faq-item:last-child { border-bottom: none; }
+    .dp-faq-item h4 { font-size: 0.95rem; font-weight: 800; color: var(--text); margin: 0 0 0.5rem; }
+    .dp-faq-item p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    /* CTA Final */
+    .dp-cta-final {
+      background: var(--bg-muted); border-top: 1px solid var(--border);
+      padding: 5rem 1.5rem; text-align: center;
+    }
+    .dp-cta-inner { max-width: 640px; margin: 0 auto; }
+    .dp-cta-inner h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 900;
+      letter-spacing: -0.03em; margin: 0 0 1rem;
+    }
+    .dp-cta-inner h2 em { font-style: normal; color: var(--mustard); }
+    .dp-cta-inner p { color: var(--text-muted); line-height: 1.7; margin: 0 0 1.75rem; }
+    .dp-cta-price {
+      font-size: 2rem; font-weight: 900; color: var(--mustard);
+      letter-spacing: -0.03em; margin-bottom: 1.5rem; display: block;
+    }
+    .dp-cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .dp-back { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 1.5rem; transition: color 0.2s; }
+    .dp-back:hover { color: var(--mustard); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .dp-gets-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 700px) {
+      .dp-gets-grid, .dp-benefits-grid, .dp-steps { grid-template-columns: 1fr; }
+      .dp-hero, .dp-section, .dp-cta-final { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .dp-hero { padding-top: calc(64px + 3rem); padding-bottom: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="bk-nav">
+  <div class="bk-nav-inner">
+    <a href="index.html" class="bk-logo">Berkah<span>Karya</span></a>
+    <ul class="bk-nav-links">
+      <li><a href="services.html">Layanan</a></li>
+      <li><a href="digital-product.html">Produk Digital</a></li>
+      <li><a href="tools.html">Tools</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20konsultasi%20layanan" class="bk-nav-cta" target="_blank" rel="noopener">Konsultasi →</a>
+    <button class="bk-nav-mobile" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<section class="dp-hero">
+  <div class="dp-hero-inner">
+    <a href="digital-product.html" class="dp-back">← Kembali ke Katalog Produk</a>
+    <div class="dp-cat-tag">🍽️ Bisnis</div>
+    <h1>📸 Food Menu AI Studio</h1>
+    <p class="dp-hero-tagline">Foto makananmu seperti bintang 5 — cukup dengan HP dan panduan yang tepat.</p>
+    <div class="dp-hero-price">Rp 75.000 <small>one-time</small></div>
+    <div class="dp-hero-btns">
+      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20membeli%20Food%20Menu%20AI%20Studio%20(Rp%2075.000).%20Bagaimana%20cara%20pembeliannya%3F" class="btn-primary" target="_blank" rel="noopener">
+        🛒 Dapatkan Akses Sekarang
+      </a>
+      <a href="#tentang" class="btn-secondary">Pelajari Dulu ↓</a>
+    </div>
+    <p class="dp-guarantee-note"><strong>✓ Garansi uang kembali 7 hari</strong> · Update gratis seumur hidup · Akses langsung setelah pembayaran</p>
+  </div>
+</section>
+
+<!-- Tentang Produk -->
+<section class="dp-section alt" id="tentang">
+  <div class="dp-section-inner">
+    <div class="dp-section-head">
+      <span class="sec-label">Tentang Produk</span>
+      <h2>Kenapa Kamu <em>Butuh Ini?</em></h2>
+    </div>
+    <p class="dp-about-text">Foto menu yang buruk membunuh nafsu makan pelanggan bahkan sebelum mereka mencicipi makanannya. Food Menu AI Studio hadir untuk mengubah foto HP biasa menjadi visual menu yang menggugah selera — tanpa kamera mahal, tanpa fotografer profesional, tanpa studio sewa jutaan rupiah.</p>
+  </div>
+</section>
+
+<!-- Apa yang Kamu Dapatkan -->
+<section class="dp-section" id="dapatkan">
+  <div class="dp-section-inner">
+    <div class="dp-section-head">
+      <span class="sec-label">Yang Kamu Dapatkan</span>
+      <h2>Isi <em>Lengkap</em> Produk</h2>
+    </div>
+    <div class="dp-gets-grid">
+      <div class="dp-get-card">
+        <span class="dp-get-icon">🎨</span>
+        <h4>50+ Preset Plating & Styling</h4>
+        <p>Panduan plating untuk berbagai jenis makanan: nasi, mie, kopi, kue, street food, dan fine dining — lengkap dengan foto referensi.</p>
+      </div>
+      <div class="dp-get-card">
+        <span class="dp-get-icon">🖼️</span>
+        <h4>Template Background Digital</h4>
+        <p>100+ background digital berkualitas tinggi yang bisa digunakan sebagai latar foto menu — dari kayu rustic sampai marble elegan.</p>
+      </div>
+      <div class="dp-get-card">
+        <span class="dp-get-icon">✏️</span>
+        <h4>Prompt AI Image Enhancement</h4>
+        <p>Prompt untuk tools AI (Canva AI, Adobe Firefly, Midjourney) untuk enhance foto makanan: perbaiki pencahayaan, hapus background, tambahkan efek steam.</p>
+      </div>
+      <div class="dp-get-card">
+        <span class="dp-get-icon">💡</span>
+        <h4>Panduan Lighting HP</h4>
+        <p>Teknik pencahayaan natural dan artifisial menggunakan ring light murah atau cahaya matahari — untuk foto konsisten setiap saat.</p>
+      </div>
+      <div class="dp-get-card">
+        <span class="dp-get-icon">📐</span>
+        <h4>Komposisi & Angle Guide</h4>
+        <p>Panduan komposisi foto untuk setiap jenis makanan: sudut terbaik, rule of thirds, dan cara membuat makanan terlihat lebih besar dan menggiurkan.</p>
+      </div>
+      <div class="dp-get-card">
+        <span class="dp-get-icon">📱</span>
+        <h4>Template Menu Digital</h4>
+        <p>15+ template desain menu digital (Canva-editable) untuk WhatsApp Business, Instagram, dan GoFood/GrabFood.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Manfaat -->
+<section class="dp-section alt" id="manfaat">
+  <div class="dp-section-inner">
+    <div class="dp-section-head">
+      <span class="sec-label">Manfaat</span>
+      <h2>Hasil <em>Nyata</em> yang Kamu Dapat</h2>
+    </div>
+    <div class="dp-benefits-grid">
+      <div class="dp-benefit">
+        <span class="dp-benefit-icon">💸</span>
+        <div>
+          <strong>Hemat Biaya Fotografer</strong>
+          <p>Foto menu profesional bisa menelan jutaan per sesi. Dengan panduan ini, kamu bisa foto sendiri kapanpun.</p>
+        </div>
+      </div>
+      <div class="dp-benefit">
+        <span class="dp-benefit-icon">📈</span>
+        <div>
+          <strong>Tingkatkan Pesanan</strong>
+          <p>Visual makanan yang menarik terbukti meningkatkan konversi di platform delivery dan media sosial.</p>
+        </div>
+      </div>
+      <div class="dp-benefit">
+        <span class="dp-benefit-icon">⚡</span>
+        <div>
+          <strong>Cepat & Praktis</strong>
+          <p>Setup foto bisa dilakukan dalam 10 menit, tidak perlu peralatan khusus selain HP dan ring light sederhana.</p>
+        </div>
+      </div>
+      <div class="dp-benefit">
+        <span class="dp-benefit-icon">🔄</span>
+        <div>
+          <strong>Konsistensi Brand</strong>
+          <p>Panduan yang terstruktur memastikan foto menu kamu punya gaya visual yang konsisten dan profesional.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Target Pengguna -->
+<section class="dp-section" id="target">
+  <div class="dp-section-inner">
+    <div class="dp-section-head">
+      <span class="sec-label">Siapa yang Cocok</span>
+      <h2>Produk Ini <em>Untuk Kamu</em> Jika...</h2>
+    </div>
+    <div class="dp-targets">
+      <ul>
+      <li>✓ Pemilik restoran, warung, atau kafe</li>
+      <li>✓ Pelaku usaha kuliner di platform delivery (GoFood, GrabFood, ShopeeFood)</li>
+      <li>✓ UMKM makanan yang berjualan via Instagram atau WhatsApp</li>
+      <li>✓ Catering dan bisnis kue rumahan</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Cara Pakai -->
+<section class="dp-section alt" id="cara-pakai">
+  <div class="dp-section-inner">
+    <div class="dp-section-head">
+      <span class="sec-label">Cara Pakai</span>
+      <h2>Mulai dalam <em>3 Langkah</em></h2>
+    </div>
+    <div class="dp-steps">
+      <div class="dp-step">
+        <div class="dp-step-num">1</div>
+        <h4>Setup Area Foto</h4>
+        <p>Ikuti panduan lighting dan pilih background digital yang sesuai dengan konsep restoran kamu.</p>
+      </div>
+      <div class="dp-step">
+        <div class="dp-step-num">2</div>
+        <h4>Plate & Foto</h4>
+        <p>Gunakan panduan plating untuk menata makanan. Ambil foto dengan HP menggunakan komposisi dan angle yang disarankan.</p>
+      </div>
+      <div class="dp-step">
+        <div class="dp-step-num">3</div>
+        <h4>Enhance dengan AI</h4>
+        <p>Masukkan foto ke Canva AI atau tools yang disarankan menggunakan prompt yang sudah disediakan untuk hasil foto level profesional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="dp-section" id="faq">
+  <div class="dp-section-inner">
+    <div class="dp-section-head">
+      <span class="sec-label">FAQ</span>
+      <h2>Pertanyaan yang <em>Sering Ditanya</em></h2>
+    </div>
+    <div class="dp-faqs">
+      <div class="dp-faq-item">
+        <h4>HP merek apa yang direkomendasikan?</h4>
+        <p>Panduan ini bekerja untuk HP apapun dengan kamera minimal 12MP. Tips khusus tersedia untuk iPhone dan Android flagship.</p>
+      </div>
+      <div class="dp-faq-item">
+        <h4>Perlu beli background fisik?</h4>
+        <p>Tidak wajib. Panduan menyediakan 2 metode: background digital (layar laptop/print) dan background fisik sederhana dari bahan murah.</p>
+      </div>
+      <div class="dp-faq-item">
+        <h4>Apakah termasuk editing tutorial?</h4>
+        <p>Ya, ada panduan editing menggunakan Lightroom Mobile (gratis), Snapseed, dan Canva untuk touch-up akhir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Final -->
+<section class="dp-cta-final">
+  <div class="dp-cta-inner">
+    <span class="sec-label" style="text-align:center;">Dapatkan Sekarang</span>
+    <h2>Siap? Mulai<br><em>Hari Ini</em></h2>
+    <p>One-time payment. Akses selamanya. Update gratis. Garansi 7 hari uang kembali.</p>
+    <span class="dp-cta-price">Rp 75.000</span>
+    <div class="dp-cta-buttons">
+      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20membeli%20Food%20Menu%20AI%20Studio%20(Rp%2075.000).%20Bagaimana%20cara%20pembeliannya%3F" class="btn-primary" target="_blank" rel="noopener">
+        🛒 Dapatkan Akses Sekarang
+      </a>
+      <a href="digital-product.html" class="btn-secondary">Lihat Produk Lain</a>
+    </div>
+  </div>
+</section>
+
+<footer class="bk-footer">
+  <div class="bk-footer-inner">
+    <div class="bk-footer-brand">
+      <div class="bk-logo">Berkah<span>Karya</span></div>
+      <p>AI Ecosystem untuk bisnis Indonesia — agency kreatif, AI tools, dan produk digital siap pakai.</p>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Produk Digital</h5>
+      <ul>
+        <li><a href="dp-parenting.html">Panduan Parenting</a></li>
+        <li><a href="dp-job-magnet.html">JobMagnet AI</a></li>
+        <li><a href="dp-ai-ad-engine.html">AI Ad Engine</a></li>
+        <li><a href="dp-food-menu.html">Food Menu AI</a></li>
+        <li><a href="dp-ai-creative-tools.html">AI Creative Tools</a></li>
+        <li><a href="dp-guru-ai.html">Guru Pintar AI</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Layanan</h5>
+      <ul>
+        <li><a href="jasa-sosmed.html">Kelola Sosmed</a></li>
+        <li><a href="jasa-video-ai.html">Jasa Video AI</a></li>
+        <li><a href="jasa-website.html">Jasa Website</a></li>
+        <li><a href="ai-agent-pro.html">AI Agent Pro</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Perusahaan</h5>
+      <ul>
+        <li><a href="about.html">Tentang Kami</a></li>
+        <li><a href="contact.html">Kontak</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="legal/privacy-policy.html">Privasi</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bk-footer-bottom">
+    <span>© 2025 BerkahKarya. All rights reserved.</span>
+    <span>Made with ❤️ + 🤖 AI in Indonesia</span>
+  </div>
+</footer>
+<script>
+  const _btn = document.querySelector('.bk-nav-mobile');
+  const _nav = document.querySelector('.bk-nav');
+  if (_btn && _nav) _btn.addEventListener('click', () => _nav.classList.toggle('open'));
+</script>
+</body>
+</html>
