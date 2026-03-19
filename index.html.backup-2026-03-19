@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berkah Karya - Digital Growth Agency</title>
+    <meta name="description" content="Digital growth agency membantu brand tumbuh melalui TikTok Content Agency, E-commerce Optimization, dan FlashRobs Trading Bot">
+    <meta name="facebook-domain-verification" content="vo4g6nsn3kqvqmmzxd9rx2gt62dy07" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Berkah Karya Logo" class="logo-img">
+                <span class="brand-text">Berkah Karya</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html" data-i18n="nav.home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html" data-i18n="nav.services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portfolio.html" data-i18n="nav.portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pricing.html" data-i18n="nav.pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ai-agent-pro.html">AI Agent Pro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link highlight" href="contact.html" data-i18n="nav.contact">Get 3 Free Videos</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <button id="lang-toggle" class="btn btn-sm btn-outline-primary" onclick="toggleLanguage()">EN</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="d-flex align-items-center content-section pt-5 mt-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <span class="hero-badge" data-i18n="hero.badge">Digital Growth Agency</span>
+                        <h1 data-i18n="hero.title">Kami Bantu Brand Anda Tumbuh Lewat Strategi Digital yang Terbukti</h1>
+                        <p class="hero-subtitle" data-i18n="hero.subtitle">Spesialis dalam digital campaign, konten kreatif, dan iklan performa tinggi</p>
+                        <p class="hero-text" data-i18n="hero.text">Kami menggabungkan strategi berbasis data dengan kreativitas untuk memberikan hasil yang terukur bagi bisnis di Indonesia.</p>
+                        <div class="hero-buttons">
+                            <a href="contact.html" class="btn btn-primary">
+                                <i class="fas fa-rocket"></i> <span data-i18n="hero.btn.consultation">Dapatkan Konsultasi Gratis</span>
+                            </a>
+                            <a href="services.html" class="btn btn-outline">
+                                <i class="fas fa-arrow-right"></i> <span data-i18n="hero.btn.services">Jelajahi Layanan Kami</span>
+                            </a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label" data-i18n="hero.stat.projects">Proyek Selesai</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">98%</span>
+                                <span class="stat-label" data-i18n="hero.stat.satisfaction">Kepuasan Klien</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">3+</span>
+                                <span class="stat-label" data-i18n="hero.stat.experience">Tahun Pengalaman</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        <div class="hero-shape"></div>
+                        <div class="hero-illustration">
+                            <div class="tech-element tech-element-1"></div>
+                            <div class="tech-element tech-element-2"></div>
+                            <div class="tech-element tech-element-3"></div>
+                        </div>
+                        <div class="floating-card card-1">
+                            <i class="fas fa-chart-line"></i>
+                            <span data-i18n="hero.card.analytics">Growth Analytics</span>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fas fa-bullseye"></i>
+                            <span data-i18n="hero.card.marketing">Target Marketing</span>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="fas fa-users"></i>
+                            <span data-i18n="hero.card.success">Client Success</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features / Problems Section -->
+    <section id="problems" class="section-padding content-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 data-i18n="problems.title">Mengalami Tantangan Tumbuh Digital?</h2>
+                <p data-i18n="problems.subtitle">Dalam dunia digital yang berkembang pesat, untuk bertahan diperlukan keahlian khusus</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3 data-i18n="problems.ecommerce.title">Kesulitan E-commerce</h3>
+                        <p data-i18n="problems.ecommerce.desc">Apakah Shopee atau TikTok Shop Anda kesulitan mengubah pengunjung menjadi pelanggan? Kami bisa membantu Anda mengoptimalkan penjualan melalui strategi yang tepat.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 data-i18n="problems.seo.title">Kesulitan SEO</h3>
+                        <p data-i18n="problems.seo.desc">Apakah Anda tidak terlihat oleh pelanggan potensial di Internet? Kami bisa membantu Anda meningkatkan visibilitas melalui strategi SEO yang tepat.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 data-i18n="problems.trading.title">Kesulitan Trading</h3>
+                        <p data-i18n="problems.trading.desc">Apakah volatilitas pasar dan keputusan emosional mempengaruhi kinerja trading Anda? Kami bisa membantu Anda mengoptimalkan trading melalui strategi yang tepat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section py-5 bg-light">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <span class="section-badge"><i class="fas fa-question-circle"></i> FAQ</span>
+                <h2 class="section-title">Pertanyaan yang Sering Ditanyakan</h2>
+                <p class="section-subtitle">Temukan jawaban untuk pertanyaan umum tentang layanan kami</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item mb-3">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Berapa lama waktu untuk melihat hasil?
+                                </button>
+                            </h3>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <!-- TODO: Add actual answer -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Industri apa saja yang Anda layani?
+                                </button>
+                            </h3>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <!-- TODO: Add actual answer -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Apakah Anda menawarkan jaminan?
+                                </button>
+                            </h3>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <!-- TODO: Add actual answer -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    Bagaimana sistem pembayaran?
+                                </button>
+                            </h3>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <!-- TODO: Add actual answer -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    Bisakah saya membatalkan kapan saja?
+                                </button>
+                            </h3>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <!-- TODO: Add actual answer -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                                    Informasi apa yang Anda butuhkan untuk memulai?
+                                </button>
+                            </h3>
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <!-- TODO: Add actual answer -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+    <!-- Footer -->
+    <footer class="footer content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <h3 data-i18n="footer.brand">Berkah Karya</h3>
+                        <p data-i18n="footer.brand.desc">Elevating digital presence through data-driven strategies and local expertise.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-links">
+                        <h4 data-i18n="footer.services.heading">Services</h4>
+                        <ul>
+                            <li><a href="services.html" data-i18n="footer.services.tiktok">TikTok Content Agency</a></li>
+                            <li><a href="services.html" data-i18n="footer.services.seo">E-commerce Optimization</a></li>
+                            <li><a href="services.html" data-i18n="footer.services.trading">FlashRobs Trading Bot</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-links">
+                        <h4 data-i18n="footer.company.heading">Company</h4>
+                        <ul>
+                            <li><a href="about.html" data-i18n="footer.company.about">About Us</a></li>
+                            <li><a href="portfolio.html" data-i18n="footer.company.casestudies">Case Studies</a></li>
+                            <li><a href="contact.html" data-i18n="footer.company.contact">Contact</a></li>
+                            <li><a href="legal/terms-of-service.html" data-i18n="footer.company.terms">Terms of Service</a></li>
+                            <li><a href="legal/privacy-policy.html" data-i18n="footer.company.privacy">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-newsletter">
+                        <h4 data-i18n="footer.newsletter.heading">Stay Updated</h4>
+                        <p data-i18n="footer.newsletter.desc">Subscribe to our newsletter for the latest digital marketing insights</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email address" data-i18n-placeholder="footer.newsletter.placeholder">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p data-i18n-html="footer.copyright">&copy; 2026 Berkah Karya. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Tawk.to Script -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6856a535552cdd190f7b5186/1iu97amv4';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <script src="js/i18n.js"></script>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6285732740006" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>

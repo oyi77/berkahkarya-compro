@@ -1,0 +1,36 @@
+=== Task 2: CSS Variables Evidence ===
+Date: Mon Mar  2 03:35:00 PM WIB 2026
+
+--- Check 1: --primary-rgb defined in :root ---
+Count: 6
+  --primary-rgb: 37, 99, 235;
+    background: rgba(var(--primary-rgb), 0.1);
+    background: rgba(var(--primary-rgb), 0.05);
+.highlight-item:hover { background: rgba(var(--primary-rgb), 0.1); transform: translateY(-5px); }
+    background: rgba(var(--primary-rgb), 0.02);
+    background: rgba(var(--primary-rgb), 0.05);
+
+--- Check 2: --primary-color defined in :root ---
+Count: 11
+  --primary-color: var(--primary);
+
+--- Check 3: --heading-color defined in :root ---
+Count: 4
+  --heading-color: var(--dark);
+
+--- Check 4: --text-color defined in :root ---
+Count: 8
+  --text-color: var(--medium);
+
+--- Check 5: --secondary-color defined ---
+  --secondary-color: var(--secondary);
+
+--- Check 6: :root section ---
+  /* Variable Aliases */
+  --primary-color: var(--primary);
+  --secondary-color: var(--secondary);
+  --heading-color: var(--dark);
+  --text-color: var(--medium);
+  --primary-rgb: 37, 99, 235;
+
+All variable checks PASSED

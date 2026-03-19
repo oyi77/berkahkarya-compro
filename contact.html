@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hubungi Kami - Berkah Karya</title>
+    <meta name="description" content="Konsultasi gratis untuk strategi pertumbuhan digital bisnis Anda. Hubungi tim Berkah Karya sekarang">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Berkah Karya Logo" class="logo-img">
+                <span class="brand-text">Berkah Karya</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" data-i18n="nav.home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html" data-i18n="nav.services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portfolio.html" data-i18n="nav.portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pricing.html" data-i18n="nav.pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link highlight active" aria-current="page" href="contact.html" data-i18n="nav.contact">Get 3 Free Videos</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <button id="lang-toggle" class="btn btn-sm btn-outline-primary" onclick="toggleLanguage()">EN</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="contact" class="py-5 content-section bg-light pt-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-form-container">
+                        <div class="section-header text-center">
+                            <span class="section-badge"><i class="fas fa-envelope"></i> <span data-i18n="contact.badge">Hubungi Kami</span></span>
+                            <h2 class="section-title" data-i18n="contact.title">Mulai Transformasi Digital Anda</h2>
+                            <p class="section-subtitle" data-i18n="contact.subtitle">Konsultasi gratis untuk strategi pertumbuhan bisnis Anda</p>
+                        </div>
+                        
+                        <form id="contactForm" class="needs-validation" novalidate data-netlify="true">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label" data-i18n="contact.form.name">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label" data-i18n="contact.form.email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="subject" class="form-label" data-i18n="contact.form.subject">Topik</label>
+                                    <select class="form-select" id="subject" name="subject">
+                                        <option value="tiktok" data-i18n="contact.form.subject.tiktok">TikTok Content Agency (3 Free Videos)</option>
+                                        <option value="seo" data-i18n="contact.form.subject.ecommerce">E-commerce Optimization</option>
+                                        <option value="trading" data-i18n="contact.form.subject.trading">FlashRobs Trading Bot</option>
+                                        <option value="other" data-i18n="contact.form.subject.other">Lainnya</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label" data-i18n="contact.form.message">Pesan</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" required placeholder="Ceritakan tentang bisnis Anda..." data-i18n-placeholder="contact.form.message.placeholder"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary w-100 py-3">
+                                        <i class="fas fa-paper-plane"></i> <span data-i18n="contact.form.submit">Kirim Pesan</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <h3 data-i18n="footer.brand">Berkah Karya</h3>
+                        <p data-i18n="footer.brand.desc">Elevating digital presence through data-driven strategies and local expertise.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-links">
+                        <h4 data-i18n="footer.services.heading">Services</h4>
+                        <ul>
+                            <li><a href="services.html" data-i18n="footer.services.tiktok">TikTok Content Agency</a></li>
+                            <li><a href="services.html" data-i18n="footer.services.seo">E-commerce Optimization</a></li>
+                            <li><a href="services.html" data-i18n="footer.services.trading">FlashRobs Trading Bot</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-links">
+                        <h4 data-i18n="footer.company.heading">Company</h4>
+                        <ul>
+                            <li><a href="about.html" data-i18n="footer.company.about">About Us</a></li>
+                            <li><a href="portfolio.html" data-i18n="footer.company.casestudies">Case Studies</a></li>
+                            <li><a href="contact.html" data-i18n="footer.company.contact">Contact</a></li>
+                            <li><a href="legal/terms-of-service.html" data-i18n="footer.company.terms">Terms of Service</a></li>
+                            <li><a href="legal/privacy-policy.html" data-i18n="footer.company.privacy">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="footer-newsletter">
+                        <h4 data-i18n="footer.newsletter.heading">Stay Updated</h4>
+                        <p data-i18n="footer.newsletter.desc">Subscribe to our newsletter for the latest digital marketing insights</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email address" data-i18n-placeholder="footer.newsletter.placeholder">
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p data-i18n-html="footer.copyright">&copy; 2026 Berkah Karya. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Tawk.to Script -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6856a535552cdd190f7b5186/1iu97amv4';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <script src="js/i18n.js"></script>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6285732740006" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>

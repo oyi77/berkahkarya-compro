@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BerkahKarya AI Video Studio — Generate video AI untuk TikTok, Instagram, YouTube, Facebook langsung dari Telegram. Mulai gratis, 3 kredit gratis!">
+<meta name="keywords" content="AI video generator, video AI Indonesia, TikTok video AI, buat video otomatis, content creator AI">
+<meta property="og:title" content="BerkahKarya AI Video Studio — Buat Video AI di Telegram">
+<meta property="og:description" content="Generate video AI untuk TikTok, IG, YouTube, Facebook. Tanpa skill editing. Mulai dari Rp 50.000. 3 video gratis untuk user baru!">
+<meta property="og:type" content="website">
+<title>BerkahKarya AI Video Studio — Generate Video AI via Telegram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #080808;
+  color: #ddd6c8;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* ===== CSS VARIABLES ===== */
+:root {
+  --gold: #c4a35a;
+  --gold-light: #dbb96b;
+  --gold-dim: rgba(196,163,90,0.12);
+  --gold-border: rgba(196,163,90,0.25);
+  --bg: #080808;
+  --bg-2: #0a0a0a;
+  --bg-3: #0d0d0d;
+  --bg-4: #111111;
+  --line: rgba(255,255,255,0.06);
+  --line-2: rgba(255,255,255,0.04);
+  --text-1: #efe9de;
+  --text-2: #ddd6c8;
+  --text-3: #888880;
+  --text-4: #555550;
+  --text-5: #333330;
+  --r: 2px;
+  --pad: clamp(1.25rem, 5vw, 2.5rem);
+}
+
+/* ===== TYPOGRAPHY ===== */
+.serif { font-family: 'Cormorant Garamond', serif; }
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--text-1); line-height: 1.1; }
+h1 { font-size: clamp(2.4rem, 7vw, 4.5rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 400; }
+em { font-style: italic; color: var(--gold); }
+p { color: var(--text-4); line-height: 1.75; }
+strong { color: var(--text-2); font-weight: 500; }
+
+/* ===== LAYOUT ===== */
+.container { max-width: 1080px; margin: 0 auto; padding: 0 var(--pad); }
+.section { padding: clamp(3.5rem, 9vw, 6rem) 0; }
+.section-sm { padding: clamp(2rem, 5vw, 3.5rem) 0; }
+.divider { height: 0.5px; background: var(--line); }
+.text-center { text-align: center; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: var(--r);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.btn-gold { background: var(--gold); color: #080808; border: none; }
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(196,163,90,0.25); }
+.btn-ghost { background: transparent; color: var(--gold); border: 0.5px solid var(--gold-border); }
+.btn-ghost:hover { background: var(--gold-dim); border-color: var(--gold); }
+.btn-outline { background: transparent; color: var(--text-3); border: 0.5px solid var(--line); }
+.btn-outline:hover { border-color: var(--gold-border); color: var(--gold); }
+.btn-lg { padding: 1rem 2.5rem; font-size: 0.82rem; }
+.btn-full { width: 100%; }
+
+/* ===== TAGS & BADGES ===== */
+.tag { font-size: 0.67rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: inline-block; margin-bottom: 0.75rem; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 0.5px solid var(--gold-border);
+  padding: 0.35rem 0.9rem;
+  border-radius: 1px;
+}
+.live-dot { width: 5px; height: 5px; border-radius: 50%; background: #4caf50; animation: blink 1.5s infinite; flex-shrink: 0; }
+
+/* ===== CARDS ===== */
+.card { background: var(--bg-2); border: 0.5px solid var(--line-2); border-radius: var(--r); }
+.card-pad { padding: 1.75rem; }
+.card-hover { transition: background 0.2s; position: relative; overflow: hidden; }
+.card-hover::before { content: ''; position: absolute; left: 0; top: 0; width: 2px; height: 0; background: var(--gold); transition: height 0.35s; }
+.card-hover:hover { background: var(--bg-3); }
+.card-hover:hover::before { height: 100%; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+@keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+@keyframes shimmer { 0%{background-position:-200% 0;} 100%{background-position:200% 0;} }
+
+/* ===== NAV ===== */
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--pad);
+  height: 60px;
+  background: rgba(8,8,8,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--line);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-1);
+  letter-spacing: 0.04em;
+}
+.nav-logo span { color: var(--gold); }
+.nav-cta { display: flex; gap: 0.75rem; align-items: center; }
+.nav-back {
+  font-size: 0.7rem;
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 0.5px solid var(--line);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--r);
+  transition: all 0.2s;
+}
+.nav-back:hover { color: var(--gold); border-color: var(--gold-border); }
+
+/* ===== HERO ===== */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem var(--pad) 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,163,90,0.06) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; max-width: 800px; }
+.hero-badge { margin-bottom: 2rem; }
+.hero-title { margin-bottom: 1.25rem; }
+.hero-subtitle { font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-3); max-width: 520px; margin: 0 auto 2.5rem; font-weight: 300; }
+.hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.hero-stats { display: flex; gap: clamp(1.5rem, 4vw, 3rem); justify-content: center; margin-top: 4rem; padding-top: 3rem; border-top: 0.5px solid var(--line); flex-wrap: wrap; }
+.stat-item { text-align: center; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 600; color: var(--gold); }
+.stat-label { font-size: 0.72rem; color: var(--text-4); letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* ===== FREE BANNER ===== */
+.free-banner {
+  background: linear-gradient(135deg, rgba(196,163,90,0.08) 0%, rgba(196,163,90,0.03) 100%);
+  border: 0.5px solid var(--gold-border);
+  padding: 1rem 1.5rem;
+  border-radius: var(--r);
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.82rem;
+  color: var(--text-3);
+}
+.free-banner strong { color: var(--gold); }
+
+/* ===== HOW IT WORKS ===== */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  background: var(--line-2);
+  border: 0.5px solid var(--line-2);
+}
+.step-item {
+  background: var(--bg-2);
+  padding: 2rem 1.75rem;
+  position: relative;
+}
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--text-5);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.step-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+.step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--text-1); font-weight: 400; margin-bottom: 0.5rem; }
+.step-desc { font-size: 0.82rem; color: var(--text-4); line-height: 1.65; }
+
+/* ===== FEATURES ===== */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  background: var(--line-2);
+}
+.feature-item {
+  background: var(--bg-2);
+  padding: 2rem 1.75rem;
+  transition: background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.feature-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 2px; height: 0;
+  background: var(--gold);
+  transition: height 0.35s;
+}
+.feature-item:hover { background: var(--bg-3); }
+.feature-item:hover::before { height: 100%; }
+.feature-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+.feature-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--text-1); font-weight: 400; margin-bottom: 0.5rem; }
+.feature-desc { font-size: 0.82rem; color: var(--text-4); line-height: 1.65; }
+
+/* ===== PLATFORM BADGES ===== */
+.platform-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+.platform-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  border: 0.5px solid var(--line);
+  padding: 0.4rem 0.9rem;
+  border-radius: 1px;
+}
+
+/* ===== DURATION TABLE ===== */
+.duration-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  background: var(--line-2);
+}
+.duration-item {
+  background: var(--bg-2);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+}
+.duration-time { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--gold); }
+.duration-label { font-size: 0.7rem; color: var(--text-4); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.duration-scenes { font-size: 0.75rem; color: var(--text-4); margin-top: 0.5rem; }
+.duration-credit { font-size: 0.72rem; color: var(--gold); margin-top: 0.25rem; letter-spacing: 0.05em; }
+
+/* ===== PRICING ===== */
+#pricing { background: var(--bg-2); }
+.pricing-toggle {
+  display: flex;
+  gap: 0;
+  background: var(--bg);
+  border: 0.5px solid var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 0 auto 3rem;
+  width: fit-content;
+}
+.toggle-btn {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  cursor: pointer;
+  transition: all 0.2s;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+.toggle-btn.active { background: var(--gold-dim); color: var(--gold); }
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  background: var(--line);
+}
+.price-card {
+  background: var(--bg-2);
+  padding: 2rem 1.75rem;
+  position: relative;
+}
+.price-card.featured {
+  background: var(--bg-3);
+  border: 0.5px solid var(--gold-border);
+}
+.price-card.featured::before {
+  content: 'PALING LARIS';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: #080808;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  padding: 0.2rem 0.8rem;
+  white-space: nowrap;
+}
+.price-name { font-size: 0.72rem; color: var(--text-3); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.price-amount { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--text-1); line-height: 1; }
+.price-unit { font-size: 0.72rem; color: var(--text-4); margin-top: 0.25rem; }
+.price-divider { height: 0.5px; background: var(--line); margin: 1.25rem 0; }
+.price-features { list-style: none; }
+.price-features li { font-size: 0.82rem; color: var(--text-3); padding: 0.35rem 0; display: flex; align-items: flex-start; gap: 0.5rem; }
+.price-features li::before { content: '—'; color: var(--gold); flex-shrink: 0; margin-top: 0.05rem; }
+.price-cta { margin-top: 1.75rem; }
+.price-highlight { color: var(--gold) !important; font-weight: 500; }
+
+/* Topup panel */
+.topup-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  background: var(--line);
+}
+.topup-card {
+  background: var(--bg-2);
+  padding: 2rem 1.75rem;
+  position: relative;
+}
+.topup-card.featured {
+  background: var(--bg-3);
+  border: 0.5px solid var(--gold-border);
+}
+.topup-card.featured::before {
+  content: 'BEST VALUE';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: #080808;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  padding: 0.2rem 0.8rem;
+  white-space: nowrap;
+}
+.topup-name { font-size: 0.72rem; color: var(--text-3); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.topup-amount { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--text-1); line-height: 1; }
+.topup-credits { font-size: 0.8rem; color: var(--gold); margin-top: 0.4rem; }
+.topup-perunit { font-size: 0.7rem; color: var(--text-4); margin-top: 0.2rem; }
+.topup-divider { height: 0.5px; background: var(--line); margin: 1.25rem 0; }
+.topup-features { list-style: none; }
+.topup-features li { font-size: 0.82rem; color: var(--text-3); padding: 0.3rem 0; display: flex; gap: 0.5rem; align-items: flex-start; }
+.topup-features li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+
+/* Panel switching */
+.pricing-panel { display: none; }
+.pricing-panel.active { display: block; }
+
+/* ===== FAQ ===== */
+.faq-list { max-width: 720px; margin: 0 auto; }
+.faq-item {
+  border-bottom: 0.5px solid var(--line);
+  padding: 1.5rem 0;
+}
+.faq-question {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--text-1);
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  user-select: none;
+}
+.faq-question::after {
+  content: '+';
+  color: var(--gold);
+  font-size: 1.3rem;
+  line-height: 1.1;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.faq-item.open .faq-question::after { transform: rotate(45deg); }
+.faq-answer {
+  font-size: 0.85rem;
+  color: var(--text-4);
+  line-height: 1.75;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.2s;
+}
+.faq-item.open .faq-answer { max-height: 300px; padding-top: 0.75rem; }
+
+/* ===== REFERRAL ===== */
+.referral-box {
+  background: linear-gradient(135deg, rgba(196,163,90,0.06) 0%, rgba(196,163,90,0.02) 100%);
+  border: 0.5px solid var(--gold-border);
+  padding: clamp(2rem, 5vw, 3rem);
+  text-align: center;
+}
+.referral-num { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 600; color: var(--gold); }
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+  padding: clamp(4rem, 10vw, 7rem) var(--pad);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-glow {
+  position: absolute;
+  width: 500px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,163,90,0.07) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.cta-content { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+.cta-title { margin-bottom: 1rem; }
+.cta-subtitle { color: var(--text-3); font-size: 0.9rem; margin-bottom: 2rem; }
+
+/* ===== FOOTER ===== */
+footer {
+  border-top: 0.5px solid var(--line);
+  padding: 2rem var(--pad);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--text-3);
+}
+.footer-logo span { color: var(--gold); }
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a { font-size: 0.72rem; color: var(--text-4); letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-size: 0.7rem; color: var(--text-5); }
+
+/* ===== SECTION HEADER ===== */
+.section-header { text-align: center; margin-bottom: 3rem; }
+.section-header h2 { margin-bottom: 0.75rem; }
+.section-header p { font-size: 0.9rem; color: var(--text-3); max-width: 480px; margin: 0 auto; }
+
+/* ===== TELEGRAM MOCKUP ===== */
+.mockup-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 3.5rem 0 0;
+}
+.tg-mockup {
+  background: #111;
+  border: 0.5px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  width: min(340px, 90vw);
+  overflow: hidden;
+  font-size: 0.82rem;
+}
+.tg-header {
+  background: #1a1a1a;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+}
+.tg-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold) 0%, #8a6830 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.tg-name { font-size: 0.85rem; color: #fff; font-weight: 500; }
+.tg-status { font-size: 0.68rem; color: #4caf50; }
+.tg-body { padding: 1rem; display: flex; flex-direction: column; gap: 0.65rem; }
+.msg-bot {
+  background: #1e2a1e;
+  border-radius: 0 8px 8px 8px;
+  padding: 0.65rem 0.85rem;
+  color: #c8e6c9;
+  max-width: 85%;
+  line-height: 1.5;
+}
+.msg-bot .msg-label { font-size: 0.65rem; color: #4caf50; margin-bottom: 0.25rem; letter-spacing: 0.05em; }
+.msg-user {
+  background: #1a2340;
+  border-radius: 8px 0 8px 8px;
+  padding: 0.65rem 0.85rem;
+  color: #aac4ee;
+  max-width: 75%;
+  align-self: flex-end;
+  line-height: 1.5;
+}
+.tg-btn-row { display: flex; gap: 0.4rem; flex-wrap: wrap; padding: 0.25rem 0; }
+.tg-btn {
+  flex: 1;
+  text-align: center;
+  padding: 0.4rem 0.5rem;
+  border: 0.5px solid rgba(196,163,90,0.3);
+  border-radius: 4px;
+  color: var(--gold);
+  font-size: 0.68rem;
+  cursor: pointer;
+  min-width: 80px;
+}
+.tg-input {
+  background: #1a1a1a;
+  padding: 0.6rem 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  border-top: 0.5px solid rgba(255,255,255,0.05);
+}
+.tg-input-box {
+  flex: 1;
+  background: #252525;
+  border: none;
+  border-radius: 20px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.75rem;
+  color: #888;
+  font-family: inherit;
+}
+.tg-send { color: var(--gold); font-size: 1rem; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero-stats { gap: 1.5rem; }
+  .pricing-grid, .topup-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .duration-grid { grid-template-columns: repeat(2, 1fr); }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .btn-lg { padding: 0.9rem 1.5rem; }
+  .duration-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Berkah<span>Karya</span></a>
+  <div class="nav-cta">
+    <a href="index.html" class="nav-back">← Kembali</a>
+    <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-gold" style="padding:0.45rem 1.1rem;font-size:0.72rem;">Coba Gratis</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge"><span class="live-dot"></span> Live & Operational</span>
+    </div>
+    <h1 class="hero-title">
+      Buat Video AI<br><em>Langsung di Telegram</em>
+    </h1>
+    <p class="hero-subtitle">
+      Generate video viral untuk TikTok, Instagram, YouTube & Facebook. Tanpa skill editing. Tanpa software mahal. Cukup chat di Telegram.
+    </p>
+    <div class="hero-actions">
+      <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-gold btn-lg">
+        🚀 Mulai Sekarang — Gratis
+      </a>
+      <a href="#pricing" class="btn btn-ghost btn-lg">Lihat Harga</a>
+    </div>
+    <div class="free-banner">
+      🎁 Semua user baru dapat <strong>3 kredit gratis</strong> — setara <strong>6 video</strong> untuk dicoba!
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Video Gratis</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2–5<span style="font-size:1rem">min</span></div>
+        <div class="stat-label">Waktu Generate</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Platform Didukung</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">Rp 50K</div>
+        <div class="stat-label">Mulai Dari</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">— Cara Pakai —</span>
+      <h2>4 Langkah, Video Siap</h2>
+      <p>Semudah chat WhatsApp. Tanpa perlu install aplikasi apapun.</p>
+    </div>
+
+    <!-- Telegram Mockup -->
+    <div class="mockup-wrap">
+      <div class="tg-mockup">
+        <div class="tg-header">
+          <div class="tg-avatar">🎬</div>
+          <div>
+            <div class="tg-name">BerkahKarya AI Studio</div>
+            <div class="tg-status">● online</div>
+          </div>
+        </div>
+        <div class="tg-body">
+          <div class="msg-bot">
+            <div class="msg-label">AI STUDIO BOT</div>
+            Halo! 👋 Selamat datang di <strong>BerkahKarya AI Video Studio</strong>.<br><br>
+            Kamu dapat <strong>3 kredit gratis</strong> = 6 video gratis! 🎉
+            <div class="tg-btn-row" style="margin-top:0.5rem;">
+              <div class="tg-btn">🎬 Buat Video</div>
+              <div class="tg-btn">📹 Video Saya</div>
+            </div>
+            <div class="tg-btn-row">
+              <div class="tg-btn">💰 Top Up</div>
+              <div class="tg-btn">👤 Profil</div>
+            </div>
+          </div>
+          <div class="msg-user">/create</div>
+          <div class="msg-bot">
+            <div class="msg-label">AI STUDIO BOT</div>
+            Pilih durasi video kamu:
+            <div class="tg-btn-row" style="margin-top:0.5rem;">
+              <div class="tg-btn">⚡ 15 detik</div>
+              <div class="tg-btn">📊 30 detik</div>
+            </div>
+            <div class="tg-btn-row">
+              <div class="tg-btn">🎬 60 detik</div>
+              <div class="tg-btn">🎯 Custom</div>
+            </div>
+          </div>
+          <div class="msg-bot">
+            <div class="msg-label">AI STUDIO BOT</div>
+            ⏳ Video sedang dibuat... estimasi 2–5 menit. Kami akan kirim langsung ke sini!
+          </div>
+        </div>
+        <div class="tg-input">
+          <input class="tg-input-box" placeholder="Ketik pesan..." readonly>
+          <span class="tg-send">➤</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="steps-grid" style="margin-top:3rem;">
+      <div class="step-item">
+        <div class="step-num">01</div>
+        <div class="step-icon">💬</div>
+        <div class="step-title">Buka Bot Telegram</div>
+        <p class="step-desc">Cari <strong>@berkahkarya_saas_bot</strong> di Telegram atau klik link langsung. Ketik /start untuk mulai.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">02</div>
+        <div class="step-icon">🎬</div>
+        <div class="step-title">Pilih Durasi</div>
+        <p class="step-desc">Klik <strong>/create</strong>, pilih durasi: 15 detik, 30 detik, 60 detik, 120 detik, atau custom hingga 5 menit.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">03</div>
+        <div class="step-icon">⚙️</div>
+        <div class="step-title">AI Generate Otomatis</div>
+        <p class="step-desc">Bot AI langsung generate storyboard dan video. Tunggu <strong>2–5 menit</strong> — tidak perlu input apapun lagi.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">04</div>
+        <div class="step-icon">📤</div>
+        <div class="step-title">Video Siap Upload</div>
+        <p class="step-desc">Video terkirim langsung ke chat Telegram. Tinggal download dan upload ke TikTok, IG, YouTube, atau Facebook.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PLATFORM & DURATION -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">— Platform & Format —</span>
+      <h2>Semua Platform, <em>Satu Bot</em></h2>
+      <p>Video dioptimalkan untuk format 9:16 portrait — cocok untuk semua platform konten pendek.</p>
+    </div>
+
+    <div class="platform-row">
+      <span class="platform-chip">📱 TikTok</span>
+      <span class="platform-chip">📸 Instagram Reels</span>
+      <span class="platform-chip">▶️ YouTube Shorts</span>
+      <span class="platform-chip">📘 Facebook Reels</span>
+    </div>
+
+    <div style="margin-top:3rem;">
+      <div class="section-header" style="margin-bottom:1.5rem;">
+        <span class="tag">— Pilihan Durasi —</span>
+        <h3 style="font-family:Cormorant Garamond;font-size:1.4rem;color:var(--text-1);">Semua Durasi, Harga Sama</h3>
+        <p style="margin-top:0.5rem;font-size:0.82rem;">Setiap video hanya 0.5 kredit — berapapun durasinya.</p>
+      </div>
+      <div class="duration-grid">
+        <div class="duration-item">
+          <div class="duration-label">Quick</div>
+          <div class="duration-time">15<span style="font-size:1rem">s</span></div>
+          <div class="duration-scenes">1 scene</div>
+          <div class="duration-credit">0.5 kredit</div>
+        </div>
+        <div class="duration-item">
+          <div class="duration-label">Standard</div>
+          <div class="duration-time">30<span style="font-size:1rem">s</span></div>
+          <div class="duration-scenes">2 scenes</div>
+          <div class="duration-credit">0.5 kredit</div>
+        </div>
+        <div class="duration-item">
+          <div class="duration-label">Long</div>
+          <div class="duration-time">60<span style="font-size:1rem">s</span></div>
+          <div class="duration-scenes">4 scenes</div>
+          <div class="duration-credit">0.5 kredit</div>
+        </div>
+        <div class="duration-item">
+          <div class="duration-label">Extended</div>
+          <div class="duration-time">120<span style="font-size:1rem">s</span></div>
+          <div class="duration-scenes">8 scenes</div>
+          <div class="duration-credit">0.5 kredit</div>
+        </div>
+        <div class="duration-item">
+          <div class="duration-label">Custom</div>
+          <div class="duration-time" style="font-size:1.5rem;">6–300<span style="font-size:1rem">s</span></div>
+          <div class="duration-scenes">Auto-calculated</div>
+          <div class="duration-credit">0.5 kredit</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">— Fitur Unggulan —</span>
+      <h2>Bukan Sekedar <em>Video Generator</em></h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">🤖</div>
+        <div class="feature-title">Full AI Automation</div>
+        <p class="feature-desc">Bot otomatis generate storyboard, visual, dan video. Tanpa perlu input prompt — langsung jadi.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Antrian Prioritas</div>
+        <p class="feature-desc">Subscriber mendapat antrian lebih cepat — 1.5x hingga 3x lebih priority dibanding user biasa.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">💳</div>
+        <div class="feature-title">Bayar Lokal</div>
+        <p class="feature-desc">Bayar pakai transfer bank, GoPay, OVO, DANA via Midtrans, Tripay, dan Duitku. Tidak perlu kartu kredit.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📊</div>
+        <div class="feature-title">Kredit Tidak Kadaluarsa</div>
+        <p class="feature-desc">Beli kredit sekali, pakai kapan saja. Kredit one-time tidak pernah expired.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">👥</div>
+        <div class="feature-title">Program Referral</div>
+        <p class="feature-desc">Ajak teman, dapat komisi dari setiap transaksi mereka. Passive income dari konten kreator lain.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📱</div>
+        <div class="feature-title">100% via Telegram</div>
+        <p class="feature-desc">Tidak perlu install app tambahan. Semua proses — buat, bayar, download — dari Telegram yang sudah ada di HP.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<section class="section" id="pricing" style="background:var(--bg-2);">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">— Harga —</span>
+      <h2>Transparan, <em>Terjangkau</em></h2>
+      <p>Pilih kredit satuan atau langganan bulanan — hemat lebih banyak.</p>
+    </div>
+
+    <!-- Toggle -->
+    <div style="text-align:center;">
+      <div class="pricing-toggle">
+        <button class="toggle-btn active" onclick="switchPanel('topup',this)">Top Up Kredit</button>
+        <button class="toggle-btn" onclick="switchPanel('subscription',this)">Langganan Bulanan</button>
+      </div>
+    </div>
+
+    <!-- Top Up Panel -->
+    <div class="pricing-panel active" id="panel-topup">
+      <div class="topup-grid">
+        <div class="topup-card">
+          <div class="topup-name">Starter</div>
+          <div class="topup-amount">Rp 50.000</div>
+          <div class="topup-credits">5 + 1 bonus = <strong>6 kredit</strong></div>
+          <div class="topup-perunit">≈ Rp 8.333 / kredit → 12 video</div>
+          <div class="topup-divider"></div>
+          <ul class="topup-features">
+            <li>6 kredit total (12 video)</li>
+            <li>Semua durasi tersedia</li>
+            <li>Kredit tidak kadaluarsa</li>
+          </ul>
+          <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-outline btn-full" style="margin-top:1.5rem;">Pilih Starter</a>
+        </div>
+        <div class="topup-card featured">
+          <div class="topup-name">Growth</div>
+          <div class="topup-amount">Rp 150.000</div>
+          <div class="topup-credits">15 + 3 bonus = <strong>18 kredit</strong></div>
+          <div class="topup-perunit">≈ Rp 8.333 / kredit → 36 video</div>
+          <div class="topup-divider"></div>
+          <ul class="topup-features">
+            <li>18 kredit total (36 video)</li>
+            <li>Semua durasi tersedia</li>
+            <li>Kredit tidak kadaluarsa</li>
+          </ul>
+          <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-gold btn-full" style="margin-top:1.5rem;">Pilih Growth</a>
+        </div>
+        <div class="topup-card">
+          <div class="topup-name">Scale</div>
+          <div class="topup-amount">Rp 500.000</div>
+          <div class="topup-credits">60 + 15 bonus = <strong>75 kredit</strong></div>
+          <div class="topup-perunit">≈ Rp 6.667 / kredit → 150 video</div>
+          <div class="topup-divider"></div>
+          <ul class="topup-features">
+            <li>75 kredit total (150 video)</li>
+            <li>Harga per kredit lebih hemat</li>
+            <li>Kredit tidak kadaluarsa</li>
+          </ul>
+          <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-outline btn-full" style="margin-top:1.5rem;">Pilih Scale</a>
+        </div>
+        <div class="topup-card">
+          <div class="topup-name">Enterprise</div>
+          <div class="topup-amount">Rp 1.500.000</div>
+          <div class="topup-credits">200 + 60 bonus = <strong>260 kredit</strong></div>
+          <div class="topup-perunit">≈ Rp 5.769 / kredit → 520 video</div>
+          <div class="topup-divider"></div>
+          <ul class="topup-features">
+            <li>260 kredit total (520 video)</li>
+            <li>Harga terbaik per kredit</li>
+            <li>Kredit tidak kadaluarsa</li>
+          </ul>
+          <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-outline btn-full" style="margin-top:1.5rem;">Pilih Enterprise</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subscription Panel -->
+    <div class="pricing-panel" id="panel-subscription">
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-name">Lite</div>
+          <div class="price-amount">Rp 99.000<span style="font-size:1rem;color:var(--text-3)">/bln</span></div>
+          <div class="price-unit">20 kredit / bulan = 40 video</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li>20 kredit per bulan</li>
+            <li>Max durasi 120 detik</li>
+            <li class="price-highlight">Priority antrian 1.5x</li>
+            <li>Semua platform didukung</li>
+          </ul>
+          <div class="price-cta">
+            <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-outline btn-full">Mulai Lite</a>
+          </div>
+        </div>
+        <div class="price-card featured">
+          <div class="price-name">Pro</div>
+          <div class="price-amount">Rp 199.000<span style="font-size:1rem;color:var(--text-3)">/bln</span></div>
+          <div class="price-unit">50 kredit / bulan = 100 video</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li>50 kredit per bulan</li>
+            <li>Max durasi 300 detik (5 menit)</li>
+            <li class="price-highlight">Priority antrian 2x</li>
+            <li class="price-highlight">Multi-angle variants (3x)</li>
+            <li class="price-highlight">1x revisi gratis per video</li>
+            <li>Custom watermark</li>
+          </ul>
+          <div class="price-cta">
+            <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-gold btn-full">Mulai Pro</a>
+          </div>
+        </div>
+        <div class="price-card">
+          <div class="price-name">Agency</div>
+          <div class="price-amount">Rp 499.000<span style="font-size:1rem;color:var(--text-3)">/bln</span></div>
+          <div class="price-unit">150 kredit / bulan = 300 video</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li>150 kredit per bulan</li>
+            <li>Max durasi 300 detik</li>
+            <li class="price-highlight">Priority antrian 3x</li>
+            <li class="price-highlight">Semua format & fitur</li>
+            <li class="price-highlight">Unlimited revisi</li>
+            <li class="price-highlight">Dedicated support</li>
+            <li>Full analytics</li>
+          </ul>
+          <div class="price-cta">
+            <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-ghost btn-full">Mulai Agency</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="free-banner" style="margin-top:2rem;">
+      🎁 Belum yakin? Coba dulu — <strong>3 kredit gratis</strong> menunggu untuk semua user baru. Tidak perlu kartu kredit.
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REFERRAL -->
+<section class="section-sm">
+  <div class="container">
+    <div class="referral-box">
+      <span class="tag">— Program Referral —</span>
+      <div class="referral-num">Ajak Teman → Dapat Komisi</div>
+      <p style="color:var(--text-3);margin:0.75rem auto 1.5rem;max-width:460px;font-size:0.85rem;">
+        Setiap teman yang kamu ajak dan melakukan pembelian, kamu dapat komisi otomatis. Passive income dari jejaring konten kreator.
+      </p>
+      <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-ghost">Lihat Program Referral →</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">— FAQ —</span>
+      <h2>Pertanyaan <em>Umum</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Berapa lama proses generate video?</div>
+        <div class="faq-answer">Biasanya 2–5 menit. Bisa lebih lama jika queue sedang padat. Subscriber Pro/Agency mendapat antrian prioritas lebih cepat. Bot akan mengirim notifikasi langsung ke chat Telegram kamu saat video selesai.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Apakah kredit bisa kadaluarsa?</div>
+        <div class="faq-answer">Tidak. Kredit yang dibeli via top up (Starter, Growth, Scale, Enterprise) tidak pernah kadaluarsa. Beli kapan saja, pakai kapan saja sesuai kebutuhan kamu.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Bisa generate video untuk niche apa saja?</div>
+        <div class="faq-answer">Saat ini bot auto-generate storyboard dengan niche default (food & beverage, lifestyle). Fitur pilihan niche/style dan custom prompt dari user akan tersedia di update berikutnya.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Metode pembayaran apa yang tersedia?</div>
+        <div class="faq-answer">Kami mendukung semua metode bayar lokal Indonesia via Midtrans, Tripay, dan Duitku — termasuk transfer bank (BCA, BNI, BRI, Mandiri), GoPay, OVO, DANA, QRIS, dan minimarket (Alfamart, Indomaret).</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Kalau video gagal generate, kredit kembali?</div>
+        <div class="faq-answer">Ya. Jika video gagal di sisi sistem (bukan karena koneksi user), kredit akan otomatis dikembalikan ke saldo akun kamu. Tidak ada kredit yang hilang karena kegagalan sistem.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Apakah saya perlu install aplikasi tambahan?</div>
+        <div class="faq-answer">Tidak. Semua proses — mulai dari buat video, bayar kredit, hingga download video — dilakukan 100% via Telegram. Kamu hanya butuh Telegram yang sudah terpasang di HP atau laptop.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Format video seperti apa yang dihasilkan?</div>
+        <div class="faq-answer">Video dioptimalkan untuk format 9:16 (portrait/vertikal) yang cocok untuk TikTok, Instagram Reels, YouTube Shorts, dan Facebook Reels. Resolusi dan kualitas mengikuti standar masing-masing platform.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <div class="cta-content">
+    <span class="tag">— Mulai Sekarang —</span>
+    <h2 class="cta-title">6 Video Gratis<br><em>Menunggu Kamu</em></h2>
+    <p class="cta-subtitle">Daftar, dapat 3 kredit gratis, buat 6 video pertama — tanpa bayar apapun.</p>
+    <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-gold btn-lg">
+      🚀 Buka @berkahkarya_saas_bot
+    </a>
+    <div style="margin-top:1.25rem;font-size:0.75rem;color:var(--text-4);">Tidak perlu kartu kredit · Langsung aktif · 2–5 menit per video</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Berkah<span>Karya</span> AI Video Studio</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="https://t.me/berkahkarya_saas_bot" target="_blank">Telegram Bot</a>
+    <a href="#pricing">Harga</a>
+    <a href="#faq-item">FAQ</a>
+  </div>
+  <div class="footer-copy">© 2026 BerkahKarya. All rights reserved.</div>
+</footer>
+
+<script>
+// Pricing toggle
+function switchPanel(id, btn) {
+  document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// FAQ toggle
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Smooth scroll offset for fixed nav
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const id = this.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (target) {
+      e.preventDefault();
+      window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+    }
+  });
+});
+
+// Nav scroll shadow
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  nav.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.4)' : 'none';
+});
+</script>
+
+</body>
+</html>

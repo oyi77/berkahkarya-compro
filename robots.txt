@@ -1,0 +1,15 @@
+# Robots.txt for Berkah Karya
+# https://berkahkarya.org
+
+User-agent: *
+Allow: /
+
+# Disallow admin/private areas
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://berkahkarya.org/sitemap.xml
+
+# Crawl-delay (optional, for polite crawling)
+Crawl-delay: 1

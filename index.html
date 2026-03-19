@@ -1,319 +1,1026 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berkah Karya - Digital Growth Agency</title>
-    <meta name="description" content="Digital growth agency membantu brand tumbuh melalui TikTok Content Agency, E-commerce Optimization, dan FlashRobs Trading Bot">
-    <meta name="facebook-domain-verification" content="vo4g6nsn3kqvqmmzxd9rx2gt62dy07" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Berkah Karya — Digital Growth Agency. AI Video Studio, AI Agent Pro, TikTok Content Agency, E-commerce Optimization, FlashRobs Trading Bot, SEO & Digital Marketing.">
+<title>Berkah Karya — Digital Growth Ecosystem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #080808;
+  color: #ddd6c8;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; }
+
+/* ===== CSS VARIABLES ===== */
+:root {
+  --gold: #c4a35a;
+  --gold-light: #dbb96b;
+  --gold-dim: rgba(196,163,90,0.15);
+  --gold-border: rgba(196,163,90,0.25);
+  --bg: #080808;
+  --bg-2: #0a0a0a;
+  --bg-3: #0d0d0d;
+  --bg-4: #111111;
+  --line: rgba(255,255,255,0.06);
+  --line-2: rgba(255,255,255,0.04);
+  --text-1: #efe9de;
+  --text-2: #ddd6c8;
+  --text-3: #888880;
+  --text-4: #555550;
+  --text-5: #333330;
+  --r: 2px;
+  --gap: clamp(1rem, 4vw, 2rem);
+  --pad: clamp(1.25rem, 5vw, 2.5rem);
+}
+
+/* ===== TYPOGRAPHY ===== */
+.serif { font-family: 'Cormorant Garamond', serif; }
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--text-1); line-height: 1.1; }
+h1 { font-size: clamp(2.4rem, 7vw, 4.2rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); font-weight: 400; }
+em { font-style: italic; color: var(--gold); }
+p { color: var(--text-4); line-height: 1.75; }
+
+/* ===== LAYOUT ===== */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 var(--pad); }
+.section { padding: clamp(3rem, 8vw, 5rem) 0; }
+.divider { height: 0.5px; background: var(--line); }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; }
+
+/* ===== BUTTONS ===== */
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.6rem; border-radius: var(--r); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; border: none; transition: all 0.2s; white-space: nowrap; }
+.btn-gold { background: var(--gold); color: #080808; }
+.btn-gold:hover { background: var(--gold-light); }
+.btn-ghost { background: transparent; color: var(--gold); border: 0.5px solid var(--gold-border); }
+.btn-ghost:hover { background: var(--gold-dim); border-color: var(--gold); }
+.btn-outline { background: transparent; color: var(--text-3); border: 0.5px solid var(--line); }
+.btn-outline:hover { border-color: var(--gold-border); color: var(--gold); }
+.btn-sm { padding: 0.5rem 1.1rem; font-size: 0.72rem; }
+.btn-full { width: 100%; justify-content: center; }
+
+/* ===== TAGS & BADGES ===== */
+.tag { font-size: 0.67rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: inline-block; margin-bottom: 0.5rem; }
+.badge { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); border: 0.5px solid var(--gold-border); padding: 0.3rem 0.8rem; border-radius: 1px; }
+.live-dot { width: 5px; height: 5px; border-radius: 50%; background: #4caf50; animation: blink 1.5s infinite; flex-shrink: 0; }
+.pill { font-size: 0.65rem; padding: 3px 10px; border: 0.5px solid var(--line); color: var(--text-5); letter-spacing: 0.05em; border-radius: 1px; }
+.pill-gold { border-color: var(--gold-border); color: rgba(196,163,90,0.6); }
+
+/* ===== CARDS ===== */
+.card { background: var(--bg-2); border: 0.5px solid var(--line-2); border-radius: var(--r); }
+.card-pad { padding: 1.75rem; }
+.card-hover { transition: background 0.2s; position: relative; overflow: hidden; }
+.card-hover::before { content: ''; position: absolute; left: 0; top: 0; width: 2px; height: 0; background: var(--gold); transition: height 0.35s; }
+.card-hover:hover { background: var(--bg-3); }
+.card-hover:hover::before { height: 100%; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+.fade-up { animation: fadeUp 0.6s ease forwards; }
+.fade-up-2 { animation: fadeUp 0.6s 0.15s ease both; }
+.fade-up-3 { animation: fadeUp 0.6s 0.3s ease both; }
+
+/* ===== NAV ===== */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--pad); height: 60px;
+  background: rgba(8,8,8,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid var(--line);
+  transition: border-color 0.3s;
+}
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); letter-spacing: 0.04em; }
+.nav-links { display: flex; align-items: center; gap: 0.25rem; }
+.nav-link { font-size: 0.73rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-4); padding: 0.4rem 0.8rem; border-radius: 1px; transition: color 0.2s; }
+.nav-link:hover { color: var(--gold); }
+.nav-cta { display: flex; align-items: center; gap: 0.75rem; }
+#hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 4px; }
+#hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-3); transition: all 0.3s; }
+#mobile-menu {
+  display: none; position: fixed; top: 60px; left: 0; right: 0; bottom: 0;
+  background: #060606; z-index: 999; padding: var(--pad);
+  flex-direction: column; gap: 0.5rem; overflow-y: auto;
+  border-top: 0.5px solid var(--line);
+}
+#mobile-menu.open { display: flex; }
+.mobile-link { font-size: 1rem; font-family: 'Cormorant Garamond', serif; color: var(--text-3); padding: 1rem 0; border-bottom: 0.5px solid var(--line-2); }
+.mobile-link:hover { color: var(--gold); }
+
+/* ===== HERO ===== */
+#hero {
+  padding-top: 100px;
+  padding-bottom: clamp(3rem, 8vw, 5rem);
+  min-height: 100svh;
+  display: flex; align-items: center;
+}
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.hero-url { font-size: 0.68rem; letter-spacing: 0.16em; color: var(--text-5); margin-bottom: 0.75rem; }
+.hero-url span { color: rgba(196,163,90,0.4); }
+.hero-h1 { margin-bottom: 1.25rem; }
+.hero-sub { font-size: 0.92rem; color: var(--text-4); line-height: 1.8; margin-bottom: 1.75rem; max-width: 480px; }
+.hero-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.hero-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: 1.5rem; background: var(--line); border: 0.5px solid var(--line); }
+.hero-stat { background: var(--bg); padding: 1rem; }
+.hero-stat-n { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--gold); }
+.hero-stat-l { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-5); margin-top: 0.15rem; }
+
+/* ===== BOT PREVIEW ===== */
+.bot-preview { background: #060606; border: 0.5px solid var(--line); border-radius: var(--r); padding: 1.25rem; }
+.bot-head { display: flex; align-items: center; gap: 0.6rem; padding-bottom: 0.85rem; border-bottom: 0.5px solid var(--line-2); margin-bottom: 0.85rem; }
+.bot-avatar { width: 32px; height: 32px; border-radius: 50%; background: #1a1a0a; border: 0.5px solid var(--gold-border); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.bot-name-text { font-size: 0.78rem; color: var(--text-3); }
+.bot-status-text { font-size: 0.63rem; color: #4caf50; letter-spacing: 0.05em; }
+.chat-msg { font-size: 0.76rem; padding: 0.5rem 0.8rem; margin-bottom: 0.45rem; line-height: 1.55; max-width: 88%; }
+.msg-user { background: #141408; color: var(--gold); border: 0.5px solid rgba(196,163,90,0.15); margin-left: auto; border-radius: 2px 2px 0 2px; }
+.msg-bot { background: #0e0e0e; color: var(--text-4); border: 0.5px solid var(--line-2); border-radius: 2px 2px 2px 0; }
+.msg-sys { background: transparent; color: var(--text-5); font-size: 0.68rem; text-align: center; border: none; padding: 0.25rem; max-width: 100%; }
+.msg-btns { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 0.45rem; }
+.msg-btn-chip { font-size: 0.68rem; padding: 0.35rem 0.65rem; background: var(--bg-4); border: 0.5px solid var(--line); color: var(--text-4); border-radius: 1px; }
+.credit-strip { margin-top: 0.85rem; padding: 0.85rem; background: var(--bg-2); border: 0.5px solid var(--line-2); }
+.credit-row-inner { display: flex; justify-content: space-between; align-items: center; }
+.credit-num { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--gold); }
+.credit-sub { font-size: 0.65rem; color: var(--text-5); margin-top: 0.1rem; }
+
+/* ===== STAT BAR ===== */
+.stat-bar { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--line); border: 0.5px solid var(--line); }
+.stat-item { background: var(--bg); padding: clamp(1rem, 3vw, 1.5rem); text-align: center; border-right: 0.5px solid var(--line); }
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 4vw, 2.2rem); color: var(--gold); }
+.stat-lbl { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-5); margin-top: 0.15rem; }
+
+/* ===== PRODUCT TABS ===== */
+.prod-tabs-wrap { border: 0.5px solid var(--line); background: var(--line); border-radius: var(--r); overflow: hidden; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; }
+.prod-tab { flex: 1; min-width: 80px; padding: 0.85rem 0.5rem; text-align: center; background: var(--bg); border: none; cursor: pointer; border-right: 0.5px solid var(--line); transition: all 0.2s; }
+.prod-tab:last-child { border-right: none; }
+.prod-tab-icon { font-size: 1rem; display: block; margin-bottom: 0.25rem; }
+.prod-tab-label { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-5); display: block; }
+.prod-tab.active { background: #0e0e0a; }
+.prod-tab.active .prod-tab-label { color: var(--gold); }
+.prod-panel { display: none; background: var(--line); border: 0.5px solid var(--line); }
+.prod-panel.active { display: grid; grid-template-columns: 1fr 1fr; }
+.prod-card { background: var(--bg-2); padding: clamp(1.25rem, 3vw, 2rem); }
+.prod-card-2 { background: var(--bg-3); border-left: 0.5px solid var(--line-2); }
+.prod-cat { font-size: 0.63rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+.prod-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--text-1); margin-bottom: 0.65rem; font-weight: 400; }
+.prod-desc { font-size: 0.82rem; color: var(--text-5); line-height: 1.7; }
+.prod-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 1rem; }
+.prod-price { margin-top: 1.1rem; font-size: 0.82rem; color: var(--gold); font-weight: 500; }
+
+/* ===== PRICING ===== */
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 0.5px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.pricing-card { background: var(--bg-2); padding: clamp(1.25rem, 3vw, 1.75rem); }
+.pricing-card.featured { background: #0c0c08; border-top: 2px solid var(--gold); }
+.pricing-badge { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; background: var(--gold-dim); color: var(--gold); padding: 3px 9px; border-radius: 1px; display: inline-block; margin-bottom: 0.65rem; }
+.pricing-plan { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-5); margin-bottom: 0.3rem; }
+.pricing-amount { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; color: var(--text-1); margin-bottom: 0.2rem; }
+.pricing-amount sub { font-size: 0.72rem; color: var(--text-5); font-family: 'Outfit', sans-serif; }
+.pricing-volume { font-size: 0.75rem; color: rgba(196,163,90,0.5); margin-bottom: 1rem; }
+.pricing-feats { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.25rem; }
+.pricing-feats li { font-size: 0.75rem; display: flex; align-items: center; gap: 0.45rem; }
+.pricing-feats li::before { content: ''; width: 3px; height: 3px; border-radius: 50%; flex-shrink: 0; }
+.feat-on { color: var(--text-3); }
+.feat-on::before { background: var(--gold) !important; }
+.feat-off { color: var(--text-5); }
+.feat-off::before { background: var(--text-5) !important; }
+
+/* ===== TOPUP GRID ===== */
+.topup-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 0.5px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.topup-card { background: var(--bg-2); padding: 1.25rem; text-align: center; }
+.topup-name { font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-5); margin-bottom: 0.4rem; }
+.topup-price { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; color: var(--gold); margin-bottom: 0.15rem; }
+.topup-credits { font-size: 0.75rem; color: var(--text-4); margin-bottom: 0.15rem; }
+.topup-bonus { font-size: 0.63rem; color: rgba(196,163,90,0.45); }
+.topup-per { font-size: 0.63rem; color: var(--text-5); margin-top: 0.4rem; }
+
+/* ===== PORTFOLIO ===== */
+.port-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 0.5px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.port-card { background: var(--bg-2); padding: clamp(1.25rem, 3vw, 1.75rem); }
+.port-cat { font-size: 0.63rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+.port-metric { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--text-1); margin-bottom: 0.35rem; }
+.port-desc { font-size: 0.78rem; color: var(--text-5); line-height: 1.6; }
+
+/* ===== SAAS FEATURE SECTION ===== */
+.saas-grid { background: var(--bg-2); border: 0.5px solid var(--line); border-radius: var(--r); padding: clamp(1.5rem, 4vw, 2.5rem); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 3rem); align-items: start; }
+.feat-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.75rem; }
+.feat-list li { font-size: 0.82rem; color: var(--text-3); display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.5; }
+.feat-check { width: 14px; height: 14px; border: 0.5px solid var(--gold-border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+.feat-check::after { content: ''; width: 5px; height: 3px; border-left: 1px solid var(--gold); border-bottom: 1px solid var(--gold); transform: rotate(-45deg) translateY(-1px); }
+
+/* ===== STEPS ===== */
+.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 0.5px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.step-card { background: var(--bg-2); padding: clamp(1.25rem, 3vw, 1.75rem); position: relative; }
+.step-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: rgba(255,255,255,0.03); position: absolute; top: 0.5rem; right: 1rem; line-height: 1; font-weight: 600; }
+.step-icon { font-size: 1.1rem; margin-bottom: 0.85rem; }
+.step-title { font-size: 0.82rem; color: var(--gold); font-weight: 500; margin-bottom: 0.45rem; }
+.step-desc { font-size: 0.77rem; color: var(--text-5); line-height: 1.65; }
+
+/* ===== TESTIMONIALS ===== */
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 0.5px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.testi-card { background: var(--bg-2); padding: clamp(1.25rem, 3vw, 1.75rem); }
+.testi-quote { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--text-4); line-height: 1.7; margin-bottom: 1rem; }
+.testi-name { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; }
+.testi-role { font-size: 0.68rem; color: var(--text-5); margin-top: 0.2rem; }
+
+/* ===== REFERRAL ===== */
+.ref-box { background: var(--bg-2); border: 0.5px solid var(--line); border-radius: var(--r); padding: clamp(1.5rem, 4vw, 2rem); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 2rem); align-items: center; }
+.ref-steps-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.ref-step-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.8rem; color: var(--text-4); }
+.ref-step-num { width: 22px; height: 22px; border: 0.5px solid var(--gold-border); display: flex; align-items: center; justify-content: center; font-size: 0.66rem; color: var(--gold); flex-shrink: 0; }
+.ref-code-box { background: #060606; border: 0.5px solid var(--line); padding: 1.25rem; }
+.ref-code-lbl { font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-5); margin-bottom: 0.4rem; }
+.ref-code-val { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+.ref-code-link { font-size: 0.68rem; color: var(--text-5); margin-bottom: 1rem; word-break: break-all; }
+.ref-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ref-stat-item { background: var(--bg-2); padding: 0.75rem; border: 0.5px solid var(--line-2); text-align: center; }
+.ref-stat-n { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); }
+.ref-stat-l { font-size: 0.62rem; color: var(--text-5); text-transform: uppercase; letter-spacing: 0.07em; }
+
+/* ===== FAQ ===== */
+.faq-list { display: flex; flex-direction: column; border: 0.5px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.faq-item { border-bottom: 0.5px solid var(--line-2); }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { width: 100%; text-align: left; background: var(--bg-2); border: none; padding: 1.1rem 1.25rem; font-size: 0.85rem; color: var(--text-2); display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background 0.2s; }
+.faq-q:hover { background: var(--bg-3); }
+.faq-q-text { font-family: 'Outfit', sans-serif; font-weight: 400; text-align: left; }
+.faq-icon { font-size: 1rem; color: var(--gold); transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+.faq-icon.open { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 1.25rem 1.1rem; font-size: 0.82rem; color: var(--text-4); line-height: 1.7; background: var(--bg-2); }
+.faq-a.open { display: block; }
+
+/* ===== CTA SECTION ===== */
+.cta-section { padding: clamp(4rem, 10vw, 6rem) 0; text-align: center; background: #050505; border-top: 0.5px solid var(--line-2); }
+.cta-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+
+/* ===== FOOTER ===== */
+footer { border-top: 0.5px solid var(--line-2); padding: clamp(2rem, 5vw, 3rem) 0 clamp(1.5rem, 4vw, 2rem); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); margin-bottom: 2.5rem; }
+.footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--gold); margin-bottom: 0.5rem; }
+.footer-brand-desc { font-size: 0.78rem; color: var(--text-5); line-height: 1.7; max-width: 260px; }
+.footer-col-title { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-4); margin-bottom: 1rem; }
+.footer-links-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-links-list a { font-size: 0.78rem; color: var(--text-5); transition: color 0.2s; }
+.footer-links-list a:hover { color: var(--gold); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; border-top: 0.5px solid var(--line-2); flex-wrap: wrap; gap: 0.5rem; }
+.footer-copy { font-size: 0.68rem; color: var(--text-5); letter-spacing: 0.05em; }
+
+/* ===== SECTION HEADERS ===== */
+.sec-header { margin-bottom: clamp(1.5rem, 4vw, 2.5rem); }
+.sec-header.center { text-align: center; }
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-cta .btn { display: none; }
+  #hamburger { display: flex; }
+
+  .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero-sub { max-width: 100%; }
+  .hero-stats { grid-template-columns: repeat(4, 1fr); margin-top: 1rem; }
+
+  .stat-bar { grid-template-columns: repeat(2, 1fr); }
+  .stat-item:nth-child(2) { border-right: none; }
+  .stat-item:nth-child(3) { border-top: 0.5px solid var(--line); }
+
+  .grid-2, .saas-grid, .ref-box { grid-template-columns: 1fr; }
+  .prod-panel.active { grid-template-columns: 1fr; }
+  .prod-card-2 { border-left: none; border-top: 0.5px solid var(--line-2); }
+
+  .steps-grid { grid-template-columns: 1fr 1fr; }
+  .port-grid { grid-template-columns: 1fr 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .topup-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .prod-tabs-wrap { overflow-x: auto; flex-wrap: nowrap; }
+  .prod-tab { min-width: 70px; flex: 0 0 auto; padding: 0.7rem 0.4rem; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: 1fr; }
+  .port-grid { grid-template-columns: 1fr; }
+  .topup-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .cta-btns { flex-direction: column; align-items: center; }
+  .hero-btns { flex-direction: column; }
+  .hero-btns .btn { width: 100%; justify-content: center; }
+}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/logo.png" alt="Berkah Karya Logo" class="logo-img">
-                <span class="brand-text">Berkah Karya</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html" data-i18n="nav.home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="services.html" data-i18n="nav.services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="portfolio.html" data-i18n="nav.portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pricing.html" data-i18n="nav.pricing">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ai-agent-pro.html">AI Agent Pro</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link highlight" href="contact.html" data-i18n="nav.contact">Get 3 Free Videos</a>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <button id="lang-toggle" class="btn btn-sm btn-outline-primary" onclick="toggleLanguage()">EN</button>
-                    </li>
-                </ul>
-            </div>
+
+<!-- ===== NAV ===== -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Berkah Karya</a>
+  <div class="nav-links">
+    <a href="#products" class="nav-link">Produk</a>
+    <a href="#ai-studio" class="nav-link">AI Studio</a>
+    <a href="#pricing" class="nav-link">Harga</a>
+    <a href="#portfolio" class="nav-link">Portfolio</a>
+    <a href="#faq" class="nav-link">FAQ</a>
+  </div>
+  <div class="nav-cta">
+    <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-gold btn-sm">Coba Gratis</a>
+    <button id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu">
+  <a href="#products" class="mobile-link">Produk</a>
+  <a href="#ai-studio" class="mobile-link">AI Video Studio</a>
+  <a href="#pricing" class="mobile-link">Harga</a>
+  <a href="#portfolio" class="mobile-link">Portfolio</a>
+  <a href="#faq" class="mobile-link">FAQ</a>
+  <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.75rem;">
+    <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-gold btn-full">Coba Gratis — 6 Video 🎬</a>
+    <a href="https://wa.me/6285732740006" target="_blank" class="btn btn-ghost btn-full">WhatsApp +62 857-3274-0006</a>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="fade-up">
+        <div class="hero-url">berkahkarya.org <span>— Digital Growth Ecosystem</span></div>
+        <div class="badge" style="margin-bottom:1.25rem;"><div class="live-dot"></div>6 Lini Produk Aktif</div>
+        <h1 class="hero-h1">Semua Solusi<br>Digital Anda,<br><em>Satu Ekosistem</em></h1>
+        <p class="hero-sub">AI Video Studio, AI Agent Pro, TikTok Agency, E-commerce Optimization, Trading Bot, hingga SEO — semua hadir untuk tumbuhkan bisnis Anda.</p>
+        <div class="hero-btns">
+          <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-gold">Coba AI Video Gratis</a>
+          <a href="https://wa.me/6285732740006" target="_blank" class="btn btn-ghost">Konsultasi WA</a>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="hero" class="d-flex align-items-center content-section pt-5 mt-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="hero-content">
-                        <span class="hero-badge" data-i18n="hero.badge">Digital Growth Agency</span>
-                        <h1 data-i18n="hero.title">Kami Bantu Brand Anda Tumbuh Lewat Strategi Digital yang Terbukti</h1>
-                        <p class="hero-subtitle" data-i18n="hero.subtitle">Spesialis dalam digital campaign, konten kreatif, dan iklan performa tinggi</p>
-                        <p class="hero-text" data-i18n="hero.text">Kami menggabungkan strategi berbasis data dengan kreativitas untuk memberikan hasil yang terukur bagi bisnis di Indonesia.</p>
-                        <div class="hero-buttons">
-                            <a href="contact.html" class="btn btn-primary">
-                                <i class="fas fa-rocket"></i> <span data-i18n="hero.btn.consultation">Dapatkan Konsultasi Gratis</span>
-                            </a>
-                            <a href="services.html" class="btn btn-outline">
-                                <i class="fas fa-arrow-right"></i> <span data-i18n="hero.btn.services">Jelajahi Layanan Kami</span>
-                            </a>
-                        </div>
-                        <div class="hero-stats">
-                            <div class="stat-item">
-                                <span class="stat-number">500+</span>
-                                <span class="stat-label" data-i18n="hero.stat.projects">Proyek Selesai</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">98%</span>
-                                <span class="stat-label" data-i18n="hero.stat.satisfaction">Kepuasan Klien</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">3+</span>
-                                <span class="stat-label" data-i18n="hero.stat.experience">Tahun Pengalaman</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="hero-image">
-                        <div class="hero-shape"></div>
-                        <div class="hero-illustration">
-                            <div class="tech-element tech-element-1"></div>
-                            <div class="tech-element tech-element-2"></div>
-                            <div class="tech-element tech-element-3"></div>
-                        </div>
-                        <div class="floating-card card-1">
-                            <i class="fas fa-chart-line"></i>
-                            <span data-i18n="hero.card.analytics">Growth Analytics</span>
-                        </div>
-                        <div class="floating-card card-2">
-                            <i class="fas fa-bullseye"></i>
-                            <span data-i18n="hero.card.marketing">Target Marketing</span>
-                        </div>
-                        <div class="floating-card card-3">
-                            <i class="fas fa-users"></i>
-                            <span data-i18n="hero.card.success">Client Success</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="hero-stat-n">500+</div><div class="hero-stat-l">Proyek</div></div>
+          <div class="hero-stat"><div class="hero-stat-n">98%</div><div class="hero-stat-l">Puas</div></div>
+          <div class="hero-stat"><div class="hero-stat-n">24/7</div><div class="hero-stat-l">AI Aktif</div></div>
+          <div class="hero-stat"><div class="hero-stat-n">3+</div><div class="hero-stat-l">Tahun</div></div>
         </div>
-    </section>
-
-    <!-- Features / Problems Section -->
-    <section id="problems" class="section-padding content-section">
-        <div class="container">
-            <div class="section-header text-center">
-                <h2 data-i18n="problems.title">Mengalami Tantangan Tumbuh Digital?</h2>
-                <p data-i18n="problems.subtitle">Dalam dunia digital yang berkembang pesat, untuk bertahan diperlukan keahlian khusus</p>
+      </div>
+      <div class="fade-up-2">
+        <div class="bot-preview">
+          <div class="bot-head">
+            <div class="bot-avatar">🎬</div>
+            <div>
+              <div class="bot-name-text">@berkahkarya_saas_bot</div>
+              <div class="bot-status-text">● Online 24/7</div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="problem-card">
-                        <div class="problem-icon">
-                            <i class="fas fa-store"></i>
-                        </div>
-                        <h3 data-i18n="problems.ecommerce.title">Kesulitan E-commerce</h3>
-                        <p data-i18n="problems.ecommerce.desc">Apakah Shopee atau TikTok Shop Anda kesulitan mengubah pengunjung menjadi pelanggan? Kami bisa membantu Anda mengoptimalkan penjualan melalui strategi yang tepat.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="problem-card">
-                        <div class="problem-icon">
-                            <i class="fas fa-search"></i>
-                        </div>
-                        <h3 data-i18n="problems.seo.title">Kesulitan SEO</h3>
-                        <p data-i18n="problems.seo.desc">Apakah Anda tidak terlihat oleh pelanggan potensial di Internet? Kami bisa membantu Anda meningkatkan visibilitas melalui strategi SEO yang tepat.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="problem-card">
-                        <div class="problem-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h3 data-i18n="problems.trading.title">Kesulitan Trading</h3>
-                        <p data-i18n="problems.trading.desc">Apakah volatilitas pasar dan keputusan emosional mempengaruhi kinerja trading Anda? Kami bisa membantu Anda mengoptimalkan trading melalui strategi yang tepat.</p>
-                    </div>
-                </div>
+          </div>
+          <div class="msg-sys chat-msg">🎉 3 kredit gratis aktif = 6 video siap dibuat!</div>
+          <div class="chat-msg msg-user">/create</div>
+          <div class="chat-msg msg-bot">Pilih durasi video:</div>
+          <div class="msg-btns">
+            <span class="msg-btn-chip">⚡ Quick 15s</span>
+            <span class="msg-btn-chip">📊 Standard 30s</span>
+            <span class="msg-btn-chip">🎬 Long 60s</span>
+            <span class="msg-btn-chip">📹 Extended 120s</span>
+            <span class="msg-btn-chip">🎯 Custom</span>
+          </div>
+          <div class="chat-msg msg-user">Standard 30s</div>
+          <div class="chat-msg msg-bot">⏳ Video sedang dibuat...<br>Auto storyboard ✓ Queue masuk ✓<br>Tunggu 2–5 menit ya!</div>
+          <div class="msg-sys chat-msg">✅ Video selesai! Siap download</div>
+          <div class="msg-btns">
+            <span class="msg-btn-chip">▶️ Watch</span>
+            <span class="msg-btn-chip">📥 Download</span>
+            <span class="msg-btn-chip">🎬 Buat Lagi</span>
+          </div>
+          <div class="credit-strip">
+            <div style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-5);margin-bottom:0.4rem;">Saldo Kredit</div>
+            <div class="credit-row-inner">
+              <div>
+                <div class="credit-num">2.5 <span style="font-size:0.7rem;color:var(--text-5);font-family:'Outfit',sans-serif;">kredit</span></div>
+                <div class="credit-sub">= 5 video tersisa</div>
+              </div>
+              <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-gold btn-sm">Top Up</a>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section py-5 bg-light">
-        <div class="container">
-            <div class="section-header text-center mb-5">
-                <span class="section-badge"><i class="fas fa-question-circle"></i> FAQ</span>
-                <h2 class="section-title">Pertanyaan yang Sering Ditanyakan</h2>
-                <p class="section-subtitle">Temukan jawaban untuk pertanyaan umum tentang layanan kami</p>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="accordion" id="faqAccordion">
-                        <div class="accordion-item mb-3">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                    Berapa lama waktu untuk melihat hasil?
-                                </button>
-                            </h3>
-                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <!-- TODO: Add actual answer -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item mb-3">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                    Industri apa saja yang Anda layani?
-                                </button>
-                            </h3>
-                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <!-- TODO: Add actual answer -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item mb-3">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                    Apakah Anda menawarkan jaminan?
-                                </button>
-                            </h3>
-                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <!-- TODO: Add actual answer -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item mb-3">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                                    Bagaimana sistem pembayaran?
-                                </button>
-                            </h3>
-                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <!-- TODO: Add actual answer -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item mb-3">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
-                                    Bisakah saya membatalkan kapan saja?
-                                </button>
-                            </h3>
-                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <!-- TODO: Add actual answer -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
-                                    Informasi apa yang Anda butuhkan untuk memulai?
-                                </button>
-                            </h3>
-                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    <!-- TODO: Add actual answer -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- STAT BAR -->
+<div class="divider"></div>
+<div class="stat-bar reveal">
+  <div class="stat-item"><div class="stat-num">500+</div><div class="stat-lbl">Proyek Selesai</div></div>
+  <div class="stat-item"><div class="stat-num">98%</div><div class="stat-lbl">Kepuasan Klien</div></div>
+  <div class="stat-item"><div class="stat-num">6</div><div class="stat-lbl">Lini Produk</div></div>
+  <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-lbl">AI Operasional</div></div>
+</div>
+<div class="divider"></div>
+
+<!-- ===== PRODUCTS ===== -->
+<section class="section" id="products">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag">Ekosistem Produk</span>
+      <h2>Enam Lini Solusi,<br><em>Satu Visi Pertumbuhan</em></h2>
+    </div>
+    <div class="prod-tabs-wrap reveal">
+      <button class="prod-tab active" onclick="switchProd(0)"><span class="prod-tab-icon">🎬</span><span class="prod-tab-label">AI Video</span></button>
+      <button class="prod-tab" onclick="switchProd(1)"><span class="prod-tab-icon">🤖</span><span class="prod-tab-label">AI Agent</span></button>
+      <button class="prod-tab" onclick="switchProd(2)"><span class="prod-tab-icon">📱</span><span class="prod-tab-label">TikTok</span></button>
+      <button class="prod-tab" onclick="switchProd(3)"><span class="prod-tab-icon">🛒</span><span class="prod-tab-label">E-commerce</span></button>
+      <button class="prod-tab" onclick="switchProd(4)"><span class="prod-tab-icon">📈</span><span class="prod-tab-label">Trading</span></button>
+      <button class="prod-tab" onclick="switchProd(5)"><span class="prod-tab-icon">🔍</span><span class="prod-tab-label">SEO</span></button>
+    </div>
+    <div id="panel-0" class="prod-panel active reveal">
+      <div class="prod-card">
+        <div class="prod-cat">SaaS — Telegram Bot</div>
+        <div class="prod-title">BerkahKarya AI Video Studio</div>
+        <p class="prod-desc">Generate video AI untuk TikTok, Reels, dan YouTube Shorts langsung dari Telegram. Bot auto-buat storyboard dan kirimkan video dalam 2–5 menit. Tidak perlu kamera, tidak perlu editing.</p>
+        <div class="prod-tags">
+          <span class="pill pill-gold">@berkahkarya_saas_bot</span>
+          <span class="pill pill-gold">0.5 kredit/video</span>
+          <span class="pill">Format 9:16</span><span class="pill">TikTok Ready</span>
         </div>
-    </section>
-
-    <!-- Footer -->
-
-    <!-- Footer -->
-    <footer class="footer content-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="footer-brand">
-                        <h3 data-i18n="footer.brand">Berkah Karya</h3>
-                        <p data-i18n="footer.brand.desc">Elevating digital presence through data-driven strategies and local expertise.</p>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="footer-links">
-                        <h4 data-i18n="footer.services.heading">Services</h4>
-                        <ul>
-                            <li><a href="services.html" data-i18n="footer.services.tiktok">TikTok Content Agency</a></li>
-                            <li><a href="services.html" data-i18n="footer.services.seo">E-commerce Optimization</a></li>
-                            <li><a href="services.html" data-i18n="footer.services.trading">FlashRobs Trading Bot</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="footer-links">
-                        <h4 data-i18n="footer.company.heading">Company</h4>
-                        <ul>
-                            <li><a href="about.html" data-i18n="footer.company.about">About Us</a></li>
-                            <li><a href="portfolio.html" data-i18n="footer.company.casestudies">Case Studies</a></li>
-                            <li><a href="contact.html" data-i18n="footer.company.contact">Contact</a></li>
-                            <li><a href="legal/terms-of-service.html" data-i18n="footer.company.terms">Terms of Service</a></li>
-                            <li><a href="legal/privacy-policy.html" data-i18n="footer.company.privacy">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="footer-newsletter">
-                        <h4 data-i18n="footer.newsletter.heading">Stay Updated</h4>
-                        <p data-i18n="footer.newsletter.desc">Subscribe to our newsletter for the latest digital marketing insights</p>
-                        <form class="newsletter-form">
-                            <input type="email" placeholder="Your email address" data-i18n-placeholder="footer.newsletter.placeholder">
-                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="copyright">
-                    <p data-i18n-html="footer.copyright">&copy; 2026 Berkah Karya. All rights reserved.</p>
-                </div>
-            </div>
+        <div class="prod-price">Mulai Rp 50.000 • 6 video gratis untuk user baru</div>
+      </div>
+      <div class="prod-card prod-card-2">
+        <div class="prod-cat">Durasi yang Tersedia</div>
+        <div class="prod-title">15s — 300s Custom</div>
+        <p class="prod-desc">Pilih Quick 15s, Standard 30s, Long 60s, Extended 120s, atau masukkan durasi custom 6–300 detik. Semua dihargai flat 0.5 kredit per video.</p>
+        <div class="prod-tags">
+          <span class="pill pill-gold">Auto storyboard</span>
+          <span class="pill">2–5 menit proses</span>
+          <span class="pill">Queue realtime</span>
         </div>
-    </footer>
+        <div class="prod-price">Langganan Pro: 100 video/bln — Rp 199K/bln</div>
+      </div>
+    </div>
+    <div id="panel-1" class="prod-panel">
+      <div class="prod-card">
+        <div class="prod-cat">SaaS — WhatsApp Automation</div>
+        <div class="prod-title">AI Agent Pro</div>
+        <p class="prod-desc">Sistem AI yang membalas chat WhatsApp dalam kurang dari 2 detik, 24/7. Handle lead follow-up, FAQ, dan kualifikasi prospek otomatis — sehingga tim CS bisa fokus ke hal bernilai tinggi.</p>
+        <div class="prod-tags">
+          <span class="pill pill-gold">Respon &lt;2 detik</span>
+          <span class="pill pill-gold">24/7 aktif</span>
+          <span class="pill">Dashboard monitor</span><span class="pill">NDA Protected</span>
+        </div>
+        <div class="prod-price">Starter Rp 499K/bln • Trial 7 hari gratis</div>
+      </div>
+      <div class="prod-card prod-card-2">
+        <div class="prod-cat">Hasil Nyata</div>
+        <div class="prod-title">2–3× Konversi, -60% Biaya CS</div>
+        <p class="prod-desc">65% lead hilang karena tidak direspon dalam 5 menit. AI Agent Pro memastikan setiap lead terjawab instan — saat meeting, makan siang, atau tidur sekalipun.</p>
+        <div class="prod-tags">
+          <span class="pill pill-gold">+200% conversion</span>
+          <span class="pill pill-gold">-80% CS workload</span>
+          <span class="pill">+280% closing rate</span>
+        </div>
+        <div class="prod-price">Growth Rp 1.5jt/bln • Enterprise custom</div>
+      </div>
+    </div>
+    <div id="panel-2" class="prod-panel">
+      <div class="prod-card">
+        <div class="prod-cat">Layanan Jasa — Content</div>
+        <div class="prod-title">TikTok Content Agency</div>
+        <p class="prod-desc">Tim creator profesional yang produksi 10–15 konten TikTok per bulan. Lengkap dengan script, caption, hashtag strategy, dan TikTok Ads management.</p>
+        <div class="prod-tags">
+          <span class="pill pill-gold">10–15 konten/bln</span>
+          <span class="pill">Script writing</span><span class="pill">TikTok Ads</span><span class="pill">Analytics report</span>
+        </div>
+        <div class="prod-price">Rp 2.500.000/bulan</div>
+      </div>
+      <div class="prod-card prod-card-2">
+        <div class="prod-cat">Case Study</div>
+        <div class="prod-title">2.1M Reach, 15% Engagement</div>
+        <p class="prod-desc">Campaign TikTok untuk brand fashion lokal menghasilkan 2.1 juta reach organik dengan engagement rate 15% — jauh melampaui rata-rata industri 3–5%.</p>
+        <div class="prod-tags">
+          <span class="pill pill-gold">2.1M reach</span><span class="pill pill-gold">320K engagement</span>
+        </div>
+        <div class="prod-price">Konsultasi gratis via WA sebelum mulai</div>
+      </div>
+    </div>
+    <div id="panel-3" class="prod-panel">
+      <div class="prod-card">
+        <div class="prod-cat">Layanan Jasa — Optimasi</div>
+        <div class="prod-title">E-commerce Optimization</div>
+        <p class="prod-desc">Optimasi UX/UI, conversion rate, dan kecepatan toko online Anda. Cocok untuk Shopee, TikTok Shop, Tokopedia, atau website sendiri. Setup + maintenance 6 bulan.</p>
+        <div class="prod-tags">
+          <span class="pill pill-gold">UX/UI improvement</span>
+          <span class="pill">CRO implementation</span><span class="pill">Speed optimization</span>
+        </div>
+        <div class="prod-price">Rp 3.000.000/bulan — setup + 6 bulan maintenance</div>
+      </div>
+      <div class="prod-card prod-card-2">
+        <div class="prod-cat">Case Study</div>
+        <div class="prod-title">+45% Conversion, Rp 150M Revenue</div>
+        <p class="prod-desc">Optimasi Shopify untuk fashion brand menghasilkan conversion rate naik 45% dan revenue tambahan Rp 150 juta dalam satu kuartal pertama.</p>
+        <div class="prod-tags">
+          <span class="pill pill-gold">+45% conversion</span><span class="pill pill-gold">Rp 150M revenue</span>
+        </div>
+        <div class="prod-price">Konsultasi gratis — evaluasi toko Anda</div>
+      </div>
+    </div>
+    <div id="panel-4" class="prod-panel">
+      <div class="prod-card">
+        <div class="prod-cat">SaaS — Trading Automation</div>
+        <div class="prod-title">FlashRobs Trading Bot</div>
+        <p class="prod-desc">Trading bot otomatis untuk XAUUSD dengan strategi 7-candle breakout di Asia session. Tersedia paper trading untuk testing tanpa risiko sebelum deploy live.</p>
+        <div class="prod-tags">
+          <span class="pill pill-gold">XAUUSD specialist</span>
+          <span class="pill pill-gold">7-candle breakout</span>
+          <span class="pill">Paper trading</span><span class="pill">Daily signals</span>
+        </div>
+        <div class="prod-price">Rp 500.000/bulan — paper + live deployment</div>
+      </div>
+      <div class="prod-card prod-card-2">
+        <div class="prod-cat">Backtest Results</div>
+        <div class="prod-title">78% Accuracy, +45% Profit</div>
+        <p class="prod-desc">Backtesting strategi XAUUSD selama 1 tahun penuh dengan data historis real market menunjukkan akurasi sinyal 78% dan pertumbuhan profit 45%.</p>
+        <div class="prod-tags">
+          <span class="pill pill-gold">78% accuracy</span><span class="pill pill-gold">+45% profit</span>
+          <span class="pill">1 tahun backtest</span>
+        </div>
+        <div class="prod-price">Strategy optimization + performance report termasuk</div>
+      </div>
+    </div>
+    <div id="panel-5" class="prod-panel">
+      <div class="prod-card">
+        <div class="prod-cat">Layanan Jasa — Growth</div>
+        <div class="prod-title">SEO & Digital Marketing</div>
+        <p class="prod-desc">Strategi SEO teknikal dan content marketing untuk tingkatkan ranking Google. Dilengkapi paid ads management di Google, Meta, dan TikTok untuk hasil lebih cepat.</p>
+        <div class="prod-tags">
+          <span class="pill pill-gold">Technical SEO</span>
+          <span class="pill">Keyword optimization</span><span class="pill">Link building</span><span class="pill">Paid ads</span>
+        </div>
+        <div class="prod-price">Custom pricing — konsultasi gratis untuk evaluasi</div>
+      </div>
+      <div class="prod-card prod-card-2">
+        <div class="prod-cat">Case Study</div>
+        <div class="prod-title">+150% Organic, ROI 5×</div>
+        <p class="prod-desc">SEO untuk e-commerce menghasilkan 100K+ traffic organik dan masuk halaman 1 Google. Campaign paid ads fintech capai ROI 5× dari budget Rp 50 juta.</p>
+        <div class="prod-tags">
+          <span class="pill pill-gold">+150% traffic</span><span class="pill pill-gold">ROI 5×</span>
+          <span class="pill">100K+ visitors</span>
+        </div>
+        <div class="prod-price">+500% ROAS pada campaign terbaik</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Tawk.to Script -->
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/6856a535552cdd190f7b5186/1iu97amv4';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <script src="js/i18n.js"></script>
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/6285732740006" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+<div class="divider"></div>
 
+<!-- ===== AI STUDIO FEATURED ===== -->
+<section class="section" id="ai-studio">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag">berkahkarya.org/ai-video-studio</span>
+      <h2>BerkahKarya<br><em>AI Video Studio</em></h2>
+    </div>
+    <div class="saas-grid reveal">
+      <div>
+        <p style="font-size:0.9rem;color:var(--text-4);line-height:1.8;margin-bottom:1.5rem;">Generate video AI untuk konten TikTok, Instagram Reels, dan YouTube Shorts langsung dari Telegram. Tidak perlu kamera, tidak perlu editor — bot yang kerjakan semuanya dalam 2–5 menit.</p>
+        <ul class="feat-list">
+          <li><div class="feat-check"></div>Buka Telegram → /create → video jadi dalam 2–5 menit</li>
+          <li><div class="feat-check"></div>Format 9:16 portrait siap upload ke semua platform</li>
+          <li><div class="feat-check"></div>Custom durasi 6 detik hingga 5 menit</li>
+          <li><div class="feat-check"></div>Auto storyboard — tidak perlu nulis script manual</li>
+          <li><div class="feat-check"></div>Sistem kredit fleksibel + langganan bulanan hemat</li>
+          <li><div class="feat-check"></div>Referral program — ajak teman, dapat komisi otomatis</li>
+          <li><div class="feat-check"></div>Pembayaran via Midtrans, Tripay, Duitku (QRIS, transfer, e-wallet)</li>
+        </ul>
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+          <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-gold">Coba Gratis — 6 Video 🎬</a>
+          <a href="#pricing" class="btn btn-ghost">Lihat Paket</a>
+        </div>
+      </div>
+      <div class="steps-grid" style="background:var(--bg-2);border:0.5px solid var(--line);border-radius:var(--r);overflow:hidden;">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-icon">📲</div>
+          <div class="step-title">Buka Bot</div>
+          <div class="step-desc">Cari @berkahkarya_saas_bot di Telegram. Daftar, langsung dapat 3 kredit gratis = 6 video.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-icon">⚙</div>
+          <div class="step-title">Pilih Durasi</div>
+          <div class="step-desc">Ketik /create, pilih durasi 15s–300s atau custom sesuai kebutuhan platform.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-icon">🤖</div>
+          <div class="step-title">AI Generate</div>
+          <div class="step-desc">Bot buat storyboard otomatis, masuk antrian, GeminiGen AI proses videonya.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-icon">✅</div>
+          <div class="step-title">Download</div>
+          <div class="step-desc">2–5 menit video dikirim ke chat. Download dan langsung upload ke TikTok!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== PRICING ===== -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="sec-header center reveal">
+      <span class="tag">Harga Transparan</span>
+      <h2>Pilih Paket<br><em>yang Tepat untuk Anda</em></h2>
+    </div>
+    <div style="font-size:0.7rem;letter-spacing:0.13em;text-transform:uppercase;color:var(--text-5);margin-bottom:1rem;" class="reveal">Langganan Bulanan — AI Video Studio</div>
+    <div class="pricing-grid reveal">
+      <div class="pricing-card">
+        <div class="pricing-plan">Lite</div>
+        <div class="pricing-amount">Rp 99K<sub>/bulan</sub></div>
+        <div class="pricing-volume">20 kredit = 40 video/bulan</div>
+        <ul class="pricing-feats">
+          <li class="feat-on">20 kredit otomatis tiap bulan</li>
+          <li class="feat-on">Priority queue 1.5×</li>
+          <li class="feat-on">Max durasi 120 detik</li>
+          <li class="feat-on">Basic analytics</li>
+          <li class="feat-off">Multi-angle variants</li>
+          <li class="feat-off">Revisi gratis</li>
+        </ul>
+        <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20paket%20Lite%20AI%20Video%20Studio" target="_blank" class="btn btn-outline btn-full btn-sm">Mulai Lite</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Paling Populer</div>
+        <div class="pricing-plan">Pro</div>
+        <div class="pricing-amount">Rp 199K<sub>/bulan</sub></div>
+        <div class="pricing-volume">50 kredit = 100 video/bulan</div>
+        <ul class="pricing-feats">
+          <li class="feat-on">50 kredit otomatis tiap bulan</li>
+          <li class="feat-on">Priority queue 2×</li>
+          <li class="feat-on">Max durasi 300 detik</li>
+          <li class="feat-on">Full analytics</li>
+          <li class="feat-on">Multi-angle (3 variant)</li>
+          <li class="feat-on">1 revisi gratis/video</li>
+        </ul>
+        <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20paket%20Pro%20AI%20Video%20Studio" target="_blank" class="btn btn-gold btn-full btn-sm">Mulai Pro</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-plan">Agency</div>
+        <div class="pricing-amount">Rp 499K<sub>/bulan</sub></div>
+        <div class="pricing-volume">150 kredit = 300 video/bulan</div>
+        <ul class="pricing-feats">
+          <li class="feat-on">150 kredit otomatis tiap bulan</li>
+          <li class="feat-on">Priority queue 3× (tercepat)</li>
+          <li class="feat-on">Max durasi 300 detik</li>
+          <li class="feat-on">Full analytics + export</li>
+          <li class="feat-on">Revisi unlimited</li>
+          <li class="feat-on">Dedicated support</li>
+        </ul>
+        <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20paket%20Agency%20AI%20Video%20Studio" target="_blank" class="btn btn-outline btn-full btn-sm">Mulai Agency</a>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;" class="reveal">
+      <div style="font-size:0.7rem;letter-spacing:0.13em;text-transform:uppercase;color:var(--text-5);margin-bottom:1rem;">Top Up Kredit — Bayar Sekali, Tidak Pernah Kadaluarsa</div>
+      <div class="topup-grid">
+        <div class="topup-card">
+          <div class="topup-name">Starter</div>
+          <div class="topup-price">Rp 50K</div>
+          <div class="topup-credits">6 kredit = 12 video</div>
+          <div class="topup-bonus">+1 kredit bonus</div>
+          <div class="topup-per">Rp 8.333/kredit</div>
+        </div>
+        <div class="topup-card" style="border-top:1px solid rgba(196,163,90,0.2);">
+          <div class="topup-name">Growth</div>
+          <div class="topup-price">Rp 150K</div>
+          <div class="topup-credits">18 kredit = 36 video</div>
+          <div class="topup-bonus">+3 kredit bonus</div>
+          <div class="topup-per">Rp 8.333/kredit</div>
+        </div>
+        <div class="topup-card">
+          <div class="topup-name">Scale</div>
+          <div class="topup-price">Rp 500K</div>
+          <div class="topup-credits">75 kredit = 150 video</div>
+          <div class="topup-bonus">+15 kredit bonus</div>
+          <div class="topup-per">Rp 6.667/kredit</div>
+        </div>
+        <div class="topup-card">
+          <div class="topup-name">Enterprise</div>
+          <div class="topup-price">Rp 1.5jt</div>
+          <div class="topup-credits">260 kredit = 520 video</div>
+          <div class="topup-bonus">+60 kredit bonus</div>
+          <div class="topup-per">Rp 5.769/kredit</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:1.75rem;padding:1.25rem 1.5rem;border:0.5px solid var(--line);background:var(--bg-2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-radius:var(--r);" class="reveal">
+      <div>
+        <div style="font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-5);margin-bottom:0.3rem;">AI Agent Pro — WhatsApp Automation</div>
+        <div style="font-size:0.85rem;color:var(--text-3);">Starter Rp 499K/bln &nbsp;•&nbsp; Growth Rp 1.5jt/bln &nbsp;•&nbsp; Enterprise Custom</div>
+      </div>
+      <a href="https://berkahkarya.org/ai-agent-pro" class="btn btn-ghost btn-sm">Lihat Detail →</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== PORTFOLIO ===== -->
+<section class="section" id="portfolio">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag">Bukti Nyata</span>
+      <h2>Hasil yang Sudah<br><em>Kami Capai</em></h2>
+    </div>
+    <div class="port-grid reveal">
+      <div class="port-card card-hover">
+        <div class="port-cat">TikTok Content Agency</div>
+        <div class="port-metric">2.1M Reach</div>
+        <p class="port-desc">Campaign viral fashion brand. Engagement rate 15% dan 320K interaksi organik.</p>
+      </div>
+      <div class="port-card card-hover">
+        <div class="port-cat">E-commerce Optimization</div>
+        <div class="port-metric">+45% Conversion</div>
+        <p class="port-desc">Optimasi Shopify menghasilkan Rp 150 juta revenue tambahan dalam satu kuartal.</p>
+      </div>
+      <div class="port-card card-hover">
+        <div class="port-cat">AI Agent Pro</div>
+        <div class="port-metric">&lt;2 Detik Respon</div>
+        <p class="port-desc">WhatsApp automation untuk 500+ lead dengan peningkatan closing rate 280%.</p>
+      </div>
+      <div class="port-card card-hover">
+        <div class="port-cat">FlashRobs Trading Bot</div>
+        <div class="port-metric">78% Accuracy</div>
+        <p class="port-desc">Backtest 1 tahun strategi XAUUSD 7-candle breakout. Profit growth 45%.</p>
+      </div>
+      <div class="port-card card-hover">
+        <div class="port-cat">SEO Optimization</div>
+        <div class="port-metric">+150% Organic</div>
+        <p class="port-desc">Website e-commerce halaman 1 Google dengan 100K+ monthly organic visitors.</p>
+      </div>
+      <div class="port-card card-hover">
+        <div class="port-cat">Digital Marketing Ads</div>
+        <div class="port-metric">ROI 5×</div>
+        <p class="port-desc">Campaign paid ads fintech dengan ROAS 500% dari budget Rp 50 juta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== REFERRAL ===== -->
+<section class="section">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag">Program Referral</span>
+      <h2>Ajak Teman,<br><em>Dapat Komisi</em></h2>
+    </div>
+    <div class="ref-box reveal">
+      <div>
+        <p style="font-size:0.85rem;color:var(--text-4);line-height:1.75;margin-bottom:1.25rem;">Setiap user punya kode referral unik. Bagikan ke teman — setiap kali teman beli kredit, kamu dapat komisi otomatis langsung ke saldo akun.</p>
+        <ul class="ref-steps-list">
+          <li class="ref-step-item"><div class="ref-step-num">1</div>Ketik /referral untuk dapat kode unikmu</li>
+          <li class="ref-step-item"><div class="ref-step-num">2</div>Bagikan link ke teman, komunitas, atau medsos</li>
+          <li class="ref-step-item"><div class="ref-step-num">3</div>Teman daftar → otomatis terhubung ke akunmu</li>
+          <li class="ref-step-item"><div class="ref-step-num">4</div>Teman beli kredit → komisi masuk otomatis</li>
+        </ul>
+      </div>
+      <div class="ref-code-box">
+        <div class="ref-code-lbl">Kode Referral Unikmu</div>
+        <div class="ref-code-val">REF-USERNAME-X4K9</div>
+        <div class="ref-code-link">t.me/berkahkarya_saas_bot?start=REF-USERNAME-X4K9</div>
+        <div class="ref-stat-row">
+          <div class="ref-stat-item"><div class="ref-stat-n">12</div><div class="ref-stat-l">Teman diajak</div></div>
+          <div class="ref-stat-item"><div class="ref-stat-n">Rp 85K</div><div class="ref-stat-l">Total komisi</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="section">
+  <div class="container">
+    <div class="sec-header center reveal">
+      <span class="tag">Dari Klien Kami</span>
+      <h2>Mereka Sudah<br><em>Merasakannya</em></h2>
+    </div>
+    <div class="testi-grid reveal">
+      <div class="testi-card">
+        <p class="testi-quote">"Revenue toko Shopee kami naik 3× dalam 2 bulan. Tim Berkah Karya tahu persis bottleneck mana yang harus diperbaiki."</p>
+        <div class="testi-name">Rizky Firmansyah</div>
+        <div class="testi-role">Owner, RF Fashion — Surabaya</div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"AI Agent Pro benar-benar game changer. Semua pertanyaan klien terjawab otomatis bahkan saat saya tidur sekalipun."</p>
+        <div class="testi-name">Dewi Kusuma</div>
+        <div class="testi-role">Founder, DK Skincare — Jakarta</div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"Bot AI Video Studio luar biasa. Saya bisa produksi 10 konten TikTok dalam sehari tanpa kamera dan tanpa editing sama sekali."</p>
+        <div class="testi-name">Ahmad Fauzi</div>
+        <div class="testi-role">Content Creator — Malang</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== FAQ ===== -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="sec-header center reveal">
+      <span class="tag">FAQ</span>
+      <h2>Pertanyaan yang<br><em>Sering Ditanyakan</em></h2>
+    </div>
+    <div style="max-width:720px;margin:0 auto;" class="reveal">
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Berapa lama proses generate video?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">Biasanya 2–5 menit per video. Bisa sedikit lebih lama saat antrian padat. Paket Pro dan Agency mendapat priority queue sehingga lebih cepat diproses.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Apakah kredit bisa kadaluarsa?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">Tidak. Kredit yang dibeli via top up tidak pernah kadaluarsa. Kredit dari langganan bulanan berlaku selama periode aktif berlangganan.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Apakah ada trial gratis?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">Ya! Semua user baru AI Video Studio otomatis mendapat 3 kredit gratis = 6 video untuk dicoba. AI Agent Pro juga tersedia trial 7 hari gratis.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Kalau video gagal, kredit dikembalikan?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">Ya. Jika video gagal di sisi sistem kami, kredit akan dikembalikan penuh ke saldo akun Anda secara otomatis.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Metode pembayaran apa yang tersedia?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">Kami mendukung Midtrans, Tripay, dan Duitku — mencakup transfer bank (BCA, Mandiri, BRI, dll), QRIS, GoPay, OVO, DANA, dan kartu kredit/debit.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Apakah AI Agent Pro bisa menggantikan CS saya?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">AI Agent Pro adalah alat bantu, bukan pengganti. AI menangani repetitive task (FAQ, lead follow-up, kualifikasi awal) sehingga tim CS Anda bisa fokus ke task bernilai tinggi seperti upsell dan closing.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Bagaimana keamanan data saya?</span><span class="faq-icon">+</span></button>
+          <div class="faq-a">Semua data dienkripsi end-to-end. Tersedia opsi on-premise deployment untuk enterprise. Kami juga mendukung NDA dan compliance regulasi data Indonesia.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== CTA FINAL ===== -->
+<section class="cta-section">
+  <div class="container">
+    <div class="reveal">
+      <span class="tag">Mulai Sekarang</span>
+      <h2 style="margin-bottom:0.75rem;">Siap Tumbuh Bersama<br><em>Berkah Karya?</em></h2>
+      <p style="max-width:460px;margin:0 auto;">Pilih produk yang paling sesuai kebutuhan Anda, atau konsultasikan langsung — gratis, tanpa komitmen.</p>
+      <div class="cta-btns">
+        <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-gold">Coba AI Video Gratis 🎬</a>
+        <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20konsultasi%20produk%20Berkah%20Karya" target="_blank" class="btn btn-ghost">WhatsApp Konsultasi</a>
+        <a href="https://berkahkarya.org/ai-agent-pro" class="btn btn-outline">AI Agent Pro →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Berkah Karya</div>
+        <p class="footer-brand-desc">Digital Growth Agency — membantu bisnis Indonesia tumbuh melalui AI, automation, dan strategi digital yang terbukti.</p>
+        <div style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-ghost btn-sm">Telegram Bot</a>
+          <a href="https://wa.me/6285732740006" target="_blank" class="btn btn-outline btn-sm">WhatsApp</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Produk</div>
+        <ul class="footer-links-list">
+          <li><a href="#ai-studio">AI Video Studio</a></li>
+          <li><a href="https://berkahkarya.org/ai-agent-pro">AI Agent Pro</a></li>
+          <li><a href="https://berkahkarya.org/services">TikTok Agency</a></li>
+          <li><a href="https://berkahkarya.org/services">E-commerce Opt.</a></li>
+          <li><a href="https://berkahkarya.org/services">FlashRobs Bot</a></li>
+          <li><a href="https://berkahkarya.org/services">SEO & Marketing</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Perusahaan</div>
+        <ul class="footer-links-list">
+          <li><a href="https://berkahkarya.org/portfolio">Portfolio</a></li>
+          <li><a href="https://berkahkarya.org/pricing">Pricing</a></li>
+          <li><a href="https://berkahkarya.org/about.html">About Us</a></li>
+          <li><a href="https://berkahkarya.org/contact.html">Kontak</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal & Support</div>
+        <ul class="footer-links-list">
+          <li><a href="https://berkahkarya.org/legal/terms-of-service.html">Terms of Service</a></li>
+          <li><a href="https://berkahkarya.org/legal/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="mailto:info@berkahkarya.org">info@berkahkarya.org</a></li>
+          <li><a href="tel:+6285732740006">+62 857-3274-0006</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Berkah Karya Digital Agency. All rights reserved.</div>
+      <div class="footer-copy">Surabaya, Indonesia &nbsp;•&nbsp; berkahkarya.org</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// MOBILE MENU
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+  const spans = hamburger.querySelectorAll('span');
+  if (mobileMenu.classList.contains('open')) {
+    spans[0].style.transform = 'rotate(45deg) translate(4px, 5px)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'rotate(-45deg) translate(4px, -5px)';
+  } else {
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  }
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    const spans = hamburger.querySelectorAll('span');
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  });
+});
+
+// PRODUCT TABS
+function switchProd(i) {
+  document.querySelectorAll('.prod-tab').forEach((t, idx) => t.classList.toggle('active', idx === i));
+  document.querySelectorAll('.prod-panel').forEach((p, idx) => p.classList.toggle('active', idx === i));
+}
+
+// FAQ ACCORDION
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const icon = btn.querySelector('.faq-icon');
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('open'));
+  if (!isOpen) {
+    answer.classList.add('open');
+    icon.classList.add('open');
+  }
+}
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
 </body>
 </html>

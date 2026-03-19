@@ -1,0 +1,58 @@
+TASK 5: FEATURE EXTRACTION FROM tiktok-agency.html
+Date: 2026-03-02
+Status: COMPLETED
+
+EXTRACTED FEATURES:
+===================
+
+1. ROI CALCULATOR LOGIC
+   - Location: Lines 564-598
+   - Function: calculateROI()
+   - Formula: (Monthly Revenue - Package Price) / Package Price * 100
+   - Per-tier pricing: Starter (3M), Growth (5M), Scale (8M)
+   - Color coding: Green for positive ROI, Red for negative
+   - Status: ✓ Extracted to .sisyphus/drafts/roi-calculator-logic.md
+
+2. ROI CALCULATOR HTML STRUCTURE
+   - Location: Lines 393-443
+   - Input fields: productPrice, targetSales
+   - Output elements: starterROI, growthROI, scaleROI
+   - Status: ✓ Extracted to .sisyphus/drafts/roi-calculator-logic.md
+
+3. SHOPEE-SPECIFIC CONTACT FORM
+   - Location: Lines 445-514
+   - Total fields: 7
+   - Fields: shop_name, email, shop_url, main_product, monthly_sales, message, package
+   - Package options: Starter, Growth (default), Scale, Unsure
+   - Status: ✓ Extracted to .sisyphus/drafts/roi-calculator-logic.md
+
+4. "WHY TIKTOK" SECTION
+   - Location: Lines 87-124
+   - Market data points:
+     * Flooring posts: 577.8K
+     * Renovation posts: 882K+
+     * Buyer video search: 80%
+     * LVT Market 2025: USD 540M
+     * LVT Market 2032: USD 1.14B
+     * CAGR: 11.3%
+   - Status: ✓ Extracted to .sisyphus/drafts/roi-calculator-logic.md
+
+5. CONTACT INFORMATION
+   - Email: veris@berkahkarya.org
+   - Phone: +62 857-3274-0006
+   - Website: berkahkarya.org
+   - Status: ✓ Verified and extracted
+
+EXTRACTION VERIFICATION:
+========================
+✓ ROI calculator function extracted with complete logic
+✓ HTML structure preserved with all input/output IDs
+✓ Shopee form fields documented with field mapping table
+✓ Market data statistics verified
+✓ Contact information verified
+✓ All content saved to .sisyphus/drafts/roi-calculator-logic.md (338 lines)
+
+READY FOR INTEGRATION:
+- Task 16 (ROI Calculator): Use calculateROI() function
+- Task 11 (Contact Form): Use 7 Shopee-specific fields
+- Task 15 (Market Data): Use "Why TikTok" statistics

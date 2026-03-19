@@ -1,0 +1,2 @@
+ls: cannot access 'script.js': No such file or directory
+ls: cannot access 'grapesjs-init.js': No such file or directory
