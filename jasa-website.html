@@ -1,283 +1,464 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jasa Pembuatan Website — Berkah Karya</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jasa Pembuatan Website — BerkahKarya</title>
+  <meta name="description" content="Jasa pembuatan website profesional untuk UMKM dan bisnis Indonesia. Landing page, company profile, toko online — selesai 7 hari, harga transparan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
 
-<link rel="stylesheet" href="style.css">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#faf8f4;--bg-2:#f2ede3;--mustard:#c8920a;--mustard-bg:#fef9ec;--text-1:#1a1a18;--text-2:#3a3a38;--text-3:#6a6a68;--border:rgba(0,0,0,0.07);--r:2px;}
-html{scroll-behavior:smooth}body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text-1);line-height:1.6}a{text-decoration:none;color:inherit}
-.container{max-width:1100px;margin:0 auto;padding:0 24px}
-nav{position:sticky;top:0;z-index:100;background:rgba(250,248,244,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1100px;margin:0 auto;padding:0 24px}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700}.nav-logo span{color:var(--mustard)}
-.nav-links{display:flex;gap:28px;list-style:none}.nav-links a{font-size:.875rem;font-weight:500;color:var(--text-3)}.nav-links a:hover{color:var(--text-1)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:var(--r);font-family:'Outfit',sans-serif;font-weight:500;font-size:.875rem;cursor:pointer;border:none;transition:all .2s}
-.btn-mustard{background:var(--mustard);color:#fff}.btn-mustard:hover{background:#a87208}
-.btn-outline{background:transparent;border:1.5px solid var(--mustard);color:var(--mustard)}.btn-outline:hover{background:var(--mustard-bg)}
-.btn-lg{padding:14px 32px;font-size:1rem}.btn-sm{padding:8px 16px;font-size:.8rem}
-#hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
-#hamburger span{display:block;width:22px;height:2px;background:var(--text-1)}
-.mobile-menu{display:none;flex-direction:column;gap:12px;padding:16px 24px;background:var(--bg);border-bottom:1px solid var(--border)}
-.mobile-menu a{font-size:.9rem;color:var(--text-2);padding:8px 0;border-bottom:1px solid var(--border)}.mobile-menu.open{display:flex}
-.hero{padding:100px 0 80px;text-align:center}
-.hero-tag{display:inline-block;background:var(--mustard-bg);color:var(--mustard);font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:20px}
-.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;line-height:1.15;max-width:780px;margin:0 auto 20px}
-.hero p{font-size:1.05rem;color:var(--text-3);max-width:560px;margin:0 auto 36px;line-height:1.7}
-.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-section{padding:80px 0}
-.section-label{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mustard);margin-bottom:12px}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.2;margin-bottom:16px}
-.overview{background:var(--bg-2)}
-.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
-.overview-box h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;margin-bottom:16px}
-.overview-box ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.overview-box li{padding-left:20px;position:relative;color:var(--text-2);font-size:.95rem}
-.overview-box li::before{content:'—';position:absolute;left:0;color:var(--mustard)}
-.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
-.card{background:#fff;border:1px solid var(--border);border-radius:4px;padding:28px 24px}
-.card-icon{font-size:1.6rem;margin-bottom:14px}
-.card h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;margin-bottom:8px}
-.card p{font-size:.875rem;color:var(--text-3);line-height:1.6}
-.proses{background:var(--bg-2)}
-.steps{display:flex;gap:0;margin-top:48px;position:relative}
-.steps::before{content:'';position:absolute;top:28px;left:0;right:0;height:1px;background:var(--border)}
-.step{flex:1;text-align:center;padding:0 12px}
-.step-num{width:56px;height:56px;border-radius:50%;border:2px solid var(--mustard);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--mustard);margin:0 auto 16px;position:relative;z-index:1;background:var(--bg-2)}
-.step h4{font-weight:600;font-size:.9rem;margin-bottom:6px}.step p{font-size:.8rem;color:var(--text-3)}
-.benefit-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:48px}
-.benefit-card{background:var(--bg-2);border-radius:4px;padding:28px}
-.benefit-card h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;margin-bottom:8px}
-.benefit-card p{font-size:.875rem;color:var(--text-3);line-height:1.6}
-.usecase{background:var(--bg-2)}
-.usecase-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
-.usecase-item{background:#fff;border-left:3px solid var(--mustard);padding:20px 24px;border-radius:0 4px 4px 0}
-.usecase-item h4{font-weight:600;font-size:.95rem;margin-bottom:6px}.usecase-item p{font-size:.85rem;color:var(--text-3)}
-.cta-closing{text-align:center;padding:100px 0}
-.cta-closing h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:16px;max-width:600px;margin-left:auto;margin-right:auto}
-.cta-closing p{color:var(--text-3);margin-bottom:32px}
-footer{background:var(--text-1);color:#fff;padding:48px 0 32px}
-.footer-inner{display:flex;flex-direction:column;gap:24px}
-.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700}.footer-logo span{color:var(--mustard)}
-.footer-links{display:flex;flex-wrap:wrap;gap:20px}.footer-links a{font-size:.85rem;color:rgba(255,255,255,.6)}.footer-links a:hover{color:#fff}
-.footer-copy{font-size:.8rem;color:rgba(255,255,255,.3);border-top:1px solid rgba(255,255,255,.08);padding-top:20px}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}.reveal.visible{opacity:1;transform:none}
-@media(max-width:768px){
-  .nav-links,.nav-cta{display:none}#hamburger{display:flex}
-  .overview-grid,.cards-grid,.benefit-grid,.usecase-list{grid-template-columns:1fr}
-  .steps{flex-direction:column;gap:20px}.steps::before{display:none}
-  .step{display:flex;align-items:flex-start;gap:16px;text-align:left}.step-num{flex-shrink:0;margin:0}
-}
+    /* ── Jasa LP shared styles ── */
+    .js-hero {
+      background: var(--bg-white); border-bottom: 1px solid var(--border);
+      padding: calc(64px + 5rem) 1.5rem 5rem; text-align: center;
+    }
+    .js-hero-inner { max-width: 760px; margin: 0 auto; }
+    .js-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg-muted); border: 1px solid var(--border);
+      border-radius: 999px; padding: 6px 14px; margin-bottom: 1.5rem;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--mustard);
+    }
+    .js-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900;
+      letter-spacing: -0.04em; line-height: 1.08; margin: 0 0 1.25rem;
+    }
+    .js-hero h1 em { font-style: normal; color: var(--mustard); }
+    .js-hero-sub {
+      font-size: 1.1rem; color: var(--text-muted); line-height: 1.7;
+      margin: 0 auto 2rem; max-width: 580px;
+    }
+    .js-hero-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 
-/* ===== DESIGN SYSTEM OVERRIDES ===== */
-/* Font override — use Plus Jakarta Sans from style.css */
-body { font-family: var(--font) !important; background: var(--bg) !important; color: var(--text) !important; }
+    /* Sections */
+    .js-sec { padding: 5rem 1.5rem; }
+    .js-sec.alt { background: var(--bg-muted); }
+    .js-sec-inner { max-width: var(--max-width); margin: 0 auto; }
+    .js-sec-head { margin-bottom: 3rem; }
+    .js-sec-head.center { text-align: center; }
+    .sec-lbl { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mustard); margin-bottom: 0.6rem; }
+    .js-sec-head h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.2; margin: 0; }
+    .js-sec-head h2 em { font-style: normal; color: var(--mustard); }
+    .js-sec-head p { color: var(--text-muted); line-height: 1.65; margin: 0.75rem 0 0; max-width: 560px; }
+    .js-sec-head.center p { margin-left: auto; margin-right: auto; }
 
-/* Remap old vars to new design system */
-:root {
-  --bg-2: var(--bg-muted);
-  --bg-3: var(--bg-muted);
-  --text-1: var(--text);
-  --text-2: var(--text);
-  --text-3: var(--text-muted);
-  --text-4: var(--text-light);
-  --mustard-bg: var(--mustard-pale);
-  --r: var(--radius-sm);
-}
+    /* Problems */
+    .js-prob-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .js-prob-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 1.25rem;
+    }
+    .js-prob-icon { font-size: 1.5rem; flex-shrink: 0; line-height: 1; }
+    .js-prob-item h4 { font-size: 0.9rem; font-weight: 800; color: var(--text); margin: 0 0 0.25rem; }
+    .js-prob-item p { font-size: 0.82rem; color: var(--text-muted); margin: 0; line-height: 1.55; }
 
-/* Section title — replace Cormorant with system font */
-.section-title, .section-title *, h1, h2, h3, h4 {
-  font-family: var(--font) !important;
-}
-h1 { font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; }
-h2.section-title { font-weight: 900; letter-spacing: -0.03em; }
+    /* Deliverables */
+    .js-deliv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .js-deliv-card {
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .js-deliv-card:hover { border-color: var(--mustard); box-shadow: 0 4px 20px rgba(200,146,10,0.08); }
+    .js-deliv-icon { font-size: 1.8rem; display: block; margin-bottom: 0.75rem; }
+    .js-deliv-card h4 { font-size: 0.9rem; font-weight: 800; color: var(--text); margin: 0 0 0.4rem; }
+    .js-deliv-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
 
-/* Section padding */
-section { padding: 5rem 0; }
-.hero { padding: calc(64px + 4rem) 0 4rem; }
-.container { max-width: var(--max-width); }
+    /* Process steps */
+    .js-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; margin-top: 1rem; }
+    .js-steps::before { content: ''; position: absolute; top: 32px; left: 10%; right: 10%; height: 1px; background: var(--border); z-index: 0; }
+    .js-step { text-align: center; padding: 0 0.75rem; position: relative; }
+    .js-step-num {
+      width: 64px; height: 64px; border-radius: 50%;
+      border: 2px solid var(--mustard); background: var(--bg-muted);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 900; color: var(--mustard);
+      margin: 0 auto 1rem; position: relative; z-index: 1;
+    }
+    .js-step h4 { font-size: 0.85rem; font-weight: 800; color: var(--text); margin: 0 0 0.35rem; }
+    .js-step p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
 
-/* Section label */
-.section-label {
-  color: var(--mustard); font-size: 0.72rem; font-weight: 700;
-  letter-spacing: 0.16em; text-transform: uppercase;
-}
+    /* Benefits */
+    .js-benefit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .js-benefit {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+    }
+    .js-benefit-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .js-benefit strong { display: block; font-size: 0.95rem; font-weight: 800; color: var(--text); margin-bottom: 0.3rem; }
+    .js-benefit p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.55; margin: 0; }
 
-/* Cards update */
-.card {
-  background: var(--bg-white); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 1.75rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-.card:hover { border-color: var(--mustard); box-shadow: 0 4px 20px var(--shadow-md); }
-.card h4 { font-family: var(--font) !important; font-weight: 800; letter-spacing: -0.02em; }
+    /* Pricing */
+    .js-pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .js-plan {
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 2rem;
+      display: flex; flex-direction: column;
+      transition: box-shadow 0.2s;
+    }
+    .js-plan.highlight {
+      border-color: var(--mustard); border-width: 2px;
+      box-shadow: 0 0 0 4px rgba(212,160,23,0.08);
+      position: relative;
+    }
+    .js-plan.highlight::before {
+      content: '⭐ Paling Dipilih';
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--mustard); color: #fff;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
+      padding: 4px 14px; border-radius: 999px; white-space: nowrap;
+    }
+    .js-plan-name { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mustard); margin-bottom: 0.5rem; }
+    .js-plan-price { font-size: 2.2rem; font-weight: 900; letter-spacing: -0.04em; color: var(--text); line-height: 1; }
+    .js-plan-price span { font-size: 0.85rem; font-weight: 500; color: var(--text-muted); letter-spacing: 0; }
+    .js-plan-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.55; margin: 0.75rem 0 1.5rem; }
+    .js-plan-items { list-style: none; padding: 0; margin: 0 0 1.75rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+    .js-plan-items li { display: flex; align-items: flex-start; gap: 8px; font-size: 0.83rem; color: var(--text-muted); }
+    .js-plan-items li::before { content: '✓'; color: var(--mustard); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .js-plan-btn { display: block; text-align: center; padding: 12px 20px; border-radius: var(--radius-sm); font-size: 0.88rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+    .js-plan.highlight .js-plan-btn { background: var(--mustard); color: #fff; }
+    .js-plan.highlight .js-plan-btn:hover { background: var(--mustard-dark); }
+    .js-plan:not(.highlight) .js-plan-btn { border: 1.5px solid var(--border); color: var(--text); }
+    .js-plan:not(.highlight) .js-plan-btn:hover { border-color: var(--mustard); color: var(--mustard); }
+    .js-pricing-note { text-align: center; margin-top: 1.5rem; font-size: 0.82rem; color: var(--text-light); }
 
-/* Benefit cards */
-.benefit-card {
-  background: var(--bg-muted); border-radius: var(--radius); padding: 1.75rem;
-  border: 1px solid var(--border);
-}
-.benefit-card h4 { font-family: var(--font) !important; font-weight: 800; }
+    /* Use cases */
+    .js-usecase-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .js-usecase-item {
+      background: var(--bg-white); border-left: 3px solid var(--mustard);
+      border: 1px solid var(--border); border-left: 3px solid var(--mustard);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.25rem 1.5rem;
+    }
+    .js-usecase-item h4 { font-size: 0.9rem; font-weight: 800; color: var(--text); margin: 0 0 0.3rem; }
+    .js-usecase-item p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; margin: 0; }
 
-/* Use case items */
-.usecase-item {
-  background: var(--bg-white); border-left: 3px solid var(--mustard);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  border-top: 1px solid var(--border); border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 1.5rem;
-}
-.usecase-item h4 { font-family: var(--font) !important; font-weight: 700; }
+    /* CTA Final */
+    .js-cta-final { text-align: center; padding: 5rem 1.5rem; }
+    .js-cta-inner { max-width: 600px; margin: 0 auto; }
+    .js-cta-inner h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 900; letter-spacing: -0.03em; margin: 0 0 1rem; }
+    .js-cta-inner h2 em { font-style: normal; color: var(--mustard); }
+    .js-cta-inner p { color: var(--text-muted); line-height: 1.7; margin: 0 0 2rem; }
+    .js-cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 
-/* Overview boxes */
-.overview-box h3 { font-family: var(--font) !important; font-weight: 800; letter-spacing: -0.02em; }
+    /* Responsive */
+    @media (max-width: 1000px) { .js-steps { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; } .js-steps::before { display: none; } }
+    @media (max-width: 900px) { .js-deliv-grid, .js-pricing-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 680px) {
+      .js-prob-grid, .js-deliv-grid, .js-pricing-grid, .js-benefit-grid, .js-usecase-grid, .js-steps { grid-template-columns: 1fr; }
+      .js-hero { padding: calc(64px + 3rem) 1.25rem 3rem; }
+      .js-sec { padding: 3.5rem 1.25rem; }
+      .js-plan.highlight::before { font-size: 0.65rem; }
+    }
 
-/* Step numbers */
-.step-num {
-  background: var(--bg-muted) !important;
-  border-color: var(--mustard) !important;
-  font-family: var(--font) !important;
-  font-weight: 900 !important;
-  color: var(--mustard) !important;
-}
-.step h4 { font-family: var(--font) !important; font-weight: 700; }
-
-/* Hero tag */
-.hero-tag {
-  background: var(--mustard-pale) !important;
-  color: var(--mustard-dark) !important;
-  border-radius: var(--radius-full);
-  font-weight: 700; letter-spacing: 0.1em;
-}
-
-/* CTA closing section */
-.cta-closing h2 { font-family: var(--font) !important; font-weight: 900; letter-spacing: -0.03em; }
-
-/* Mobile nav override — hide old nav elements */
-#hamburger, .mobile-menu { display: none !important; }
-
-</style>
+  .bk-nav.open .bk-nav-mobile-menu {
+    display: flex; flex-direction: column; gap: 0.5rem;
+    padding: 1rem 1.5rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .bk-nav-mobile-menu { display: none; }
+  .bk-nav-mobile-menu a {
+    font-size: 0.9rem; font-weight: 500; color: var(--text-muted);
+    padding: 0.5rem 0; border-bottom: 1px solid var(--border);
+  }
+  .bk-nav-mobile-menu a:last-child { border-bottom: none; }
+  </style>
 </head>
-<body class="page-jasa">
-<nav class="bk-nav">
+<body>
+
+<nav class="bk-nav" id="mainNav">
   <div class="bk-nav-inner">
     <a href="index.html" class="bk-logo">Berkah<span>Karya</span></a>
     <ul class="bk-nav-links">
       <li><a href="services.html">Layanan</a></li>
-      <li><a href="omniroute.html">Omniroute</a></li>
+      <li><a href="digital-product.html">Produk Digital</a></li>
       <li><a href="tools.html">Tools</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
-    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Website.%20Bisa%20konsultasi%3F" class="bk-nav-cta" target="_blank">WhatsApp →</a>
-    <button class="bk-nav-mobile" aria-label="Menu">☰</button>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Pembuatan%20Website.%20Bisa%20konsultasi%3F" class="bk-nav-cta" target="_blank" rel="noopener">Konsultasi Gratis →</a>
+    <button class="bk-nav-mobile" id="mobileToggle" aria-label="Menu">☰</button>
+  </div>
+  <div class="bk-nav-mobile-menu" id="mobileMenu">
+    <a href="services.html">Layanan</a>
+    <a href="digital-product.html">Produk Digital</a>
+    <a href="tools.html">Tools</a>
+    <a href="about.html">About</a>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Pembuatan%20Website.%20Bisa%20konsultasi%3F" target="_blank" rel="noopener">💬 Konsultasi Gratis</a>
   </div>
 </nav>
 
-<section class="hero">
-  <div class="container">
-    <div class="hero-tag">Jasa Pembuatan Website</div>
-    <h1>Website Profesional yang<br>Selesai dalam 7 Hari</h1>
-    <p>Dari landing page, company profile, sampai toko online — kami bangun website yang cepat, mobile-friendly, dan siap convert pengunjung jadi pelanggan.</p>
-    <div class="hero-cta">
-      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Pembuatan%20Website." class="btn-primary btn-lg" target="_blank">💬 Konsultasi Gratis</a>
-      <a href="#fitur" class="btn-secondary btn-lg">Lihat Layanan</a>
+<!-- HERO -->
+<section class="js-hero">
+  <div class="js-hero-inner">
+    <div class="js-tag">✨ Jasa Website</div>
+    <h1>Website Profesional<br><em>Selesai 7 Hari</em></h1>
+    <p class="js-hero-sub">Landing page, company profile, sampai toko online — dibangun cepat, mobile-friendly, dan siap convert pengunjung jadi pelanggan.</p>
+    <div class="js-hero-btns">
+      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Pembuatan%20Website.%20Bisa%20konsultasi%3F" class="btn-primary" target="_blank" rel="noopener">
+        💬 Konsultasi Gratis
+      </a>
+      <a href="#harga" class="btn-secondary">Lihat Harga ↓</a>
     </div>
   </div>
 </section>
 
-<section class="overview">
-  <div class="container">
-    <div class="section-label">Overview</div>
-    <h2 class="section-title">Masalah yang Kami Selesaikan</h2>
-    <div class="overview-grid reveal">
-      <div class="overview-box">
-        <h3>Tantangan Punya Website</h3>
-        <ul>
-          <li>Vendor web development biasa butuh 1-3 bulan</li>
-          <li>Harga freelancer tidak predictable, sering over budget</li>
-          <li>Template WordPress yang generik — tidak on-brand</li>
-          <li>Website yang ada lambat dan tidak mobile-friendly</li>
-          <li>Tidak tahu cara maintain setelah selesai dibangun</li>
-        </ul>
+<!-- MASALAH -->
+<section class="js-sec alt">
+  <div class="js-sec-inner">
+    <div class="js-sec-head">
+      <span class="sec-lbl">Masalah yang Kami Selesaikan</span>
+      <h2>Kenapa Bisnis Kamu <em>Butuh Ini?</em></h2>
+    </div>
+    <div class="js-prob-grid">
+      <div class="js-prob-item">
+        <span class="js-prob-icon">😩</span>
+        <div><h4>Vendor butuh 1–3 bulan</h4><p>Bisnis kamu menunggu terlalu lama untuk go online</p></div>
       </div>
-      <div class="overview-box">
-        <h3>Untuk Siapa Layanan Ini</h3>
-        <ul>
-          <li>Bisnis baru yang butuh kehadiran online profesional</li>
-          <li>UMKM yang masih pakai Linktree atau WhatsApp saja</li>
-          <li>Brand yang mau tampil lebih profesional dan credible</li>
-          <li>Bisnis yang butuh landing page untuk kampanye iklan</li>
-          <li>Perusahaan yang mau update website lama ke tampilan modern</li>
-        </ul>
+      <div class="js-prob-item">
+        <span class="js-prob-icon">💸</span>
+        <div><h4>Budget tidak predictable</h4><p>Freelancer sering over budget dan tidak transparan</p></div>
+      </div>
+      <div class="js-prob-item">
+        <span class="js-prob-icon">😐</span>
+        <div><h4>Template generik</h4><p>Website template yang sama dipakai ribuan bisnis lain</p></div>
+      </div>
+      <div class="js-prob-item">
+        <span class="js-prob-icon">🐌</span>
+        <div><h4>Website lambat</h4><p>Loading lama = bounce rate tinggi = kehilangan pelanggan</p></div>
+      </div>
+      <div class="js-prob-item">
+        <span class="js-prob-icon">🔧</span>
+        <div><h4>Tidak tahu cara maintain</h4><p>Setelah jadi, tidak ada yang bisa bantu kalau ada masalah</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="fitur">
-  <div class="container">
-    <div class="section-label">Deliverables</div>
-    <h2 class="section-title">Yang Kamu Dapatkan</h2>
-    <div class="cards-grid reveal">
-      <div class="card"><div class="card-icon">🎨</div><h4>Desain Custom</h4><p>Bukan template jadi. Setiap elemen dirancang sesuai brand identity dan preferensi kamu.</p></div>
-      <div class="card"><div class="card-icon">📱</div><h4>Responsive Mobile</h4><p>Tampil sempurna di semua perangkat — desktop, tablet, dan smartphone.</p></div>
-      <div class="card"><div class="card-icon">🔍</div><h4>SEO On-Page Dasar</h4><p>Meta tags, heading structure, dan optimasi dasar agar website mudah ditemukan Google.</p></div>
-      <div class="card"><div class="card-icon">💬</div><h4>Integrasi WhatsApp CTA</h4><p>Tombol WhatsApp yang strategis di setiap halaman untuk maksimalkan konversi lead.</p></div>
-      <div class="card"><div class="card-icon">🌐</div><h4>Hosting & Domain Setup</h4><p>Bantu setup hosting dan domain. Website kamu langsung live setelah selesai dibangun.</p></div>
-      <div class="card"><div class="card-icon">🔄</div><h4>Revisi Hingga Puas</h4><p>Tidak ada batas revisi. Kami terus refine sampai kamu benar-benar puas dengan hasilnya.</p></div>
+<!-- DELIVERABLES -->
+<section class="js-sec" id="layanan">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">Yang Kamu Dapatkan</span>
+      <h2>Semua yang <em>Kamu Butuhkan</em></h2>
+    </div>
+    <div class="js-deliv-grid">
+      <div class="js-deliv-card">
+        <span class="js-deliv-icon">🎨</span>
+        <h4>Desain Custom</h4>
+        <p>Bukan template. Setiap elemen dirancang sesuai brand identity kamu.</p>
+      </div>
+      <div class="js-deliv-card">
+        <span class="js-deliv-icon">📱</span>
+        <h4>100% Responsive</h4>
+        <p>Sempurna di semua perangkat — desktop, tablet, dan HP.</p>
+      </div>
+      <div class="js-deliv-card">
+        <span class="js-deliv-icon">🔍</span>
+        <h4>SEO On-Page</h4>
+        <p>Meta tags, heading structure, dan speed optimasi agar mudah ditemukan Google.</p>
+      </div>
+      <div class="js-deliv-card">
+        <span class="js-deliv-icon">💬</span>
+        <h4>CTA WhatsApp</h4>
+        <p>Tombol WA strategis di setiap halaman untuk maksimalkan lead.</p>
+      </div>
+      <div class="js-deliv-card">
+        <span class="js-deliv-icon">🌐</span>
+        <h4>Domain & Hosting</h4>
+        <p>Setup domain dan hosting — website langsung live setelah selesai.</p>
+      </div>
+      <div class="js-deliv-card">
+        <span class="js-deliv-icon">🔄</span>
+        <h4>Revisi Tanpa Batas</h4>
+        <p>Kita terus refine sampai kamu benar-benar puas.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="proses">
-  <div class="container">
-    <div class="section-label">Proses Kerja</div>
-    <h2 class="section-title">Dari Brief ke Website Live — 7 Hari</h2>
-    <div class="steps reveal">
-      <div class="step"><div class="step-num">01</div><div><h4>Brief & Referensi</h4><p>Diskusi kebutuhan, tujuan website, dan kumpulkan referensi desain</p></div></div>
-      <div class="step"><div class="step-num">02</div><div><h4>Wireframe & Mockup</h4><p>Preview tampilan website sebelum masuk development</p></div></div>
-      <div class="step"><div class="step-num">03</div><div><h4>Development</h4><p>Bangun website dengan code clean, cepat, dan SEO-friendly</p></div></div>
-      <div class="step"><div class="step-num">04</div><div><h4>Review & Revisi</h4><p>Kamu review semua halaman, kami revisi sampai puas</p></div></div>
-      <div class="step"><div class="step-num">05</div><div><h4>Launch & Handover</h4><p>Website live, kamu terima akses penuh dan panduan maintenance</p></div></div>
+<!-- PROSES -->
+<section class="js-sec alt" id="proses">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">Proses Kerja</span>
+      <h2>Cara Kerja <em>yang Transparan</em></h2>
+    </div>
+    <div class="js-steps">
+      <div class="js-step">
+        <div class="js-step-num">01</div>
+        <h4>Brief & Referensi</h4>
+        <p>Diskusi kebutuhan, tujuan, dan kumpulkan referensi desain</p>
+      </div>
+      <div class="js-step">
+        <div class="js-step-num">02</div>
+        <h4>Wireframe & Mockup</h4>
+        <p>Preview tampilan sebelum masuk development — kamu approve dulu</p>
+      </div>
+      <div class="js-step">
+        <div class="js-step-num">03</div>
+        <h4>Development</h4>
+        <p>Bangun dengan code clean, cepat, dan SEO-friendly</p>
+      </div>
+      <div class="js-step">
+        <div class="js-step-num">04</div>
+        <h4>Review & Revisi</h4>
+        <p>Kamu review semua halaman, kami revisi sampai puas</p>
+      </div>
+      <div class="js-step">
+        <div class="js-step-num">05</div>
+        <h4>Launch & Handover</h4>
+        <p>Website live, kamu terima akses penuh + panduan maintenance</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="container">
-    <div class="section-label">Keunggulan</div>
-    <h2 class="section-title">Kenapa Pilih Kami untuk Website Kamu</h2>
-    <div class="benefit-grid reveal">
-      <div class="benefit-card"><h4>⚡ 7 Hari Selesai</h4><p>Bukan 3 bulan seperti vendor biasa. Kamu bisa launch online dalam seminggu.</p></div>
-      <div class="benefit-card"><h4>🎯 Desain Sesuai Brand</h4><p>Setiap pixel mencerminkan identitas brand kamu — bukan template yang dipakai ribuan bisnis lain.</p></div>
-      <div class="benefit-card"><h4>🚀 Performance & Loading Cepat</h4><p>Code yang clean dan dioptimasi. Website kamu tidak akan bikin pengunjung kabur karena lambat.</p></div>
-      <div class="benefit-card"><h4>📈 Didesain untuk Konversi</h4><p>Struktur, CTA, dan flow dirancang untuk mengubah pengunjung jadi lead dan pelanggan.</p></div>
+<!-- KEUNGGULAN -->
+<section class="js-sec">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">Keunggulan</span>
+      <h2>Kenapa Pilih <em>BerkahKarya?</em></h2>
+    </div>
+    <div class="js-benefit-grid">
+      <div class="js-benefit">
+        <div>
+          <strong>⚡ 7 Hari Selesai</strong>
+          <p>Bukan 3 bulan seperti vendor biasa. Launch online dalam seminggu.</p>
+        </div>
+      </div>
+      <div class="js-benefit">
+        <div>
+          <strong>🎯 Desain Sesuai Brand</strong>
+          <p>Setiap pixel mencerminkan identitas kamu — bukan template ribuan bisnis.</p>
+        </div>
+      </div>
+      <div class="js-benefit">
+        <div>
+          <strong>🚀 Loading Super Cepat</strong>
+          <p>Code dioptimasi. Tidak ada pengunjung yang kabur karena loading lama.</p>
+        </div>
+      </div>
+      <div class="js-benefit">
+        <div>
+          <strong>📈 Didesain untuk Konversi</strong>
+          <p>Struktur, CTA, dan flow dirancang mengubah pengunjung jadi pelanggan.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="usecase">
-  <div class="container">
-    <div class="section-label">Use Case</div>
-    <h2 class="section-title">Cocok Untuk Siapa</h2>
-    <div class="usecase-list reveal">
-      <div class="usecase-item"><h4>🆕 Bisnis Baru</h4><p>Butuh kehadiran online dari hari pertama. Website = credibility instan.</p></div>
-      <div class="usecase-item"><h4>🔗 UMKM yang Pakai Linktree</h4><p>Sudah waktunya upgrade dari Linktree ke website profesional yang kamu miliki sepenuhnya.</p></div>
-      <div class="usecase-item"><h4>💼 Brand yang Mau Credible</h4><p>Tampilan profesional yang membangun kepercayaan calon klien dan investor.</p></div>
-      <div class="usecase-item"><h4>📣 Bisnis yang Butuh Landing Page</h4><p>Kampanye iklan butuh landing page yang dedicated — bukan halaman beranda generik.</p></div>
+<!-- PRICING -->
+<section class="js-sec alt" id="harga">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">Harga Transparan</span>
+      <h2>Pilih Paket yang <em>Pas untuk Kamu</em></h2>
+      <p>Semua harga sudah termasuk semua yang disebutkan. Tidak ada biaya tersembunyi.</p>
+    </div>
+    <div class="js-pricing-grid">
+      <div class="js-plan">
+        <div class="js-plan-name">Landing Page</div>
+        <div class="js-plan-price">Rp 1.499.000 <span>one-time</span></div>
+        <p class="js-plan-desc">Ideal untuk kampanye iklan atau produk/layanan tunggal</p>
+        <ul class="js-plan-items">
+          <li>1 halaman responsif (landing page)</li>
+          <li>Desain custom sesuai brand</li>
+          <li>Integrasi WhatsApp CTA</li>
+          <li>SEO on-page dasar</li>
+          <li>Hosting setup & domain guide</li>
+          <li>Selesai dalam 5 hari</li>
+          <li>Revisi hingga 3x</li>
+        </ul>
+        <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Pembuatan%20Website.%20Bisa%20konsultasi%3F" class="js-plan-btn" target="_blank" rel="noopener">Mulai Sekarang</a>
+      </div>
+      <div class="js-plan highlight">
+        <div class="js-plan-name">Company Profile</div>
+        <div class="js-plan-price">Rp 3.999.000 <span>one-time</span></div>
+        <p class="js-plan-desc">Website multi-halaman untuk bisnis yang ingin tampil profesional</p>
+        <ul class="js-plan-items">
+          <li>5–7 halaman (Beranda, Tentang, Layanan, Portfolio, Kontak)</li>
+          <li>Desain custom premium</li>
+          <li>Blog/artikel (opsional)</li>
+          <li>Google Analytics integration</li>
+          <li>SEO on-page lengkap</li>
+          <li>Hosting setup & SSL</li>
+          <li>Selesai dalam 7 hari</li>
+          <li>Revisi tanpa batas</li>
+          <li>Panduan maintenance 30 hari</li>
+        </ul>
+        <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Pembuatan%20Website.%20Bisa%20konsultasi%3F" class="js-plan-btn" target="_blank" rel="noopener">Paling Populer</a>
+      </div>
+      <div class="js-plan">
+        <div class="js-plan-name">Toko Online</div>
+        <div class="js-plan-price">Rp 6.999.000 <span>one-time</span></div>
+        <p class="js-plan-desc">E-commerce lengkap dengan sistem produk dan pembayaran</p>
+        <ul class="js-plan-items">
+          <li>Semua fitur Company Profile +</li>
+          <li>Katalog produk unlimited</li>
+          <li>Keranjang belanja & checkout</li>
+          <li>Integrasi payment gateway (Midtrans/Xendit)</li>
+          <li>Dashboard admin manajemen produk</li>
+          <li>Integrasi ongkir otomatis</li>
+          <li>Selesai dalam 14 hari</li>
+          <li>Revisi tanpa batas</li>
+          <li>Support 60 hari</li>
+        </ul>
+        <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Pembuatan%20Website.%20Bisa%20konsultasi%3F" class="js-plan-btn" target="_blank" rel="noopener">Konsultasi Dulu</a>
+      </div>
+    </div>
+    <p class="js-pricing-note">💬 Semua paket bisa dikonsultasikan lebih lanjut · Custom paket tersedia · Pembayaran bisa dicicil untuk paket di atas Rp 2 juta</p>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section class="js-sec" id="cocok-untuk">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">Siapa yang Cocok</span>
+      <h2>Layanan Ini <em>Tepat Untukmu</em> Jika...</h2>
+    </div>
+    <div class="js-usecase-grid">
+      <div class="js-usecase-item">
+        <h4>🆕 Bisnis Baru</h4>
+        <p>Butuh kehadiran online dari hari pertama. Website = credibility instan.</p>
+      </div>
+      <div class="js-usecase-item">
+        <h4>🔗 UMKM yang Pakai Linktree</h4>
+        <p>Saatnya upgrade ke website profesional yang kamu miliki sepenuhnya.</p>
+      </div>
+      <div class="js-usecase-item">
+        <h4>💼 Brand yang Mau Credible</h4>
+        <p>Tampilan profesional membangun kepercayaan calon klien dan investor.</p>
+      </div>
+      <div class="js-usecase-item">
+        <h4>📣 Kampanye Iklan</h4>
+        <p>Landing page dedicated untuk iklan Meta/Google — bukan halaman beranda generik.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="cta-closing">
-  <div class="container">
-    <h2>Siap Punya Website yang Bekerja untuk Bisnis Kamu?</h2>
-    <p>Konsultasi gratis. Ceritakan bisnis kamu, kami rancang website yang tepat.</p>
-    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Pembuatan%20Website." class="btn-primary btn-lg" target="_blank">💬 Chat WhatsApp Sekarang</a>
+<!-- CTA FINAL -->
+<section class="js-cta-final">
+  <div class="js-cta-inner">
+    <span class="sec-lbl" style="display:block;text-align:center;">Mulai Sekarang</span>
+    <h2>Siap? Kita Mulai<br><em>Hari Ini</em></h2>
+    <p>Konsultasi pertama gratis. Ceritakan kebutuhan kamu — kami bantu temukan solusi yang tepat dalam budget kamu.</p>
+    <div class="js-cta-btns">
+      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Pembuatan%20Website.%20Bisa%20konsultasi%3F" class="btn-primary" target="_blank" rel="noopener">
+        💬 Konsultasi Gratis via WhatsApp
+      </a>
+      <a href="services.html" class="btn-secondary">Lihat Semua Layanan</a>
+    </div>
   </div>
 </section>
 
@@ -285,12 +466,12 @@ section { padding: 5rem 0; }
   <div class="bk-footer-inner">
     <div class="bk-footer-brand">
       <div class="bk-logo">Berkah<span>Karya</span></div>
-      <p>AI Ecosystem untuk bisnis Indonesia — agency kreatif, AI tools, dan SaaS platform dalam satu ekosistem.</p>
+      <p>AI Ecosystem untuk bisnis Indonesia — agency kreatif, AI tools, dan produk digital dalam satu ekosistem.</p>
     </div>
     <div class="bk-footer-col">
       <h5>Layanan</h5>
       <ul>
-        <li><a href="jasa-sosmed.html">Kelola Sosmed</a></li>
+        <li><a href="jasa-sosmed.html">Kelola Social Media</a></li>
         <li><a href="jasa-video-ai.html">Jasa Video AI</a></li>
         <li><a href="jasa-website.html">Jasa Website</a></li>
         <li><a href="jasa-foto-produk.html">Foto Produk AI</a></li>
@@ -298,13 +479,12 @@ section { padding: 5rem 0; }
       </ul>
     </div>
     <div class="bk-footer-col">
-      <h5>Platform</h5>
+      <h5>Produk Digital</h5>
       <ul>
-        <li><a href="omniroute.html">Omniroute</a></li>
-        <li><a href="tools.html">AI Tools</a></li>
-        <li><a href="ai-agent-pro.html">AI Agent Pro</a></li>
-        <li><a href="ai-video-studio.html">Video Studio</a></li>
-        <li><a href="digital-product.html">Produk Digital</a></li>
+        <li><a href="digital-product.html">Katalog Produk</a></li>
+        <li><a href="dp-job-magnet.html">JobMagnet AI</a></li>
+        <li><a href="dp-ai-creative-tools.html">AI Creative Tools</a></li>
+        <li><a href="dp-guru-ai.html">Guru Pintar AI</a></li>
       </ul>
     </div>
     <div class="bk-footer-col">
@@ -313,7 +493,6 @@ section { padding: 5rem 0; }
         <li><a href="about.html">Tentang Kami</a></li>
         <li><a href="contact.html">Kontak</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="pricing.html">Harga</a></li>
         <li><a href="legal/privacy-policy.html">Privasi</a></li>
       </ul>
     </div>
@@ -323,11 +502,11 @@ section { padding: 5rem 0; }
     <span>Made with ❤️ + 🤖 AI in Indonesia</span>
   </div>
 </footer>
+
 <script>
-document.getElementById('hamburger').addEventListener('click',function(){document.getElementById('mobileMenu').classList.toggle('open');});
-const reveals=document.querySelectorAll('.reveal');
-const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.1});
-reveals.forEach(el=>io.observe(el));
+  const toggle = document.getElementById('mobileToggle');
+  const nav = document.getElementById('mainNav');
+  if (toggle && nav) toggle.addEventListener('click', () => nav.classList.toggle('open'));
 </script>
 </body>
 </html>
