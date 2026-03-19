@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Omniroute — AI Gateway untuk Developer & Agency. Satu endpoint untuk mengelola, me-route, dan mengoptimalkan semua provider AI: OpenAI, Claude, Gemini, DeepSeek, Groq dan lebih banyak.">
+<title>Omniroute — AI Gateway Platform | Berkah Karya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #080808;
+  color: #ddd6c8;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; }
+
+:root {
+  --gold: #c4a35a;
+  --gold-light: #dbb96b;
+  --gold-border: rgba(196,163,90,0.25);
+  --bg-2: #0d0d0b;
+  --bg-3: #111110;
+  --bg-4: #161614;
+  --text-1: #f0e8dc;
+  --text-2: #ddd6c8;
+  --text-3: #b8b0a4;
+  --text-4: #7a7a72;
+  --text-5: #555550;
+  --line: rgba(255,255,255,0.06);
+  --line-2: rgba(255,255,255,0.03);
+  --r: 2px;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(8,8,8,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--line);
+  height: 60px;
+  display: flex; align-items: center;
+}
+.nav-inner {
+  max-width: 1180px; margin: 0 auto; padding: 0 2rem;
+  display: flex; align-items: center; width: 100%; gap: 2rem;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  color: var(--text-1);
+  white-space: nowrap;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links {
+  display: flex; gap: 2rem; margin-left: auto;
+  list-style: none;
+}
+.nav-link {
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  color: var(--text-4);
+  transition: color 0.2s;
+}
+.nav-link:hover, .nav-link.active { color: var(--text-1); }
+.nav-cta { margin-left: 1.5rem; display: flex; gap: 0.75rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.78rem; font-weight: 400; letter-spacing: 0.05em;
+  border-radius: var(--r); transition: all 0.2s; white-space: nowrap;
+}
+.btn-gold { background: var(--gold); color: #080808; border: 1.5px solid var(--gold); }
+.btn-gold:hover { background: var(--gold-light); border-color: var(--gold-light); }
+.btn-ghost { background: transparent; color: var(--text-3); border: 0.5px solid rgba(255,255,255,0.15); }
+.btn-ghost:hover { color: var(--text-1); border-color: rgba(255,255,255,0.3); }
+.btn-outline { background: transparent; color: var(--gold); border: 0.5px solid var(--gold-border); }
+.btn-outline:hover { background: rgba(196,163,90,0.06); }
+.btn-sm { padding: 0.4rem 1rem; font-size: 0.72rem; }
+
+/* ===== HAMBURGER ===== */
+#hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; padding: 4px; cursor: pointer; margin-left: auto;
+}
+#hamburger span { display: block; width: 22px; height: 1px; background: var(--text-3); transition: 0.2s; }
+.mobile-menu {
+  display: none; position: fixed; top: 60px; left: 0; right: 0; bottom: 0;
+  background: rgba(8,8,8,0.98); z-index: 99;
+  flex-direction: column; padding: 2rem;
+  overflow-y: auto;
+}
+.mobile-menu.open { display: flex; }
+.mobile-link { font-size: 1.1rem; font-family: 'Cormorant Garamond', serif; color: var(--text-3); padding: 1rem 0; border-bottom: 0.5px solid var(--line-2); display: block; }
+.mobile-link:hover { color: var(--gold); }
+.mobile-cta { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; }
+
+/* ===== LAYOUT ===== */
+.container { max-width: 1180px; margin: 0 auto; padding: 0 2rem; }
+.section { padding: clamp(4rem, 8vw, 7rem) 0; }
+.divider { height: 0.5px; background: var(--line); margin: 0 2rem; }
+
+/* ===== HERO ===== */
+.omni-hero {
+  padding-top: calc(60px + clamp(5rem, 12vw, 9rem));
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+  background: #050505;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 0.5px solid var(--line);
+}
+.omni-hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 500px;
+  background: radial-gradient(ellipse, rgba(196,163,90,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.omni-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-border), transparent);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 6vw, 5rem);
+  align-items: center;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); border: 0.5px solid var(--gold-border);
+  padding: 0.3rem 0.85rem; border-radius: 1px;
+  background: rgba(196,163,90,0.04);
+  margin-bottom: 1.5rem;
+}
+.hero-eyebrow-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.hero-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  color: var(--text-1);
+  font-weight: 600;
+  line-height: 1.06;
+  margin-bottom: 1.25rem;
+}
+.hero-h1 em { font-style: italic; color: var(--gold); }
+.hero-p {
+  font-size: 0.92rem;
+  color: var(--text-4);
+  line-height: 1.9;
+  max-width: 420px;
+  margin-bottom: 2.25rem;
+}
+.hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.hero-stats {
+  display: flex; gap: 2.5rem; flex-wrap: wrap;
+  padding-top: 2rem;
+  border-top: 0.5px solid var(--line);
+}
+.hero-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; color: var(--gold); font-weight: 600;
+}
+.hero-stat-lbl { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-5); margin-top: 0.15rem; }
+
+/* ===== HERO VISUAL ===== */
+.hero-terminal {
+  background: #0a0a08;
+  border: 0.5px solid var(--gold-border);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+  font-family: 'Courier New', monospace;
+}
+.terminal-bar {
+  background: #0d0d0a;
+  border-bottom: 0.5px solid rgba(196,163,90,0.12);
+  padding: 0.65rem 1rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.t-dot { width: 9px; height: 9px; border-radius: 50%; }
+.terminal-title { font-size: 0.62rem; letter-spacing: 0.1em; color: var(--text-5); margin-left: auto; font-family: 'Outfit', sans-serif; }
+.terminal-body { padding: 1.25rem 1.5rem; font-size: 0.7rem; line-height: 1.9; }
+.t-comment { color: var(--text-5); }
+.t-key { color: #7ec8e3; }
+.t-val { color: #b5e4a0; }
+.t-str { color: var(--gold); }
+.t-bracket { color: var(--text-4); }
+.t-response {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(196,163,90,0.04);
+  border: 0.5px solid rgba(196,163,90,0.1);
+  border-radius: 2px;
+}
+.t-success { color: #4caf50; font-size: 0.65rem; letter-spacing: 0.1em; }
+
+/* ===== SECTION HEADER ===== */
+.sec-label {
+  font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); display: block; margin-bottom: 0.75rem;
+}
+.sec-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: var(--text-1); font-weight: 600; line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+.sec-h2 em { font-style: italic; color: var(--gold); }
+.sec-p { font-size: 0.88rem; color: var(--text-4); line-height: 1.85; max-width: 540px; }
+.sec-header { margin-bottom: 3.5rem; }
+
+/* ===== HOW IT WORKS ===== */
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 0.5px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+.how-step {
+  padding: 2rem 1.5rem;
+  border-right: 0.5px solid var(--line);
+  position: relative;
+}
+.how-step:last-child { border-right: none; }
+.how-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem; color: rgba(196,163,90,0.12);
+  font-weight: 600; line-height: 1; margin-bottom: 1rem;
+}
+.how-icon { font-size: 1.2rem; margin-bottom: 0.75rem; }
+.how-title { font-size: 0.8rem; font-weight: 500; color: var(--text-2); margin-bottom: 0.5rem; letter-spacing: 0.03em; }
+.how-desc { font-size: 0.75rem; color: var(--text-5); line-height: 1.7; }
+.how-connector {
+  position: absolute; top: 2rem; right: -12px;
+  width: 24px; height: 1px; background: var(--gold-border); z-index: 1;
+  display: flex; align-items: center; justify-content: flex-end;
+}
+.how-connector::after { content: '›'; color: var(--gold); font-size: 0.8rem; margin-right: -4px; }
+.how-step:last-child .how-connector { display: none; }
+
+/* ===== FEATURES GRID ===== */
+.features-outer {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+.features-list { display: flex; flex-direction: column; gap: 0; }
+.feat-item {
+  display: flex; gap: 1.25rem;
+  padding: 1.75rem 0;
+  border-bottom: 0.5px solid var(--line);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.feat-item:first-child { border-top: 0.5px solid var(--line); }
+.feat-item:hover .feat-icon-box { border-color: var(--gold-border); background: rgba(196,163,90,0.06); }
+.feat-icon-box {
+  width: 40px; height: 40px; flex-shrink: 0;
+  border: 0.5px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; transition: 0.2s;
+  border-radius: 2px;
+  background: var(--bg-2);
+}
+.feat-body {}
+.feat-title { font-size: 0.88rem; font-weight: 500; color: var(--text-2); margin-bottom: 0.3rem; }
+.feat-desc { font-size: 0.78rem; color: var(--text-5); line-height: 1.75; }
+
+.features-visual {
+  position: sticky; top: 80px;
+}
+.feat-screen {
+  background: var(--bg-2);
+  border: 0.5px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.feat-screen-bar {
+  background: var(--bg-3);
+  border-bottom: 0.5px solid var(--line);
+  padding: 0.6rem 1rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.feat-screen-body { padding: 1.25rem; }
+.screen-section-title {
+  font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); padding-bottom: 0.6rem; border-bottom: 0.5px solid rgba(196,163,90,0.12);
+  margin-bottom: 0.85rem;
+}
+
+/* Providers mock */
+.mock-provider-row {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.55rem 0.75rem; border-radius: 2px;
+  margin-bottom: 0.3rem;
+  background: var(--bg-3);
+  border: 0.5px solid var(--line-2);
+}
+.mock-provider-indicator { width: 6px; height: 6px; border-radius: 50%; background: #4caf50; flex-shrink: 0; }
+.mock-provider-name { font-size: 0.72rem; color: var(--text-3); flex: 1; }
+.mock-provider-model { font-size: 0.62rem; color: var(--text-5); }
+.mock-provider-lat { font-size: 0.62rem; color: var(--text-5); min-width: 40px; text-align: right; }
+.mock-tag {
+  font-size: 0.56rem; padding: 0.15rem 0.45rem;
+  background: rgba(196,163,90,0.08); border: 0.5px solid var(--gold-border);
+  color: var(--gold); border-radius: 1px; letter-spacing: 0.06em;
+}
+
+/* Routing combos mock */
+.mock-combo {
+  padding: 0.65rem 0.75rem;
+  background: var(--bg-3); border: 0.5px solid var(--line-2);
+  border-radius: 2px; margin-bottom: 0.35rem;
+}
+.mock-combo-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.3rem; }
+.mock-combo-name { font-size: 0.72rem; color: var(--text-2); font-weight: 500; }
+.mock-combo-type { font-size: 0.57rem; color: var(--gold); letter-spacing: 0.08em; }
+.mock-combo-models { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+.mock-model-chip {
+  font-size: 0.57rem; padding: 0.12rem 0.45rem;
+  background: var(--bg-4); border: 0.5px solid var(--line);
+  color: var(--text-5); border-radius: 1px;
+}
+
+/* API keys mock */
+.mock-key-row {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.55rem 0; border-bottom: 0.5px solid var(--line-2);
+}
+.mock-key-row:last-child { border-bottom: none; }
+.mock-key-name { font-size: 0.72rem; color: var(--text-3); flex: 1; }
+.mock-key-val { font-family: 'Courier New', monospace; font-size: 0.62rem; color: var(--text-5); }
+.mock-key-badge {
+  font-size: 0.56rem; padding: 0.12rem 0.45rem;
+  border-radius: 1px; letter-spacing: 0.06em;
+}
+.badge-green { background: rgba(76,175,80,0.1); color: #4caf50; border: 0.5px solid rgba(76,175,80,0.2); }
+.badge-blue { background: rgba(100,160,255,0.1); color: #64a0ff; border: 0.5px solid rgba(100,160,255,0.2); }
+
+/* ===== PROVIDERS SECTION ===== */
+.providers-section { background: #050505; border-top: 0.5px solid var(--line); border-bottom: 0.5px solid var(--line); }
+.providers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 0.5px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+  margin-top: 3rem;
+}
+.provider-card {
+  padding: 1.75rem;
+  border-right: 0.5px solid var(--line);
+  border-bottom: 0.5px solid var(--line);
+  transition: background 0.15s;
+}
+.provider-card:hover { background: var(--bg-2); }
+.provider-card:nth-child(3n) { border-right: none; }
+.provider-card:nth-last-child(-n+3) { border-bottom: none; }
+.provider-logo { font-size: 1.3rem; margin-bottom: 0.75rem; }
+.provider-name { font-size: 0.85rem; font-weight: 500; color: var(--text-2); margin-bottom: 0.2rem; }
+.provider-models { font-size: 0.72rem; color: var(--text-5); margin-bottom: 0.75rem; line-height: 1.6; }
+.provider-status-row { display: flex; align-items: center; gap: 0.4rem; }
+.status-dot { width: 5px; height: 5px; border-radius: 50%; background: #4caf50; }
+.status-text { font-size: 0.62rem; color: var(--text-5); letter-spacing: 0.06em; }
+
+/* ===== USE CASES ===== */
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: var(--line);
+  border: 0.5px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+  margin-top: 3rem;
+}
+.case-card {
+  background: #080808;
+  padding: 2rem 1.75rem;
+  transition: background 0.15s;
+}
+.case-card:hover { background: var(--bg-2); }
+.case-num { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: rgba(196,163,90,0.2); margin-bottom: 1rem; }
+.case-title { font-size: 0.88rem; font-weight: 500; color: var(--text-2); margin-bottom: 0.5rem; }
+.case-desc { font-size: 0.75rem; color: var(--text-5); line-height: 1.75; }
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+  background: #050505;
+  border-top: 0.5px solid var(--line);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(196,163,90,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-inner { position: relative; z-index: 1; }
+.cta-eyebrow { font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 1.25rem; }
+.cta-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--text-1); font-weight: 600;
+  line-height: 1.1; margin-bottom: 1rem;
+}
+.cta-h2 em { font-style: italic; color: var(--gold); }
+.cta-p { font-size: 0.88rem; color: var(--text-4); max-width: 480px; margin: 0 auto 2.25rem; line-height: 1.85; }
+.cta-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+.cta-note { font-size: 0.72rem; color: var(--text-5); }
+
+/* ===== FOOTER ===== */
+footer {
+  background: #050505;
+  border-top: 0.5px solid var(--line);
+  padding: 3rem 0 2rem;
+}
+.footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--text-3); letter-spacing: 0.05em; }
+.footer-logo span { color: var(--gold); }
+.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+.footer-links a { font-size: 0.72rem; color: var(--text-5); transition: color 0.15s; }
+.footer-links a:hover { color: var(--text-3); }
+.footer-copy { font-size: 0.65rem; color: var(--text-5); }
+
+/* ===== REVEAL ANIMATION ===== */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.fade-up { opacity: 0; transform: translateY(24px); animation: fadeUp 0.7s ease forwards; }
+.fade-up-2 { animation-delay: 0.15s; opacity: 0; transform: translateY(24px); animation: fadeUp 0.7s ease 0.15s forwards; }
+.fade-up-3 { animation-delay: 0.3s; opacity: 0; transform: translateY(24px); animation: fadeUp 0.7s ease 0.3s forwards; }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  #hamburger { display: flex; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-terminal { order: -1; }
+  .how-grid { grid-template-columns: 1fr 1fr; }
+  .how-step:nth-child(2) { border-right: none; }
+  .how-step:nth-child(3) { border-top: 0.5px solid var(--line); }
+  .how-step:nth-child(1) .how-connector { display: flex; }
+  .how-step:nth-child(2) .how-connector { display: none; }
+  .how-step:nth-child(3) .how-connector { display: flex; }
+  .features-outer { grid-template-columns: 1fr; }
+  .features-visual { position: static; }
+  .providers-grid { grid-template-columns: 1fr 1fr; }
+  .provider-card:nth-child(2n) { border-right: none; }
+  .provider-card:nth-child(3n) { border-right: 0.5px solid var(--line); }
+  .cases-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .how-grid { grid-template-columns: 1fr; }
+  .how-step { border-right: none !important; border-top: 0.5px solid var(--line); }
+  .how-step:first-child { border-top: none; }
+  .how-connector { display: none !important; }
+  .providers-grid { grid-template-columns: 1fr; }
+  .provider-card:nth-child(n) { border-right: none; }
+  .hero-stats { gap: 1.5rem; }
+  .features-list .feat-item:nth-child(n+4) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Berkah<span>.</span>Karya</a>
+    <ul class="nav-links">
+      <li><a href="index.html#omniroute" class="nav-link active">Platform</a></li>
+      <li><a href="index.html#solusi-bisnis" class="nav-link">Solusi Bisnis</a></li>
+      <li><a href="index.html#tools-ai" class="nav-link">Tools AI</a></li>
+      <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+      <li><a href="about.html" class="nav-link">Tentang</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn-gold btn-sm">Hubungi Kami</a>
+    </div>
+    <button id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" class="mobile-link" onclick="document.getElementById('mobile-menu').classList.remove('open')">← Beranda</a>
+  <a href="#fitur" class="mobile-link" onclick="document.getElementById('mobile-menu').classList.remove('open')">Fitur</a>
+  <a href="#providers" class="mobile-link" onclick="document.getElementById('mobile-menu').classList.remove('open')">Providers</a>
+  <a href="#use-cases" class="mobile-link" onclick="document.getElementById('mobile-menu').classList.remove('open')">Use Cases</a>
+  <div class="mobile-cta">
+    <a href="contact.html" class="btn btn-gold" style="justify-content:center;">Hubungi Kami</a>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="omni-hero">
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- Left: Copy -->
+      <div>
+        <div class="hero-eyebrow fade-up">
+          <span class="hero-eyebrow-dot"></span>
+          AI Gateway Platform
+        </div>
+        <h1 class="hero-h1 fade-up">Satu Gateway<br>untuk Semua<br><em>API AI Anda</em></h1>
+        <p class="hero-p fade-up-2">Omniroute memungkinkan developer dan agency mengelola, me-route, dan mengoptimalkan semua provider AI dari satu endpoint. Lebih hemat biaya, lebih stabil, siap scale.</p>
+        <div class="hero-btns fade-up-2">
+          <a href="contact.html" class="btn btn-gold">Mulai Sekarang</a>
+          <a href="#fitur" class="btn btn-ghost">Lihat Fitur</a>
+        </div>
+        <div class="hero-stats fade-up-3">
+          <div>
+            <div class="hero-stat-num">6+</div>
+            <div class="hero-stat-lbl">Provider AI</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">-38%</div>
+            <div class="hero-stat-lbl">Cost Savings</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">99.9%</div>
+            <div class="hero-stat-lbl">Uptime</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">&lt;100ms</div>
+            <div class="hero-stat-lbl">Routing Latency</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Terminal -->
+      <div class="fade-up-3">
+        <div class="hero-terminal">
+          <div class="terminal-bar">
+            <div class="t-dot" style="background:#ff5f57;"></div>
+            <div class="t-dot" style="background:#febc2e;"></div>
+            <div class="t-dot" style="background:#28c840;"></div>
+            <div class="terminal-title">Omniroute API — Request Example</div>
+          </div>
+          <div class="terminal-body">
+            <div class="t-comment"># Satu endpoint untuk semua provider AI</div>
+            <br>
+            <span class="t-key">curl</span> <span class="t-str">https://api.omniroute.ai/v1/chat</span> \<br>
+            &nbsp;&nbsp;<span class="t-key">-H</span> <span class="t-str">"Authorization: Bearer sk-omni-****"</span> \<br>
+            &nbsp;&nbsp;<span class="t-key">-d</span> <span class="t-bracket">{</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-key">"combo"</span><span class="t-bracket">:</span> <span class="t-str">"cost-optimized"</span><span class="t-bracket">,</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-key">"messages"</span><span class="t-bracket">:</span> <span class="t-bracket">[...]</span><br>
+            &nbsp;&nbsp;<span class="t-bracket">}</span><br>
+            <br>
+            <div class="t-response">
+              <div class="t-success">✓ ROUTED → gemini-2.0-flash (98ms, cost: $0.00012)</div>
+              <br>
+              <span class="t-bracket">{</span><br>
+              &nbsp;&nbsp;<span class="t-key">"provider"</span><span class="t-bracket">:</span> <span class="t-str">"gemini"</span><span class="t-bracket">,</span><br>
+              &nbsp;&nbsp;<span class="t-key">"model"</span><span class="t-bracket">:</span> <span class="t-str">"gemini-2.0-flash"</span><span class="t-bracket">,</span><br>
+              &nbsp;&nbsp;<span class="t-key">"latency_ms"</span><span class="t-bracket">:</span> <span class="t-val">98</span><span class="t-bracket">,</span><br>
+              &nbsp;&nbsp;<span class="t-key">"fallback_used"</span><span class="t-bracket">:</span> <span class="t-val">false</span><br>
+              <span class="t-bracket">}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="section">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-label">— Cara Kerja —</span>
+      <h2 class="sec-h2">Dari request ke respons,<br><em>otomatis dan cerdas</em></h2>
+    </div>
+
+    <div class="how-grid reveal">
+      <div class="how-step">
+        <div class="how-num">01</div>
+        <div class="how-icon">📡</div>
+        <div class="how-title">Kirim Request</div>
+        <div class="how-desc">Kirim request ke satu endpoint Omniroute — sama seperti OpenAI API, tidak perlu ubah kode.</div>
+        <div class="how-connector"></div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">02</div>
+        <div class="how-icon">⚡</div>
+        <div class="how-title">Smart Routing</div>
+        <div class="how-desc">Engine Omniroute memilih provider terbaik berdasarkan combo yang kamu set: cost-opt, priority, fallback, atau least-used.</div>
+        <div class="how-connector"></div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">03</div>
+        <div class="how-icon">🔑</div>
+        <div class="how-title">Key Management</div>
+        <div class="how-desc">API key tiap provider dikelola oleh Omniroute. Client hanya butuh satu key Omniroute — lebih aman, lebih terstruktur.</div>
+        <div class="how-connector"></div>
+      </div>
+      <div class="how-step">
+        <div class="how-num">04</div>
+        <div class="how-icon">📊</div>
+        <div class="how-title">Analytics & Control</div>
+        <div class="how-desc">Monitor usage, cost, dan latency per provider di dashboard. Atur limit, permission, dan rate limit per key.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== FEATURES ===== -->
+<section class="section" id="fitur">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-label">— Fitur Platform —</span>
+      <h2 class="sec-h2">Semua yang kamu butuhkan<br>dalam <em>satu sistem</em></h2>
+      <p class="sec-p">Omniroute bukan sekadar proxy. Platform ini dirancang untuk developer dan agency yang mengelola AI dalam skala besar.</p>
+    </div>
+
+    <div class="features-outer">
+      <!-- Features list -->
+      <div class="features-list reveal">
+
+        <div class="feat-item">
+          <div class="feat-icon-box">◈</div>
+          <div class="feat-body">
+            <div class="feat-title">Unified Endpoint</div>
+            <div class="feat-desc">Satu endpoint menggantikan semua endpoint provider. Tidak perlu ubah kode ketika ganti atau tambah provider baru. Fully compatible dengan OpenAI API format.</div>
+          </div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-icon-box">⇄</div>
+          <div class="feat-body">
+            <div class="feat-title">Routing Combos</div>
+            <div class="feat-desc">Buat routing combo sesuai kebutuhan: priority (urutan provider), cost-optimized (pilih yang termurah), least-used (distribusi merata), atau fallback otomatis jika provider utama down.</div>
+          </div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-icon-box">🗝</div>
+          <div class="feat-body">
+            <div class="feat-title">API Key Management</div>
+            <div class="feat-desc">Kelola semua API key provider di satu tempat. Buat multiple key Omniroute dengan permission berbeda — ideal untuk tim, klien, atau workflow terpisah.</div>
+          </div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-icon-box">📊</div>
+          <div class="feat-body">
+            <div class="feat-title">Usage Analytics</div>
+            <div class="feat-desc">Monitor usage, cost, latency, dan error per provider secara real-time. Identifikasi bottleneck dan optimalkan spending dengan data yang akurat.</div>
+          </div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-icon-box">🛡</div>
+          <div class="feat-body">
+            <div class="feat-title">Fallback Otomatis</div>
+            <div class="feat-desc">Jika provider utama down atau rate limit, Omniroute secara otomatis redirect ke provider backup. Zero downtime untuk aplikasi kamu.</div>
+          </div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-icon-box">⚙</div>
+          <div class="feat-body">
+            <div class="feat-title">Multi-Provider Management</div>
+            <div class="feat-desc">Kelola OpenAI, Claude, Gemini, DeepSeek, Groq, dan provider lainnya dari satu dashboard. Tambah provider baru tanpa ubah kode aplikasi.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Visual -->
+      <div class="features-visual reveal">
+        <!-- Providers Dashboard -->
+        <div class="feat-screen" style="margin-bottom:1rem;">
+          <div class="feat-screen-bar">
+            <div class="t-dot" style="background:#ff5f57;width:8px;height:8px;border-radius:50%;"></div>
+            <div class="t-dot" style="background:#febc2e;width:8px;height:8px;border-radius:50%;margin-left:4px;"></div>
+            <div class="t-dot" style="background:#28c840;width:8px;height:8px;border-radius:50%;margin-left:4px;"></div>
+            <span style="font-size:0.6rem;color:var(--text-5);margin-left:auto;letter-spacing:0.08em;">Providers</span>
+          </div>
+          <div class="feat-screen-body">
+            <div class="screen-section-title">Active Providers — 5/6</div>
+            <div class="mock-provider-row">
+              <div class="mock-provider-indicator"></div>
+              <div class="mock-provider-name">OpenAI</div>
+              <div class="mock-provider-model">gpt-4o</div>
+              <div class="mock-tag">priority</div>
+              <div class="mock-provider-lat">142ms</div>
+            </div>
+            <div class="mock-provider-row">
+              <div class="mock-provider-indicator"></div>
+              <div class="mock-provider-name">Claude</div>
+              <div class="mock-provider-model">sonnet-4</div>
+              <div class="mock-tag">fallback</div>
+              <div class="mock-provider-lat">189ms</div>
+            </div>
+            <div class="mock-provider-row">
+              <div class="mock-provider-indicator"></div>
+              <div class="mock-provider-name">Gemini</div>
+              <div class="mock-provider-model">2.0 flash</div>
+              <div class="mock-tag">cost-opt</div>
+              <div class="mock-provider-lat">98ms</div>
+            </div>
+            <div class="mock-provider-row">
+              <div class="mock-provider-indicator"></div>
+              <div class="mock-provider-name">Groq</div>
+              <div class="mock-provider-model">llama-3.3</div>
+              <div class="mock-tag">fast</div>
+              <div class="mock-provider-lat">34ms</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Combos -->
+        <div class="feat-screen">
+          <div class="feat-screen-bar">
+            <div class="t-dot" style="background:#ff5f57;width:8px;height:8px;border-radius:50%;"></div>
+            <div class="t-dot" style="background:#febc2e;width:8px;height:8px;border-radius:50%;margin-left:4px;"></div>
+            <div class="t-dot" style="background:#28c840;width:8px;height:8px;border-radius:50%;margin-left:4px;"></div>
+            <span style="font-size:0.6rem;color:var(--text-5);margin-left:auto;letter-spacing:0.08em;">Routing Combos</span>
+          </div>
+          <div class="feat-screen-body">
+            <div class="screen-section-title">Active Combos — 3</div>
+            <div class="mock-combo">
+              <div class="mock-combo-header">
+                <div class="mock-combo-name">cost-optimized</div>
+                <div class="mock-combo-type">COST-OPT</div>
+              </div>
+              <div class="mock-combo-models">
+                <div class="mock-model-chip">gemini-2.0-flash</div>
+                <div class="mock-model-chip">deepseek-r1</div>
+                <div class="mock-model-chip">groq-llama</div>
+              </div>
+            </div>
+            <div class="mock-combo">
+              <div class="mock-combo-header">
+                <div class="mock-combo-name">high-quality</div>
+                <div class="mock-combo-type">PRIORITY</div>
+              </div>
+              <div class="mock-combo-models">
+                <div class="mock-model-chip">gpt-4o</div>
+                <div class="mock-model-chip">claude-sonnet-4</div>
+              </div>
+            </div>
+            <div class="mock-combo">
+              <div class="mock-combo-header">
+                <div class="mock-combo-name">balanced</div>
+                <div class="mock-combo-type">FALLBACK</div>
+              </div>
+              <div class="mock-combo-models">
+                <div class="mock-model-chip">gpt-4o-mini</div>
+                <div class="mock-model-chip">gemini-flash</div>
+                <div class="mock-model-chip">groq-llama</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== PROVIDERS ===== -->
+<section class="section providers-section" id="providers">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-label">— Provider Support —</span>
+      <h2 class="sec-h2">Semua provider AI terbaik,<br><em>dalam satu sistem</em></h2>
+      <p class="sec-p">Omniroute terus menambahkan provider baru. Mulai dari yang paling populer hingga yang paling cost-efficient.</p>
+    </div>
+
+    <div class="providers-grid reveal">
+      <div class="provider-card">
+        <div class="provider-logo">🟢</div>
+        <div class="provider-name">OpenAI</div>
+        <div class="provider-models">GPT-4o, GPT-4o mini,<br>GPT-4 Turbo, o1, o3</div>
+        <div class="provider-status-row">
+          <div class="status-dot"></div>
+          <div class="status-text">LIVE</div>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-logo">🔵</div>
+        <div class="provider-name">Anthropic Claude</div>
+        <div class="provider-models">Claude 3.5 Sonnet,<br>Claude 3 Haiku, Claude 3 Opus</div>
+        <div class="provider-status-row">
+          <div class="status-dot"></div>
+          <div class="status-text">LIVE</div>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-logo">🟡</div>
+        <div class="provider-name">Google Gemini</div>
+        <div class="provider-models">Gemini 2.0 Flash,<br>Gemini 1.5 Pro, Gemini Ultra</div>
+        <div class="provider-status-row">
+          <div class="status-dot"></div>
+          <div class="status-text">LIVE</div>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-logo">🔴</div>
+        <div class="provider-name">DeepSeek</div>
+        <div class="provider-models">DeepSeek R1,<br>DeepSeek V3, DeepSeek Chat</div>
+        <div class="provider-status-row">
+          <div class="status-dot"></div>
+          <div class="status-text">LIVE</div>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-logo">⚡</div>
+        <div class="provider-name">Groq</div>
+        <div class="provider-models">Llama 3.3 70B,<br>Mixtral 8x7B, Gemma 2</div>
+        <div class="provider-status-row">
+          <div class="status-dot"></div>
+          <div class="status-text">LIVE — Tercepat</div>
+        </div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-logo">➕</div>
+        <div class="provider-name">Provider Lainnya</div>
+        <div class="provider-models">Mistral, Cohere, Together,<br>Perplexity, dan lebih banyak</div>
+        <div class="provider-status-row">
+          <div class="status-dot" style="background:var(--gold);"></div>
+          <div class="status-text">SEGERA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== USE CASES ===== -->
+<section class="section" id="use-cases">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-label">— Untuk Siapa —</span>
+      <h2 class="sec-h2">Dibangun untuk builder<br>yang <em>serius scale</em></h2>
+    </div>
+
+    <div class="cases-grid reveal">
+      <div class="case-card">
+        <div class="case-num">01</div>
+        <div class="case-title">Developer & Indie Builder</div>
+        <div class="case-desc">Bangun aplikasi AI tanpa khawatir vendor lock-in. Ganti provider kapanpun tanpa ubah kode. Kontrol cost dengan routing yang cerdas.</div>
+      </div>
+      <div class="case-card">
+        <div class="case-num">02</div>
+        <div class="case-title">Agency Digital</div>
+        <div class="case-desc">Kelola API key untuk ratusan klien dari satu dashboard. Buat key terpisah per klien dengan limit dan permission yang bisa dikontrol penuh.</div>
+      </div>
+      <div class="case-card">
+        <div class="case-num">03</div>
+        <div class="case-title">AI Builder & Automation</div>
+        <div class="case-desc">Integrasi Omniroute ke workflow n8n, Make, atau custom pipeline. Satu endpoint yang bisa switch provider berdasarkan task type atau cost target.</div>
+      </div>
+      <div class="case-card">
+        <div class="case-num">04</div>
+        <div class="case-title">SaaS & Startup</div>
+        <div class="case-desc">Kurangi biaya AI hingga 38% dengan routing cost-optimized. Fallback otomatis memastikan aplikasi kamu tetap berjalan saat provider down.</div>
+      </div>
+      <div class="case-card">
+        <div class="case-num">05</div>
+        <div class="case-title">Enterprise & Tim Besar</div>
+        <div class="case-desc">Role-based API keys untuk tim yang berbeda. Analytics detail untuk audit dan budget control. Compliance-friendly dengan logging yang bisa dikonfigurasi.</div>
+      </div>
+      <div class="case-card">
+        <div class="case-num">06</div>
+        <div class="case-title">Riset & Eksperimen AI</div>
+        <div class="case-desc">Bandingkan output, latency, dan cost antar provider dengan mudah. Ideal untuk A/B testing model dan fine-tuning strategi AI yang optimal.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== CTA ===== -->
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <span class="cta-eyebrow">— Mulai Sekarang —</span>
+      <h2 class="cta-h2">Siap kelola semua AI<br>dari <em>satu platform?</em></h2>
+      <p class="cta-p">Omniroute tersedia untuk developer, agency, dan tim yang ingin membangun infrastruktur AI yang lebih cerdas dan efisien. Hubungi kami untuk akses awal.</p>
+      <div class="cta-btns">
+        <a href="contact.html" class="btn btn-gold">Dapatkan Akses</a>
+        <a href="index.html" class="btn btn-ghost">← Kembali ke Beranda</a>
+      </div>
+      <div class="cta-note">Berkah Karya · Bogor, Indonesia · Platform teknologi AI untuk developer & agency</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">Berkah<span>.</span>Karya</div>
+      <div class="footer-links">
+        <a href="index.html">Beranda</a>
+        <a href="omniroute.html">Omniroute</a>
+        <a href="services.html">Layanan</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">Tentang</a>
+        <a href="contact.html">Kontak</a>
+      </div>
+      <div class="footer-copy">© 2025 Berkah Karya</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+});
+
+// Reveal on scroll
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
