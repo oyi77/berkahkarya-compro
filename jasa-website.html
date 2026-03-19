@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jasa Pembuatan Website — Berkah Karya</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -72,25 +72,108 @@ footer{background:var(--text-1);color:#fff;padding:48px 0 32px}
   .steps{flex-direction:column;gap:20px}.steps::before{display:none}
   .step{display:flex;align-items:flex-start;gap:16px;text-align:left}.step-num{flex-shrink:0;margin:0}
 }
+
+/* ===== DESIGN SYSTEM OVERRIDES ===== */
+/* Font override — use Plus Jakarta Sans from style.css */
+body { font-family: var(--font) !important; background: var(--bg) !important; color: var(--text) !important; }
+
+/* Remap old vars to new design system */
+:root {
+  --bg-2: var(--bg-muted);
+  --bg-3: var(--bg-muted);
+  --text-1: var(--text);
+  --text-2: var(--text);
+  --text-3: var(--text-muted);
+  --text-4: var(--text-light);
+  --mustard-bg: var(--mustard-pale);
+  --r: var(--radius-sm);
+}
+
+/* Section title — replace Cormorant with system font */
+.section-title, .section-title *, h1, h2, h3, h4 {
+  font-family: var(--font) !important;
+}
+h1 { font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; }
+h2.section-title { font-weight: 900; letter-spacing: -0.03em; }
+
+/* Section padding */
+section { padding: 5rem 0; }
+.hero { padding: calc(64px + 4rem) 0 4rem; }
+.container { max-width: var(--max-width); }
+
+/* Section label */
+.section-label {
+  color: var(--mustard); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+}
+
+/* Cards update */
+.card {
+  background: var(--bg-white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.75rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.card:hover { border-color: var(--mustard); box-shadow: 0 4px 20px var(--shadow-md); }
+.card h4 { font-family: var(--font) !important; font-weight: 800; letter-spacing: -0.02em; }
+
+/* Benefit cards */
+.benefit-card {
+  background: var(--bg-muted); border-radius: var(--radius); padding: 1.75rem;
+  border: 1px solid var(--border);
+}
+.benefit-card h4 { font-family: var(--font) !important; font-weight: 800; }
+
+/* Use case items */
+.usecase-item {
+  background: var(--bg-white); border-left: 3px solid var(--mustard);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  border-top: 1px solid var(--border); border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem;
+}
+.usecase-item h4 { font-family: var(--font) !important; font-weight: 700; }
+
+/* Overview boxes */
+.overview-box h3 { font-family: var(--font) !important; font-weight: 800; letter-spacing: -0.02em; }
+
+/* Step numbers */
+.step-num {
+  background: var(--bg-muted) !important;
+  border-color: var(--mustard) !important;
+  font-family: var(--font) !important;
+  font-weight: 900 !important;
+  color: var(--mustard) !important;
+}
+.step h4 { font-family: var(--font) !important; font-weight: 700; }
+
+/* Hero tag */
+.hero-tag {
+  background: var(--mustard-pale) !important;
+  color: var(--mustard-dark) !important;
+  border-radius: var(--radius-full);
+  font-weight: 700; letter-spacing: 0.1em;
+}
+
+/* CTA closing section */
+.cta-closing h2 { font-family: var(--font) !important; font-weight: 900; letter-spacing: -0.03em; }
+
+/* Mobile nav override — hide old nav elements */
+#hamburger, .mobile-menu { display: none !important; }
+
 </style>
 </head>
 <body class="page-jasa">
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Berkah<span>.</span>Karya</a>
-    <ul class="nav-links">
-      <li><a href="index.html#solusi-bisnis">Layanan</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="about.html">Tentang</a></li>
+<nav class="bk-nav">
+  <div class="bk-nav-inner">
+    <a href="index.html" class="bk-logo">Berkah<span>Karya</span></a>
+    <ul class="bk-nav-links">
+      <li><a href="services.html">Layanan</a></li>
+      <li><a href="omniroute.html">Omniroute</a></li>
+      <li><a href="tools.html">Tools</a></li>
+      <li><a href="about.html">About</a></li>
     </ul>
-    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Pembuatan%20Website." class="btn btn-mustard btn-sm nav-cta" target="_blank">WhatsApp</a>
-    <button id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-  </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html#solusi-bisnis">Layanan</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="about.html">Tentang</a>
-    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Pembuatan%20Website." target="_blank">WhatsApp</a>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Website.%20Bisa%20konsultasi%3F" class="bk-nav-cta" target="_blank">WhatsApp →</a>
+    <button class="bk-nav-mobile" aria-label="Menu">☰</button>
   </div>
 </nav>
 
@@ -100,8 +183,8 @@ footer{background:var(--text-1);color:#fff;padding:48px 0 32px}
     <h1>Website Profesional yang<br>Selesai dalam 7 Hari</h1>
     <p>Dari landing page, company profile, sampai toko online — kami bangun website yang cepat, mobile-friendly, dan siap convert pengunjung jadi pelanggan.</p>
     <div class="hero-cta">
-      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Pembuatan%20Website." class="btn btn-mustard btn-lg" target="_blank">💬 Konsultasi Gratis</a>
-      <a href="#fitur" class="btn btn-outline btn-lg">Lihat Layanan</a>
+      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Pembuatan%20Website." class="btn-primary btn-lg" target="_blank">💬 Konsultasi Gratis</a>
+      <a href="#fitur" class="btn-secondary btn-lg">Lihat Layanan</a>
     </div>
   </div>
 </section>
@@ -194,17 +277,50 @@ footer{background:var(--text-1);color:#fff;padding:48px 0 32px}
   <div class="container">
     <h2>Siap Punya Website yang Bekerja untuk Bisnis Kamu?</h2>
     <p>Konsultasi gratis. Ceritakan bisnis kamu, kami rancang website yang tepat.</p>
-    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Pembuatan%20Website." class="btn btn-mustard btn-lg" target="_blank">💬 Chat WhatsApp Sekarang</a>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Pembuatan%20Website." class="btn-primary btn-lg" target="_blank">💬 Chat WhatsApp Sekarang</a>
   </div>
 </section>
 
-<footer>
-  <div class="container footer-inner">
-    <div class="footer-logo">Berkah<span>.</span>Karya</div>
-    <div class="footer-links">
-      <a href="index.html">Beranda</a><a href="omniroute.html">Omniroute</a><a href="services.html">Layanan</a><a href="portfolio.html">Portfolio</a><a href="about.html">Tentang</a><a href="contact.html">Kontak</a>
+<footer class="bk-footer">
+  <div class="bk-footer-inner">
+    <div class="bk-footer-brand">
+      <div class="bk-logo">Berkah<span>Karya</span></div>
+      <p>AI Ecosystem untuk bisnis Indonesia — agency kreatif, AI tools, dan SaaS platform dalam satu ekosistem.</p>
     </div>
-    <div class="footer-copy">© 2025 Berkah Karya. All rights reserved.</div>
+    <div class="bk-footer-col">
+      <h5>Layanan</h5>
+      <ul>
+        <li><a href="jasa-sosmed.html">Kelola Sosmed</a></li>
+        <li><a href="jasa-video-ai.html">Jasa Video AI</a></li>
+        <li><a href="jasa-website.html">Jasa Website</a></li>
+        <li><a href="jasa-foto-produk.html">Foto Produk AI</a></li>
+        <li><a href="jasa-content-planner.html">Content Planner</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Platform</h5>
+      <ul>
+        <li><a href="omniroute.html">Omniroute</a></li>
+        <li><a href="tools.html">AI Tools</a></li>
+        <li><a href="ai-agent-pro.html">AI Agent Pro</a></li>
+        <li><a href="ai-video-studio.html">Video Studio</a></li>
+        <li><a href="digital-product.html">Produk Digital</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Perusahaan</h5>
+      <ul>
+        <li><a href="about.html">Tentang Kami</a></li>
+        <li><a href="contact.html">Kontak</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="pricing.html">Harga</a></li>
+        <li><a href="legal/privacy-policy.html">Privasi</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bk-footer-bottom">
+    <span>© 2025 BerkahKarya. All rights reserved.</span>
+    <span>Made with ❤️ + 🤖 AI in Indonesia</span>
   </div>
 </footer>
 <script>
