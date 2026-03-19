@@ -1,54 +1,115 @@
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg fixed-top">
- <div class="container">
- <a class="navbar-brand" href="index.html">
- <img src="images/logo.png" alt="Berkah Karya Logo" class="logo-img">
- <span class="brand-text">Berkah Karya</span>
- </a>
- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
- <span class="navbar-toggler-icon"></span>
- </button>
- <div class="collapse navbar-collapse" id="navbarNav">
- <ul class="navbar-nav ms-auto align-items-lg-center">
- <li class="nav-item">
- <a class="nav-link" href="index.html">Home</a>
- </li>
- <li class="nav-item dropdown">
- <a class="nav-link dropdown-toggle" href="services.html" id="navServicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- Services
- </a>
- <ul class="dropdown-menu" aria-labelledby="navServicesDropdown">
- <li><a class="dropdown-item" href="services.html#top">Semua Jasa</a></li>
- <li><a class="dropdown-item" href="services.html#jasa-iklan">Jasa Iklan</a></li>
- <li><a class="dropdown-item" href="services.html#jasa-video-ai">Jasa Video AI</a></li>
- <li><a class="dropdown-item" href="services.html#jasa-editing-foto">Jasa Editing Foto</a></li>
- </ul>
- </li>
- <li class="nav-item">
- <a class="nav-link" href="portfolio.html">Portfolio</a>
- </li>
- <li class="nav-item dropdown">
- <a class="nav-link dropdown-toggle" href="tools.html" id="navToolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
- Tools
- </a>
- <ul class="dropdown-menu" aria-labelledby="navToolsDropdown">
- <li><a class="dropdown-item" href="tools.html">Etalase Tools</a></li>
- <li><a class="dropdown-item" href="ai-agent-pro.html">AI Agent Pro</a></li>
- </ul>
- </li>
- <li class="nav-item">
- <a class="nav-link" href="pricing.html">Pricing</a>
- </li>
- <li class="nav-item">
- <a class="nav-link" href="about.html">About</a>
- </li>
- <li class="nav-item">
- <a class="nav-link highlight" href="contact.html">Get3 Free Videos</a>
- </li>
- <li class="nav-item ms-2">
- <button id="lang-toggle" class="btn btn-sm btn-outline-primary" onclick="toggleLanguage()">EN</button>
- </li>
- </ul>
- </div>
- </div>
+<!-- SHARED NAV PARTIAL — berkahkarya-compro dark luxury theme -->
+<!-- Usage: copy this block into each page, adjust active link class -->
+<style>
+  #bk-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 clamp(1.25rem,5vw,2.5rem); height: 60px;
+    background: rgba(8,8,8,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    font-family: 'Outfit', sans-serif;
+  }
+  .bk-nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; color: #c4a35a; letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .bk-nav-links { display: flex; align-items: center; gap: 0.25rem; }
+  .bk-nav-link {
+    font-size: 0.73rem; letter-spacing: 0.07em; text-transform: uppercase;
+    color: #555550; padding: 0.4rem 0.8rem; border-radius: 1px;
+    transition: color 0.2s; text-decoration: none;
+  }
+  .bk-nav-link:hover, .bk-nav-link.active { color: #c4a35a; }
+  .bk-nav-cta { display: flex; align-items: center; gap: 0.75rem; }
+  .bk-btn-gold {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.5rem 1.1rem; border-radius: 2px;
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
+    background: #c4a35a; color: #080808; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .bk-btn-gold:hover { background: #dbb96b; }
+  #bk-hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; padding: 4px; cursor: pointer;
+  }
+  #bk-hamburger span { display: block; width: 22px; height: 1.5px; background: #888880; transition: all 0.3s; }
+  #bk-mobile-menu {
+    display: none; position: fixed; top: 60px; left: 0; right: 0; bottom: 0;
+    background: #060606; z-index: 999; padding: clamp(1.25rem,5vw,2.5rem);
+    flex-direction: column; gap: 0.5rem; overflow-y: auto;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+    font-family: 'Outfit', sans-serif;
+  }
+  #bk-mobile-menu.open { display: flex; }
+  .bk-mobile-link {
+    font-size: 1rem; font-family: 'Cormorant Garamond', serif;
+    color: #888880; padding: 1rem 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.04);
+    text-decoration: none;
+  }
+  .bk-mobile-link:hover { color: #c4a35a; }
+  @media (max-width: 900px) {
+    .bk-nav-links { display: none; }
+    .bk-nav-cta .bk-btn-gold { display: none; }
+    #bk-hamburger { display: flex; }
+  }
+</style>
+
+<nav id="bk-nav">
+  <a href="index.html" class="bk-nav-logo">Berkah Karya</a>
+  <div class="bk-nav-links">
+    <a href="index.html" class="bk-nav-link" data-page="home">Home</a>
+    <a href="index.html#products" class="bk-nav-link">Produk</a>
+    <a href="services.html" class="bk-nav-link" data-page="services">Layanan</a>
+    <a href="portfolio.html" class="bk-nav-link" data-page="portfolio">Portfolio</a>
+    <a href="index.html#pricing" class="bk-nav-link">Harga</a>
+    <a href="about.html" class="bk-nav-link" data-page="about">Tentang</a>
+  </div>
+  <div class="bk-nav-cta">
+    <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="bk-btn-gold">Coba Gratis 🎬</a>
+    <button id="bk-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+<div id="bk-mobile-menu">
+  <a href="index.html" class="bk-mobile-link">Home</a>
+  <a href="index.html#products" class="bk-mobile-link">Produk</a>
+  <a href="services.html" class="bk-mobile-link">Layanan</a>
+  <a href="portfolio.html" class="bk-mobile-link">Portfolio</a>
+  <a href="index.html#pricing" class="bk-mobile-link">Harga</a>
+  <a href="about.html" class="bk-mobile-link">Tentang</a>
+  <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.75rem;">
+    <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="bk-btn-gold" style="justify-content:center;">Coba Gratis — 6 Video 🎬</a>
+    <a href="https://wa.me/6285732740006" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;padding:0.5rem 1.1rem;border-radius:2px;font-size:0.72rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;background:transparent;color:#c4a35a;border:0.5px solid rgba(196,163,90,0.25);text-decoration:none;">WhatsApp Konsultasi</a>
+  </div>
+</div>
+
+<script>
+(function() {
+  var ham = document.getElementById('bk-hamburger');
+  var menu = document.getElementById('bk-mobile-menu');
+  if (ham && menu) {
+    ham.addEventListener('click', function() { menu.classList.toggle('open'); });
+    menu.querySelectorAll('.bk-mobile-link').forEach(function(l) {
+      l.addEventListener('click', function() { menu.classList.remove('open'); });
+    });
+  }
+  // Mark active page
+  var page = document.body.getAttribute('data-page');
+  if (page) {
+    document.querySelectorAll('.bk-nav-link[data-page="'+page+'"]').forEach(function(el) {
+      el.classList.add('active');
+    });
+  }
+  // Scroll shadow
+  window.addEventListener('scroll', function() {
+    var nav = document.getElementById('bk-nav');
+    if (nav) nav.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.4)' : 'none';
+  });
+})();
+</script>

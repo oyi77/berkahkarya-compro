@@ -1,554 +1,479 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-page="portfolio">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Berkah Karya Digital Agency</title>
-    <meta name="description" content="Portfolio proyek berkarakter - TikTok viral, e-commerce conversion, trading automation, dan lebih banyak">
-    <meta name="facebook-domain-verification" content="vo4g6nsn3kqvqmmzxd9rx2gt62dy07" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio BerkahKarya — Bukti nyata: 2.1M TikTok reach, +45% e-commerce conversion, +150% organic traffic, 78% trading accuracy.">
+<title>Portfolio — Berkah Karya Digital Growth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: #080808; color: #ddd6c8; font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+:root {
+  --gold: #c4a35a; --gold-light: #dbb96b;
+  --gold-dim: rgba(196,163,90,0.12); --gold-border: rgba(196,163,90,0.25);
+  --bg: #080808; --bg-2: #0a0a0a; --bg-3: #0d0d0d;
+  --line: rgba(255,255,255,0.06); --line-2: rgba(255,255,255,0.04);
+  --text-1: #efe9de; --text-2: #ddd6c8; --text-3: #888880;
+  --text-4: #7a7a72; --text-5: #555550;
+  --r: 2px; --pad: clamp(1.25rem,5vw,2.5rem);
+}
+h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--text-1); line-height: 1.1; }
+h1 { font-size: clamp(2.2rem,6vw,3.5rem); }
+h2 { font-size: clamp(1.6rem,3.5vw,2.4rem); }
+em { font-style: italic; color: var(--gold); }
+p { color: var(--text-4); line-height: 1.75; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 var(--pad); }
+.section { padding: clamp(3rem,8vw,5rem) 0; }
+.divider { height: 0.5px; background: var(--line); }
+.tag { font-size: 0.67rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: inline-block; margin-bottom: 0.5rem; }
 
-        :root {
-            --primary: #0f172a;
-            --secondary: #1e293b;
-            --accent: #f59e0b;
-            --accent-hover: #fbbf24;
-            --success: #22c55e;
-            --danger: #ef4444;
-            --text: #ffffff;
-            --text-muted: #94a3b8;
-        }
+/* NAV */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--pad); height: 60px;
+  background: rgba(8,8,8,0.92); backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid var(--line);
+}
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); letter-spacing: 0.04em; }
+.nav-links { display: flex; align-items: center; gap: 0.25rem; }
+.nav-link { font-size: 0.73rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-5); padding: 0.4rem 0.8rem; transition: color 0.2s; }
+.nav-link:hover, .nav-link.active { color: var(--gold); }
+.nav-cta { display: flex; align-items: center; gap: 0.75rem; }
+.btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1.1rem; border-radius: var(--r); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; transition: all 0.2s; white-space: nowrap; border: none; cursor: pointer; font-family: inherit; }
+.btn-gold { background: var(--gold); color: #080808; }
+.btn-gold:hover { background: var(--gold-light); }
+.btn-ghost { background: transparent; color: var(--gold); border: 0.5px solid var(--gold-border); }
+.btn-ghost:hover { background: var(--gold-dim); }
+.btn-sm { padding: 0.45rem 1rem; font-size: 0.7rem; }
+#hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 4px; cursor: pointer; }
+#hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-3); }
+#mobile-menu {
+  display: none; position: fixed; top: 60px; left: 0; right: 0; bottom: 0;
+  background: #060606; z-index: 999; padding: var(--pad);
+  flex-direction: column; gap: 0.5rem; overflow-y: auto;
+  border-top: 0.5px solid var(--line);
+}
+#mobile-menu.open { display: flex; }
+.mobile-link { font-size: 1rem; font-family: 'Cormorant Garamond', serif; color: var(--text-3); padding: 1rem 0; border-bottom: 0.5px solid var(--line-2); }
+.mobile-link:hover { color: var(--gold); }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* HERO */
+.page-hero {
+  padding-top: 100px; padding-bottom: clamp(2.5rem,6vw,4rem);
+  border-bottom: 0.5px solid var(--line);
+}
+.page-hero-inner { max-width: 680px; }
+.page-hero h1 { margin-bottom: 1rem; }
+.page-hero p { font-size: 0.92rem; color: var(--text-4); line-height: 1.8; max-width: 520px; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--primary);
-            color: var(--text);
-            line-height: 1.6;
-        }
+/* STATS ROW */
+.stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 0.5px solid var(--line); border-radius: var(--r); overflow: hidden; margin: 2.5rem 0; }
+.stat-item { background: var(--bg-2); padding: 1.25rem; text-align: center; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; color: var(--gold); }
+.stat-lbl { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-5); margin-top: 0.15rem; }
 
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
+/* FILTER */
+.filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.filter-btn {
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-4); border: 0.5px solid var(--line); padding: 0.4rem 1rem;
+  border-radius: 1px; cursor: pointer; background: none; font-family: inherit;
+  transition: all 0.2s;
+}
+.filter-btn:hover { border-color: var(--gold-border); color: var(--gold); }
+.filter-btn.active { background: var(--gold-dim); border-color: var(--gold-border); color: var(--gold); }
 
-        .navbar-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* PORTFOLIO GRID */
+.port-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 0.5px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.port-card {
+  background: var(--bg-2); padding: clamp(1.5rem,3vw,2rem);
+  transition: background 0.2s; position: relative; overflow: hidden;
+}
+.port-card::before { content: ''; position: absolute; left: 0; top: 0; width: 2px; height: 0; background: var(--gold); transition: height 0.35s; }
+.port-card:hover { background: var(--bg-3); }
+.port-card:hover::before { height: 100%; }
+.port-cat { font-size: 0.63rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+.port-client { font-size: 0.7rem; color: var(--text-5); margin-bottom: 0.85rem; letter-spacing: 0.05em; }
+.port-metric { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--text-1); margin-bottom: 0.25rem; font-weight: 600; }
+.port-metric-sub { font-size: 0.72rem; color: var(--gold); margin-bottom: 0.85rem; }
+.port-desc { font-size: 0.8rem; color: var(--text-4); line-height: 1.7; }
+.port-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 1rem; }
+.port-tag { font-size: 0.62rem; padding: 2px 8px; border: 0.5px solid var(--line); color: var(--text-5); letter-spacing: 0.05em; border-radius: 1px; }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--accent);
-            text-decoration: none;
-        }
+/* FEATURED CARD (large) */
+.port-card-featured { grid-column: span 2; background: var(--bg-3); border-left: 2px solid var(--gold); }
+.port-card-featured::before { display: none; }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 1.25rem;
-            font-weight: 800;
-        }
+/* CASE STUDY SECTION */
+.case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 0.5px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.case-card { background: var(--bg-2); padding: clamp(1.5rem,3vw,2rem); }
+.case-num { font-family: 'Cormorant Garamond', serif; font-size: 0.8rem; color: var(--text-5); letter-spacing: 0.2em; margin-bottom: 0.75rem; }
+.case-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--text-1); font-weight: 400; margin-bottom: 0.5rem; }
+.case-context { font-size: 0.78rem; color: var(--text-4); margin-bottom: 1.25rem; line-height: 1.7; }
+.case-results { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1rem; }
+.case-result { background: var(--bg-3); border: 0.5px solid var(--line-2); padding: 0.75rem; }
+.case-result-num { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--gold); }
+.case-result-lbl { font-size: 0.62rem; color: var(--text-5); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.1rem; }
+.case-method { font-size: 0.75rem; color: var(--text-5); line-height: 1.65; margin-top: 0.75rem; }
 
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
+/* SECTION HEADER */
+.sec-header { margin-bottom: clamp(1.5rem,4vw,2.5rem); }
+.sec-header.center { text-align: center; }
 
-        .nav-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+/* CTA */
+.cta-box { background: linear-gradient(135deg, rgba(196,163,90,0.06) 0%, rgba(196,163,90,0.02) 100%); border: 0.5px solid var(--gold-border); padding: clamp(2rem,5vw,3rem); text-align: center; border-radius: var(--r); }
 
-        .nav-link:hover {
-            color: var(--accent);
-        }
+/* FOOTER */
+footer { border-top: 0.5px solid var(--line-2); padding: clamp(1.5rem,4vw,2.5rem) 0; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--gold); }
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a { font-size: 0.72rem; color: var(--text-5); letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-size: 0.68rem; color: var(--text-5); }
 
-        .nav-cta {
-            background: var(--accent);
-            color: var(--primary);
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
-        .nav-cta:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero-section {
-            padding: 120px 2rem 80px;
-        }
-
-        .hero-container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .hero-title span {
-            color: var(--accent);
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-        }
-
-        /* Portfolio Section */
-        .portfolio-section {
-            padding: 80px 2rem;
-            background: var(--secondary);
-        }
-
-        .portfolio-container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .portfolio-filters {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-muted);
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--accent);
-            color: var(--primary);
-            border-color: var(--accent);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-        }
-
-        .portfolio-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-        }
-
-        .portfolio-image {
-            height: 250px;
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .portfolio-image i {
-            font-size: 5rem;
-            color: var(--accent);
-        }
-
-        .portfolio-content {
-            padding: 1.5rem;
-        }
-
-        .portfolio-category {
-            color: var(--accent);
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .portfolio-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-        }
-
-        .portfolio-description {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .portfolio-stats {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .portfolio-stat {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-
-        .portfolio-stat i {
-            color: var(--success);
-        }
-
-        .portfolio-link {
-            display: inline-block;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .portfolio-link:hover {
-            color: var(--accent-hover);
-        }
-
-        /* Footer */
-        .footer {
-            padding: 3rem 2rem;
-            background: var(--primary);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .footer-description {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.875rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            .portfolio-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-            .hero-title {
-                font-size: 2rem;
-            }
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-cta .btn-gold { display: none; }
+  #hamburger { display: flex; }
+  .port-grid { grid-template-columns: 1fr 1fr; }
+  .port-card-featured { grid-column: span 2; }
+  .stats-row { grid-template-columns: repeat(3, 1fr); }
+  .case-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .port-grid { grid-template-columns: 1fr; }
+  .port-card-featured { grid-column: span 1; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .case-results { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">B</div>
-                <span>Berkah Karya</span>
-            </a>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="ai-agent-pro.html" class="nav-link">AI Agent Pro</a></li>
-                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
-                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-                <li><a href="https://wa.me/6285732740006" class="nav-cta">Jadwalkan Demo</a></li>
-            </ul>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Berkah Karya</a>
+  <div class="nav-links">
+    <a href="index.html#products" class="nav-link">Produk</a>
+    <a href="services.html" class="nav-link">Layanan</a>
+    <a href="portfolio.html" class="nav-link active">Portfolio</a>
+    <a href="index.html#pricing" class="nav-link">Harga</a>
+    <a href="about.html" class="nav-link">Tentang</a>
+  </div>
+  <div class="nav-cta">
+    <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-gold btn-sm">Coba Gratis 🎬</a>
+    <button id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div id="mobile-menu">
+  <a href="index.html" class="mobile-link">Home</a>
+  <a href="index.html#products" class="mobile-link">Produk</a>
+  <a href="services.html" class="mobile-link">Layanan</a>
+  <a href="portfolio.html" class="mobile-link">Portfolio</a>
+  <a href="index.html#pricing" class="mobile-link">Harga</a>
+  <a href="about.html" class="mobile-link">Tentang</a>
+  <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.75rem;">
+    <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-gold" style="justify-content:center;">Coba Gratis — 6 Video 🎬</a>
+    <a href="https://wa.me/6285732740006" target="_blank" class="btn btn-ghost" style="justify-content:center;">WhatsApp Konsultasi</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="section page-hero">
+  <div class="container">
+    <div class="page-hero-inner">
+      <span class="tag">— Hasil Nyata —</span>
+      <h1>Portfolio &amp;<br><em>Case Studies</em></h1>
+      <p style="margin-top:0.75rem;">Angka tidak berbohong. Setiap proyek di bawah adalah hasil kerja nyata — bukan janji, bukan estimasi. Dari TikTok viral hingga konversi e-commerce, dari WhatsApp automation hingga XAUUSD trading.</p>
+    </div>
+
+    <div class="stats-row reveal">
+      <div class="stat-item"><div class="stat-num">2.1M</div><div class="stat-lbl">TikTok Reach</div></div>
+      <div class="stat-item"><div class="stat-num">+45%</div><div class="stat-lbl">E-comm Conversion</div></div>
+      <div class="stat-item"><div class="stat-num">+280%</div><div class="stat-lbl">Closing Rate</div></div>
+      <div class="stat-item"><div class="stat-num">78%</div><div class="stat-lbl">Trading Accuracy</div></div>
+      <div class="stat-item"><div class="stat-num">ROI 5×</div><div class="stat-lbl">Paid Ads Terbaik</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PORTFOLIO GRID -->
+<section class="section">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag">— Semua Kategori —</span>
+      <h2>Proyek yang Sudah<br><em>Menghasilkan</em></h2>
+    </div>
+
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" onclick="filterPort('all',this)">Semua</button>
+      <button class="filter-btn" onclick="filterPort('tiktok',this)">TikTok</button>
+      <button class="filter-btn" onclick="filterPort('ecommerce',this)">E-commerce</button>
+      <button class="filter-btn" onclick="filterPort('ai',this)">AI Automation</button>
+      <button class="filter-btn" onclick="filterPort('trading',this)">Trading</button>
+      <button class="filter-btn" onclick="filterPort('seo',this)">SEO & Ads</button>
+    </div>
+
+    <div class="port-grid reveal" id="port-grid">
+      <!-- FEATURED -->
+      <div class="port-card port-card-featured" data-cat="tiktok">
+        <div class="port-cat">TikTok Content Agency</div>
+        <div class="port-client">Fashion Brand Lokal — Surabaya</div>
+        <div class="port-metric">2.1M Reach</div>
+        <div class="port-metric-sub">320K interaksi organik · 15% engagement rate</div>
+        <p class="port-desc">Campaign TikTok selama 3 bulan untuk fashion brand yang belum pernah punya presence digital. Mulai dari nol — script, produksi konten, posting, ads. Hasilnya melampaui rata-rata industri 5× lipat dari sisi engagement.</p>
+        <div class="port-tags">
+          <span class="port-tag">10 konten/bulan</span>
+          <span class="port-tag">TikTok Ads</span>
+          <span class="port-tag">Script writing</span>
+          <span class="port-tag">Organic growth</span>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-container">
-            <h1 class="hero-title">Portfolio <span>Karya</span></h1>
-            <p class="hero-subtitle">
-                Beberapa proyek berkarakter yang kami kerjakan dengan dedikasi dan hasil nyata
-            </p>
+      </div>
+      <div class="port-card" data-cat="ecommerce">
+        <div class="port-cat">E-commerce Optimization</div>
+        <div class="port-client">Shopify Store — Fashion</div>
+        <div class="port-metric">+45%</div>
+        <div class="port-metric-sub">Conversion rate · Rp 150M revenue Q1</div>
+        <p class="port-desc">Audit UX/UI menyeluruh, fix checkout friction, speed optimization. Revenue tambahan Rp 150 juta dalam satu kuartal pertama.</p>
+        <div class="port-tags">
+          <span class="port-tag">CRO</span>
+          <span class="port-tag">UX audit</span>
+          <span class="port-tag">Speed opt</span>
         </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section class="portfolio-section">
-        <div class="portfolio-container">
-            <h2 class="section-title">Proyek Kami</h2>
-            <p class="section-subtitle">
-                Bukti nyata hasil kerja kami untuk berbagai klien dengan berbagai industri
-            </p>
-            <div class="portfolio-filters">
-                <button class="filter-btn active">All</button>
-                <button class="filter-btn">TikTok</button>
-                <button class="filter-btn">E-commerce</button>
-                <button class="filter-btn">Trading</button>
-                <button class="filter-btn">AI</button>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <i class="fab fa-tiktok"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <p class="portfolio-category">TikTok Content Agency</p>
-                        <h3 class="portfolio-title">Viral TikTok Campaign</h3>
-                        <p class="portfolio-description">
-                            Campaign TikTok viral untuk brand fashion lokal dengan reach 2M+ dan engagement rate 15%
-                        </p>
-                        <div class="portfolio-stats">
-                            <div class="portfolio-stat">
-                                <i class="fas fa-eye"></i>
-                                <span>2.1M Reach</span>
-                            </div>
-                            <div class="portfolio-stat">
-                                <i class="fas fa-heart"></i>
-                                <span>320K Engagement</span>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20lihat%20case%20study%20TikTok" class="portfolio-link">
-                            Lihat Detail →
-                        </a>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <i class="fas fa-shopping-bag"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <p class="portfolio-category">E-commerce Optimization</p>
-                        <h3 class="portfolio-title">Shopify Conversion Boost</h3>
-                        <p class="portfolio-description">
-                            Optimasi UX/UI dan CRO untuk e-commerce fashion dengan peningkatan conversion rate 45%
-                        </p>
-                        <div class="portfolio-stats">
-                            <div class="portfolio-stat">
-                                <i class="fas fa-chart-line"></i>
-                                <span>+45% Conversion</span>
-                            </div>
-                            <div class="portfolio-stat">
-                                <i class="fas fa-dollar-sign"></i>
-                                <span>Rp 150M Revenue</span>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20lihat%20case%20study%20E-commerce" class="portfolio-link">
-                            Lihat Detail →
-                        </a>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <i class="fas fa-chart-candlestick"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <p class="portfolio-category">FlashRobs Trading Bot</p>
-                        <h3 class="portfolio-title">XAUUSD Strategy Backtest</h3>
-                        <p class="portfolio-description">
-                            Backtesting strategy XAUUSD 7-candle breakout dengan accuracy 78% dalam 1 tahun
-                        </p>
-                        <div class="portfolio-stats">
-                            <div class="portfolio-stat">
-                                <i class="fas fa-bullseye"></i>
-                                <span>78% Accuracy</span>
-                            </div>
-                            <div class="portfolio-stat">
-                                <i class="fas fa-percentage"></i>
-                                <span>+45% Profit</span>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20lihat%20case%20study%20Trading" class="portfolio-link">
-                            Lihat Detail →
-                        </a>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <p class="portfolio-category">AI Agent Pro</p>
-                        <h3 class="portfolio-title">WhatsApp Bot Implementation</h3>
-                        <p class="portfolio-description">
-                            Implementasi AI Agent Pro untuk chat automation dengan 24/7 response time
-                        </p>
-                        <div class="portfolio-stats">
-                            <div class="portfolio-stat">
-                                <i class="fas fa-bolt"></i>
-                                <span>< 2 detik</span>
-                            </div>
-                            <div class="portfolio-stat">
-                                <i class="fas fa-users"></i>
-                                <span>500+ leads</span>
-                            </div>
-                        </div>
-                        <a href="ai-agent-pro.html" class="portfolio-link">
-                            Lihat Detail →
-                        </a>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <p class="portfolio-category">SEO Optimization</p>
-                        <h3 class="portfolio-title">Google Ranking Boost</h3>
-                        <p class="portfolio-description">
-                            SEO optimization untuk website e-commerce dengan peningkatan ranking di Google halaman 1
-                        </p>
-                        <div class="portfolio-stats">
-                            <div class="portfolio-stat">
-                                <i class="fas fa-arrow-up"></i>
-                                <span>+150% Organic</span>
-                            </div>
-                            <div class="portfolio-stat">
-                                <i class="fas fa-users"></i>
-                                <span>100K+ Traffic</span>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20lihat%20case%20study%20SEO" class="portfolio-link">
-                            Lihat Detail →
-                        </a>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <p class="portfolio-category">Digital Marketing</p>
-                        <h3 class="portfolio-title">Social Media Ads Campaign</h3>
-                        <p class="portfolio-description">
-                            Campaign paid ads dengan ROI 5x untuk startup fintech dengan spend Rp 50M
-                        </p>
-                        <div class="portfolio-stats">
-                            <div class="portfolio-stat">
-                                <i class="fas fa-coins"></i>
-                                <span>ROI 5x</span>
-                            </div>
-                            <div class="portfolio-stat">
-                                <i class="fas fa-percentage"></i>
-                                <span>+500% ROAS</span>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20lihat%20case%20study%20Digital%20Marketing" class="portfolio-link">
-                            Lihat Detail →
-                        </a>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="port-card" data-cat="ai">
+        <div class="port-cat">AI Agent Pro</div>
+        <div class="port-client">Skincare Brand — Jakarta</div>
+        <div class="port-metric">&lt;2 Detik</div>
+        <div class="port-metric-sub">Respon WA · 280% closing rate naik</div>
+        <p class="port-desc">500+ lead dihandle per bulan. 80% CS workload berkurang. Tim hanya fokus ke lead yang sudah hangat dan siap bayar.</p>
+        <div class="port-tags">
+          <span class="port-tag">WA automation</span>
+          <span class="port-tag">24/7 aktif</span>
+          <span class="port-tag">Lead scoring</span>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-logo">Berkah Karya</div>
-            <p class="footer-description">
-                Dari TikTok Content Agency, E-commerce Optimization, FlashRobs Trading Bot, hingga AI Agent Pro
-            </p>
-            <div class="footer-bottom">
-                <p>© 2026 Berkah Karya Digital Agency. All rights reserved.</p>
-            </div>
+      </div>
+      <div class="port-card" data-cat="trading">
+        <div class="port-cat">FlashRobs Trading Bot</div>
+        <div class="port-client">XAUUSD — Asia Session</div>
+        <div class="port-metric">78%</div>
+        <div class="port-metric-sub">Akurasi sinyal · +45% profit backtest 1 tahun</div>
+        <p class="port-desc">Strategi 7-candle breakout dibacktest dengan data historis 1 tahun penuh. Paper trading tersedia sebelum live deployment.</p>
+        <div class="port-tags">
+          <span class="port-tag">XAUUSD</span>
+          <span class="port-tag">7-candle breakout</span>
+          <span class="port-tag">Paper trading</span>
         </div>
-    </footer>
+      </div>
+      <div class="port-card" data-cat="seo">
+        <div class="port-cat">SEO Optimization</div>
+        <div class="port-client">E-commerce Website</div>
+        <div class="port-metric">+150%</div>
+        <div class="port-metric-sub">Organic traffic · 100K+ monthly visitors</div>
+        <p class="port-desc">Technical SEO + content strategy membawa website ke halaman 1 Google dalam 4 bulan. Dari posisi 30+ ke top 3 untuk keyword utama.</p>
+        <div class="port-tags">
+          <span class="port-tag">Technical SEO</span>
+          <span class="port-tag">Content strategy</span>
+          <span class="port-tag">Link building</span>
+        </div>
+      </div>
+      <div class="port-card" data-cat="seo">
+        <div class="port-cat">Paid Ads — Google & Meta</div>
+        <div class="port-client">Fintech Startup</div>
+        <div class="port-metric">ROI 5×</div>
+        <div class="port-metric-sub">ROAS 500% · Budget Rp 50 juta</div>
+        <p class="port-desc">Campaign paid ads fintech dengan targeting ketat. Setiap Rp 1 yang diinvestasikan menghasilkan Rp 5 kembali — konsisten selama 6 bulan.</p>
+        <div class="port-tags">
+          <span class="port-tag">Google Ads</span>
+          <span class="port-tag">Meta Ads</span>
+          <span class="port-tag">Conversion tracking</span>
+        </div>
+      </div>
+      <div class="port-card" data-cat="ai">
+        <div class="port-cat">AI Video Studio</div>
+        <div class="port-client">Content Creator — Malang</div>
+        <div class="port-metric">10 Video/hari</div>
+        <div class="port-metric-sub">Output · Dari 0 ke 50K followers 3 bulan</div>
+        <p class="port-desc">Creator tanpa kamera, tanpa studio, tanpa editor. Pakai AI Video Studio generate konten konsisten setiap hari. Follower TikTok 0 → 50K dalam 3 bulan.</p>
+        <div class="port-tags">
+          <span class="port-tag">@berkahkarya_saas_bot</span>
+          <span class="port-tag">TikTok content</span>
+          <span class="port-tag">Volume produksi</span>
+        </div>
+      </div>
+      <div class="port-card" data-cat="ecommerce">
+        <div class="port-cat">TikTok Shop Optimization</div>
+        <div class="port-client">UMKM — Makanan & Minuman</div>
+        <div class="port-metric">3× Revenue</div>
+        <div class="port-metric-sub">Dalam 2 bulan pertama</div>
+        <p class="port-desc">Kombinasi konten TikTok viral + optimasi toko TikTok Shop. Dari penjualan stagnan ke 3× lipat hanya dengan pembenahan konten dan tampilan produk.</p>
+        <div class="port-tags">
+          <span class="port-tag">TikTok Shop</span>
+          <span class="port-tag">Konten produk</span>
+          <span class="port-tag">Shop optimization</span>
+        </div>
+      </div>
+      <div class="port-card" data-cat="tiktok">
+        <div class="port-cat">TikTok Agency</div>
+        <div class="port-client">Brand Kecantikan — Bandung</div>
+        <div class="port-metric">15%</div>
+        <div class="port-metric-sub">Engagement rate · Rata-rata industri 3–5%</div>
+        <p class="port-desc">Engagement rate 15% adalah 3–5× rata-rata industri beauty. Kunci: konten edukasi + storytelling yang relate dengan audiens 18–35 tahun.</p>
+        <div class="port-tags">
+          <span class="port-tag">Beauty niche</span>
+          <span class="port-tag">Storytelling</span>
+          <span class="port-tag">Edukasi konten</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CASE STUDIES -->
+<section class="section" style="background:var(--bg-2);">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag">— Case Studies —</span>
+      <h2>Bongkar Detail<br><em>Prosesnya</em></h2>
+    </div>
+    <div class="case-grid reveal">
+      <!-- Case 1 -->
+      <div class="case-card">
+        <div class="case-num">CASE STUDY 01 — TIKTOK</div>
+        <div class="case-title">Fashion Brand 0 ke 2.1M Reach</div>
+        <p class="case-context">Brand fashion Surabaya ingin masuk TikTok tapi tidak punya tim konten, tidak punya kamera mahal, dan tidak paham algoritma. Budget terbatas Rp 2.5jt/bulan.</p>
+        <div class="case-results">
+          <div class="case-result"><div class="case-result-num">2.1M</div><div class="case-result-lbl">Total Reach</div></div>
+          <div class="case-result"><div class="case-result-num">15%</div><div class="case-result-lbl">Engagement Rate</div></div>
+          <div class="case-result"><div class="case-result-num">320K</div><div class="case-result-lbl">Interaksi</div></div>
+          <div class="case-result"><div class="case-result-num">3 bulan</div><div class="case-result-lbl">Timeframe</div></div>
+        </div>
+        <div class="case-method">Metode: 10 konten/bulan dengan pendekatan storytelling + produk. Minimal 2 konten per minggu untuk menjaga konsistensi algoritma. TikTok Ads digunakan untuk booster konten organik yang sudah perform.</div>
+      </div>
+      <!-- Case 2 -->
+      <div class="case-card">
+        <div class="case-num">CASE STUDY 02 — AI AGENT</div>
+        <div class="case-title">500 Lead, <2 Detik Respon, 280% Closing</div>
+        <p class="case-context">Skincare brand Jakarta kewalahan balas WA. 65% lead hilang karena tidak direspon dalam 5 menit. Tim CS 3 orang tidak cukup handle volume.</p>
+        <div class="case-results">
+          <div class="case-result"><div class="case-result-num">&lt;2s</div><div class="case-result-lbl">Respon Time</div></div>
+          <div class="case-result"><div class="case-result-num">+280%</div><div class="case-result-lbl">Closing Rate</div></div>
+          <div class="case-result"><div class="case-result-num">-80%</div><div class="case-result-lbl">CS Workload</div></div>
+          <div class="case-result"><div class="case-result-num">500+</div><div class="case-result-lbl">Lead/Bulan</div></div>
+        </div>
+        <div class="case-method">Metode: AI Agent Pro setup dengan 200+ FAQ terprogram, flow kualifikasi lead otomatis, dan eskalasi ke manusia hanya untuk lead tier-1. CS bisa fokus ke closing, bukan menjawab pertanyaan berulang.</div>
+      </div>
+      <!-- Case 3 -->
+      <div class="case-card">
+        <div class="case-num">CASE STUDY 03 — E-COMMERCE</div>
+        <div class="case-title">Shopify: +45% Conversion, Rp 150M Q1</div>
+        <p class="case-context">Fashion store Shopify dengan traffic tinggi tapi conversion rendah (1.2%). Masalah di checkout friction, loading lambat, dan UX mobile yang buruk.</p>
+        <div class="case-results">
+          <div class="case-result"><div class="case-result-num">+45%</div><div class="case-result-lbl">Conversion Rate</div></div>
+          <div class="case-result"><div class="case-result-num">Rp 150M</div><div class="case-result-lbl">Revenue Tambahan</div></div>
+          <div class="case-result"><div class="case-result-num">-60%</div><div class="case-result-lbl">Checkout Drop-off</div></div>
+          <div class="case-result"><div class="case-result-num">Q1</div><div class="case-result-lbl">Timeframe</div></div>
+        </div>
+        <div class="case-method">Metode: UX audit 48 titik friction, mobile-first redesign, image compression 70%, one-page checkout, dan trust signal penguatan. Tidak ada budget ads tambahan — semua dari optimasi konversi traffic existing.</div>
+      </div>
+      <!-- Case 4 -->
+      <div class="case-card">
+        <div class="case-num">CASE STUDY 04 — SEO & ADS</div>
+        <div class="case-title">100K Organic + ROI 5× Paid Ads</div>
+        <p class="case-context">E-commerce di page 10+ Google dengan traffic organik hampir nol. Fintech startup mau scale paid ads tapi ROI sebelumnya hanya 1.2× dari budget.</p>
+        <div class="case-results">
+          <div class="case-result"><div class="case-result-num">+150%</div><div class="case-result-lbl">Organic Traffic</div></div>
+          <div class="case-result"><div class="case-result-num">100K+</div><div class="case-result-lbl">Monthly Visitors</div></div>
+          <div class="case-result"><div class="case-result-num">ROI 5×</div><div class="case-result-lbl">Paid Ads</div></div>
+          <div class="case-result"><div class="case-result-num">500%</div><div class="case-result-lbl">ROAS</div></div>
+        </div>
+        <div class="case-method">Metode SEO: technical audit, 300+ keyword mapping, content cluster strategy, 50+ backlink dari media relevan. Metode Ads: audience segmentation ketat, creative testing 20+ variasi, automated bidding dengan target ROAS.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-box reveal">
+      <span class="tag">— Proyek Selanjutnya —</span>
+      <h2 style="margin:0.5rem 0 0.75rem;">Bisnis Anda<br><em>Bisa Jadi Berikutnya</em></h2>
+      <p style="color:var(--text-3);font-size:0.88rem;max-width:420px;margin:0 auto 1.75rem;">Konsultasi gratis 30 menit. Kami audit situasi bisnis Anda dan identifikasi peluang tercepat untuk tumbuh.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="https://wa.me/6285732740006" target="_blank" class="btn btn-gold">Konsultasi Gratis via WA</a>
+        <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-ghost">Coba AI Video Gratis</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-bottom">
+      <div class="footer-logo">Berkah Karya</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Layanan</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">Tentang</a>
+        <a href="https://t.me/berkahkarya_saas_bot" target="_blank">AI Video Studio</a>
+      </div>
+      <div class="footer-copy">© 2026 BerkahKarya</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Hamburger
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+});
+document.querySelectorAll('.mobile-link').forEach(function(l) {
+  l.addEventListener('click', function() { document.getElementById('mobile-menu').classList.remove('open'); });
+});
+
+// Portfolio filter
+function filterPort(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('#port-grid .port-card').forEach(function(card) {
+    if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// Scroll reveal
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+// Nav scroll shadow
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.4)' : 'none';
+});
+</script>
 </body>
 </html>

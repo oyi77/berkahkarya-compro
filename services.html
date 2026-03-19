@@ -1,532 +1,822 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-page="services">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Berkah Karya Digital Agency</title>
-    <meta name="description" content="Layanan digital agency berkarakter - TikTok Content Agency, E-commerce Optimization, dan FlashRobs Trading Bot">
-    <meta name="facebook-domain-verification" content="vo4g6nsn3kqvqmmzxd9rx2gt62dy07" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Layanan BerkahKarya — AI Video Studio, AI Agent Pro, TikTok Agency, E-commerce Optimization, FlashRobs Trading Bot, SEO & Digital Marketing.">
+<title>Layanan — Berkah Karya Digital Growth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: #080808; color: #ddd6c8; font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+:root {
+  --gold: #c4a35a; --gold-light: #dbb96b;
+  --gold-dim: rgba(196,163,90,0.10); --gold-border: rgba(196,163,90,0.22);
+  --bg: #080808; --bg-2: #0a0a0a; --bg-3: #0d0d0d;
+  --line: rgba(255,255,255,0.06); --line-2: rgba(255,255,255,0.04);
+  --text-1: #efe9de; --text-2: #ddd6c8; --text-3: #888880;
+  --text-4: #7a7a72; --text-5: #555550;
+  --r: 2px; --pad: clamp(1.25rem,5vw,2.5rem);
+}
+h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--text-1); line-height: 1.1; }
+h1 { font-size: clamp(2.2rem,6vw,3.5rem); }
+h2 { font-size: clamp(1.6rem,3.5vw,2.4rem); }
+h3 { font-size: clamp(1.1rem,2.5vw,1.5rem); }
+em { font-style: italic; color: var(--gold); }
+p { color: var(--text-4); line-height: 1.75; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 var(--pad); }
+.section { padding: clamp(3rem,8vw,5rem) 0; }
+.divider { height: 0.5px; background: var(--line); }
+.tag { font-size: 0.67rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: inline-block; margin-bottom: 0.5rem; }
 
-        :root {
-            --primary: #0f172a;
-            --secondary: #1e293b;
-            --accent: #f59e0b;
-            --accent-hover: #fbbf24;
-            --success: #22c55e;
-            --danger: #ef4444;
-            --text: #ffffff;
-            --text-muted: #94a3b8;
-        }
+/* NAV */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--pad); height: 60px;
+  background: rgba(8,8,8,0.92); backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid var(--line);
+}
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); letter-spacing: 0.04em; }
+.nav-links { display: flex; align-items: center; gap: 0.25rem; }
+.nav-link { font-size: 0.73rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-5); padding: 0.4rem 0.8rem; transition: color 0.2s; }
+.nav-link:hover, .nav-link.active { color: var(--gold); }
+.nav-cta { display: flex; align-items: center; gap: 0.75rem; }
+.btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1.1rem; border-radius: var(--r); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; transition: all 0.2s; white-space: nowrap; border: none; cursor: pointer; font-family: inherit; text-decoration: none; }
+.btn-gold { background: var(--gold); color: #080808; }
+.btn-gold:hover { background: var(--gold-light); }
+.btn-ghost { background: transparent; color: var(--gold); border: 0.5px solid var(--gold-border); }
+.btn-ghost:hover { background: var(--gold-dim); }
+.btn-outline { background: transparent; color: var(--text-3); border: 0.5px solid var(--line); }
+.btn-outline:hover { border-color: var(--gold-border); color: var(--gold); }
+.btn-sm { padding: 0.45rem 1rem; font-size: 0.7rem; }
+.btn-full { width: 100%; justify-content: center; }
+#hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 4px; cursor: pointer; }
+#hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-3); }
+#mobile-menu {
+  display: none; position: fixed; top: 60px; left: 0; right: 0; bottom: 0;
+  background: #060606; z-index: 999; padding: var(--pad);
+  flex-direction: column; gap: 0.5rem; overflow-y: auto;
+  border-top: 0.5px solid var(--line);
+}
+#mobile-menu.open { display: flex; }
+.mobile-link { font-size: 1rem; font-family: 'Cormorant Garamond', serif; color: var(--text-3); padding: 1rem 0; border-bottom: 0.5px solid var(--line-2); }
+.mobile-link:hover { color: var(--gold); }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* HERO */
+.page-hero { padding-top: 100px; padding-bottom: clamp(2.5rem,6vw,4rem); border-bottom: 0.5px solid var(--line); }
+.page-hero h1 { margin-bottom: 1rem; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--primary);
-            color: var(--text);
-            line-height: 1.6;
-        }
+/* PRODUCT NAV (tab sticky bar) */
+.prod-nav { position: sticky; top: 60px; z-index: 900; background: rgba(8,8,8,0.95); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--line); }
+.prod-nav-inner { display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+.prod-nav-inner::-webkit-scrollbar { display: none; }
+.prod-tab {
+  flex-shrink: 0; padding: 0.85rem 1.25rem;
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-5); border-bottom: 1.5px solid transparent;
+  transition: color 0.2s, border-color 0.2s; cursor: pointer; white-space: nowrap;
+  background: none; border-left: none; border-right: none; border-top: none;
+  font-family: 'Outfit', sans-serif;
+}
+.prod-tab:hover { color: var(--text-3); }
+.prod-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
 
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
+/* PRODUCT SECTIONS */
+.prod-section { padding: clamp(3rem,7vw,5rem) 0; border-bottom: 0.5px solid var(--line); }
+.prod-header { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start; margin-bottom: clamp(2rem,4vw,3rem); }
+.prod-badge { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-5); border: 0.5px solid var(--line); padding: 3px 8px; border-radius: 1px; display: inline-block; margin-bottom: 0.6rem; }
+.prod-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem,4vw,2.8rem); color: var(--text-1); font-weight: 600; margin-bottom: 0.75rem; }
+.prod-title em { color: var(--gold); font-style: italic; }
+.prod-desc { color: var(--text-4); font-size: 0.9rem; line-height: 1.8; max-width: 540px; }
+.prod-cta-group { display: flex; flex-direction: column; gap: 0.5rem; min-width: 180px; }
 
-        .navbar-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* FEATURE GRID */
+.feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 0.5px solid var(--line); border-radius: var(--r); overflow: hidden; margin-bottom: 1.5rem; }
+.feat-item { background: var(--bg-2); padding: 1.25rem 1.25rem 1.5rem; }
+.feat-icon { font-size: 1.3rem; margin-bottom: 0.6rem; }
+.feat-title { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--text-1); margin-bottom: 0.3rem; }
+.feat-desc { font-size: 0.75rem; color: var(--text-4); line-height: 1.6; }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--accent);
-            text-decoration: none;
-        }
+/* PRICING ROW */
+.price-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 0.5px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.price-card { background: var(--bg-2); padding: 1.5rem; }
+.price-card.featured { background: var(--bg-3); border-top: 1.5px solid var(--gold); }
+.price-plan { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-5); margin-bottom: 0.35rem; }
+.price-amt { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--text-1); margin-bottom: 0.15rem; }
+.price-amt sub { font-size: 0.75rem; font-family: 'Outfit', sans-serif; color: var(--text-5); }
+.price-vol { font-size: 0.73rem; color: var(--gold); margin-bottom: 0.85rem; }
+.price-feats { list-style: none; }
+.price-feats li { font-size: 0.75rem; color: var(--text-4); padding: 0.3rem 0; border-bottom: 0.5px solid var(--line-2); display: flex; align-items: flex-start; gap: 0.5rem; }
+.price-feats li:last-child { border-bottom: none; }
+.feat-on::before { content: '✓'; color: var(--gold); flex-shrink: 0; }
+.feat-off { opacity: 0.4; }
+.feat-off::before { content: '—'; color: var(--text-5); flex-shrink: 0; }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 1.25rem;
-            font-weight: 800;
-        }
+/* TOPUP GRID */
+.topup-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 0.5px solid var(--line); border-radius: var(--r); overflow: hidden; margin-top: 1rem; }
+.topup-card { background: var(--bg-2); padding: 1rem; text-align: center; }
+.topup-name { font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-5); margin-bottom: 0.4rem; }
+.topup-price { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-1); margin-bottom: 0.2rem; }
+.topup-credits { font-size: 0.72rem; color: var(--gold); margin-bottom: 0.15rem; }
+.topup-bonus { font-size: 0.65rem; color: var(--text-5); }
 
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
+/* SIMPLE FEATURE LIST */
+.feat-list { list-style: none; }
+.feat-list li { font-size: 0.82rem; color: var(--text-4); padding: 0.6rem 0; border-bottom: 0.5px solid var(--line-2); display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.55; }
+.feat-list li:last-child { border-bottom: none; }
+.feat-list li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
 
-        .nav-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+/* COMPARISON */
+.compare-table { width: 100%; border-collapse: collapse; border: 0.5px solid var(--line); border-radius: var(--r); overflow: hidden; font-size: 0.8rem; }
+.compare-table th { background: var(--bg-3); padding: 0.75rem 1rem; text-align: left; font-family: 'Outfit', sans-serif; font-weight: 400; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-5); border-bottom: 0.5px solid var(--line); }
+.compare-table td { padding: 0.75rem 1rem; border-bottom: 0.5px solid var(--line-2); color: var(--text-4); vertical-align: top; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:hover td { background: rgba(255,255,255,0.01); }
+.td-yes { color: var(--gold); }
+.td-no { color: var(--text-5); opacity: 0.5; }
 
-        .nav-link:hover {
-            color: var(--accent);
-        }
+/* INFO BOX */
+.info-box { background: var(--gold-dim); border: 0.5px solid var(--gold-border); border-radius: var(--r); padding: 1.25rem 1.5rem; margin-top: 1.25rem; }
+.info-box p { font-size: 0.8rem; color: var(--text-3); line-height: 1.7; }
 
-        .nav-cta {
-            background: var(--accent);
-            color: var(--primary);
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
+/* SECTION HEADER */
+.sec-header { margin-bottom: clamp(1.5rem,4vw,2.5rem); }
 
-        .nav-cta:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-        }
+/* CTA BOTTOM */
+.cta-box { background: linear-gradient(135deg, rgba(196,163,90,0.06) 0%, rgba(196,163,90,0.02) 100%); border: 0.5px solid var(--gold-border); padding: clamp(2rem,5vw,3rem); text-align: center; border-radius: var(--r); }
 
-        /* Hero Section */
-        .hero-section {
-            padding: 120px 2rem 80px;
-        }
+/* FOOTER */
+footer { border-top: 0.5px solid var(--line-2); padding: clamp(1.5rem,4vw,2.5rem) 0; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--gold); }
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a { font-size: 0.72rem; color: var(--text-5); letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-size: 0.68rem; color: var(--text-5); }
 
-        .hero-container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
-        .hero-title {
-            font-size: 3rem;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .hero-title span {
-            color: var(--accent);
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-        }
-
-        /* Services Grid */
-        .services-section {
-            padding: 80px 2rem;
-            background: var(--secondary);
-        }
-
-        .services-container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-        }
-
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--accent);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            font-size: 1.75rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .service-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-features li {
-            padding: 0.5rem 0;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .service-features li i {
-            color: var(--success);
-        }
-
-        .service-cta {
-            display: block;
-            text-align: center;
-            background: rgba(245, 158, 11, 0.1);
-            color: var(--accent);
-            padding: 1rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .service-cta:hover {
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        /* Why Choose Us */
-        .why-us-section {
-            padding: 80px 2rem;
-        }
-
-        .why-us-container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .why-card {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .why-icon {
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .why-card h4 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .why-card p {
-            color: var(--text-muted);
-        }
-
-        /* Footer */
-        .footer {
-            padding: 3rem 2rem;
-            background: var(--primary);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .footer-description {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.875rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-            .hero-title {
-                font-size: 2rem;
-            }
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            .why-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-cta .btn-gold { display: none; }
+  #hamburger { display: flex; }
+  .feat-grid { grid-template-columns: 1fr 1fr; }
+  .price-row { grid-template-columns: 1fr; }
+  .topup-grid { grid-template-columns: 1fr 1fr; }
+  .prod-header { grid-template-columns: 1fr; }
+  .prod-cta-group { flex-direction: row; }
+}
+@media (max-width: 600px) {
+  .feat-grid { grid-template-columns: 1fr; }
+  .topup-grid { grid-template-columns: 1fr 1fr; }
+  .prod-cta-group { flex-direction: column; }
+}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">B</div>
-                <span>Berkah Karya</span>
-            </a>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="ai-agent-pro.html" class="nav-link">AI Agent Pro</a></li>
-                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
-                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-                <li><a href="https://wa.me/6285732740006" class="nav-cta">Jadwalkan Demo</a></li>
-            </ul>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Berkah Karya</a>
+  <div class="nav-links">
+    <a href="index.html#products" class="nav-link">Produk</a>
+    <a href="services.html" class="nav-link active">Layanan</a>
+    <a href="portfolio.html" class="nav-link">Portfolio</a>
+    <a href="index.html#pricing" class="nav-link">Harga</a>
+    <a href="about.html" class="nav-link">Tentang</a>
+  </div>
+  <div class="nav-cta">
+    <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-gold btn-sm">Coba Gratis 🎬</a>
+    <button id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div id="mobile-menu">
+  <a href="index.html" class="mobile-link">Home</a>
+  <a href="index.html#products" class="mobile-link">Produk</a>
+  <a href="services.html" class="mobile-link">Layanan</a>
+  <a href="portfolio.html" class="mobile-link">Portfolio</a>
+  <a href="index.html#pricing" class="mobile-link">Harga</a>
+  <a href="about.html" class="mobile-link">Tentang</a>
+  <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.75rem;">
+    <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-gold btn-full">Coba Gratis — 6 Video 🎬</a>
+    <a href="https://wa.me/6285732740006" target="_blank" class="btn btn-ghost btn-full">WhatsApp Konsultasi</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="section page-hero">
+  <div class="container">
+    <span class="tag">— Semua Layanan —</span>
+    <h1>Produk &amp; Jasa<br><em>BerkahKarya</em></h1>
+    <p style="margin-top:0.75rem;max-width:540px;font-size:0.92rem;color:var(--text-4);">6 solusi digital yang saling melengkapi — dari AI content generation, WhatsApp automation, TikTok agency, hingga trading bot dan SEO. Pilih yang paling relevan untuk bisnismu sekarang.</p>
+  </div>
+</section>
+
+<!-- PRODUCT NAV TABS -->
+<div class="prod-nav">
+  <div class="container">
+    <div class="prod-nav-inner">
+      <button class="prod-tab active" onclick="scrollTo('ai-video')">🎬 AI Video Studio</button>
+      <button class="prod-tab" onclick="scrollTo('ai-agent')">🤖 AI Agent Pro</button>
+      <button class="prod-tab" onclick="scrollTo('tiktok')">📱 TikTok Agency</button>
+      <button class="prod-tab" onclick="scrollTo('ecommerce')">🛒 E-commerce</button>
+      <button class="prod-tab" onclick="scrollTo('trading')">📈 Trading Bot</button>
+      <button class="prod-tab" onclick="scrollTo('seo')">🔍 SEO & Ads</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PRODUK 1: AI VIDEO STUDIO
+════════════════════════════════════════════════ -->
+<section class="prod-section" id="ai-video">
+  <div class="container">
+    <div class="prod-header reveal">
+      <div>
+        <div class="prod-badge">SaaS · Telegram Bot · Self-Service</div>
+        <div class="prod-title">🎬 AI Video<br><em>Studio</em></div>
+        <p class="prod-desc">Generate video AI berkualitas langsung dari Telegram — tanpa kamera, tanpa editor, tanpa studio. Kirim prompt → terima video siap upload ke TikTok/IG/YouTube dalam 2–5 menit.</p>
+      </div>
+      <div class="prod-cta-group">
+        <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-gold">Coba Gratis 🎬</a>
+        <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20tanya%20AI%20Video%20Studio" target="_blank" class="btn btn-outline">Tanya WA</a>
+      </div>
+    </div>
+
+    <div class="feat-grid reveal">
+      <div class="feat-item">
+        <div class="feat-icon">⚡</div>
+        <div class="feat-title">2–5 Menit/Video</div>
+        <p class="feat-desc">Dari prompt teks ke video jadi. Priority queue untuk paket Pro & Agency.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🎯</div>
+        <div class="feat-title">0.5 Kredit/Video</div>
+        <p class="feat-desc">1 kredit = 2 video. Tidak ada biaya tersembunyi. Kredit tidak pernah expired.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">📊</div>
+        <div class="feat-title">Full Analytics</div>
+        <p class="feat-desc">Track view, performa per video, dan history generate langsung di bot.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🔄</div>
+        <div class="feat-title">Multi-Angle Variant</div>
+        <p class="feat-desc">Generate 3 variasi berbeda dari 1 prompt. A/B test konten lebih mudah.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🤝</div>
+        <div class="feat-title">Referral Program</div>
+        <p class="feat-desc">Ajak teman, dapat komisi otomatis. Kode unik untuk setiap user.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">📱</div>
+        <div class="feat-title">Multi-Platform</div>
+        <p class="feat-desc">Output siap upload ke TikTok, Instagram Reels, YouTube Shorts.</p>
+      </div>
+    </div>
+
+    <!-- Pricing -->
+    <div class="sec-header reveal" style="margin-top:2.5rem;">
+      <span class="tag">— Pilih Paket —</span>
+      <h3>Langganan Bulanan</h3>
+    </div>
+    <div class="price-row reveal">
+      <div class="price-card">
+        <div class="price-plan">Lite</div>
+        <div class="price-amt">Rp 99K<sub>/bulan</sub></div>
+        <div class="price-vol">20 kredit = 40 video/bulan</div>
+        <ul class="price-feats">
+          <li class="feat-on">20 kredit otomatis tiap bulan</li>
+          <li class="feat-on">Standard queue</li>
+          <li class="feat-on">Max durasi 150 detik</li>
+          <li class="feat-off">Analytics lanjutan</li>
+          <li class="feat-off">Multi-angle variant</li>
+          <li class="feat-off">Revisi gratis</li>
+        </ul>
+        <div style="margin-top:1.25rem;">
+          <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20paket%20Lite%20AI%20Video%20Studio" target="_blank" class="btn btn-outline btn-full">Mulai Lite</a>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-container">
-            <h1 class="hero-title">Layanan <span>Digital</span> Berkarakter</h1>
-            <p class="hero-subtitle">
-                Kami membantu bisnis berkembang dengan layanan digital yang terbukti dan berdampak nyata.
-            </p>
+      </div>
+      <div class="price-card featured">
+        <div class="price-plan">Pro ★ Paling Populer</div>
+        <div class="price-amt">Rp 199K<sub>/bulan</sub></div>
+        <div class="price-vol">50 kredit = 100 video/bulan</div>
+        <ul class="price-feats">
+          <li class="feat-on">50 kredit otomatis tiap bulan</li>
+          <li class="feat-on">Priority queue 2×</li>
+          <li class="feat-on">Max durasi 300 detik</li>
+          <li class="feat-on">Full analytics</li>
+          <li class="feat-on">Multi-angle (3 variant)</li>
+          <li class="feat-on">1 revisi gratis/video</li>
+        </ul>
+        <div style="margin-top:1.25rem;">
+          <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20paket%20Pro%20AI%20Video%20Studio" target="_blank" class="btn btn-gold btn-full">Mulai Pro</a>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services-section">
-        <div class="services-container">
-            <h2 class="section-title">Apa yang Kami Tawarkan</h2>
-            <p class="section-subtitle">
-                Solusi digital komprehensif untuk membantu bisnis Anda tumbuh dan berkembang
-            </p>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fab fa-tiktok"></i>
-                    </div>
-                    <h3> TikTok Content Agency</h3>
-                    <p>
-                        Jasa pembuatan konten TikTok viral dan engaging untuk meningkatkan engagement brand Anda
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Content creator profesional</li>
-                        <li><i class="fas fa-check"></i> Viral strategy optimization</li>
-                        <li><i class="fas fa-check"></i> TikTok ads management</li>
-                    </ul>
-                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20tanya%20TikTok%20Content%20Agency" class="service-cta">
-                        Pelajari Lebih Lanjut →
-                    </a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <h3> E-commerce Optimization</h3>
-                    <p>
-                        Optimasi performa e-commerce untuk meningkatkan konversi dan penjualan online
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> UX/UI improvement</li>
-                        <li><i class="fas fa-check"></i> Conversion rate optimization</li>
-                        <li><i class="fas fa-check"></i> SEO untuk e-commerce</li>
-                    </ul>
-                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20tanya%20E-commerce%20Optimization" class="service-cta">
-                        Pelajari Lebih Lanjut →
-                    </a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3> FlashRobs Trading Bot</h3>
-                    <p>
-                        Trading bot otomatis untuk XAUUSD dengan strategi Asia session yang terbukti
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> 7-candle breakout strategy</li>
-                        <li><i class="fas fa-check"></i> Paper trading available</li>
-                        <li><i class="fas fa-check"></i> Real-time monitoring</li>
-                    </ul>
-                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20tanya%20FlashRobs%20Trading%20Bot" class="service-cta">
-                        Pelajari Lebih Lanjut →
-                    </a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3> AI Agent Pro</h3>
-                    <p>
-                        Sistem AI Agent untuk otomatisasi chat, lead qualification, dan follow-up 24/7
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Respon < 2 detik</li>
-                        <li><i class="fas fa-check"></i> Lead follow-up otomatis</li>
-                        <li><i class="fas fa-check"></i> 24/7 active AI</li>
-                    </ul>
-                    <a href="ai-agent-pro.html" class="service-cta">
-                        Lihat Detail →
-                    </a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3> SEO Optimization</h3>
-                    <p>
-                        Optimasi SEO untuk meningkatkan ranking di search engine dan organic traffic
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Technical SEO audit</li>
-                        <li><i class="fas fa-check"></i> Keyword optimization</li>
-                        <li><i class="fas fa-check"></i> Link building strategy</li>
-                    </ul>
-                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20tanya%20SEO%20Optimization" class="service-cta">
-                        Pelajari Lebih Lanjut →
-                    </a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3> Digital Marketing</h3>
-                    <p>
-                        Strategi marketing digital komprehensif untuk meningkatkan brand awareness dan leads
-                    </p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Social media marketing</li>
-                        <li><i class="fas fa-check"></i> Paid ads management</li>
-                        <li><i class="fas fa-check"></i> Content strategy</li>
-                    </ul>
-                    <a href="https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20tanya%20Digital%20Marketing" class="service-cta">
-                        Pelajari Lebih Lanjut →
-                    </a>
-                </div>
-            </div>
+      </div>
+      <div class="price-card">
+        <div class="price-plan">Agency</div>
+        <div class="price-amt">Rp 499K<sub>/bulan</sub></div>
+        <div class="price-vol">150 kredit = 300 video/bulan</div>
+        <ul class="price-feats">
+          <li class="feat-on">150 kredit otomatis tiap bulan</li>
+          <li class="feat-on">Priority queue 3× (tercepat)</li>
+          <li class="feat-on">Max durasi 300 detik</li>
+          <li class="feat-on">Full analytics + export</li>
+          <li class="feat-on">Revisi unlimited</li>
+          <li class="feat-on">Dedicated support</li>
+        </ul>
+        <div style="margin-top:1.25rem;">
+          <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20paket%20Agency%20AI%20Video%20Studio" target="_blank" class="btn btn-outline btn-full">Mulai Agency</a>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <!-- Why Choose Us -->
-    <section class="why-us-section">
-        <div class="why-us-container">
-            <h2 class="section-title">Mengapa Memilih Kami?</h2>
-            <div class="why-grid">
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>Quality Guaranteed</h4>
-                    <p>Kami komitmen memberikan hasil terbaik dengan standar kualitas tinggi</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h4>On-Time Delivery</h4>
-                    <p>Kami menghargai waktu Anda dengan delivery tepat waktu</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h4>24/7 Support</h4>
-                    <p>Tim kami siap membantu Anda kapan saja</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="sec-header reveal" style="margin-top:2rem;">
+      <span class="tag">— atau beli sekali —</span>
+      <h3>Top Up Kredit — Tidak Pernah Expired</h3>
+    </div>
+    <div class="topup-grid reveal">
+      <div class="topup-card">
+        <div class="topup-name">Starter</div>
+        <div class="topup-price">Rp 50K</div>
+        <div class="topup-credits">6 kredit = 12 video</div>
+        <div class="topup-bonus">+1 kredit bonus</div>
+      </div>
+      <div class="topup-card" style="border-top:1px solid rgba(196,163,90,0.15);">
+        <div class="topup-name">Growth</div>
+        <div class="topup-price">Rp 150K</div>
+        <div class="topup-credits">18 kredit = 36 video</div>
+        <div class="topup-bonus">+3 kredit bonus</div>
+      </div>
+      <div class="topup-card">
+        <div class="topup-name">Scale</div>
+        <div class="topup-price">Rp 500K</div>
+        <div class="topup-credits">75 kredit = 150 video</div>
+        <div class="topup-bonus">+15 kredit bonus</div>
+      </div>
+      <div class="topup-card">
+        <div class="topup-name">Enterprise</div>
+        <div class="topup-price">Rp 1.5jt</div>
+        <div class="topup-credits">260 kredit = 520 video</div>
+        <div class="topup-bonus">+60 kredit bonus</div>
+      </div>
+    </div>
+    <div class="info-box reveal">
+      <p>📌 Cara mulai: Buka <strong>@berkahkarya_saas_bot</strong> di Telegram → ketik <code>/start</code> → ikuti panduan. Gratis 6 kredit (12 video) untuk semua akun baru — tidak perlu kartu kredit.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-logo">Berkah Karya</div>
-            <p class="footer-description">
-                Digital Growth Agency membantu brand tumbuh melalui TikTok Content Agency, E-commerce Optimization, dan FlashRobs Trading Bot
-            </p>
-            <div class="footer-bottom">
-                <p>© 2026 Berkah Karya Digital Agency. All rights reserved.</p>
-            </div>
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════════
+     PRODUK 2: AI AGENT PRO
+════════════════════════════════════════════════ -->
+<section class="prod-section" id="ai-agent">
+  <div class="container">
+    <div class="prod-header reveal">
+      <div>
+        <div class="prod-badge">SaaS · WhatsApp Automation · 24/7</div>
+        <div class="prod-title">🤖 AI Agent<br><em>Pro</em></div>
+        <p class="prod-desc">WhatsApp automation yang balas lead otomatis dalam &lt;2 detik — 24 jam, 7 hari, tanpa libur. Lead tidak hilang saat kamu tidur, rapat, atau liburan.</p>
+      </div>
+      <div class="prod-cta-group">
+        <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20demo%20AI%20Agent%20Pro" target="_blank" class="btn btn-gold">Minta Demo</a>
+        <a href="https://berkahkarya.org/ai-agent-pro" target="_blank" class="btn btn-outline">Lihat Detail</a>
+      </div>
+    </div>
+
+    <div class="feat-grid reveal">
+      <div class="feat-item">
+        <div class="feat-icon">⚡</div>
+        <div class="feat-title">&lt;2 Detik Respon</div>
+        <p class="feat-desc">Respon WA lebih cepat dari manusia mana pun. Kesan pertama yang sempurna.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🧠</div>
+        <div class="feat-title">200+ FAQ Terprogram</div>
+        <p class="feat-desc">Jawab pertanyaan produk, harga, proses order, garansi — semua otomatis.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🎯</div>
+        <div class="feat-title">Lead Scoring Otomatis</div>
+        <p class="feat-desc">Kualifikasi lead secara otomatis. Eskalasi ke human hanya untuk yang siap beli.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">📊</div>
+        <div class="feat-title">Dashboard Analytics</div>
+        <p class="feat-desc">Track volume lead, respon time, conversion rate, dan performa bot real-time.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🔗</div>
+        <div class="feat-title">Integrasi CRM</div>
+        <p class="feat-desc">Sinkronisasi dengan Google Sheets, Notion, atau CRM yang sudah kamu pakai.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🛡️</div>
+        <div class="feat-title">Anti-Spam & Filter</div>
+        <p class="feat-desc">Bot pintar yang tidak balas spam. Fokus hanya pada prospek yang relevan.</p>
+      </div>
+    </div>
+
+    <div class="price-row reveal" style="margin-top:2.5rem;">
+      <div class="price-card">
+        <div class="price-plan">Starter</div>
+        <div class="price-amt">Rp 499K<sub>/bulan</sub></div>
+        <div class="price-vol">1 nomor WA · hingga 500 chat/bln</div>
+        <ul class="price-feats">
+          <li class="feat-on">1 nomor WhatsApp</li>
+          <li class="feat-on">500 chat/bulan</li>
+          <li class="feat-on">100 FAQ terprogram</li>
+          <li class="feat-on">Basic analytics</li>
+          <li class="feat-off">Lead scoring lanjutan</li>
+          <li class="feat-off">Integrasi CRM</li>
+        </ul>
+        <div style="margin-top:1.25rem;">
+          <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20paket%20Starter%20AI%20Agent%20Pro" target="_blank" class="btn btn-outline btn-full">Mulai Starter</a>
         </div>
-    </footer>
+      </div>
+      <div class="price-card featured">
+        <div class="price-plan">Growth ★ Terpopuler</div>
+        <div class="price-amt">Rp 1.5jt<sub>/bulan</sub></div>
+        <div class="price-vol">3 nomor WA · unlimited chat</div>
+        <ul class="price-feats">
+          <li class="feat-on">3 nomor WhatsApp</li>
+          <li class="feat-on">Chat unlimited</li>
+          <li class="feat-on">200+ FAQ terprogram</li>
+          <li class="feat-on">Full analytics + export</li>
+          <li class="feat-on">Lead scoring otomatis</li>
+          <li class="feat-on">Integrasi CRM dasar</li>
+        </ul>
+        <div style="margin-top:1.25rem;">
+          <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20paket%20Growth%20AI%20Agent%20Pro" target="_blank" class="btn btn-gold btn-full">Mulai Growth</a>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="price-plan">Enterprise</div>
+        <div class="price-amt">Custom</div>
+        <div class="price-vol">Multi-nomor · dedicated infra</div>
+        <ul class="price-feats">
+          <li class="feat-on">Nomor WA tidak terbatas</li>
+          <li class="feat-on">Custom AI persona brand</li>
+          <li class="feat-on">Integrasi API penuh</li>
+          <li class="feat-on">SLA uptime 99.9%</li>
+          <li class="feat-on">Dedicated support manager</li>
+          <li class="feat-on">Training data custom</li>
+        </ul>
+        <div style="margin-top:1.25rem;">
+          <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20Enterprise%20AI%20Agent%20Pro" target="_blank" class="btn btn-outline btn-full">Hubungi Kami</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════════
+     PRODUK 3: TIKTOK CONTENT AGENCY
+════════════════════════════════════════════════ -->
+<section class="prod-section" id="tiktok">
+  <div class="container">
+    <div class="prod-header reveal">
+      <div>
+        <div class="prod-badge">Jasa Agensi · Done For You · Bulanan</div>
+        <div class="prod-title">📱 TikTok Content<br><em>Agency</em></div>
+        <p class="prod-desc">Kamu tidak perlu paham TikTok. Tim kami yang handle segalanya — riset tren, script, produksi, posting, dan optimasi. Kamu terima laporan performa setiap bulan.</p>
+      </div>
+      <div class="prod-cta-group">
+        <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20konsultasi%20TikTok%20Agency" target="_blank" class="btn btn-gold">Konsultasi Gratis</a>
+      </div>
+    </div>
+
+    <div class="feat-grid reveal">
+      <div class="feat-item">
+        <div class="feat-icon">✍️</div>
+        <div class="feat-title">Script & Konsep</div>
+        <p class="feat-desc">Riset tren mingguan + script viral yang disesuaikan dengan niche dan target audiens brand.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🎬</div>
+        <div class="feat-title">Produksi Konten</div>
+        <p class="feat-desc">10–15 konten/bulan dengan kualitas konsisten. AI-assisted production untuk efisiensi.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">📅</div>
+        <div class="feat-title">Jadwal Posting</div>
+        <p class="feat-desc">Posting di waktu optimal berdasarkan data audiens. Frekuensi dijaga konsisten.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">💰</div>
+        <div class="feat-title">TikTok Ads</div>
+        <p class="feat-desc">Booster konten yang sudah organik perform. Budget ads dikelola dengan target ROAS.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">📊</div>
+        <div class="feat-title">Laporan Bulanan</div>
+        <p class="feat-desc">Reach, engagement, follower growth, dan insight konten terbaik setiap bulan.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🔁</div>
+        <div class="feat-title">Revisi & Iterasi</div>
+        <p class="feat-desc">Strategi disesuaikan setiap bulan berdasarkan data performa. Tidak ada pendekatan one-size-fits-all.</p>
+      </div>
+    </div>
+
+    <div class="price-row reveal" style="margin-top:2.5rem;grid-template-columns:1fr 1fr;">
+      <div class="price-card">
+        <div class="price-plan">Basic</div>
+        <div class="price-amt">Rp 2.5jt<sub>/bulan</sub></div>
+        <div class="price-vol">10 konten/bulan + laporan</div>
+        <ul class="price-feats">
+          <li class="feat-on">10 video konten/bulan</li>
+          <li class="feat-on">Riset tren + script</li>
+          <li class="feat-on">Jadwal posting optimal</li>
+          <li class="feat-on">Laporan bulanan</li>
+          <li class="feat-off">TikTok Ads management</li>
+          <li class="feat-off">Dedicated account manager</li>
+        </ul>
+        <div style="margin-top:1.25rem;">
+          <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20paket%20Basic%20TikTok%20Agency" target="_blank" class="btn btn-outline btn-full">Mulai Basic</a>
+        </div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-plan">Full Management ★</div>
+        <div class="price-amt">Rp 5jt<sub>/bulan</sub></div>
+        <div class="price-vol">15 konten + ads + dedicated AM</div>
+        <ul class="price-feats">
+          <li class="feat-on">15 video konten/bulan</li>
+          <li class="feat-on">Riset tren + script premium</li>
+          <li class="feat-on">Jadwal posting + auto-boost</li>
+          <li class="feat-on">Laporan mingguan + bulanan</li>
+          <li class="feat-on">TikTok Ads management</li>
+          <li class="feat-on">Dedicated account manager</li>
+        </ul>
+        <div style="margin-top:1.25rem;">
+          <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20Full%20Management%20TikTok%20Agency" target="_blank" class="btn btn-gold btn-full">Mulai Full Management</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════════
+     PRODUK 4: E-COMMERCE OPTIMIZATION
+════════════════════════════════════════════════ -->
+<section class="prod-section" id="ecommerce">
+  <div class="container">
+    <div class="prod-header reveal">
+      <div>
+        <div class="prod-badge">Jasa · Consulting · Project Based</div>
+        <div class="prod-title">🛒 E-commerce<br><em>Optimization</em></div>
+        <p class="prod-desc">Audit menyeluruh dan optimasi toko online — Shopify, Tokopedia, TikTok Shop, atau website custom. Target: meningkatkan conversion rate dan revenue dari traffic yang sudah ada.</p>
+      </div>
+      <div class="prod-cta-group">
+        <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20audit%20e-commerce%20saya" target="_blank" class="btn btn-gold">Minta Audit Gratis</a>
+      </div>
+    </div>
+
+    <div class="feat-grid reveal">
+      <div class="feat-item">
+        <div class="feat-icon">🔍</div>
+        <div class="feat-title">UX/UI Audit</div>
+        <p class="feat-desc">48 titik audit mencakup navigasi, checkout, mobile experience, dan trust signals.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">⚡</div>
+        <div class="feat-title">Speed Optimization</div>
+        <p class="feat-desc">Kompresi gambar, lazy loading, CDN setup. Setiap 1 detik lebih cepat = +7% conversion.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">💳</div>
+        <div class="feat-title">Checkout Optimization</div>
+        <p class="feat-desc">Kurangi step checkout, tambah payment option, perkuat trust badge di moment kritis.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">📸</div>
+        <div class="feat-title">Product Page Redesign</div>
+        <p class="feat-desc">Foto, copywriting, dan layout yang terbukti meningkatkan add-to-cart rate.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">📦</div>
+        <div class="feat-title">TikTok Shop Setup</div>
+        <p class="feat-desc">Optimasi tampilan toko TikTok Shop, produk showcase, dan konten shoppable.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">📈</div>
+        <div class="feat-title">Analytics Setup</div>
+        <p class="feat-desc">Google Analytics 4 + heat maps. Tahu persis di mana customer drop-off dan kenapa.</p>
+      </div>
+    </div>
+
+    <div class="info-box reveal" style="margin-top:2rem;">
+      <p>💼 <strong>Harga:</strong> Rp 3jt one-time audit + implementasi. Termasuk 6 bulan monitoring dan maintenance gratis. Untuk toko besar atau multi-platform, hubungi kami untuk custom quote.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════════
+     PRODUK 5: FLASHROBS TRADING BOT
+════════════════════════════════════════════════ -->
+<section class="prod-section" id="trading">
+  <div class="container">
+    <div class="prod-header reveal">
+      <div>
+        <div class="prod-badge">SaaS · Algorithmic Trading · XAUUSD</div>
+        <div class="prod-title">📈 FlashRobs<br><em>Trading Bot</em></div>
+        <p class="prod-desc">Bot trading XAUUSD berbasis strategi 7-candle breakout yang telah dibacktest selama 1 tahun penuh. 78% akurasi sinyal, masuk posisi di Asia session 15:00 WIB.</p>
+      </div>
+      <div class="prod-cta-group">
+        <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20info%20FlashRobs%20Trading%20Bot" target="_blank" class="btn btn-gold">Info &amp; Daftar</a>
+      </div>
+    </div>
+
+    <div class="feat-grid reveal">
+      <div class="feat-item">
+        <div class="feat-icon">📊</div>
+        <div class="feat-title">78% Akurasi Sinyal</div>
+        <p class="feat-desc">Dibacktest dengan data historis 1 tahun. Profit growth +45% dalam periode yang sama.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">⏰</div>
+        <div class="feat-title">Asia Session Entry</div>
+        <p class="feat-desc">Entry jam 15:00 WIB di Asia session — volatilitas terkontrol, spread lebih rendah.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🛡️</div>
+        <div class="feat-title">Risk Management Ketat</div>
+        <p class="feat-desc">Auto stop-loss dan take-profit. Tidak ada open posisi sembarangan atau revenge trading.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">📱</div>
+        <div class="feat-title">Paper Trading Mode</div>
+        <p class="feat-desc">Coba dan lihat performa bot tanpa risiko modal dulu. Transisi ke live trading kapanpun siap.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🔔</div>
+        <div class="feat-title">Sinyal Real-time</div>
+        <p class="feat-desc">Notifikasi entry/exit via Telegram langsung ke HP. Tidak perlu monitor chart terus-menerus.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">📋</div>
+        <div class="feat-title">Laporan Harian</div>
+        <p class="feat-desc">Resume performa harian: win/loss ratio, total pip, dan kondisi pasar yang relevan.</p>
+      </div>
+    </div>
+
+    <div class="info-box reveal" style="margin-top:2rem;">
+      <p>⚠️ <strong>Disclaimer:</strong> Trading mengandung risiko. Hasil backtest tidak menjamin performa masa depan. Selalu gunakan risk management yang sesuai dengan kondisi finansial masing-masing. <strong>Harga:</strong> Rp 500K/bulan — termasuk akses bot, sinyal harian, dan laporan performa.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════════════
+     PRODUK 6: SEO & DIGITAL MARKETING
+════════════════════════════════════════════════ -->
+<section class="prod-section" id="seo">
+  <div class="container">
+    <div class="prod-header reveal">
+      <div>
+        <div class="prod-badge">Jasa · SEO · Paid Ads · Retainer</div>
+        <div class="prod-title">🔍 SEO &amp; Digital<br><em>Marketing</em></div>
+        <p class="prod-desc">Dari halaman 10 Google ke posisi 1. Atau dari ROAS 1.2× ke 5×. Kami handle strategi, implementasi, dan optimasi ongoing — kamu fokus ke produk dan operasional.</p>
+      </div>
+      <div class="prod-cta-group">
+        <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20konsultasi%20SEO%20dan%20Ads" target="_blank" class="btn btn-gold">Konsultasi Gratis</a>
+      </div>
+    </div>
+
+    <div class="feat-grid reveal">
+      <div class="feat-item">
+        <div class="feat-icon">⚙️</div>
+        <div class="feat-title">Technical SEO</div>
+        <p class="feat-desc">Audit + perbaikan: site speed, crawlability, schema markup, Core Web Vitals.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">✍️</div>
+        <div class="feat-title">Content Strategy</div>
+        <p class="feat-desc">300+ keyword mapping, content cluster, blog posts yang ranking di Google.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🔗</div>
+        <div class="feat-title">Link Building</div>
+        <p class="feat-desc">50+ backlink dari media dan website relevan. Domain authority yang naik konsisten.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🎯</div>
+        <div class="feat-title">Google & Meta Ads</div>
+        <p class="feat-desc">Audience segmentation ketat, creative testing 20+ variasi, automated bidding ROAS.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">📊</div>
+        <div class="feat-title">Analytics & Tracking</div>
+        <p class="feat-desc">GA4 + GTM setup, conversion tracking, dashboard laporan yang bisa dibaca tanpa technical knowledge.</p>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🔄</div>
+        <div class="feat-title">Monthly Optimization</div>
+        <p class="feat-desc">Review bulanan: keyword yang naik/turun, iklan yang perlu dimatikan, peluang baru yang muncul.</p>
+      </div>
+    </div>
+
+    <div class="info-box reveal" style="margin-top:2rem;">
+      <p>💼 <strong>Harga:</strong> Custom berdasarkan scope — jumlah keyword target, platform ads, dan volume konten. Mulai dari Rp 3jt/bulan untuk retainer SEO dasar. Hubungi kami untuk audit gratis dan proposal yang sesuai kebutuhan.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA BOTTOM -->
+<section class="section">
+  <div class="container">
+    <div class="cta-box reveal">
+      <span class="tag">— Mulai Sekarang —</span>
+      <h2 style="margin:0.5rem 0 0.75rem;">Tidak Yakin Mana<br><em>yang Cocok untuk Bisnis Kamu?</em></h2>
+      <p style="color:var(--text-3);font-size:0.88rem;max-width:460px;margin:0 auto 1.75rem;">Konsultasi 30 menit gratis. Kami pelajari situasi bisnis kamu dan rekomendasikan solusi yang paling masuk akal — bukan yang paling mahal.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="https://wa.me/6285732740006?text=Halo,%20saya%20mau%20konsultasi%20gratis" target="_blank" class="btn btn-gold">Konsultasi via WhatsApp</a>
+        <a href="https://t.me/berkahkarya_saas_bot" target="_blank" class="btn btn-ghost">Coba AI Video Gratis</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-bottom">
+      <div class="footer-logo">Berkah Karya</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Layanan</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">Tentang</a>
+      </div>
+      <div class="footer-copy">© 2026 BerkahKarya</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Hamburger
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+});
+document.querySelectorAll('.mobile-link').forEach(function(l) {
+  l.addEventListener('click', function() { document.getElementById('mobile-menu').classList.remove('open'); });
+});
+
+// Smooth scroll to section
+function scrollTo(id) {
+  var el = document.getElementById(id);
+  if (el) {
+    var offset = el.getBoundingClientRect().top + window.scrollY - 110;
+    window.scrollTo({ top: offset, behavior: 'smooth' });
+  }
+  // Update active tab
+  document.querySelectorAll('.prod-tab').forEach(function(btn) { btn.classList.remove('active'); });
+  event.target.classList.add('active');
+}
+
+// Update active tab on scroll
+var sections = ['ai-video','ai-agent','tiktok','ecommerce','trading','seo'];
+window.addEventListener('scroll', function() {
+  var scrollPos = window.scrollY + 130;
+  sections.forEach(function(id, i) {
+    var el = document.getElementById(id);
+    if (el && el.offsetTop <= scrollPos) {
+      document.querySelectorAll('.prod-tab').forEach(function(btn, bi) {
+        btn.classList.toggle('active', bi === i);
+      });
+    }
+  });
+});
+
+// Scroll reveal
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+
+// Nav scroll shadow
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.4)' : 'none';
+});
+</script>
 </body>
 </html>
