@@ -1137,6 +1137,47 @@
             .pricing-card {
                 padding: 1.5rem;
             }
+
+            /* Mobile: collapse 3-col grids */
+            .case-studies,
+            .risk-guarantees {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Mobile: fix inline grid (stats etc) */
+            [style*="grid-template-columns: repeat(3, 1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        /* Extra: prevent horizontal overflow on all devices */
+        * { box-sizing: border-box; }
+        img { max-width: 100%; height: auto; }
+        .container, [class*="container"], [class*="-container"] {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Mobile CTA buttons — minimum tap target */
+        @media (max-width: 768px) {
+            .cta-primary, .nav-cta, a[class*="cta"], button {
+                min-height: 48px;
+                font-size: 1rem !important;
+                padding: 0.875rem 1.5rem !important;
+                touch-action: manipulation;
+            }
+            /* Card padding on mobile */
+            .problem-card, .result-card, .case-study, .risk-guarantee, .pricing-card {
+                padding: 1.25rem !important;
+                width: 100%;
+                max-width: 100%;
+                overflow: hidden;
+            }
+            /* Section padding */
+            section, .section {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
         }
     </style>
 </head>
@@ -1415,7 +1456,7 @@
             <p class="hero-subheadline" style="text-align: center; max-width: 800px; margin: 0 auto;">
                 Investasi terbaik untuk bisnis Anda. Hemat Rp 1.500.000/bulan dengan paket Growth.
             </p>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto;">
+            <div class="inline-grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto;">
                 <div class="pricing-card starter">
                     <h3 class="pricing-title">STARTER</h3>
                     <p class="pricing-subtitle">Untuk usaha kecil yang baru mulai</p>

@@ -1,293 +1,530 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tentang Kami - Berkah Karya</title>
-    <meta name="description" content="Kenali tim Berkah Karya - agensi digital growth yang berpengalaman membantu brand Indonesia tumbuh">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Kami — Berkah Karya Digital Agency</title>
+  <meta name="description" content="Berkah Karya: agency AI & digital yang menggabungkan jasa kreatif, tools proprietary, dan platform AI untuk bisnis Indonesia yang siap tumbuh.">
+  <meta name="facebook-domain-verification" content="vo4g6nsn3kqvqmmzxd9rx2gt62dy07" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --cream: #faf8f3;
+      --warm-white: #fffef9;
+      --mustard: #c4963a;
+      --mustard-light: #e8b84b;
+      --mustard-dark: #a07828;
+      --charcoal: #1a1a1a;
+      --gray-warm: #6b6560;
+      --gray-light: #f0ece4;
+      --border: #e8e0d0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250,248,243,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1160px; margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--charcoal); text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--mustard); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--gray-warm); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+    .nav-links a:hover { color: var(--mustard); }
+    .nav-cta {
+      background: var(--mustard); color: #fff;
+      padding: 0.6rem 1.4rem; border-radius: 8px;
+      font-weight: 700; font-size: 0.9rem; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--mustard-dark); }
+    .nav-mobile-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+
+    /* HERO */
+    .hero {
+      padding: 140px 1.5rem 80px;
+      text-align: center;
+      background: var(--warm-white);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--mustard);
+      border: 1px solid var(--mustard);
+      border-radius: 100px;
+      padding: 0.35rem 1rem;
+      margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      max-width: 800px; margin: 0 auto 1.5rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--mustard); }
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--gray-warm);
+      max-width: 620px; margin: 0 auto;
+    }
+    .hero-divider {
+      width: 60px; height: 3px;
+      background: var(--mustard);
+      margin: 2.5rem auto 0;
+      border-radius: 2px;
+    }
+
+    /* SECTION BASE */
+    .section {
+      padding: 80px 1.5rem;
+      max-width: 1160px; margin: 0 auto;
+    }
+    .section-full {
+      padding: 80px 1.5rem;
+    }
+    .section-label {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--mustard); margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 900; letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .section-subtitle {
+      color: var(--gray-warm);
+      font-size: 1.05rem;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* TENTANG */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-visual {
+      background: var(--gray-light);
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-visual-inner {
+      text-align: center; padding: 2rem;
+    }
+    .about-visual-icon {
+      font-size: 4rem; margin-bottom: 1rem;
+      display: block;
+    }
+    .about-visual-text {
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--charcoal);
+    }
+    .about-visual-sub {
+      font-size: 0.85rem; color: var(--gray-warm); margin-top: 0.5rem;
+    }
+    .stat-row {
+      display: flex; gap: 2rem; margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .stat-box { flex: 1; min-width: 120px; }
+    .stat-num {
+      font-size: 2rem; font-weight: 900;
+      letter-spacing: -0.04em; color: var(--mustard);
+    }
+    .stat-desc {
+      font-size: 0.8rem; color: var(--gray-warm);
+      margin-top: 0.25rem;
+    }
+
+    /* CORE VALUES */
+    .values-bg {
+      background: var(--charcoal);
+      color: #fff;
+    }
+    .values-inner {
+      max-width: 1160px; margin: 0 auto;
+      padding: 80px 1.5rem;
+    }
+    .values-inner .section-label { color: var(--mustard-light); }
+    .values-inner .section-title { color: #fff; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .value-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: background 0.2s, border 0.2s;
+    }
+    .value-card:hover {
+      background: rgba(196,150,58,0.1);
+      border-color: rgba(196,150,58,0.3);
+    }
+    .value-icon {
+      font-size: 1.75rem; margin-bottom: 1rem;
+    }
+    .value-title {
+      font-size: 1.1rem; font-weight: 800;
+      color: #fff; margin-bottom: 0.75rem;
+    }
+    .value-desc {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+    }
+
+    /* KEUNGGULAN */
+    .edge-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .edge-item {
+      display: flex; gap: 1.25rem;
+      padding: 1.75rem;
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .edge-item:hover {
+      border-color: var(--mustard);
+      box-shadow: 0 4px 20px rgba(196,150,58,0.1);
+    }
+    .edge-icon {
+      width: 48px; height: 48px; min-width: 48px;
+      background: var(--gray-light);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .edge-content h4 {
+      font-size: 1rem; font-weight: 800;
+      margin-bottom: 0.5rem; letter-spacing: -0.01em;
+    }
+    .edge-content p {
+      font-size: 0.85rem; color: var(--gray-warm); line-height: 1.6;
+    }
+
+    /* KATEGORI */
+    .cat-bg { background: var(--gray-light); }
+    .cat-inner {
+      max-width: 1160px; margin: 0 auto;
+      padding: 80px 1.5rem;
+    }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .cat-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+    .cat-emoji { font-size: 2.5rem; margin-bottom: 1.25rem; display: block; }
+    .cat-title {
+      font-size: 1.15rem; font-weight: 800;
+      margin-bottom: 0.75rem; letter-spacing: -0.02em;
+    }
+    .cat-desc {
+      font-size: 0.85rem; color: var(--gray-warm); line-height: 1.65;
+    }
+    .cat-tag {
+      display: inline-block; margin-top: 1.25rem;
+      background: var(--mustard); color: #fff;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      padding: 0.3rem 0.9rem; border-radius: 100px;
+      text-transform: uppercase;
+    }
+
+    /* CTA FINAL */
+    .cta-section {
+      text-align: center; padding: 100px 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .cta-section h2 {
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 900; letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+    .cta-section p {
+      color: var(--gray-warm); font-size: 1.05rem;
+      max-width: 500px; margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--mustard); color: #fff;
+      padding: 1rem 2.25rem; border-radius: 12px;
+      font-weight: 800; font-size: 1.05rem; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 20px rgba(196,150,58,0.3);
+    }
+    .btn-primary:hover { background: var(--mustard-dark); transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: transparent; color: var(--charcoal);
+      border: 1.5px solid var(--border);
+      padding: 1rem 2.25rem; border-radius: 12px;
+      font-weight: 700; font-size: 1.05rem; text-decoration: none;
+      margin-left: 1rem; transition: border-color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--mustard); color: var(--mustard); }
+    .cta-buttons { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal); color: rgba(255,255,255,0.5);
+      text-align: center; padding: 2rem 1.5rem;
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--mustard); text-decoration: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-visual { aspect-ratio: 16/7; }
+      .values-grid { grid-template-columns: 1fr; }
+      .edge-grid { grid-template-columns: 1fr; }
+      .cat-grid { grid-template-columns: 1fr; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-mobile-btn { display: block; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .btn-secondary { margin-left: 0; }
+    }
+    @media (max-width: 768px) {
+      .values-grid { grid-template-columns: 1fr; }
+      .edge-grid { grid-template-columns: 1fr; }
+      .section { padding: 60px 1.25rem; }
+      .section-full, .values-inner, .cat-inner { padding: 60px 1.25rem; }
+      .cta-section { padding: 70px 1.25rem; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/logo.png" alt="Berkah Karya Logo" class="logo-img">
-                <span class="brand-text">Berkah Karya</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html" data-i18n="nav.home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="services.html" data-i18n="nav.services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="portfolio.html" data-i18n="nav.portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pricing.html" data-i18n="nav.pricing">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link highlight" href="contact.html" data-i18n="nav.contact">Get 3 Free Videos</a>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <button id="lang-toggle" class="btn btn-sm btn-outline-primary" onclick="toggleLanguage()">EN</button>
-                    </li>
-                </ul>
-            </div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Berkah<span>Karya</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#services">Layanan</a></li>
+      <li><a href="omniroute.html">Omniroute</a></li>
+    </ul>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20konsultasi%20layanan" target="_blank" class="nav-cta">Konsultasi Gratis</a>
+    <button class="nav-mobile-btn" onclick="this.nextSibling && this.nextSibling.classList.toggle('open')">
+      <i class="fas fa-bars" style="font-size:1.2rem; color:var(--charcoal);"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-tag">Company Profile</span>
+  <h1>Bukan Sekadar Agency.<br>Kami Bangun <em>Ekosistem Bisnis</em>.</h1>
+  <p>Berkah Karya menggabungkan kreativitas manusia, kekuatan AI, dan platform proprietary untuk mengakselerasi pertumbuhan bisnis Indonesia.</p>
+  <div class="hero-divider"></div>
+</section>
+
+<!-- TENTANG -->
+<section class="section">
+  <div class="about-grid">
+    <div>
+      <p class="section-label">Tentang Kami</p>
+      <h2 class="section-title">Kami Hadir untuk Bisnis yang Siap Tumbuh</h2>
+      <p class="section-subtitle">Berkah Karya adalah digital agency berbasis AI yang fokus pada satu hal: hasil nyata untuk klien. Kami tidak jual mimpi — kami eksekusi strategi, bangun sistem, dan deliver output yang terukur.</p>
+      <p class="section-subtitle" style="margin-top:1rem;">Target kami: UKM, brand lokal, dan startup Indonesia yang ingin bermain di level lebih tinggi tanpa bakar anggaran percuma.</p>
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-num">100+</div>
+          <div class="stat-desc">Klien dilayani</div>
         </div>
-    </nav>
-
-    <!-- About Hero -->
-    <section class="about-hero py-5 mt-5">
-        <div class="container">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-6">
-                    <div class="section-header text-start">
-                        <span class="section-badge"><i class="fas fa-users"></i> Tentang Kami</span>
-                        <h1 class="section-title">Tentang Berkah Karya</h1>
-                        <p class="section-subtitle" style="text-align: left;">Kami adalah agensi digital growth yang berdedikasi membantu brand Indonesia mencapai potensi penuh mereka di era digital.</p>
-                    </div>
-                    <p class="lead text-muted">Didirikan dengan visi untuk memberdayakan bisnis lokal menghadapi tantangan digital, kami menggabungkan strategi berbasis data dengan kreativitas untuk memberikan hasil yang terukur.</p>
-                    <div class="d-flex gap-3 mt-4">
-                        <a href="contact.html" class="btn btn-primary btn-lg">Hubungi Kami</a>
-                        <a href="services.html" class="btn btn-outline-primary btn-lg">Layanan Kami</a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="about-image">
-                        <img src="images/team/teams.jpeg" alt="Tim Berkah Karya" class="img-fluid rounded shadow-lg">
-                    </div>
-                </div>
-            </div>
+        <div class="stat-box">
+          <div class="stat-num">3</div>
+          <div class="stat-desc">Platform proprietary</div>
         </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="team-section py-5 bg-light">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-badge"><i class="fas fa-user-tie"></i> Tim Kami</span>
-                <h2 class="section-title">Kenali Tim Kami</h2>
-                <p class="section-subtitle">Profesional berpengalaman yang siap membantu bisnis Anda tumbuh</p>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="team-member">
-                        <div class="team-image">
-                            <img src="images/team/member1.jpg" alt="Team Member">
-                            <div class="team-overlay">
-                                <div class="team-social">
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="team-info">
-                            <h3><!-- TODO: Add name --></h3>
-                            <p class="team-position"><!-- TODO: Add role --></p>
-                            <p class="team-description"><!-- TODO: Add bio --></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="team-member">
-                        <div class="team-image">
-                            <img src="images/team/member2.jpg" alt="Team Member">
-                            <div class="team-overlay">
-                                <div class="team-social">
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="team-info">
-                            <h3><!-- TODO: Add name --></h3>
-                            <p class="team-position"><!-- TODO: Add role --></p>
-                            <p class="team-description"><!-- TODO: Add bio --></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="team-member">
-                        <div class="team-image">
-                            <img src="images/team/member3.jpg" alt="Team Member">
-                            <div class="team-overlay">
-                                <div class="team-social">
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="team-info">
-                            <h3><!-- TODO: Add name --></h3>
-                            <p class="team-position"><!-- TODO: Add role --></p>
-                            <p class="team-description"><!-- TODO: Add bio --></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="stat-box">
+          <div class="stat-num">24/7</div>
+          <div class="stat-desc">Sistem AI aktif</div>
         </div>
-    </section>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="about-visual-inner">
+        <span class="about-visual-icon">🏢</span>
+        <div class="about-visual-text">Berkah Karya HQ</div>
+        <div class="about-visual-sub">Indonesia · Est. 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Gallery Teaser -->
-    <section class="gallery-teaser py-5">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-badge"><i class="fas fa-images"></i> Portfolio</span>
-                <h2 class="section-title">Hasil Karya Kami</h2>
-                <p class="section-subtitle">Lihat beberapa contoh project yang telah kami kerjakan</p>
-            </div>
+<!-- CORE VALUES -->
+<div class="values-bg">
+  <div class="values-inner">
+    <p class="section-label">Core Values</p>
+    <h2 class="section-title">Yang Jadi Fondasi Kami</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">⚡</div>
+        <div class="value-title">Eksekusi Cepat</div>
+        <div class="value-desc">Kami tidak berlama-lama dalam rapat. Ide dievaluasi cepat, dieksekusi lebih cepat, dan hasilnya terukur dalam hitungan hari — bukan bulan.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">📊</div>
+        <div class="value-title">Data di Atas Opini</div>
+        <div class="value-desc">Setiap keputusan didasari angka, bukan perasaan. Kami percaya pada metrik, A/B testing, dan optimasi berbasis hasil nyata.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤖</div>
+        <div class="value-title">AI-First Mindset</div>
+        <div class="value-desc">AI bukan alat tambahan — ini infrastruktur utama kami. Dari konten, customer service, hingga analitik: semuanya ditenagai kecerdasan buatan.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔗</div>
+        <div class="value-title">Ekosistem, Bukan Proyek</div>
+        <div class="value-desc">Kami tidak berpikir per-proyek. Setiap layanan dirancang agar saling terhubung dan memperkuat satu sama lain dalam sistem yang terintegrasi.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🎯</div>
+        <div class="value-title">Hasil, Bukan Proses</div>
+        <div class="value-desc">Klien tidak membayar kami untuk proses yang indah. Mereka membayar untuk revenue naik, leads masuk, dan bisnis berkembang.</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-            <div class="row g-3">
-                <div class="col-6 col-md-3">
-                    <a href="portfolio.html" class="gallery-item d-block overflow-hidden rounded shadow-sm">
-                        <img src="images/gallery/work1.jpeg" alt="Project 1" class="img-fluid w-100" style="height: 220px; object-fit: cover; transition: transform 0.4s ease;">
-                    </a>
-                </div>
-                <div class="col-6 col-md-3">
-                    <a href="portfolio.html" class="gallery-item d-block overflow-hidden rounded shadow-sm">
-                        <img src="images/gallery/work2.jpeg" alt="Project 2" class="img-fluid w-100" style="height: 220px; object-fit: cover; transition: transform 0.4s ease;">
-                    </a>
-                </div>
-                <div class="col-6 col-md-3">
-                    <a href="portfolio.html" class="gallery-item d-block overflow-hidden rounded shadow-sm">
-                        <img src="images/gallery/work3.jpeg" alt="Project 3" class="img-fluid w-100" style="height: 220px; object-fit: cover; transition: transform 0.4s ease;">
-                    </a>
-                </div>
-                <div class="col-6 col-md-3">
-                    <a href="portfolio.html" class="gallery-item d-block overflow-hidden rounded shadow-sm">
-                        <img src="images/gallery/work4.jpeg" alt="Project 4" class="img-fluid w-100" style="height: 220px; object-fit: cover; transition: transform 0.4s ease;">
-                    </a>
-                </div>
-            </div>
+<!-- KEUNGGULAN -->
+<section class="section">
+  <p class="section-label">Keunggulan</p>
+  <h2 class="section-title">Bukan Agency Biasa</h2>
+  <p class="section-subtitle">Kami gabungan dari tiga kekuatan yang jarang ada dalam satu atap: eksekutor kreatif, builder teknologi, dan operator bisnis.</p>
+  <div class="edge-grid">
+    <div class="edge-item">
+      <div class="edge-icon">🛠️</div>
+      <div class="edge-content">
+        <h4>Jasa + Tools + Platform</h4>
+        <p>Bukan hanya jasa — kami punya tools proprietary dan platform (Omniroute) yang bekerja untuk klien bahkan saat tim kami sedang tidur.</p>
+      </div>
+    </div>
+    <div class="edge-item">
+      <div class="edge-icon">🔄</div>
+      <div class="edge-content">
+        <h4>Full-Stack Digital</h4>
+        <p>Dari konten, ads, automation, hingga AI agent — semua dikerjakan in-house. Tidak ada outsource tersembunyi.</p>
+      </div>
+    </div>
+    <div class="edge-item">
+      <div class="edge-icon">🚀</div>
+      <div class="edge-content">
+        <h4>Speed to Market</h4>
+        <p>Kami bisa setup sistem lengkap dalam hitungan hari. Bukan minggu, bukan bulan. Karena kecepatan adalah keunggulan kompetitif nyata.</p>
+      </div>
+    </div>
+    <div class="edge-item">
+      <div class="edge-icon">💡</div>
+      <div class="edge-content">
+        <h4>Strategic + Tactical</h4>
+        <p>Kami bantu Anda berpikir 5 langkah ke depan, sekaligus eksekusi hari ini. Strategis di atas kertas, pragmatis di lapangan.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div class="text-center mt-4">
-                <a href="portfolio.html" class="btn btn-outline-primary btn-lg">
-                    Lihat Semua Portfolio <i class="fas fa-arrow-right ms-2"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+<!-- KATEGORI -->
+<div class="cat-bg">
+  <div class="cat-inner">
+    <p class="section-label">Apa yang Kami Tawarkan</p>
+    <h2 class="section-title">Tiga Pilar Layanan</h2>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <span class="cat-emoji">💼</span>
+        <div class="cat-title">Solusi Bisnis</div>
+        <p class="cat-desc">Jasa digital end-to-end: konten kreatif, social media management, video AI, dan kampanye marketing yang terukur untuk bisnis Anda.</p>
+        <span class="cat-tag">Jasa</span>
+      </div>
+      <div class="cat-card">
+        <span class="cat-emoji">🤖</span>
+        <div class="cat-title">Tools AI</div>
+        <p class="cat-desc">AI Agent Pro, sistem otomasi WhatsApp, lead qualifier, dan tools proprietary yang bekerja 24/7 untuk mempercepat bisnis Anda.</p>
+        <span class="cat-tag">Tools</span>
+      </div>
+      <div class="cat-card">
+        <span class="cat-emoji">🌐</span>
+        <div class="cat-title">Omniroute Platform</div>
+        <p class="cat-desc">AI Gateway untuk developer & agency. Multi-model routing, unified API, dan infrastruktur AI yang scalable tanpa overhead biaya tinggi.</p>
+        <span class="cat-tag">Platform</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- Why Choose Us -->
-    <section class="why-choose-us py-5 bg-light">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-badge"><i class="fas fa-star"></i> Mengapa Kami</span>
-                <h2 class="section-title">Mengapa Memilih Berkah Karya?</h2>
-                <p class="section-subtitle">Nilai-nilai yang menjadi fondasi kerja kami</p>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="value-item">
-                        <i class="fas fa-lightbulb"></i>
-                        <h4>Inovasi</h4>
-                        <p>Kami selalu mengadopsi teknologi dan strategi terbaru untuk memastikan bisnis Anda tetap kompetitif di era digital yang terus berubah.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="value-item">
-                        <i class="fas fa-handshake"></i>
-                        <h4>Integritas</h4>
-                        <p>Transparansi dan kejujuran adalah pondasi hubungan kami dengan klien. Kami berkomitmen memberikan hasil nyata, bukan janji kosong.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="value-item">
-                        <i class="fas fa-chart-line"></i>
-                        <h4>Hasil Nyata</h4>
-                        <p>Setiap strategi kami didorong oleh data dan diukur dengan metrik yang jelas. Pertumbuhan bisnis Anda adalah ukuran kesuksesan kami.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer content-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="footer-brand">
-                        <h3 data-i18n="footer.brand">Berkah Karya</h3>
-                        <p data-i18n="footer.brand.desc">Elevating digital presence through data-driven strategies and local expertise.</p>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="footer-links">
-                        <h4 data-i18n="footer.services.heading">Services</h4>
-                        <ul>
-                            <li><a href="services.html" data-i18n="footer.services.tiktok">TikTok Content Agency</a></li>
-                            <li><a href="services.html" data-i18n="footer.services.seo">E-commerce Optimization</a></li>
-                            <li><a href="services.html" data-i18n="footer.services.trading">FlashRobs Trading Bot</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="footer-links">
-                        <h4 data-i18n="footer.company.heading">Company</h4>
-                        <ul>
-                            <li><a href="about.html" data-i18n="footer.company.about">About Us</a></li>
-                            <li><a href="portfolio.html" data-i18n="footer.company.casestudies">Case Studies</a></li>
-                            <li><a href="contact.html" data-i18n="footer.company.contact">Contact</a></li>
-                            <li><a href="legal/terms-of-service.html" data-i18n="footer.company.terms">Terms of Service</a></li>
-                            <li><a href="legal/privacy-policy.html" data-i18n="footer.company.privacy">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="footer-newsletter">
-                        <h4 data-i18n="footer.newsletter.heading">Stay Updated</h4>
-                        <p data-i18n="footer.newsletter.desc">Subscribe to our newsletter for the latest digital marketing insights</p>
-                        <form class="newsletter-form">
-                            <input type="email" placeholder="Your email address" data-i18n-placeholder="footer.newsletter.placeholder">
-                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="copyright">
-                    <p data-i18n-html="footer.copyright">&copy; 2026 Berkah Karya. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Tawk.to Script -->
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/6856a535552cdd190f7b5186/1iu97amv4';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <script src="js/i18n.js"></script>
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/6285732740006" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Siap Skalakan Bisnis Anda?</h2>
+  <p>Konsultasi gratis, tanpa pitch panjang. Kami lihat dulu bisnis Anda, baru bicara solusi yang tepat.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20konsultasi%20gratis%20untuk%20bisnis%20saya" target="_blank" class="btn-primary">
+      💬 Konsultasi via WhatsApp
     </a>
+    <a href="index.html#services" class="btn-secondary">
+      Lihat Semua Layanan →
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Berkah Karya Digital Agency · <a href="index.html">Beranda</a> · <a href="omniroute.html">Omniroute</a></p>
+</footer>
 
 </body>
 </html>
