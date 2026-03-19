@@ -6,14 +6,14 @@
 <meta name="description" content="Omniroute — AI Gateway untuk Developer & Agency. Satu endpoint untuk mengelola, me-route, dan mengoptimalkan semua provider AI: OpenAI, Claude, Gemini, DeepSeek, Groq dan lebih banyak.">
 <title>Omniroute — AI Gateway Platform | Berkah Karya</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
 <style>
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  background: #080808;
+  background: var(--bg);
   color: #ddd6c8;
   font-family: 'Outfit', sans-serif;
   font-weight: 300;
@@ -395,7 +395,7 @@ nav {
   margin-top: 3rem;
 }
 .case-card {
-  background: #080808;
+  background: var(--bg);
   padding: 2rem 1.75rem;
   transition: background 0.15s;
 }
@@ -484,27 +484,165 @@ footer {
   .hero-stats { gap: 1.5rem; }
   .features-list .feat-item:nth-child(n+4) { display: none; }
 }
+
+/* ===== OMNIROUTE: Light Mode Override ===== */
+/* Override dark theme to match design system cream/mustard */
+
+body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: var(--font) !important;
+}
+
+/* Remap dark vars → light equivalents */
+:root {
+  --gold: var(--mustard);
+  --gold-light: var(--mustard-light);
+  --gold-border: rgba(200, 146, 10, 0.25);
+  --bg-2: var(--bg-muted);
+  --bg-3: var(--bg-white);
+  --bg-4: #f5f3ef;
+  --text-1: var(--text);
+  --text-2: var(--text);
+  --text-3: var(--text-muted);
+  --text-4: var(--text-muted);
+  --text-5: var(--text-light);
+  --line: var(--border);
+  --line-2: var(--border);
+  --r: var(--radius-sm);
+}
+
+/* All section backgrounds */
+.section, .omni-hero { background: var(--bg) !important; }
+.providers-section, .cta-section { background: var(--bg-muted) !important; border-color: var(--border) !important; }
+
+/* Section headers */
+.sec-h2, h1, h2, h3, h4 {
+  font-family: var(--font) !important;
+  color: var(--text) !important;
+}
+.sec-h2 em { color: var(--mustard) !important; }
+
+/* How-steps grid */
+.how-grid {
+  border-color: var(--border) !important;
+  background: var(--bg-white) !important;
+}
+.how-step {
+  background: var(--bg-white) !important;
+  border-right-color: var(--border) !important;
+}
+.how-step:hover { background: var(--bg-muted) !important; }
+.how-num { color: rgba(200, 146, 10, 0.18) !important; font-family: var(--font) !important; }
+.how-title { color: var(--text) !important; }
+.how-desc { color: var(--text-muted) !important; }
+
+/* Features list */
+.feat-item { border-color: var(--border) !important; }
+.feat-icon-box { background: var(--bg-muted) !important; border-color: var(--border) !important; }
+.feat-icon-box:hover { background: var(--mustard-pale) !important; border-color: var(--mustard) !important; }
+.feat-title { color: var(--text) !important; }
+.feat-desc { color: var(--text-muted) !important; }
+
+/* Feature visual/screen mock */
+.feat-screen { 
+  background: #111 !important; 
+  border-color: #333 !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15) !important;
+}
+.feat-screen-bar { background: #1a1a1a !important; border-color: #333 !important; }
+.screen-section-title { color: var(--mustard) !important; }
+.mock-provider-row, .mock-combo, .mock-key-row { background: #1d1d1d !important; border-color: #333 !important; }
+.mock-provider-name { color: #ccc !important; }
+.mock-provider-model, .mock-provider-lat, .mock-key-val, .mock-combo-models { color: #999 !important; }
+.mock-combo-name { color: #eee !important; }
+.mock-model-chip { background: #2a2a2a !important; border-color: #444 !important; color: #999 !important; }
+
+/* Provider cards */
+.providers-grid { background: transparent !important; border-color: var(--border) !important; }
+.provider-card { 
+  background: var(--bg-white) !important; 
+  border-color: var(--border) !important; 
+}
+.provider-card:hover { background: var(--bg-muted) !important; }
+.provider-name { color: var(--text) !important; }
+.provider-models, .status-text { color: var(--text-muted) !important; }
+
+/* Use case cards */
+.cases-grid { background: var(--border) !important; }
+.case-card { background: var(--bg-white) !important; }
+.case-card:hover { background: var(--bg-muted) !important; }
+.case-num { font-family: var(--font) !important; color: rgba(200,146,10,0.18) !important; }
+.case-title { color: var(--text) !important; }
+.case-desc { color: var(--text-muted) !important; }
+
+/* Terminal hero — keep dark (intentional code aesthetic) */
+.hero-terminal, .terminal-bar, .terminal-body { /* stays dark via inline styles */ }
+
+/* Hero section */
+.omni-hero { padding: calc(64px + 4rem) 0 4rem; background: var(--bg) !important; }
+.hero-eyebrow { color: var(--text-muted) !important; background: var(--bg-muted) !important; border-color: var(--border) !important; }
+.hero-eyebrow-dot { background: var(--mustard) !important; }
+.hero-h1 { color: var(--text) !important; }
+.hero-h1 em { color: var(--mustard) !important; }
+.hero-p { color: var(--text-muted) !important; }
+
+/* Stats */
+.hero-stat-num { color: var(--text) !important; }
+.hero-stat-lbl { color: var(--text-muted) !important; }
+.hero-stats { border-top-color: var(--border) !important; padding-top: 2rem; margin-top: 2rem; }
+
+/* Buttons */
+.btn-gold { background: var(--mustard) !important; color: #fff !important; border-color: var(--mustard) !important; }
+.btn-gold:hover { background: var(--mustard-dark) !important; }
+.btn-ghost { background: transparent !important; color: var(--text-muted) !important; border-color: var(--border) !important; }
+.btn-ghost:hover { color: var(--text) !important; border-color: var(--text) !important; }
+.btn-outline { background: transparent !important; color: var(--mustard) !important; border-color: var(--mustard) !important; }
+
+/* CTA section */
+.cta-section::before { background: radial-gradient(ellipse, rgba(200,146,10,0.06) 0%, transparent 70%) !important; }
+.cta-h2 { color: var(--text) !important; font-family: var(--font) !important; }
+.cta-h2 em { color: var(--mustard) !important; }
+.cta-p { color: var(--text-muted) !important; }
+.cta-eyebrow { color: var(--mustard) !important; }
+.cta-note { color: var(--text-light) !important; }
+
+/* Divider */
+.divider { border-color: var(--border) !important; background: var(--border) !important; }
+
+/* Mobile menu — override old dark mobile */
+.mobile-menu { 
+  background: rgba(250,248,244,0.98) !important; 
+  border-bottom-color: var(--border) !important;
+}
+.mobile-link { color: var(--text-muted) !important; border-bottom-color: var(--border) !important; }
+.mobile-link:hover { color: var(--mustard) !important; }
+.mobile-cta { border-top-color: var(--border) !important; }
+
+/* Hide old hamburger — bk-nav handles mobile */
+#hamburger { display: none !important; }
+.nav-links-old { display: none !important; }
+
+/* Container align */
+.container { max-width: var(--max-width) !important; }
+section.section { padding: 5rem 0 !important; }
+
 </style>
 </head>
 <body class="page-omniroute">
 
 <!-- ===== NAV ===== -->
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Berkah<span>.</span>Karya</a>
-    <ul class="nav-links">
-      <li><a href="index.html#omniroute" class="nav-link active">Platform</a></li>
-      <li><a href="index.html#solusi-bisnis" class="nav-link">Solusi Bisnis</a></li>
-      <li><a href="index.html#tools-ai" class="nav-link">Tools AI</a></li>
-      <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
-      <li><a href="about.html" class="nav-link">Tentang</a></li>
+<nav class="bk-nav">
+  <div class="bk-nav-inner">
+    <a href="index.html" class="bk-logo">Berkah<span>Karya</span></a>
+    <ul class="bk-nav-links">
+      <li><a href="services.html">Layanan</a></li>
+      <li><a href="omniroute.html">Omniroute</a></li>
+      <li><a href="tools.html">Tools</a></li>
+      <li><a href="about.html">About</a></li>
     </ul>
-    <div class="nav-cta">
-      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Omniroute%20%E2%80%94%20AI%20Gateway%20untuk%20Developer%20%26%20Agency.%20Saya%20ingin%20tahu%20detail%20akses%20atau%20cara%20mulai." class="btn btn-gold btn-sm" target="_blank">Hubungi Kami</a>
-    </div>
-    <button id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Omniroute.%20Bisa%20konsultasi%3F" class="bk-nav-cta" target="_blank">Coba Omniroute →</a>
+    <button class="bk-nav-mobile" aria-label="Menu">☰</button>
   </div>
 </nav>
 
@@ -925,20 +1063,46 @@ footer {
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-logo">Berkah<span>.</span>Karya</div>
-      <div class="footer-links">
-        <a href="index.html">Beranda</a>
-        <a href="omniroute.html">Omniroute</a>
-        <a href="services.html">Layanan</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="about.html">Tentang</a>
-        <a href="contact.html">Kontak</a>
-      </div>
-      <div class="footer-copy">© 2025 Berkah Karya</div>
+<footer class="bk-footer">
+  <div class="bk-footer-inner">
+    <div class="bk-footer-brand">
+      <div class="bk-logo">Berkah<span>Karya</span></div>
+      <p>AI Ecosystem untuk bisnis Indonesia — agency kreatif, AI tools, dan SaaS platform dalam satu ekosistem.</p>
     </div>
+    <div class="bk-footer-col">
+      <h5>Layanan</h5>
+      <ul>
+        <li><a href="jasa-sosmed.html">Kelola Sosmed</a></li>
+        <li><a href="jasa-video-ai.html">Jasa Video AI</a></li>
+        <li><a href="jasa-website.html">Jasa Website</a></li>
+        <li><a href="jasa-foto-produk.html">Foto Produk AI</a></li>
+        <li><a href="jasa-content-planner.html">Content Planner</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Platform</h5>
+      <ul>
+        <li><a href="omniroute.html">Omniroute</a></li>
+        <li><a href="tools.html">AI Tools</a></li>
+        <li><a href="ai-agent-pro.html">AI Agent Pro</a></li>
+        <li><a href="ai-video-studio.html">Video Studio</a></li>
+        <li><a href="digital-product.html">Produk Digital</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Perusahaan</h5>
+      <ul>
+        <li><a href="about.html">Tentang Kami</a></li>
+        <li><a href="contact.html">Kontak</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="pricing.html">Harga</a></li>
+        <li><a href="legal/privacy-policy.html">Privasi</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bk-footer-bottom">
+    <span>© 2025 BerkahKarya. All rights reserved.</span>
+    <span>Made with ❤️ + 🤖 AI in Indonesia</span>
   </div>
 </footer>
 

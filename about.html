@@ -346,24 +346,86 @@
       .section-full, .values-inner, .cat-inner { padding: 60px 1.25rem; }
       .cta-section { padding: 70px 1.25rem; }
     }
-  </style>
+  
+/* ===== ABOUT: Align to design system ===== */
+body { font-family: var(--font) !important; background: var(--bg) !important; color: var(--text) !important; }
+
+:root {
+  --cream: var(--bg);
+  --warm-white: var(--bg-white);
+  --mustard: var(--mustard);
+  --mustard-light: var(--mustard-light);
+  --mustard-dark: var(--mustard-dark);
+  --charcoal: var(--text);
+  --gray-warm: var(--text-muted);
+  --gray-light: var(--bg-muted);
+  --border: var(--border);
+}
+
+/* Align hero */
+.hero { background: var(--bg-white) !important; border-color: var(--border) !important; padding: calc(64px + 4rem) 1.5rem 4rem !important; }
+.hero-tag { font-family: var(--font) !important; font-weight: 700 !important; }
+.hero h1 { font-family: var(--font) !important; font-weight: 900 !important; letter-spacing: -0.04em !important; }
+.hero p { font-family: var(--font) !important; }
+
+/* Section base */
+.section { max-width: var(--max-width) !important; padding: 5rem 1.5rem !important; }
+.section-label { color: var(--mustard) !important; font-family: var(--font) !important; }
+.section-title { font-family: var(--font) !important; font-weight: 900 !important; letter-spacing: -0.03em !important; }
+.section-subtitle { color: var(--text-muted) !important; }
+
+/* Values dark section — keep dark, just align spacing */
+.values-bg { background: #1a1a18 !important; }
+.values-inner { max-width: var(--max-width) !important; padding: 5rem 1.5rem !important; }
+.value-card { border-radius: var(--radius) !important; }
+.value-title { font-family: var(--font) !important; font-weight: 800 !important; }
+.value-desc { font-family: var(--font) !important; }
+
+/* Edge items */
+.edge-item { border-radius: var(--radius) !important; background: var(--bg-white) !important; border-color: var(--border) !important; }
+.edge-item:hover { border-color: var(--mustard) !important; box-shadow: 0 4px 20px var(--shadow-md) !important; }
+.edge-icon { background: var(--bg-muted) !important; border-radius: var(--radius-sm) !important; }
+.edge-content h4 { font-family: var(--font) !important; font-weight: 800 !important; }
+
+/* Category section */
+.cat-bg { background: var(--bg-muted) !important; }
+.cat-inner { max-width: var(--max-width) !important; padding: 5rem 1.5rem !important; }
+.cat-card { background: var(--bg-white) !important; border-radius: var(--radius) !important; border-color: var(--border) !important; }
+.cat-title { font-family: var(--font) !important; font-weight: 800 !important; }
+.cat-tag { background: var(--mustard) !important; border-radius: var(--radius-full) !important; }
+
+/* CTA */
+.cta-section { background: var(--bg-white) !important; border-top-color: var(--border) !important; padding: 5rem 1.5rem !important; }
+.cta-section h2 { font-family: var(--font) !important; font-weight: 900 !important; letter-spacing: -0.03em !important; }
+.cta-section p { color: var(--text-muted) !important; }
+.btn-primary { background: var(--mustard) !important; border-radius: var(--radius) !important; font-family: var(--font) !important; font-weight: 800 !important; }
+.btn-primary:hover { background: var(--mustard-dark) !important; }
+.btn-secondary { border-radius: var(--radius) !important; font-family: var(--font) !important; color: var(--text) !important; border-color: var(--border) !important; }
+.btn-secondary:hover { border-color: var(--mustard) !important; color: var(--mustard) !important; }
+
+/* Stats */
+.stat-num { color: var(--mustard) !important; font-family: var(--font) !important; font-weight: 900 !important; }
+.stat-desc { color: var(--text-muted) !important; font-family: var(--font) !important; }
+
+/* Hide old nav mobile btn & FontAwesome dependency */
+.nav-mobile-btn { display: none; }
+
+</style>
 </head>
 <body class="page-about">
 
 <!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Berkah<span>Karya</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="index.html#services">Layanan</a></li>
+<nav class="bk-nav">
+  <div class="bk-nav-inner">
+    <a href="index.html" class="bk-logo">Berkah<span>Karya</span></a>
+    <ul class="bk-nav-links">
+      <li><a href="services.html">Layanan</a></li>
       <li><a href="omniroute.html">Omniroute</a></li>
+      <li><a href="tools.html">Tools</a></li>
+      <li><a href="about.html">About</a></li>
     </ul>
-    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20konsultasi%20layanan" target="_blank" class="nav-cta">Konsultasi Gratis</a>
-    <button class="nav-mobile-btn" onclick="this.nextSibling && this.nextSibling.classList.toggle('open')">
-      <i class="fas fa-bars" style="font-size:1.2rem; color:var(--charcoal);"></i>
-    </button>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20konsultasi%20layanan" class="bk-nav-cta" target="_blank">Konsultasi Gratis →</a>
+    <button class="bk-nav-mobile" aria-label="Menu">☰</button>
   </div>
 </nav>
 
@@ -523,8 +585,47 @@
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <p>© 2026 Berkah Karya Digital Agency · <a href="index.html">Beranda</a> · <a href="omniroute.html">Omniroute</a></p>
+<footer class="bk-footer">
+  <div class="bk-footer-inner">
+    <div class="bk-footer-brand">
+      <div class="bk-logo">Berkah<span>Karya</span></div>
+      <p>AI Ecosystem untuk bisnis Indonesia — agency kreatif, AI tools, dan SaaS platform dalam satu ekosistem.</p>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Layanan</h5>
+      <ul>
+        <li><a href="jasa-sosmed.html">Kelola Sosmed</a></li>
+        <li><a href="jasa-video-ai.html">Jasa Video AI</a></li>
+        <li><a href="jasa-website.html">Jasa Website</a></li>
+        <li><a href="jasa-foto-produk.html">Foto Produk AI</a></li>
+        <li><a href="jasa-content-planner.html">Content Planner</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Platform</h5>
+      <ul>
+        <li><a href="omniroute.html">Omniroute</a></li>
+        <li><a href="tools.html">AI Tools</a></li>
+        <li><a href="ai-agent-pro.html">AI Agent Pro</a></li>
+        <li><a href="ai-video-studio.html">Video Studio</a></li>
+        <li><a href="digital-product.html">Produk Digital</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Perusahaan</h5>
+      <ul>
+        <li><a href="about.html">Tentang Kami</a></li>
+        <li><a href="contact.html">Kontak</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="pricing.html">Harga</a></li>
+        <li><a href="legal/privacy-policy.html">Privasi</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bk-footer-bottom">
+    <span>© 2025 BerkahKarya. All rights reserved.</span>
+    <span>Made with ❤️ + 🤖 AI in Indonesia</span>
+  </div>
 </footer>
 
 </body>
