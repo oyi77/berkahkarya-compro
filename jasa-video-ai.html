@@ -177,20 +177,28 @@
   <div class="bk-nav-inner">
     <a href="index.html" class="bk-logo">Berkah<span>Karya</span></a>
     <ul class="bk-nav-links">
-      <li><a href="services.html">Layanan</a></li>
-      <li><a href="digital-product.html">Produk Digital</a></li>
-      <li><a href="tools.html">Tools</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" data-i18n="navServices">Layanan</a></li>
+      <li><a href="digital-product.html" data-i18n="navProducts">Produk Digital</a></li>
+      <li><a href="blog.html" data-i18n="navBlog">Postingan</a></li>
+      <li><a href="tools.html" data-i18n="navTools">Tools</a></li>
+      <li><a href="about.html" data-i18n="navAbout">About</a></li>
     </ul>
-    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Video%20AI.%20Bisa%20konsultasi%3F" class="bk-nav-cta" target="_blank" rel="noopener">Konsultasi Gratis →</a>
+    <div class="bk-nav-right">
+      <button class="bk-lang-toggle" id="langToggle" title="Switch Language">🌐 EN</button>
+      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Video%20AI.%20Bisa%20konsultasi%3F" class="bk-nav-cta" target="_blank" rel="noopener" data-i18n="navCta">Konsultasi →</a>
+    </div>
     <button class="bk-nav-mobile" id="mobileToggle" aria-label="Menu">☰</button>
   </div>
   <div class="bk-nav-mobile-menu" id="mobileMenu">
-    <a href="services.html">Layanan</a>
-    <a href="digital-product.html">Produk Digital</a>
-    <a href="tools.html">Tools</a>
-    <a href="about.html">About</a>
-    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Video%20AI.%20Bisa%20konsultasi%3F" target="_blank" rel="noopener">💬 Konsultasi Gratis</a>
+    <a href="services.html" data-i18n="navServices">Layanan</a>
+    <a href="digital-product.html" data-i18n="navProducts">Produk Digital</a>
+    <a href="blog.html" data-i18n="navBlog">Postingan</a>
+    <a href="tools.html" data-i18n="navTools">Tools</a>
+    <a href="about.html" data-i18n="navAbout">About</a>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Jasa%20Video%20AI.%20Bisa%20konsultasi%3F" target="_blank" rel="noopener">💬 Konsultasi</a>
+    <div style="padding:4px 0;border-top:1px solid var(--border);margin-top:4px">
+      <button class="bk-lang-toggle" id="langToggleMobile" onclick="bkSetLanguage(document.documentElement.lang==='id'?'en':'id')" style="width:100%;text-align:left;border:none;padding:8px 0;background:none;font-size:0.85rem;color:var(--text-muted);cursor:pointer;">🌐 Switch Language</button>
+    </div>
   </div>
 </nav>
 
@@ -508,5 +516,6 @@
   const nav = document.getElementById('mainNav');
   if (toggle && nav) toggle.addEventListener('click', () => nav.classList.toggle('open'));
 </script>
+<script src="nav.js"></script>
 </body>
 </html>

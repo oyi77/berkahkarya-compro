@@ -272,3 +272,17 @@ button { font-family: inherit; cursor: pointer; border: none; }
   .bk-cta { padding: 3rem 1.5rem; }
   .bk-hero-buttons { flex-direction: column; align-items: flex-start; }
 }
+
+
+/* ── Language Toggle ── */
+.bk-lang-toggle {
+  background: none; border: 1px solid var(--border); color: var(--text-muted);
+  border-radius: 999px; padding: 5px 12px; font-size: 0.75rem; font-weight: 600;
+  cursor: pointer; transition: all 0.18s; letter-spacing: 0.04em;
+  font-family: var(--font);
+}
+.bk-lang-toggle:hover { border-color: var(--mustard); color: var(--mustard); }
+.bk-nav-right { display: flex; align-items: center; gap: 12px; }
+@media (max-width: 768px) {
+  .bk-lang-toggle { font-size: 0.7rem; padding: 4px 10px; }
+}

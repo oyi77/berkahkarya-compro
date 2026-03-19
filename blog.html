@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Postingan & Insight AI Bisnis — BerkahKarya</title>
+  <meta name="description" content="Artikel terbaru tentang AI untuk bisnis, strategi konten TikTok dan Instagram, foto produk AI, dan tips pertumbuhan UMKM Indonesia dari BerkahKarya." />
+  <meta property="og:title" content="Postingan & Insight AI Bisnis — BerkahKarya" />
+  <meta property="og:description" content="Artikel terbaru tentang AI untuk bisnis, strategi konten, dan tips UMKM Indonesia." />
+  <meta property="og:image" content="https://berkahkarya.org/images/og-blog.jpg" />
+  <meta property="og:url" content="https://berkahkarya.org/blog.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Postingan & Insight AI Bisnis — BerkahKarya" />
+  <meta name="twitter:description" content="Artikel terbaru tentang AI, bisnis digital, dan strategi konten UMKM Indonesia." />
+  <link rel="canonical" href="https://berkahkarya.org/blog.html" />
+  <link rel="alternate" hreflang="id" href="https://berkahkarya.org/blog.html" />
+  <link rel="alternate" hreflang="en" href="https://berkahkarya.org/blog.html?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://berkahkarya.org/blog.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Blog index styles */
+    .blog-hero { background: var(--bg-white); border-bottom: 1px solid var(--border); padding: calc(64px + 4rem) 1.5rem 4rem; text-align: center; }
+    .blog-hero-inner { max-width: 680px; margin: 0 auto; }
+    .blog-hero-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--bg-muted); border: 1px solid var(--border); border-radius: 999px; padding: 5px 14px; margin-bottom: 1.25rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mustard); }
+    .blog-hero h1 { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; margin: 0 0 1rem; }
+    .blog-hero h1 em { font-style: normal; color: var(--mustard); }
+    .blog-hero-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
+
+    .blog-filters { padding: 1.5rem 1.5rem 0; max-width: var(--max-width); margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .filter-btn { background: var(--bg-muted); border: 1px solid var(--border); border-radius: 999px; padding: 6px 16px; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: all 0.18s; font-family: var(--font); }
+    .filter-btn.active, .filter-btn:hover { background: var(--mustard); color: #fff; border-color: var(--mustard); }
+    .filter-label { font-size: 0.78rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.06em; margin-right: 4px; }
+
+    .blog-grid-section { padding: 2.5rem 1.5rem 5rem; max-width: var(--max-width); margin: 0 auto; }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .blog-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.2s, box-shadow 0.2s; }
+    .blog-card:hover { border-color: var(--mustard); box-shadow: 0 6px 24px rgba(200,146,10,0.10); }
+    .blog-card-img-link { display: block; }
+    .blog-card-img { overflow: hidden; }
+    .blog-card-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
+    .blog-card-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 0.75rem; }
+    .blog-cat { background: var(--mustard-pale); color: var(--mustard-dark); border-radius: 999px; padding: 3px 10px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; }
+    .blog-date, .blog-read { font-size: 0.75rem; color: var(--text-light); }
+    .blog-card-title { font-size: 1rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.3; margin: 0 0 0.6rem; flex: 1; }
+    .blog-card-title a { color: var(--text); text-decoration: none; }
+    .blog-card-title a:hover { color: var(--mustard); }
+    .blog-card-excerpt { font-size: 0.83rem; color: var(--text-muted); line-height: 1.65; margin: 0 0 1rem; }
+    .blog-read-more { font-size: 0.82rem; font-weight: 700; color: var(--mustard); text-decoration: none; margin-top: auto; }
+    .blog-read-more:hover { color: var(--mustard-dark); }
+
+    .blog-cta { background: var(--bg-muted); border-top: 1px solid var(--border); padding: 4rem 1.5rem; text-align: center; }
+    .blog-cta-inner { max-width: 560px; margin: 0 auto; }
+    .blog-cta-inner h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900; letter-spacing: -0.03em; margin: 0 0 0.75rem; }
+    .blog-cta-inner p { color: var(--text-muted); margin: 0 0 1.5rem; font-size: 0.92rem; line-height: 1.65; }
+
+    @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .blog-grid { grid-template-columns: 1fr; } .blog-hero { padding: calc(64px + 2.5rem) 1.25rem 2.5rem; } }
+  </style>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "BerkahKarya",
+  "url": "https://berkahkarya.org",
+  "logo": "https://berkahkarya.org/images/logo.png",
+  "description": "AI Ecosystem untuk bisnis Indonesia — agency kreatif, AI tools, dan produk digital.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "availableLanguage": [
+      "Indonesian",
+      "English"
+    ]
+  },
+  "sameAs": [
+    "https://www.instagram.com/berkahkarya",
+    "https://www.tiktok.com/@berkahkarya"
+  ]
+}</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "BerkahKarya Blog",
+  "url": "https://berkahkarya.org/blog.html",
+  "description": "Artikel tentang AI, bisnis digital, strategi konten, dan pertumbuhan UMKM Indonesia.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "BerkahKarya",
+    "url": "https://berkahkarya.org"
+  }
+}</script>
+</head>
+<body>
+
+<nav class="bk-nav" id="mainNav">
+  <div class="bk-nav-inner">
+    <a href="index.html" class="bk-logo">Berkah<span>Karya</span></a>
+    <ul class="bk-nav-links">
+      <li><a href="services.html" data-i18n="navServices">Layanan</a></li>
+      <li><a href="digital-product.html" data-i18n="navProducts">Produk Digital</a></li>
+      <li><a href="blog.html" data-i18n="navBlog">Postingan</a></li>
+      <li><a href="tools.html" data-i18n="navTools">Tools</a></li>
+      <li><a href="about.html" data-i18n="navAbout">About</a></li>
+    </ul>
+    <div class="bk-nav-right">
+      <button class="bk-lang-toggle" id="langToggle" title="Switch Language">🌐 EN</button>
+      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20konsultasi" class="bk-nav-cta" target="_blank" rel="noopener" data-i18n="navCta">Konsultasi →</a>
+    </div>
+    <button class="bk-nav-mobile" id="mobileToggle" aria-label="Menu">☰</button>
+  </div>
+  <div class="bk-nav-mobile-menu" id="mobileMenu">
+    <a href="services.html" data-i18n="navServices">Layanan</a>
+    <a href="digital-product.html" data-i18n="navProducts">Produk Digital</a>
+    <a href="blog.html" data-i18n="navBlog">Postingan</a>
+    <a href="tools.html" data-i18n="navTools">Tools</a>
+    <a href="about.html" data-i18n="navAbout">About</a>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20konsultasi" target="_blank" rel="noopener">💬 Konsultasi</a>
+    <div style="padding:4px 0;border-top:1px solid var(--border);margin-top:4px">
+      <button class="bk-lang-toggle" id="langToggleMobile" onclick="bkSetLanguage(document.documentElement.lang==='id'?'en':'id')" style="width:100%;text-align:left;border:none;padding:8px 0;background:none;font-size:0.85rem;color:var(--text-muted);cursor:pointer;">🌐 Switch Language</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <div class="blog-hero-tag">✍️ Blog BerkahKarya</div>
+    <h1 data-i18n="blogTitle">Postingan & <em>Insight</em></h1>
+    <p class="blog-hero-sub" data-i18n="blogSub">Artikel terbaru tentang AI, bisnis digital, strategi konten, dan pertumbuhan UMKM Indonesia.</p>
+  </div>
+</section>
+
+<!-- FILTER -->
+<div class="blog-filters">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" data-cat="all" data-i18n="blogAllCategories">Semua</button>
+  <button class="filter-btn" data-cat="AI & Bisnis">AI & Bisnis</button>
+  <button class="filter-btn" data-cat="Social Media">Social Media</button>
+  <button class="filter-btn" data-cat="Website & Digital">Website & Digital</button>
+  <button class="filter-btn" data-cat="Tech & Tools">Tech & Tools</button>
+  <button class="filter-btn" data-cat="Strategi Konten">Strategi Konten</button>
+</div>
+
+<!-- ARTICLE GRID -->
+<div class="blog-grid-section">
+  <div class="blog-grid" id="blogGrid" role="list">
+    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+      <a href="blog/ai-di-bisnis.html" class="blog-card-img-link" aria-label="Cara Pakai AI untuk Tingkatkan Penjualan Bisnis Kecil">
+        <div class="blog-card-img">
+          <div class="blog-thumb-placeholder" style="background:linear-gradient(135deg,#fef9ec 0%,#fde68a 100%);display:flex;align-items:center;justify-content:center;height:100%;min-height:180px;border-radius:4px 4px 0 0;">
+      <span style="font-size:2.5rem">📝</span>
+    </div>
+        </div>
+      </a>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span class="blog-cat">AI & Bisnis</span>
+          <span class="blog-date" itemprop="datePublished" content="20 Maret 2026">20 Maret 2026</span>
+          <span class="blog-read">8 min baca</span>
+        </div>
+        <h2 class="blog-card-title" itemprop="headline">
+          <a href="blog/ai-di-bisnis.html">Cara Pakai AI untuk Tingkatkan Penjualan Bisnis Kecil</a>
+        </h2>
+        <p class="blog-card-excerpt" itemprop="description">AI bukan lagi hanya untuk perusahaan besar. Pelajari cara konkret menggunakan tools AI untuk otomatisasi konten, layanan pelanggan, dan strategi pemasaran bisnis Anda.</p>
+        <a href="blog/ai-di-bisnis.html" class="blog-read-more" data-i18n="blogReadMore">Baca Selengkapnya →</a>
+      </div>
+    </article>
+    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+      <a href="blog/strategi-konten-tiktok-2026.html" class="blog-card-img-link" aria-label="Strategi Konten TikTok 2026: Dari 0 ke 10.000 Followers">
+        <div class="blog-card-img">
+          <div class="blog-thumb-placeholder" style="background:linear-gradient(135deg,#fef9ec 0%,#fde68a 100%);display:flex;align-items:center;justify-content:center;height:100%;min-height:180px;border-radius:4px 4px 0 0;">
+      <span style="font-size:2.5rem">📝</span>
+    </div>
+        </div>
+      </a>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span class="blog-cat">Social Media</span>
+          <span class="blog-date" itemprop="datePublished" content="18 Maret 2026">18 Maret 2026</span>
+          <span class="blog-read">6 min baca</span>
+        </div>
+        <h2 class="blog-card-title" itemprop="headline">
+          <a href="blog/strategi-konten-tiktok-2026.html">Strategi Konten TikTok 2026: Dari 0 ke 10.000 Followers</a>
+        </h2>
+        <p class="blog-card-excerpt" itemprop="description">Algoritma TikTok berubah lagi di 2026. Temukan framework konten yang terbukti membawa akun baru ke 10K followers dalam 90 hari, tanpa iklan berbayar.</p>
+        <a href="blog/strategi-konten-tiktok-2026.html" class="blog-read-more" data-i18n="blogReadMore">Baca Selengkapnya →</a>
+      </div>
+    </article>
+    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+      <a href="blog/website-umkm-wajib-ada.html" class="blog-card-img-link" aria-label="5 Alasan Bisnis Kamu Wajib Punya Website di 2026">
+        <div class="blog-card-img">
+          <div class="blog-thumb-placeholder" style="background:linear-gradient(135deg,#fef9ec 0%,#fde68a 100%);display:flex;align-items:center;justify-content:center;height:100%;min-height:180px;border-radius:4px 4px 0 0;">
+      <span style="font-size:2.5rem">📝</span>
+    </div>
+        </div>
+      </a>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span class="blog-cat">Website & Digital</span>
+          <span class="blog-date" itemprop="datePublished" content="15 Maret 2026">15 Maret 2026</span>
+          <span class="blog-read">5 min baca</span>
+        </div>
+        <h2 class="blog-card-title" itemprop="headline">
+          <a href="blog/website-umkm-wajib-ada.html">5 Alasan Bisnis Kamu Wajib Punya Website di 2026</a>
+        </h2>
+        <p class="blog-card-excerpt" itemprop="description">Masih pakai Linktree atau bio Instagram sebagai 'website'? Ini 5 alasan konkret kenapa bisnis Anda kehilangan pendapatan tanpa website profesional.</p>
+        <a href="blog/website-umkm-wajib-ada.html" class="blog-read-more" data-i18n="blogReadMore">Baca Selengkapnya →</a>
+      </div>
+    </article>
+    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+      <a href="blog/omniroute-api-management.html" class="blog-card-img-link" aria-label="Omniroute: Kelola 10+ AI Provider dengan Satu API Key">
+        <div class="blog-card-img">
+          <div class="blog-thumb-placeholder" style="background:linear-gradient(135deg,#fef9ec 0%,#fde68a 100%);display:flex;align-items:center;justify-content:center;height:100%;min-height:180px;border-radius:4px 4px 0 0;">
+      <span style="font-size:2.5rem">📝</span>
+    </div>
+        </div>
+      </a>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span class="blog-cat">Tech & Tools</span>
+          <span class="blog-date" itemprop="datePublished" content="12 Maret 2026">12 Maret 2026</span>
+          <span class="blog-read">7 min baca</span>
+        </div>
+        <h2 class="blog-card-title" itemprop="headline">
+          <a href="blog/omniroute-api-management.html">Omniroute: Kelola 10+ AI Provider dengan Satu API Key</a>
+        </h2>
+        <p class="blog-card-excerpt" itemprop="description">Capek punya 10 API key berbeda untuk OpenAI, Claude, Gemini, dan DeepSeek? Omniroute menyederhanakan semuanya dengan satu endpoint yang cerdas.</p>
+        <a href="blog/omniroute-api-management.html" class="blog-read-more" data-i18n="blogReadMore">Baca Selengkapnya →</a>
+      </div>
+    </article>
+    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+      <a href="blog/foto-produk-ai-marketplace.html" class="blog-card-img-link" aria-label="Cara Buat Foto Produk Kelas Studio dengan AI — Tanpa Kamera Mahal">
+        <div class="blog-card-img">
+          <div class="blog-thumb-placeholder" style="background:linear-gradient(135deg,#fef9ec 0%,#fde68a 100%);display:flex;align-items:center;justify-content:center;height:100%;min-height:180px;border-radius:4px 4px 0 0;">
+      <span style="font-size:2.5rem">📝</span>
+    </div>
+        </div>
+      </a>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span class="blog-cat">AI & Bisnis</span>
+          <span class="blog-date" itemprop="datePublished" content="10 Maret 2026">10 Maret 2026</span>
+          <span class="blog-read">5 min baca</span>
+        </div>
+        <h2 class="blog-card-title" itemprop="headline">
+          <a href="blog/foto-produk-ai-marketplace.html">Cara Buat Foto Produk Kelas Studio dengan AI — Tanpa Kamera Mahal</a>
+        </h2>
+        <p class="blog-card-excerpt" itemprop="description">Foto produk adalah faktor #1 penjualan di marketplace. Pelajari bagaimana AI bisa menghasilkan foto setara fotografer profesional dengan biaya jauh lebih murah.</p>
+        <a href="blog/foto-produk-ai-marketplace.html" class="blog-read-more" data-i18n="blogReadMore">Baca Selengkapnya →</a>
+      </div>
+    </article>
+    <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
+      <a href="blog/content-planner-bisnis.html" class="blog-card-img-link" aria-label="Content Planner 30 Hari: Template Gratis + Cara Eksekusinya">
+        <div class="blog-card-img">
+          <div class="blog-thumb-placeholder" style="background:linear-gradient(135deg,#fef9ec 0%,#fde68a 100%);display:flex;align-items:center;justify-content:center;height:100%;min-height:180px;border-radius:4px 4px 0 0;">
+      <span style="font-size:2.5rem">📝</span>
+    </div>
+        </div>
+      </a>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span class="blog-cat">Strategi Konten</span>
+          <span class="blog-date" itemprop="datePublished" content="8 Maret 2026">8 Maret 2026</span>
+          <span class="blog-read">4 min baca</span>
+        </div>
+        <h2 class="blog-card-title" itemprop="headline">
+          <a href="blog/content-planner-bisnis.html">Content Planner 30 Hari: Template Gratis + Cara Eksekusinya</a>
+        </h2>
+        <p class="blog-card-excerpt" itemprop="description">Tidak ada lagi alasan kehabisan ide konten. Template content planner 30 hari ini sudah digunakan 500+ bisnis Indonesia untuk maintain konsistensi posting.</p>
+        <a href="blog/content-planner-bisnis.html" class="blog-read-more" data-i18n="blogReadMore">Baca Selengkapnya →</a>
+      </div>
+    </article>
+  </div>
+</div>
+
+<!-- NEWSLETTER CTA -->
+<section class="blog-cta">
+  <div class="blog-cta-inner">
+    <span style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mustard);display:block;margin-bottom:0.5rem;">Tetap Update</span>
+    <h2>Tidak Ingin Ketinggalan<br>Insight Terbaru?</h2>
+    <p>Konsultasi langsung dengan tim kami untuk mendapatkan strategi AI dan digital yang dipersonalisasi untuk bisnis kamu.</p>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20update%20insight%20AI%20bisnis%20terbaru" class="btn-primary" target="_blank" rel="noopener">💬 Chat dengan Tim Kami</a>
+  </div>
+</section>
+
+<footer class="bk-footer">
+  <div class="bk-footer-inner">
+    <div class="bk-footer-brand">
+      <div class="bk-logo">Berkah<span>Karya</span></div>
+      <p data-i18n="footerTagline">AI Ecosystem untuk bisnis Indonesia — agency kreatif, AI tools, dan produk digital dalam satu ekosistem.</p>
+    </div>
+    <div class="bk-footer-col"><h5 data-i18n="footerServices">Layanan</h5><ul>
+      <li><a href="jasa-sosmed.html">Kelola Social Media</a></li>
+      <li><a href="jasa-video-ai.html">Jasa Video AI</a></li>
+      <li><a href="jasa-website.html">Jasa Website</a></li>
+      <li><a href="jasa-foto-produk.html">Foto Produk AI</a></li>
+      <li><a href="jasa-content-planner.html">Content Planner</a></li>
+    </ul></div>
+    <div class="bk-footer-col"><h5 data-i18n="footerPlatform">Platform</h5><ul>
+      <li><a href="omniroute.html">Omniroute</a></li>
+      <li><a href="tools.html">AI Tools</a></li>
+      <li><a href="ai-agent-pro.html">AI Agent Pro</a></li>
+      <li><a href="digital-product.html">Produk Digital</a></li>
+    </ul></div>
+    <div class="bk-footer-col"><h5 data-i18n="footerCompany">Perusahaan</h5><ul>
+      <li><a href="about.html">Tentang Kami</a></li>
+      <li><a href="contact.html">Kontak</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="legal/privacy-policy.html">Privasi</a></li>
+    </ul></div>
+  </div>
+  <div class="bk-footer-bottom">
+    <span>© 2025 BerkahKarya. <span data-i18n="footerRights">Semua hak dilindungi.</span></span>
+    <span data-i18n="footerMadeWith">Dibuat dengan ❤️ + 🤖 AI di Indonesia</span>
+  </div>
+</footer>
+
+<script>
+// Blog category filter
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    var cat = btn.dataset.cat;
+    document.querySelectorAll('.blog-card').forEach(function(card) {
+      var cardCat = card.querySelector('.blog-cat');
+      if (!cardCat) return;
+      if (cat === 'all' || cardCat.textContent.trim() === cat) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
+<script src="nav.js"></script>
+</body>
+</html>

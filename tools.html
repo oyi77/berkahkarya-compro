@@ -52,30 +52,32 @@ h1, h2, h3, h4 { font-family: var(--font) !important; letter-spacing: -0.02em; }
 <body class="page-tools">
 
 <!-- NAVBAR -->
-<nav class="bk-nav">
+<nav class="bk-nav" id="mainNav">
   <div class="bk-nav-inner">
     <a href="index.html" class="bk-logo">Berkah<span>Karya</span></a>
     <ul class="bk-nav-links">
-      <li><a href="index.html#layanan">Layanan</a></li>
-      <li><a href="omniroute.html">Omniroute</a></li>
-      <li><a href="tools.html">Tools</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="services.html" data-i18n="navServices">Layanan</a></li>
+      <li><a href="digital-product.html" data-i18n="navProducts">Produk Digital</a></li>
+      <li><a href="blog.html" data-i18n="navBlog">Postingan</a></li>
+      <li><a href="tools.html" data-i18n="navTools">Tools</a></li>
+      <li><a href="about.html" data-i18n="navAbout">About</a></li>
     </ul>
-    <a href="contact.html" class="bk-nav-cta">Hubungi Kami</a>
-    <button class="bk-nav-mobile" id="navToggle" aria-label="Toggle menu">
-      <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
-        <rect width="22" height="2" rx="1" fill="currentColor"/>
-        <rect y="7" width="22" height="2" rx="1" fill="currentColor"/>
-        <rect y="14" width="22" height="2" rx="1" fill="currentColor"/>
-      </svg>
-    </button>
+    <div class="bk-nav-right">
+      <button class="bk-lang-toggle" id="langToggle" title="Switch Language">🌐 EN</button>
+      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20konsultasi" class="bk-nav-cta" target="_blank" rel="noopener" data-i18n="navCta">Konsultasi →</a>
+    </div>
+    <button class="bk-nav-mobile" id="mobileToggle" aria-label="Menu">☰</button>
   </div>
   <div class="bk-nav-mobile-menu" id="mobileMenu">
-    <a href="index.html#layanan">Layanan</a>
-    <a href="omniroute.html">Omniroute</a>
-    <a href="tools.html">Tools</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Hubungi Kami</a>
+    <a href="services.html" data-i18n="navServices">Layanan</a>
+    <a href="digital-product.html" data-i18n="navProducts">Produk Digital</a>
+    <a href="blog.html" data-i18n="navBlog">Postingan</a>
+    <a href="tools.html" data-i18n="navTools">Tools</a>
+    <a href="about.html" data-i18n="navAbout">About</a>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20konsultasi" target="_blank" rel="noopener">💬 Konsultasi</a>
+    <div style="padding:4px 0;border-top:1px solid var(--border);margin-top:4px">
+      <button class="bk-lang-toggle" id="langToggleMobile" onclick="bkSetLanguage(document.documentElement.lang==='id'?'en':'id')" style="width:100%;text-align:left;border:none;padding:8px 0;background:none;font-size:0.85rem;color:var(--text-muted);cursor:pointer;">🌐 Switch Language</button>
+    </div>
   </div>
 </nav>
 
@@ -191,5 +193,6 @@ document.getElementById('navToggle').addEventListener('click', function() {
 });
 </script>
 
+<script src="nav.js"></script>
 </body>
 </html>
