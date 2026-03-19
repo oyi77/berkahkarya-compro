@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Tools untuk Bisnis — Berkah Karya</title>
+  <meta name="description" content="Katalog AI Tools dari Berkah Karya: chatbot otomasi, video AI, content planner, dan API gateway untuk bisnis modern Indonesia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .bk-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--mustard);
+      margin-top: 1.25rem;
+      transition: gap 0.15s;
+    }
+    .bk-card-link:hover {
+      gap: 0.6rem;
+      color: var(--mustard-dark);
+    }
+    .bk-nav-mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1rem 1.5rem 1.25rem;
+      background: rgba(248,247,242,0.98);
+      border-bottom: 1px solid var(--border);
+    }
+    .bk-nav-mobile-menu.open { display: flex; }
+    .bk-nav-mobile-menu a {
+      font-size: 0.925rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .bk-nav-mobile-menu a:last-child { border-bottom: none; }
+    .bk-nav-mobile-menu a:hover { color: var(--mustard); }
+  </style>
+</head>
+<body class="page-tools">
+
+<!-- NAVBAR -->
+<nav class="bk-nav">
+  <div class="bk-nav-inner">
+    <a href="index.html" class="bk-logo">Berkah<span>Karya</span></a>
+    <ul class="bk-nav-links">
+      <li><a href="index.html#layanan">Layanan</a></li>
+      <li><a href="omniroute.html">Omniroute</a></li>
+      <li><a href="tools.html">Tools</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <a href="contact.html" class="bk-nav-cta">Hubungi Kami</a>
+    <button class="bk-nav-mobile" id="navToggle" aria-label="Toggle menu">
+      <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
+        <rect width="22" height="2" rx="1" fill="currentColor"/>
+        <rect y="7" width="22" height="2" rx="1" fill="currentColor"/>
+        <rect y="14" width="22" height="2" rx="1" fill="currentColor"/>
+      </svg>
+    </button>
+  </div>
+  <div class="bk-nav-mobile-menu" id="mobileMenu">
+    <a href="index.html#layanan">Layanan</a>
+    <a href="omniroute.html">Omniroute</a>
+    <a href="tools.html">Tools</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Hubungi Kami</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="bk-hero text-center">
+  <div class="bk-container">
+    <span class="bk-hero-tag">AI Tools</span>
+    <h1 class="bk-hero-title">AI Tools untuk <em>Bisnis Modern</em></h1>
+    <p class="bk-hero-subtitle" style="margin-left:auto;margin-right:auto;">Katalog tools AI buatan Berkah Karya yang dirancang untuk mengakselerasi produktivitas, otomasi, dan pertumbuhan bisnis Anda.</p>
+    <div class="bk-divider-accent" style="margin:0 auto;"></div>
+  </div>
+</section>
+
+<!-- TOOLS GRID -->
+<section class="bk-section">
+  <div class="bk-container">
+    <p class="bk-section-label">Katalog Tools</p>
+    <h2 class="bk-section-title">Pilih Tools yang Tepat untuk Bisnis Anda</h2>
+    <p class="bk-section-subtitle" style="margin-bottom:2.5rem;">Setiap tool dirancang untuk menyelesaikan masalah spesifik dan bisa berdiri sendiri maupun terintegrasi dalam ekosistem Berkah Karya.</p>
+
+    <div class="bk-grid-2">
+      <!-- AI Agent Pro -->
+      <div class="bk-card">
+        <div class="bk-card-icon">🤖</div>
+        <h3 class="bk-card-title">AI Agent Pro</h3>
+        <p class="bk-card-desc">Chatbot otomasi WhatsApp &amp; Instagram. Respon pelanggan 24/7 dengan AI yang memahami konteks bisnis Anda, menjawab pertanyaan, dan mengkualifikasi leads secara otomatis.</p>
+        <a href="ai-agent-pro.html" class="bk-card-link">Pelajari Selengkapnya &rarr;</a>
+      </div>
+
+      <!-- AI Video Studio -->
+      <div class="bk-card">
+        <div class="bk-card-icon">🎬</div>
+        <h3 class="bk-card-title">AI Video Studio</h3>
+        <p class="bk-card-desc">Generator video AI untuk konten marketing. Buat video profesional dalam hitungan menit tanpa perlu skill editing atau peralatan mahal.</p>
+        <a href="ai-video-studio.html" class="bk-card-link">Pelajari Selengkapnya &rarr;</a>
+      </div>
+
+      <!-- Content Planner AI -->
+      <div class="bk-card">
+        <div class="bk-card-icon">📅</div>
+        <h3 class="bk-card-title">Content Planner AI</h3>
+        <p class="bk-card-desc">Perencanaan konten otomatis berbasis AI. Kalender editorial yang cerdas, lengkap dengan brief per konten, pillar strategy, dan caption framework.</p>
+        <a href="jasa-content-planner.html" class="bk-card-link">Pelajari Selengkapnya &rarr;</a>
+      </div>
+
+      <!-- Omniroute -->
+      <div class="bk-card">
+        <div class="bk-card-icon">🌐</div>
+        <h3 class="bk-card-title">Omniroute</h3>
+        <p class="bk-card-desc">AI API Gateway. Akses 200+ model AI dari satu endpoint. Unified routing, cost optimization, dan fallback otomatis untuk developer dan agency.</p>
+        <a href="omniroute.html" class="bk-card-link">Pelajari Selengkapnya &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bk-section">
+  <div class="bk-container">
+    <div class="bk-cta">
+      <p class="bk-cta-label">Custom Solution</p>
+      <h2 class="bk-cta-title">Butuh Solusi AI Custom?</h2>
+      <p class="bk-cta-subtitle">Ceritakan kebutuhan bisnis Anda. Tim kami siap merancang solusi AI yang tepat, dari konsep hingga implementasi.</p>
+      <div class="bk-cta-buttons">
+        <a href="https://wa.me/6285867877651" target="_blank" class="btn-primary">💬 Chat via WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bk-footer">
+  <div class="bk-footer-inner">
+    <div class="bk-footer-brand">
+      <div class="bk-logo">Berkah<span>Karya</span></div>
+      <p>Solusi AI &amp; digital untuk pertumbuhan bisnis Indonesia. Jasa kreatif, tools proprietary, dan platform AI dalam satu ekosistem.</p>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Layanan</h5>
+      <ul>
+        <li><a href="jasa-sosmed.html">Social Media</a></li>
+        <li><a href="jasa-video-ai.html">Video AI</a></li>
+        <li><a href="jasa-content-planner.html">Content Planner</a></li>
+        <li><a href="jasa-website.html">Website</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Tools</h5>
+      <ul>
+        <li><a href="ai-agent-pro.html">AI Agent Pro</a></li>
+        <li><a href="omniroute.html">Omniroute</a></li>
+        <li><a href="tools.html">Semua Tools</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Perusahaan</h5>
+      <ul>
+        <li><a href="about.html">Tentang Kami</a></li>
+        <li><a href="contact.html">Kontak</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bk-footer-bottom">
+    <span>&copy; 2026 Berkah Karya Digital Agency</span>
+    <span><a href="index.html">Beranda</a></span>
+  </div>
+</footer>
+
+<!-- Mobile Nav Toggle -->
+<script>
+document.getElementById('navToggle').addEventListener('click', function() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+</script>
+
+</body>
+</html>
