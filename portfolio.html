@@ -158,9 +158,57 @@ footer { border-top: 0.5px solid var(--line-2); padding: clamp(1.5rem,4vw,2.5rem
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .case-results { grid-template-columns: 1fr; }
 }
+
+/* === PORTFOLIO: Dark → Cream override === */
+body { background: var(--bg) !important; color: var(--text) !important; font-family: var(--font) !important; }
+:root {
+  --gold: var(--mustard) !important;
+  --bg-2: var(--bg-muted) !important;
+  --bg-3: var(--bg-white) !important;
+  --text-1: var(--text) !important;
+  --text-2: var(--text-muted) !important;
+  --text-3: var(--text-muted) !important;
+  --line: var(--border) !important;
+}
+.section { background: var(--bg) !important; }
+.section.page-hero { background: var(--bg-white) !important; border-bottom: 1px solid var(--border) !important; padding: calc(64px + 4rem) 1.5rem 4rem !important; }
+.section.page-hero h1 { font-family: var(--font) !important; font-weight: 900 !important; letter-spacing: -0.04em !important; color: var(--text) !important; }
+.section.page-hero h1 em { color: var(--mustard) !important; }
+.section.page-hero p { color: var(--text-muted) !important; }
+h1, h2, h3, h4 { font-family: var(--font) !important; color: var(--text) !important; }
+h2 em { color: var(--mustard) !important; font-style: normal !important; }
+.proj-card, .case-card, .card { background: var(--bg-white) !important; border-color: var(--border) !important; }
+.proj-card:hover, .case-card:hover { border-color: var(--mustard) !important; box-shadow: 0 4px 24px rgba(200,146,10,0.10) !important; }
+.proj-tag, .tag { background: var(--bg-muted) !important; color: var(--text-muted) !important; border-color: var(--border) !important; }
+.proj-result, .result-num { color: var(--mustard) !important; }
+.sec-label, .label { color: var(--mustard) !important; }
+p { color: var(--text-muted) !important; }
+p strong { color: var(--text) !important; }
+.btn { border-radius: var(--radius) !important; font-family: var(--font) !important; }
+.btn-gold, .btn-primary { background: var(--mustard) !important; color: #fff !important; border-color: var(--mustard) !important; }
+.btn-ghost, .btn-outline, .btn-secondary { background: transparent !important; border-color: var(--border) !important; color: var(--text-muted) !important; }
+.btn-ghost:hover, .btn-secondary:hover { border-color: var(--mustard) !important; color: var(--mustard) !important; }
+[style*="background:var(--bg-2)"], [style*="background: var(--bg-2)"] { background: var(--bg-muted) !important; }
+#nav, nav#nav { display: none !important; }
+footer:not(.bk-footer) { display: none !important; }
+
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
 </head>
 <body>
+<nav class="bk-nav">
+  <div class="bk-nav-inner">
+    <a href="index.html" class="bk-logo">Berkah<span>Karya</span></a>
+    <ul class="bk-nav-links">
+      <li><a href="services.html">Layanan</a></li>
+      <li><a href="omniroute.html">Omniroute</a></li>
+      <li><a href="tools.html">Tools</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20konsultasi%20layanan" class="bk-nav-cta" target="_blank" rel="noopener">Konsultasi Gratis →</a>
+    <button class="bk-nav-mobile" aria-label="Menu">☰</button>
+  </div>
+</nav>
 
 <!-- NAV -->
 <nav id="nav">
@@ -476,5 +524,47 @@ window.addEventListener('scroll', function() {
   document.getElementById('nav').style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.4)' : 'none';
 });
 </script>
+<footer class="bk-footer">
+  <div class="bk-footer-inner">
+    <div class="bk-footer-brand">
+      <div class="bk-logo">Berkah<span>Karya</span></div>
+      <p>AI Ecosystem untuk bisnis Indonesia — agency kreatif, AI tools, dan SaaS platform dalam satu ekosistem.</p>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Layanan</h5>
+      <ul>
+        <li><a href="jasa-sosmed.html">Kelola Sosmed</a></li>
+        <li><a href="jasa-video-ai.html">Jasa Video AI</a></li>
+        <li><a href="jasa-website.html">Jasa Website</a></li>
+        <li><a href="jasa-foto-produk.html">Foto Produk AI</a></li>
+        <li><a href="jasa-content-planner.html">Content Planner</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Platform</h5>
+      <ul>
+        <li><a href="omniroute.html">Omniroute</a></li>
+        <li><a href="tools.html">AI Tools</a></li>
+        <li><a href="ai-agent-pro.html">AI Agent Pro</a></li>
+        <li><a href="ai-video-studio.html">Video Studio</a></li>
+        <li><a href="digital-product.html">Produk Digital</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Perusahaan</h5>
+      <ul>
+        <li><a href="about.html">Tentang Kami</a></li>
+        <li><a href="contact.html">Kontak</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="pricing.html">Harga</a></li>
+        <li><a href="legal/privacy-policy.html">Privasi</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bk-footer-bottom">
+    <span>© 2025 BerkahKarya. All rights reserved.</span>
+    <span>Made with ❤️ + 🤖 AI in Indonesia</span>
+  </div>
+</footer>
 </body>
 </html>

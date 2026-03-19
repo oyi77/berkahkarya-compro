@@ -610,9 +610,45 @@ footer {
   .btn-lg { padding: 0.9rem 1.5rem; }
   .duration-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* === AI VIDEO STUDIO: Dark → Cream override === */
+body { background: var(--bg) !important; color: var(--text) !important; font-family: var(--font) !important; }
+:root {
+  --gold: var(--mustard) !important;
+  --bg-2: var(--bg-muted) !important;
+  --bg-3: var(--bg-white) !important;
+  --text-1: var(--text) !important;
+  --text-2: var(--text-muted) !important;
+  --text-3: var(--text-muted) !important;
+  --line: var(--border) !important;
+}
+h1, h2, h3, h4 { font-family: var(--font) !important; color: var(--text) !important; }
+h2 em { color: var(--mustard) !important; font-style: normal !important; }
+p { color: var(--text-muted) !important; }
+.card, .feat-card, .feature-card { background: var(--bg-white) !important; border-color: var(--border) !important; }
+.card:hover { border-color: var(--mustard) !important; }
+.btn-gold, .btn-primary { background: var(--mustard) !important; color: #fff !important; }
+.btn-ghost, .btn-outline { border-color: var(--border) !important; color: var(--text-muted) !important; background: transparent !important; }
+nav:not(.bk-nav) { display: none !important; }
+footer:not(.bk-footer) { display: none !important; }
+
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
 </head>
 <body>
+<nav class="bk-nav">
+  <div class="bk-nav-inner">
+    <a href="index.html" class="bk-logo">Berkah<span>Karya</span></a>
+    <ul class="bk-nav-links">
+      <li><a href="services.html">Layanan</a></li>
+      <li><a href="omniroute.html">Omniroute</a></li>
+      <li><a href="tools.html">Tools</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20konsultasi%20layanan" class="bk-nav-cta" target="_blank" rel="noopener">Konsultasi Gratis →</a>
+    <button class="bk-nav-mobile" aria-label="Menu">☰</button>
+  </div>
+</nav>
 
 <!-- NAV -->
 <nav id="nav">
@@ -1121,5 +1157,47 @@ window.addEventListener('scroll', () => {
 });
 </script>
 
+<footer class="bk-footer">
+  <div class="bk-footer-inner">
+    <div class="bk-footer-brand">
+      <div class="bk-logo">Berkah<span>Karya</span></div>
+      <p>AI Ecosystem untuk bisnis Indonesia — agency kreatif, AI tools, dan SaaS platform dalam satu ekosistem.</p>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Layanan</h5>
+      <ul>
+        <li><a href="jasa-sosmed.html">Kelola Sosmed</a></li>
+        <li><a href="jasa-video-ai.html">Jasa Video AI</a></li>
+        <li><a href="jasa-website.html">Jasa Website</a></li>
+        <li><a href="jasa-foto-produk.html">Foto Produk AI</a></li>
+        <li><a href="jasa-content-planner.html">Content Planner</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Platform</h5>
+      <ul>
+        <li><a href="omniroute.html">Omniroute</a></li>
+        <li><a href="tools.html">AI Tools</a></li>
+        <li><a href="ai-agent-pro.html">AI Agent Pro</a></li>
+        <li><a href="ai-video-studio.html">Video Studio</a></li>
+        <li><a href="digital-product.html">Produk Digital</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Perusahaan</h5>
+      <ul>
+        <li><a href="about.html">Tentang Kami</a></li>
+        <li><a href="contact.html">Kontak</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="pricing.html">Harga</a></li>
+        <li><a href="legal/privacy-policy.html">Privasi</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bk-footer-bottom">
+    <span>© 2025 BerkahKarya. All rights reserved.</span>
+    <span>Made with ❤️ + 🤖 AI in Indonesia</span>
+  </div>
+</footer>
 </body>
 </html>
