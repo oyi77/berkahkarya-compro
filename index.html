@@ -3,322 +3,441 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Berkah Karya — AI Ecosystem untuk bisnis Indonesia. Jasa kreatif, otomasi, dan platform AI dari agency hingga SaaS.">
+<meta name="description" content="Berkah Karya — AI Ecosystem untuk bisnis Indonesia. Agency kreatif, AI Tools, dan SaaS platform dalam satu ekosistem.">
 <title>Berkah Karya — AI Ecosystem untuk Bisnis Indonesia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="style.css">
 <style>
-  /* Page-specific: mobile nav overlay */
-  .bk-mobile-menu {
-    display: none;
-    position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 199;
-    background: rgba(248,247,242,0.98);
-    backdrop-filter: blur(12px);
-    padding: 2rem 1.5rem;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-  .bk-mobile-menu.open { display: flex; }
-  .bk-mobile-menu a {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text);
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border);
-    transition: color 0.15s;
-  }
-  .bk-mobile-menu a:hover { color: var(--mustard); }
-  .bk-mobile-menu .btn-primary { margin-top: 1.5rem; text-align: center; }
+/* ===== HOME PAGE EXTRAS ===== */
 
-  /* Hero buttons row */
-  .bk-hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
-  @media (max-width: 600px) {
-    .bk-hero-buttons { flex-direction: column; }
-    .bk-hero-buttons a { text-align: center; }
-  }
+/* Pilar section */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.pillar-item {
+  background: var(--bg-white);
+  padding: 2.5rem 2rem;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.pillar-item:hover { background: var(--bg-muted); }
+.pillar-num {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+  color: var(--mustard); text-transform: uppercase;
+}
+.pillar-title { font-size: 1.35rem; font-weight: 900; letter-spacing: -0.03em; }
+.pillar-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
 
-  /* Omniroute feature highlight */
-  .bk-omniroute-highlight {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-  }
-  .bk-omniroute-highlight .bk-badge-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin: 1.5rem 0 2rem;
-  }
-  .bk-omniroute-highlight .bk-badge-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-  .bk-omniroute-highlight .bk-badge-list li span {
-    flex-shrink: 0;
-    font-size: 1.25rem;
-  }
-  .bk-omniroute-box {
-    background: var(--bg-white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 3rem;
-    text-align: center;
-  }
-  .bk-omniroute-box .bk-omniroute-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-  .bk-omniroute-box h3 {
-    font-size: 1.25rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-  }
-  .bk-omniroute-box p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-  @media (max-width: 768px) {
-    .bk-omniroute-highlight { grid-template-columns: 1fr; }
-  }
+/* Services grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.service-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  text-decoration: none; color: inherit;
+}
+.service-card:hover {
+  border-color: var(--mustard);
+  box-shadow: 0 4px 20px var(--shadow-md);
+  transform: translateY(-2px);
+}
+.service-emoji { font-size: 1.75rem; }
+.service-name { font-size: 1rem; font-weight: 800; letter-spacing: -0.01em; }
+.service-desc { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6; }
+.service-link {
+  margin-top: auto;
+  font-size: 0.8rem; font-weight: 700; color: var(--mustard);
+  display: flex; align-items: center; gap: 0.25rem;
+}
 
-  /* Card as link */
-  a.bk-card { display: block; }
+/* Omniroute feature */
+.omni-block {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.omni-tag {
+  display: inline-block;
+  background: #111; color: #fff;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; border-radius: var(--radius-full);
+  padding: 0.3rem 0.9rem; margin-bottom: 1.25rem;
+}
+.omni-title { font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 1rem; }
+.omni-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem; }
+.omni-features { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+.omni-feature {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  font-size: 0.875rem; color: var(--text-muted);
+}
+.omni-feature-icon { color: var(--mustard); font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+.omni-visual {
+  background: #111; border-radius: var(--radius);
+  padding: 2rem; font-family: 'Courier New', monospace;
+  font-size: 0.8rem; color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+}
+.omni-code-comment { color: rgba(255,255,255,0.3); }
+.omni-code-key { color: #E8B82B; }
+.omni-code-val { color: #93e093; }
+
+/* Stats row */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.stat-item {
+  background: var(--bg-white);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+/* Hero visual pills */
+.hero-pills {
+  display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem;
+}
+.hero-pill {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 0.45rem 1rem;
+  font-size: 0.8rem; font-weight: 600; color: var(--text-muted);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+
+/* Trust bar */
+.trust-bar {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-white);
+}
+.trust-bar-inner {
+  max-width: var(--max-width); margin: 0 auto;
+  display: flex; align-items: center; justify-content: center; gap: 2.5rem; flex-wrap: wrap;
+}
+.trust-item { font-size: 0.8rem; font-weight: 500; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem; }
+.trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mustard); }
+
+@media (max-width: 900px) {
+  .pillar-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .omni-block { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+}
 </style>
 </head>
 <body class="page-home">
 
-  <!-- NAVBAR -->
-  <nav class="bk-nav" role="navigation" aria-label="Main navigation">
-    <div class="bk-nav-inner">
-      <a href="index.html" class="bk-logo" aria-label="Berkah Karya Home">Berkah<span>Karya</span></a>
-      <ul class="bk-nav-links">
-        <li><a href="#layanan">Layanan</a></li>
-        <li><a href="omniroute.html">Omniroute</a></li>
-        <li><a href="ai-agent-pro.html">Tools</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-      <a href="contact.html" class="bk-nav-cta">Hubungi Kami</a>
-      <button class="bk-nav-mobile" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <line x1="1" y1="1" x2="21" y2="1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <line x1="1" y1="9" x2="21" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <line x1="1" y1="17" x2="21" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
-    </div>
-  </nav>
-
-  <!-- MOBILE MENU -->
-  <div class="bk-mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
-    <a href="#layanan">Layanan</a>
-    <a href="omniroute.html">Omniroute</a>
-    <a href="ai-agent-pro.html">Tools</a>
-    <a href="about.html">About</a>
-    <a href="contact.html" class="btn-primary">Hubungi Kami</a>
+<!-- NAVBAR -->
+<nav class="bk-nav">
+  <div class="bk-nav-inner">
+    <a href="/" class="bk-logo">Berkah<span>Karya</span></a>
+    <ul class="bk-nav-links">
+      <li><a href="/services.html">Layanan</a></li>
+      <li><a href="/omniroute.html">Omniroute</a></li>
+      <li><a href="/tools.html">Tools</a></li>
+      <li><a href="/about.html">About</a></li>
+    </ul>
+    <a href="/contact.html" class="bk-nav-cta">Konsultasi Gratis →</a>
+    <button class="bk-nav-mobile" aria-label="Menu">☰</button>
   </div>
+</nav>
 
-  <!-- HERO -->
-  <header class="bk-hero">
-    <div class="bk-container">
-      <span class="bk-hero-tag">Ekosistem AI Indonesia</span>
-      <h1 class="bk-hero-title"><em>AI Ecosystem</em> untuk Bisnis Indonesia</h1>
-      <p class="bk-hero-subtitle">Kami membantu bisnis Indonesia tumbuh lebih cepat dengan solusi AI terintegrasi — mulai dari layanan kreatif, tools otomasi, hingga platform SaaS yang siap pakai.</p>
-      <div class="bk-hero-buttons">
-        <a href="#layanan" class="btn-primary">Lihat Layanan</a>
-        <a href="contact.html" class="btn-secondary">Hubungi Kami</a>
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><div class="trust-dot"></div> Agency Kreatif</div>
+    <div class="trust-item"><div class="trust-dot"></div> AI Tools & SaaS</div>
+    <div class="trust-item"><div class="trust-dot"></div> Omnichannel API</div>
+    <div class="trust-item"><div class="trust-dot"></div> Otomasi Bisnis</div>
+    <div class="trust-item"><div class="trust-dot"></div> Konten Viral</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="bk-hero">
+  <div class="bk-container">
+    <div class="bk-hero-tag">AI Ecosystem · BerkahKarya 2025</div>
+    <h1 class="bk-hero-title">
+      AI Ecosystem untuk<br>
+      <em class="text-mustard">Bisnis Indonesia</em>
+    </h1>
+    <p class="bk-hero-subtitle">
+      Dari konten viral, foto produk, hingga otomasi penuh — semua dalam satu ekosistem AI. 
+      Agency, Tools, dan SaaS yang dirancang untuk skala UMKM hingga enterprise.
+    </p>
+    <div class="bk-hero-buttons">
+      <a href="/contact.html" class="btn-primary btn-lg">Mulai Sekarang →</a>
+      <a href="/services.html" class="btn-secondary btn-lg">Lihat Semua Layanan</a>
+    </div>
+    <div class="hero-pills">
+      <div class="hero-pill">🎬 Video AI</div>
+      <div class="hero-pill">📱 Konten Sosmed</div>
+      <div class="hero-pill">🤖 AI Agent</div>
+      <div class="hero-pill">🌐 Website</div>
+      <div class="hero-pill">📊 Content Planner</div>
+      <div class="hero-pill">🔀 API Gateway</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="bk-section-sm bg-muted">
+  <div class="bk-container">
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="bk-stat-num">500+</div>
+        <div class="bk-stat-label">Konten diproduksi/bulan</div>
+      </div>
+      <div class="stat-item">
+        <div class="bk-stat-num">3×</div>
+        <div class="bk-stat-label">Lebih cepat dengan AI</div>
+      </div>
+      <div class="stat-item">
+        <div class="bk-stat-num">12+</div>
+        <div class="bk-stat-label">Platform terintegrasi</div>
+      </div>
+      <div class="stat-item">
+        <div class="bk-stat-num">48h</div>
+        <div class="bk-stat-label">Waktu delivery rata-rata</div>
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- 3 PILAR -->
-  <section class="bk-section bg-muted">
-    <div class="bk-container text-center">
-      <span class="bk-section-label">Tiga Pilar Kami</span>
-      <h2 class="bk-section-title" style="margin-left:auto;margin-right:auto;">Satu Ekosistem, <em>Tiga Kekuatan</em></h2>
-      <p class="bk-section-subtitle" style="margin-left:auto;margin-right:auto;margin-bottom:3rem;">Berkah Karya menggabungkan layanan agensi, tools AI, dan platform SaaS dalam satu ekosistem yang saling mendukung.</p>
-      <div class="bk-grid-3">
-        <div class="bk-card">
-          <div class="bk-card-icon">🏢</div>
-          <h3 class="bk-card-title">Agency</h3>
-          <p class="bk-card-desc">Layanan konsultasi dan eksekusi digital — dari social media management, pembuatan konten, hingga pengembangan website profesional.</p>
+<!-- 3 PILAR -->
+<section class="bk-section">
+  <div class="bk-container">
+    <div class="bk-section-header">
+      <div class="bk-section-label">Ekosistem BerkahKarya</div>
+      <h2 class="bk-section-title">Tiga pilar yang saling<br>memperkuat bisnis Anda</h2>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar-item">
+        <div class="pillar-num">01 — Agency</div>
+        <div class="pillar-title">Jasa Kreatif & Digital</div>
+        <p class="pillar-desc">
+          Tim kreatif manusia + AI untuk konten, video, foto produk, sosmed, dan website. 
+          Kualitas premium, harga terjangkau, delivery cepat.
+        </p>
+        <a href="/services.html" class="service-link">Lihat Layanan →</a>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-num">02 — Tools</div>
+        <div class="pillar-title">AI Tools & Software</div>
+        <p class="pillar-desc">
+          Aplikasi AI siap pakai untuk bisnis: AI Agent chatbot, AI Video Studio, 
+          Content Planner — plug-and-play, tidak butuh tim IT.
+        </p>
+        <a href="/tools.html" class="service-link">Lihat Tools →</a>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-num">03 — SaaS</div>
+        <div class="pillar-title">Platform & API</div>
+        <p class="pillar-desc">
+          Omniroute — AI API gateway untuk developer dan bisnis yang butuh 
+          integrasi multi-AI dengan satu endpoint. Scalable, reliable, hemat biaya.
+        </p>
+        <a href="/omniroute.html" class="service-link">Lihat Omniroute →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="bk-section bg-muted">
+  <div class="bk-container">
+    <div class="bk-section-header">
+      <div class="bk-section-label">Layanan Agency</div>
+      <h2 class="bk-section-title">Semua yang bisnis Anda<br>butuhkan, dalam satu tempat</h2>
+      <p class="bk-section-subtitle">
+        Dari konten harian hingga kampanye besar — kami handle semuanya dengan AI-powered workflow.
+      </p>
+    </div>
+    <div class="services-grid">
+      <a href="/jasa-sosmed.html" class="service-card">
+        <div class="service-emoji">📱</div>
+        <div class="service-name">Kelola Sosial Media</div>
+        <p class="service-desc">Konten harian, jadwal posting, copywriting, hashtag strategy untuk TikTok, IG, YouTube.</p>
+        <span class="service-link">Detail →</span>
+      </a>
+      <a href="/jasa-video-ai.html" class="service-card">
+        <div class="service-emoji">🎬</div>
+        <div class="service-name">Jasa Video AI</div>
+        <p class="service-desc">Video produk, explainer, dan konten viral dengan teknologi AI generasi terbaru.</p>
+        <span class="service-link">Detail →</span>
+      </a>
+      <a href="/jasa-website.html" class="service-card">
+        <div class="service-emoji">🌐</div>
+        <div class="service-name">Jasa Pembuatan Website</div>
+        <p class="service-desc">Landing page, company profile, toko online. Fast delivery 3-7 hari kerja.</p>
+        <span class="service-link">Detail →</span>
+      </a>
+      <a href="/jasa-content-planner.html" class="service-card">
+        <div class="service-emoji">📊</div>
+        <div class="service-name">Content Planner AI</div>
+        <p class="service-desc">Strategi konten 30 hari lengkap dengan kalender, topik, dan hook yang sudah terbukti viral.</p>
+        <span class="service-link">Detail →</span>
+      </a>
+      <a href="/jasa-foto-produk.html" class="service-card">
+        <div class="service-emoji">📸</div>
+        <div class="service-name">Foto Produk AI</div>
+        <p class="service-desc">Foto produk studio-quality tanpa studio fisik. Background custom, lighting sempurna.</p>
+        <span class="service-link">Detail →</span>
+      </a>
+      <a href="/jasa-openclaw.html" class="service-card">
+        <div class="service-emoji">🤖</div>
+        <div class="service-name">Setup OpenClaw AI</div>
+        <p class="service-desc">Pasang AI assistant personal untuk bisnis Anda. Otomasi repetitive tasks, 24/7.</p>
+        <span class="service-link">Detail →</span>
+      </a>
+    </div>
+    <div class="text-center" style="margin-top: 2.5rem;">
+      <a href="/services.html" class="btn-secondary">Lihat Semua Layanan</a>
+    </div>
+  </div>
+</section>
+
+<!-- OMNIROUTE FEATURE -->
+<section class="bk-section">
+  <div class="bk-container">
+    <div class="omni-block">
+      <div>
+        <div class="omni-tag">New · SaaS Platform</div>
+        <h2 class="omni-title">Satu endpoint<br>untuk semua AI</h2>
+        <p class="omni-desc">
+          Omniroute adalah intelligent API gateway yang me-route request ke model AI terbaik 
+          secara otomatis — GPT-4, Claude, Gemini, Mistral — berdasarkan task, biaya, dan speed.
+        </p>
+        <div class="omni-features">
+          <div class="omni-feature">
+            <span class="omni-feature-icon">✦</span>
+            <span>Auto-routing ke model AI terbaik berdasarkan konteks</span>
+          </div>
+          <div class="omni-feature">
+            <span class="omni-feature-icon">✦</span>
+            <span>Hemat hingga 70% biaya API dengan smart fallback</span>
+          </div>
+          <div class="omni-feature">
+            <span class="omni-feature-icon">✦</span>
+            <span>Satu API key untuk semua provider — tanpa konfigurasi rumit</span>
+          </div>
+          <div class="omni-feature">
+            <span class="omni-feature-icon">✦</span>
+            <span>Rate limiting, caching, dan analytics bawaan</span>
+          </div>
         </div>
-        <div class="bk-card">
-          <div class="bk-card-icon">🧰</div>
-          <h3 class="bk-card-title">Tools</h3>
-          <p class="bk-card-desc">Rangkaian AI tools yang membantu bisnis mengotomasi pekerjaan harian — dari AI Agent, video production, hingga content planning.</p>
-        </div>
-        <div class="bk-card">
-          <div class="bk-card-icon">☁️</div>
-          <h3 class="bk-card-title">SaaS</h3>
-          <p class="bk-card-desc">Omniroute — platform API gateway AI yang menghubungkan berbagai model AI dalam satu dashboard terpadu untuk kebutuhan enterprise.</p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="/omniroute.html" class="btn-primary">Coba Omniroute →</a>
+          <a href="/omniroute.html#docs" class="btn-secondary">Lihat Dokumentasi</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- LAYANAN / SERVICES PREVIEW -->
-  <section class="bk-section" id="layanan">
-    <div class="bk-container">
-      <span class="bk-section-label">Layanan Kami</span>
-      <h2 class="bk-section-title">Solusi Digital yang <em>Lengkap</em></h2>
-      <p class="bk-section-subtitle" style="margin-bottom:3rem;">Dari strategi hingga eksekusi, kami menyediakan layanan end-to-end untuk kebutuhan digital bisnis Anda.</p>
-      <div class="bk-grid-3">
-        <a href="jasa-sosmed.html" class="bk-card">
-          <div class="bk-card-icon">📱</div>
-          <h3 class="bk-card-title">Social Media Management</h3>
-          <p class="bk-card-desc">Kelola dan kembangkan kehadiran brand Anda di platform sosial media secara profesional dan konsisten.</p>
-        </a>
-        <a href="jasa-video-ai.html" class="bk-card">
-          <div class="bk-card-icon">🎬</div>
-          <h3 class="bk-card-title">AI Video Production</h3>
-          <p class="bk-card-desc">Produksi video berkualitas tinggi dengan bantuan AI — lebih cepat, lebih efisien, dan tetap kreatif.</p>
-        </a>
-        <a href="jasa-website.html" class="bk-card">
-          <div class="bk-card-icon">🌐</div>
-          <h3 class="bk-card-title">Website Development</h3>
-          <p class="bk-card-desc">Bangun website modern yang responsif, cepat, dan dioptimalkan untuk konversi dan SEO.</p>
-        </a>
-        <a href="jasa-content-planner.html" class="bk-card">
-          <div class="bk-card-icon">📋</div>
-          <h3 class="bk-card-title">Content Planning</h3>
-          <p class="bk-card-desc">Strategi dan perencanaan konten berbasis data untuk memaksimalkan engagement dan pertumbuhan audiens.</p>
-        </a>
-        <a href="jasa-foto-produk.html" class="bk-card">
-          <div class="bk-card-icon">📸</div>
-          <h3 class="bk-card-title">Product Photography</h3>
-          <p class="bk-card-desc">Foto produk profesional yang menarik perhatian dan meningkatkan kepercayaan pembeli di marketplace.</p>
-        </a>
-        <a href="jasa-openclaw.html" class="bk-card">
-          <div class="bk-card-icon">🤖</div>
-          <h3 class="bk-card-title">OpenClaw AI Agent</h3>
-          <p class="bk-card-desc">Agen AI cerdas yang bisa diandalkan untuk otomasi tugas, customer support, dan workflow bisnis Anda.</p>
-        </a>
+      <div class="omni-visual">
+        <div class="omni-code-comment">// Satu request, AI terbaik otomatis</div>
+        <br>
+        <span class="omni-code-key">POST</span> /v1/chat<br>
+        <span class="omni-code-key">Authorization:</span> Bearer omni_xxx<br>
+        <br>
+        {<br>
+        &nbsp;&nbsp;<span class="omni-code-key">"task":</span> <span class="omni-code-val">"copywriting"</span>,<br>
+        &nbsp;&nbsp;<span class="omni-code-key">"prompt":</span> <span class="omni-code-val">"Buat caption IG..."</span>,<br>
+        &nbsp;&nbsp;<span class="omni-code-key">"priority":</span> <span class="omni-code-val">"cost"</span><br>
+        }<br>
+        <br>
+        <div class="omni-code-comment">// → Omniroute pilih model optimal</div>
+        <div class="omni-code-comment">// → Return hasil + model used + cost</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- OMNIROUTE FEATURE -->
-  <section class="bk-section bg-muted">
-    <div class="bk-container">
-      <div class="bk-omniroute-highlight">
-        <div>
-          <span class="bk-section-label">Platform Unggulan</span>
-          <h2 class="bk-section-title">Omniroute — <em>AI API Gateway</em></h2>
-          <p class="bk-section-subtitle">Satu platform untuk mengakses, mengelola, dan mengoptimalkan berbagai model AI dalam satu dashboard terpadu.</p>
-          <ul class="bk-badge-list">
-            <li><span>⚡</span> Akses 50+ model AI melalui satu API endpoint</li>
-            <li><span>📊</span> Dashboard monitoring penggunaan dan biaya real-time</li>
-            <li><span>🔒</span> Enterprise-grade security dengan rate limiting dan API key management</li>
-            <li><span>🔄</span> Automatic fallback dan load balancing antar model</li>
-          </ul>
-          <a href="omniroute.html" class="btn-primary">Pelajari Omniroute</a>
-        </div>
-        <div class="bk-omniroute-box">
-          <div class="bk-omniroute-icon">🌐</div>
-          <h3>Unified AI Gateway</h3>
-          <p>OpenAI, Anthropic, Google, Meta, dan puluhan model AI lainnya — semua terintegrasi dalam satu platform.</p>
-        </div>
+<!-- CTA -->
+<section class="bk-section-sm">
+  <div class="bk-container">
+    <div class="bk-cta">
+      <div class="bk-cta-label">Mulai Sekarang</div>
+      <h2 class="bk-cta-title">Siap scale bisnis Anda<br>dengan AI?</h2>
+      <p class="bk-cta-subtitle">
+        Konsultasi gratis 30 menit. Kami analisa kebutuhan dan rekomendasikan solusi terbaik.
+      </p>
+      <div class="bk-cta-buttons">
+        <a href="/contact.html" class="btn-primary btn-lg">Konsultasi Gratis →</a>
+        <a href="https://wa.me/6281234567890" class="btn-secondary btn-lg" style="color:#fff; border-color: rgba(255,255,255,0.3);">WhatsApp Kami</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CTA BLOCK -->
-  <section class="bk-section">
-    <div class="bk-container">
-      <div class="bk-cta">
-        <span class="bk-cta-label">Mulai Sekarang</span>
-        <h2 class="bk-cta-title">Siap Transformasi Digital?</h2>
-        <p class="bk-cta-subtitle">Konsultasikan kebutuhan bisnis Anda bersama tim Berkah Karya. Gratis, tanpa komitmen.</p>
-        <div class="bk-cta-buttons">
-          <a href="https://wa.me/6285867877651" class="btn-primary" target="_blank" rel="noopener noreferrer">Chat via WhatsApp</a>
-          <a href="contact.html" class="btn-secondary" style="color:#fff;border-color:rgba(255,255,255,0.3);">Lihat Kontak</a>
-        </div>
-      </div>
+<!-- FOOTER -->
+<footer class="bk-footer">
+  <div class="bk-footer-inner">
+    <div class="bk-footer-brand">
+      <div class="bk-logo">Berkah<span>Karya</span></div>
+      <p>AI Ecosystem untuk bisnis Indonesia — agency kreatif, AI tools, dan SaaS platform dalam satu ekosistem terintegrasi.</p>
     </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bk-footer">
-    <div class="bk-footer-inner">
-      <div class="bk-footer-brand">
-        <div class="bk-logo">Berkah<span>Karya</span></div>
-        <p>AI Ecosystem untuk bisnis Indonesia. Dari layanan kreatif hingga platform SaaS — kami hadir untuk mendorong transformasi digital UMKM dan enterprise.</p>
-      </div>
-      <div class="bk-footer-col">
-        <h5>Layanan</h5>
-        <ul>
-          <li><a href="jasa-sosmed.html">Social Media</a></li>
-          <li><a href="jasa-video-ai.html">AI Video</a></li>
-          <li><a href="jasa-website.html">Website</a></li>
-          <li><a href="jasa-content-planner.html">Content Planner</a></li>
-          <li><a href="jasa-foto-produk.html">Foto Produk</a></li>
-          <li><a href="jasa-openclaw.html">OpenClaw AI</a></li>
-        </ul>
-      </div>
-      <div class="bk-footer-col">
-        <h5>Tools</h5>
-        <ul>
-          <li><a href="omniroute.html">Omniroute</a></li>
-          <li><a href="ai-agent-pro.html">AI Agent Pro</a></li>
-          <li><a href="ai-video-studio.html">AI Video Studio</a></li>
-        </ul>
-      </div>
-      <div class="bk-footer-col">
-        <h5>Perusahaan</h5>
-        <ul>
-          <li><a href="about.html">Tentang Kami</a></li>
-          <li><a href="contact.html">Kontak</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="pricing.html">Harga</a></li>
-        </ul>
-      </div>
+    <div class="bk-footer-col">
+      <h5>Layanan</h5>
+      <ul>
+        <li><a href="/jasa-sosmed.html">Kelola Sosmed</a></li>
+        <li><a href="/jasa-video-ai.html">Jasa Video AI</a></li>
+        <li><a href="/jasa-website.html">Jasa Website</a></li>
+        <li><a href="/jasa-foto-produk.html">Foto Produk AI</a></li>
+        <li><a href="/jasa-content-planner.html">Content Planner</a></li>
+      </ul>
     </div>
-    <div class="bk-footer-bottom">
-      <span>&copy; 2025 Berkah Karya</span>
-      <span>
-        <a href="legal/privacy-policy.html">Privacy</a> &middot;
-        <a href="legal/terms-of-service.html">Terms</a>
-      </span>
+    <div class="bk-footer-col">
+      <h5>Platform</h5>
+      <ul>
+        <li><a href="/omniroute.html">Omniroute</a></li>
+        <li><a href="/tools.html">AI Tools</a></li>
+        <li><a href="/ai-agent-pro.html">AI Agent Pro</a></li>
+        <li><a href="/ai-video-studio.html">Video Studio</a></li>
+        <li><a href="/digital-product.html">Produk Digital</a></li>
+      </ul>
     </div>
-  </footer>
-
-  <!-- MOBILE NAV TOGGLE -->
-  <script>
-    (function () {
-      var toggle = document.getElementById('navToggle');
-      var menu = document.getElementById('mobileMenu');
-      if (!toggle || !menu) return;
-
-      toggle.addEventListener('click', function () {
-        var isOpen = menu.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-      });
-
-      // Close menu when a link is tapped
-      var links = menu.querySelectorAll('a');
-      for (var i = 0; i < links.length; i++) {
-        links[i].addEventListener('click', function () {
-          menu.classList.remove('open');
-          toggle.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
-        });
-      }
-    })();
-  </script>
+    <div class="bk-footer-col">
+      <h5>Perusahaan</h5>
+      <ul>
+        <li><a href="/about.html">Tentang Kami</a></li>
+        <li><a href="/contact.html">Kontak</a></li>
+        <li><a href="/portfolio.html">Portfolio</a></li>
+        <li><a href="/pricing.html">Harga</a></li>
+        <li><a href="/legal/privacy-policy.html">Privasi</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bk-footer-bottom">
+    <span>© 2025 BerkahKarya. All rights reserved.</span>
+    <span>Made with ❤️ + 🤖 AI in Indonesia</span>
+  </div>
+</footer>
 
 </body>
 </html>
