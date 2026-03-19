@@ -1,0 +1,50 @@
+city,country,country_code,lang_code,lang_name,region,promo_type
+Jakarta,Indonesia,ID,id,Bahasa Indonesia,Southeast Asia,digital
+Surabaya,Indonesia,ID,id,Bahasa Indonesia,Southeast Asia,digital
+Bandung,Indonesia,ID,id,Bahasa Indonesia,Southeast Asia,digital
+Medan,Indonesia,ID,id,Bahasa Indonesia,Southeast Asia,digital
+Yogyakarta,Indonesia,ID,id,Bahasa Indonesia,Southeast Asia,digital
+Semarang,Indonesia,ID,id,Bahasa Indonesia,Southeast Asia,digital
+Makassar,Indonesia,ID,id,Bahasa Indonesia,Southeast Asia,digital
+Bali,Indonesia,ID,id,Bahasa Indonesia,Southeast Asia,digital
+Tokyo,Japan,JP,ja,Japanese,East Asia,tools
+Osaka,Japan,JP,ja,Japanese,East Asia,tools
+Seoul,South Korea,KR,ko,Korean,East Asia,tools
+Busan,South Korea,KR,ko,Korean,East Asia,tools
+Singapore,Singapore,SG,en,English,Southeast Asia,tools
+Kuala Lumpur,Malaysia,MY,ms,Malay,Southeast Asia,tools
+Bangkok,Thailand,TH,th,Thai,Southeast Asia,tools
+Manila,Philippines,PH,en,English,Southeast Asia,tools
+Ho Chi Minh City,Vietnam,VN,vi,Vietnamese,Southeast Asia,tools
+New York,United States,US,en,English,North America,tools
+Los Angeles,United States,US,en,English,North America,tools
+Chicago,United States,US,en,English,North America,tools
+San Francisco,United States,US,en,English,North America,tools
+London,United Kingdom,GB,en,English,Europe,tools
+Manchester,United Kingdom,GB,en,English,Europe,tools
+Paris,France,FR,fr,French,Europe,tools
+Berlin,Germany,DE,de,German,Europe,tools
+Munich,Germany,DE,de,German,Europe,tools
+Amsterdam,Netherlands,NL,nl,Dutch,Europe,tools
+Madrid,Spain,ES,es,Spanish,Europe,tools
+Barcelona,Spain,ES,es,Spanish,Europe,tools
+Milan,Italy,IT,it,Italian,Europe,tools
+Dubai,UAE,AE,ar,Arabic,Middle East,tools
+Riyadh,Saudi Arabia,SA,ar,Arabic,Middle East,tools
+Cairo,Egypt,EG,ar,Arabic,Middle East,tools
+Mumbai,India,IN,en,English,South Asia,tools
+Delhi,India,IN,en,English,South Asia,tools
+Bangalore,India,IN,en,English,South Asia,tools
+Karachi,Pakistan,PK,ur,Urdu,South Asia,tools
+São Paulo,Brazil,BR,pt,Portuguese,South America,tools
+Rio de Janeiro,Brazil,BR,pt,Portuguese,South America,tools
+Buenos Aires,Argentina,AR,es,Spanish,South America,tools
+Mexico City,Mexico,MX,es,Spanish,North America,tools
+Nairobi,Kenya,KE,en,English,Africa,tools
+Lagos,Nigeria,NG,en,English,Africa,tools
+Cape Town,South Africa,ZA,en,English,Africa,tools
+Sydney,Australia,AU,en,English,Oceania,tools
+Melbourne,Australia,AU,en,English,Oceania,tools
+Auckland,New Zealand,NZ,en,English,Oceania,tools
+Toronto,Canada,CA,en,English,North America,tools
+Vancouver,Canada,CA,en,English,North America,tools

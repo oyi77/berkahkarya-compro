@@ -1,0 +1,51 @@
+name: Daily Auto Blog
+
+on:
+  schedule:
+    # 09:00 WIB (02:00 UTC) every day
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      count:
+        description: 'Number of articles (default: 5)'
+        required: false
+        default: '5'
+      city:
+        description: 'Force specific city (optional)'
+        required: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate blog articles
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: |
+          COUNT="${{ github.event.inputs.count || '5' }}"
+          CITY="${{ github.event.inputs.city }}"
+          if [ -n "$CITY" ]; then
+            python3 generate_posts.py --count "$COUNT" --city "$CITY"
+          else
+            python3 generate_posts.py --count "$COUNT"
+          fi
+
+      - name: Commit and push
+        run: |
+          git config user.name "BerkahKarya Bot"
+          git config user.email "bot@berkahkarya.org"
+          git add -A
+          COUNT="${{ github.event.inputs.count || '5' }}"
+          git commit -m "content: auto-blog $(date +%Y-%m-%d) (${COUNT} articles)" || echo "No changes"
+          git push
