@@ -26,6 +26,7 @@ a { text-decoration: none; color: inherit; }
 button { font-family: inherit; cursor: pointer; }
 
 :root {
+  --bg: #080808;
   --gold: #c4a35a;
   --gold-light: #dbb96b;
   --gold-border: rgba(196,163,90,0.25);
@@ -1133,12 +1134,14 @@ section.section { padding: 5rem 0 !important; }
 </footer>
 
 <script>
-// Hamburger
+// Hamburger (null-check: may be hidden by bk-nav CSS)
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
-hamburger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
-});
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+}
 
 // Reveal on scroll
 const revealEls = document.querySelectorAll('.reveal');
@@ -1151,6 +1154,8 @@ revealEls.forEach(el => observer.observe(el));
   <script src="/lang/id.js"></script>
   <script src="/lang/en.js"></script>
   <script src="nav.js"></script>
+  <script src="/js/geo-language-detection.js"></script>
+  <script src="/js/language-switcher-component.js"></script>
   <script src="/analytics.js" defer></script>
 </body>
 </html>
