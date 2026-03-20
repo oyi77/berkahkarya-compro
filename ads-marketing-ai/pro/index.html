@@ -143,6 +143,24 @@
     /* ── ENGINE BADGE ── */
     .engine-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(212,160,23,.1); border: 1px solid rgba(212,160,23,.3); border-radius: 999px; padding: 3px 10px; font-size: .68rem; color: var(--gold); font-weight: 700; }
 
+    /* ── CAROUSEL ── */
+    .carousel-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: .75rem; margin-top: 1rem; }
+    .carousel-slide { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; animation: slideUp .3s ease; }
+    .carousel-slide-num { font-size: .65rem; font-weight: 800; color: var(--gold); padding: .5rem .75rem .25rem; letter-spacing: .1em; }
+    .carousel-slide-img { position: relative; width: 100%; aspect-ratio: 1/1; background: var(--bg3); overflow: hidden; }
+    .carousel-slide-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .carousel-slide-img .img-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.3) 0%, rgba(0,0,0,.65) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: .6rem; }
+    .carousel-slide-img .img-text { color: #fff; font-weight: 800; font-size: .7rem; line-height: 1.35; text-shadow: 0 1px 4px rgba(0,0,0,.9); }
+    .carousel-slide-body { padding: .6rem .75rem .75rem; flex: 1; }
+    .carousel-slide-label { font-size: .6rem; font-weight: 700; color: var(--text3); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .3rem; }
+    .carousel-slide-text { font-size: .72rem; color: var(--text); line-height: 1.5; }
+    .carousel-img-loading { display: flex; align-items: center; justify-content: center; aspect-ratio: 1/1; background: var(--bg3); }
+    .carousel-img-loading .mini-spin { width: 24px; height: 24px; border: 2px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin .7s linear infinite; }
+    .carousel-download-row { display: flex; gap: .5rem; flex-wrap: wrap; padding: .75rem; border-top: 1px solid var(--border); }
+    .carousel-source-row { text-align: center; font-size: .7rem; color: var(--text3); padding: .5rem; }
+    @media (max-width: 900px) { .carousel-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 600px) { .carousel-grid { grid-template-columns: repeat(2, 1fr); } }
+
     @media (max-width: 700px) {
       .app-body { grid-template-columns: 1fr; }
       .lock-card { padding: 1.75rem 1.25rem; }
@@ -185,6 +203,7 @@
     <button class="tab-btn" onclick="switchTab('landing', this)">🚀 Landing Page Script</button>
     <button class="tab-btn" onclick="switchTab('budget', this)">💰 Budget Guide</button>
     <button class="tab-btn" onclick="switchTab('competitor', this)">🔍 Analisa Kompetitor</button>
+    <button class="tab-btn" onclick="switchTab('carousel', this)">🎠 Carousel</button>
   </div>
 
   <!-- ═══ TAB: ADS ═══ -->
@@ -375,6 +394,58 @@
       </main>
     </div>
   </div>
+  <!-- ═══ TAB: CAROUSEL ═══ -->
+  <div id="tab-carousel" class="tab-panel">
+    <div class="app-body">
+      <aside class="sidebar">
+        <div class="card">
+          <div class="card-title">🎠 Carousel Ads</div>
+          <div class="form-field">
+            <label class="form-label">Nama / Deskripsi Produk</label>
+            <textarea class="form-textarea" id="car-produk" placeholder="Contoh: Serum Vitamin C untuk kulit kusam"></textarea>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Hook (opsional — dari Engine Ads)</label>
+            <input type="text" class="form-input" id="car-hook" placeholder="Paste hook dari tab Generate Iklan..." />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Target Market</label>
+            <input type="text" class="form-input" id="car-target" placeholder="Contoh: ibu muda 25-35 tahun" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Keunggulan Produk</label>
+            <input type="text" class="form-input" id="car-keunggulan" placeholder="Contoh: BPOM certified, tanpa parabens" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Style Visual</label>
+            <select class="form-select" id="car-style">
+              <option value="minimalist product photography dark background">Minimalis Dark</option>
+              <option value="vibrant colorful social media advertisement">Vibrant & Colorful</option>
+              <option value="clean white modern product shoot">Clean White Modern</option>
+              <option value="lifestyle photography warm tones">Lifestyle Warm</option>
+              <option value="bold typography graphic design">Bold Typography</option>
+            </select>
+          </div>
+        </div>
+        <button class="gen-btn" id="car-gen-btn" onclick="generateCarousel()" style="background:var(--blue);color:white">
+          🎠 Generate 5 Slides
+        </button>
+        <div style="font-size:.72rem;color:var(--text3);line-height:1.6;padding:.25rem 0">
+          Generates 5-slide carousel dengan gambar AI + copy dari hook & angle iklan. Gratis, tanpa batas.
+        </div>
+      </aside>
+
+      <main class="output-area">
+        <div id="car-placeholder" class="output-placeholder">
+          <div class="ph-icon">🎠</div>
+          <h3>Carousel Ads Generator</h3>
+          <p>Generate 5 slide carousel siap pakai untuk Instagram & TikTok.<br/>Gambar AI + copy otomatis dari angle iklan kamu.</p>
+        </div>
+        <div id="car-results"></div>
+      </main>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -952,6 +1023,164 @@ function copyText(btn, text) {
     btn.textContent = '✓ Copied!';
     setTimeout(() => { btn.classList.remove('copied'); btn.textContent = orig; }, 2000);
   });
+}
+
+// ── CAROUSEL GENERATOR ───────────────────────────────────────────────────────
+async function generateCarousel() {
+  const produk     = document.getElementById('car-produk').value.trim();
+  const hookInput  = document.getElementById('car-hook').value.trim();
+  const target     = document.getElementById('car-target').value.trim();
+  const keunggulan = document.getElementById('car-keunggulan').value.trim();
+  const style      = document.getElementById('car-style').value;
+
+  if (!produk) { alert('Isi dulu deskripsi produk!'); return; }
+
+  setLoading('car-gen-btn', true, '🎠 Generate 5 Slides');
+  document.getElementById('car-placeholder').style.display = 'none';
+
+  // Show loading grid
+  document.getElementById('car-results').innerHTML = `
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+      <div style="font-weight:800;margin-bottom:1rem;font-size:.9rem">🎠 Generating 5 Slides...</div>
+      <div class="carousel-grid">${Array.from({length:5},(_,i)=>`
+        <div class="carousel-slide">
+          <div class="carousel-slide-num">SLIDE ${i+1}</div>
+          <div class="carousel-img-loading"><div class="mini-spin"></div></div>
+          <div class="carousel-slide-body" style="padding:.75rem">
+            <div style="background:var(--bg3);border-radius:6px;height:60px;"></div>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+
+  try {
+    // Step 1: Generate copy via ads API
+    const { ads } = await apiCall({ produk, target, keunggulan, platform: 'Instagram', jumlah: 2, tone: 'santai', mode: 'ads' });
+    const ad = ads?.[0] || {};
+
+    // Build 5 slides from ad content
+    const slides = buildCarouselSlides(ad, produk, target, keunggulan, hookInput);
+
+    // Step 2: Generate images via Pollinations.ai (parallel)
+    const imagePrompts = slides.map(s => buildImgPrompt(s.visual, style, produk));
+    const imageUrls = imagePrompts.map(prompt => buildPollinationsUrl(prompt));
+
+    renderCarousel(slides, imageUrls, produk);
+  } catch(e) {
+    document.getElementById('car-results').innerHTML = errorHTML(e.message);
+  }
+
+  setLoading('car-gen-btn', false, '🎠 Generate 5 Slides');
+}
+
+function buildCarouselSlides(ad, produk, target, keunggulan, hookOverride) {
+  // 5 slides: Hook → Problem → Solution → Proof → CTA
+  const hook = hookOverride || ad.hook || `Kenapa ${produk} ini beda?`;
+  const body  = ad.body  || `Banyak yang udah coba banyak produk tapi hasilnya sama. ${produk} hadir dengan solusi yang berbeda.`;
+  const cta   = ad.cta   || `DM sekarang — stok terbatas!`;
+
+  // Split body ke kalimat-kalimat
+  const sentences = body.replace(/\n/g,' ').split(/[.!?]+/).map(s=>s.trim()).filter(s=>s.length>10);
+
+  return [
+    {
+      num: 1, label: 'HOOK', role: '🪝 Hook / Stop-Scroll',
+      text: hook,
+      visual: `hook attention grabbing text: "${hook.slice(0,60)}"`,
+      subtext: 'Swipe untuk lihat lebih →'
+    },
+    {
+      num: 2, label: 'PROBLEM', role: '😤 Problem Agitate',
+      text: sentences[0] || `Masih bingung kenapa hasilnya gitu-gitu aja?`,
+      visual: `person frustrated problem struggling relatable`,
+      subtext: 'Kamu bukan sendirian...'
+    },
+    {
+      num: 3, label: 'SOLUSI', role: '✅ Solution',
+      text: sentences[1] || `${produk} hadir dengan pendekatan yang terbukti berbeda.`,
+      visual: `product solution reveal transformation ${produk}`,
+      subtext: keunggulan || 'Terbukti & aman dipakai'
+    },
+    {
+      num: 4, label: 'BUKTI', role: '⭐ Social Proof',
+      text: ad.bullets?.slice(0,2).map(b=>`✅ ${b}`).join('\n') || `✅ ${keunggulan || 'Terbukti ribuan pengguna'}\n✅ Hasil nyata bukan janji`,
+      visual: `customer testimonial review stars happy result`,
+      subtext: '2.500+ pelanggan puas'
+    },
+    {
+      num: 5, label: 'CTA', role: '🔥 Call to Action',
+      text: cta,
+      visual: `call to action urgent limited offer product`,
+      subtext: 'DM atau klik link di bio'
+    }
+  ];
+}
+
+function buildImgPrompt(visual, style, produk) {
+  return `${style}, ${visual}, professional advertising photography, high quality, sharp, cinematic lighting, no text watermark`;
+}
+
+function buildPollinationsUrl(prompt) {
+  // Pollinations.ai — free, no API key, stable
+  const seed = Math.floor(Math.random() * 999999);
+  const encoded = encodeURIComponent(prompt);
+  return `https://image.pollinations.ai/prompt/${encoded}?width=800&height=800&seed=${seed}&nologo=true&enhance=true`;
+}
+
+function renderCarousel(slides, imageUrls, produk) {
+  const container = document.getElementById('car-results');
+
+  let slidesHtml = slides.map((s, i) => {
+    const imgUrl = imageUrls[i];
+    return `
+      <div class="carousel-slide">
+        <div class="carousel-slide-num">SLIDE ${s.num} — ${s.label}</div>
+        <div class="carousel-slide-img">
+          <img
+            src="${imgUrl}"
+            alt="Slide ${s.num}"
+            loading="lazy"
+            onerror="this.parentElement.innerHTML='<div style=\\'display:flex;align-items:center;justify-content:center;height:100%;font-size:.75rem;color:var(--text3);padding:.5rem;text-align:center;\\'>Gambar sedang dimuat...<br/>Coba reload jika tidak muncul</div>'"
+          />
+          <div class="img-overlay">
+            <div class="img-text">${s.label}</div>
+          </div>
+        </div>
+        <div class="carousel-slide-body">
+          <div class="carousel-slide-label">${s.role}</div>
+          <div class="carousel-slide-text">${esc(s.text)}</div>
+          ${s.subtext ? `<div style="margin-top:.4rem;font-size:.65rem;color:var(--text3)">${esc(s.subtext)}</div>` : ''}
+        </div>
+        <div class="carousel-download-row">
+          <a href="${imgUrl}" download="slide-${s.num}.jpg" target="_blank">
+            <button class="copy-btn" style="font-size:.68rem">⬇️ Download</button>
+          </a>
+          <button class="copy-btn" style="font-size:.68rem" onclick="copyText(this, \`${esc(s.text)}\`)">📋 Copy Text</button>
+        </div>
+      </div>`;
+  }).join('');
+
+  const fullCopy = slides.map(s => `[SLIDE ${s.num} — ${s.label}]\n${s.text}`).join('\n\n---\n\n');
+
+  container.innerHTML = `
+    <div class="landing-result">
+      <div class="landing-result-header">
+        <h3>🎠 5-Slide Carousel — ${esc(produk.slice(0,30))}</h3>
+        <button class="copy-btn" onclick="copyText(this, \`${esc(fullCopy)}\`)">📋 Copy Semua Teks</button>
+      </div>
+      <div style="padding:1rem 1.25rem">
+        <div class="carousel-grid">${slidesHtml}</div>
+        <div class="carousel-source-row" style="margin-top:.75rem">
+          ⚡ Gambar via <strong>Pollinations.ai</strong> (gratis, unlimited) · Refresh untuk gambar baru
+        </div>
+        <div style="background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.25);border-radius:10px;padding:.85rem 1rem;margin-top:.75rem;font-size:.8rem;line-height:1.6">
+          <strong style="color:var(--blue)">📌 Cara Pakai:</strong><br/>
+          1. Download gambar tiap slide (klik ⬇️)<br/>
+          2. Upload ke Instagram Carousel / TikTok Slideshow<br/>
+          3. Tambah teks copy di caption atau sticker teks di dalam app
+        </div>
+      </div>
+    </div>`;
 }
 
 // History
