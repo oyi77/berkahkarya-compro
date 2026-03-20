@@ -57,6 +57,17 @@
     .art-share a { font-size: 0.82rem; color: var(--mustard); font-weight: 600; text-decoration: none; }
     .art-promo { background: var(--bg-muted); border-radius: var(--radius); padding: 2rem; margin: 2.5rem 0; }
   </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V9C14XZ9SG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V9C14XZ9SG', {
+      'send_page_view': true,
+      'cookie_flags': 'SameSite=None;Secure'
+    });
+  </script>
 </head>
 <body>
 <nav id="mainNav"></nav>
@@ -139,5 +150,6 @@
 <footer style="background:var(--bg-muted);border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;">
   <p style="color:var(--text-light);font-size:0.82rem;margin:0;">© 2026 BerkahKarya — AI Ecosystem untuk Bisnis Indonesia · <a href="/blog.html" style="color:var(--mustard);">Blog</a></p>
 </footer>
+  <script src="/analytics.js" defer></script>
 </body>
 </html>

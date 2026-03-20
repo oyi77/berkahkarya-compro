@@ -144,6 +144,17 @@
       .dp-hero { padding-top: calc(64px + 3rem); padding-bottom: 3rem; }
     }
   </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V9C14XZ9SG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V9C14XZ9SG', {
+      'send_page_view': true,
+      'cookie_flags': 'SameSite=None;Secure'
+    });
+  </script>
 </head>
 <body>
 
@@ -418,5 +429,6 @@
   if (_btn && _nav) _btn.addEventListener('click', () => _nav.classList.toggle('open'));
 </script>
 <script src="nav.js"></script>
+  <script src="/analytics.js" defer></script>
 </body>
 </html>

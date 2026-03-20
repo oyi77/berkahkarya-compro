@@ -634,6 +634,17 @@ footer:not(.bk-footer) { display: none !important; }
 
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V9C14XZ9SG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V9C14XZ9SG', {
+      'send_page_view': true,
+      'cookie_flags': 'SameSite=None;Secure'
+    });
+  </script>
 </head>
 <body>
 <nav class="bk-nav" id="mainNav">
@@ -1215,5 +1226,6 @@ window.addEventListener('scroll', () => {
   </div>
 </footer>
 <script src="nav.js"></script>
+  <script src="/analytics.js" defer></script>
 </body>
 </html>

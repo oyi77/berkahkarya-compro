@@ -307,6 +307,14 @@ def build_article_html(city: dict, topic: dict, content: dict, img: dict, slug: 
   {hreflang_en}
   {xdefault}
   <link rel="stylesheet" href="/style.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V9C14XZ9SG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'G-V9C14XZ9SG', {{'send_page_view': true}});
+  </script>
   <script type="application/ld+json">{schema}</script>
   <style>
     .art-container {{ max-width: 800px; margin: 0 auto; padding: 0 1.5rem 4rem; }}
@@ -362,6 +370,7 @@ def build_article_html(city: dict, topic: dict, content: dict, img: dict, slug: 
 <footer style="background:var(--bg-muted);border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;">
   <p style="color:var(--text-light);font-size:0.82rem;margin:0;">© 2026 BerkahKarya — AI Ecosystem untuk Bisnis Indonesia · <a href="/blog.html" style="color:var(--mustard);">Blog</a></p>
 </footer>
+<script src="/analytics.js" defer></script>
 </body>
 </html>"""
 
