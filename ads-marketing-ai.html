@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BerkahKarya Ads Marketing AI — Generate Iklan yang Closing</title>
+  <meta name="description" content="AI yang bikin copywriting iklan langsung siap pakai. Tulis produk kamu, dapat 2 variasi iklan dalam 10 detik. TikTok, Instagram, Facebook." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+
+    /* ── Jasa LP shared styles ── */
+    .js-hero {
+      background: var(--bg-white); border-bottom: 1px solid var(--border);
+      padding: calc(64px + 5rem) 1.5rem 5rem; text-align: center;
+    }
+    .js-hero-inner { max-width: 780px; margin: 0 auto; }
+    .js-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg-muted); border: 1px solid var(--border);
+      border-radius: 999px; padding: 6px 14px; margin-bottom: 1.5rem;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--mustard);
+    }
+    .js-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900;
+      letter-spacing: -0.04em; line-height: 1.08; margin: 0 0 1.25rem;
+    }
+    .js-hero h1 em { font-style: normal; color: var(--mustard); }
+    .js-hero-sub {
+      font-size: 1.1rem; color: var(--text-muted); line-height: 1.7;
+      margin: 0 auto 2rem; max-width: 600px;
+    }
+    .js-hero-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+    /* Sections */
+    .js-sec { padding: 5rem 1.5rem; }
+    .js-sec.alt { background: var(--bg-muted); }
+    .js-sec-inner { max-width: var(--max-width); margin: 0 auto; }
+    .js-sec-head { margin-bottom: 3rem; }
+    .js-sec-head.center { text-align: center; }
+    .sec-lbl { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mustard); margin-bottom: 0.6rem; }
+    .js-sec-head h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.2; margin: 0; }
+    .js-sec-head h2 em { font-style: normal; color: var(--mustard); }
+    .js-sec-head p { color: var(--text-muted); line-height: 1.65; margin: 0.75rem 0 0; max-width: 560px; }
+    .js-sec-head.center p { margin-left: auto; margin-right: auto; }
+
+    /* Pain points */
+    .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .pain-card {
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem;
+      border-left: 3px solid #e53e3e;
+    }
+    .pain-card .pain-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+    .pain-card h4 { font-size: 0.95rem; font-weight: 800; margin: 0 0 0.4rem; color: var(--text); }
+    .pain-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    /* How it works */
+    .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; position: relative; }
+    .how-steps::before {
+      content: ''; position: absolute; top: 28px; left: 16.5%; right: 16.5%;
+      height: 1px; background: var(--border);
+    }
+    .how-step { text-align: center; }
+    .how-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 2px solid var(--mustard); background: var(--bg-muted);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 900; color: var(--mustard);
+      margin: 0 auto 1.25rem; position: relative; z-index: 1;
+    }
+    .how-step h4 { font-size: 0.95rem; font-weight: 800; color: var(--text); margin: 0 0 0.4rem; }
+    .how-step p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; margin: 0; }
+
+    /* Demo preview */
+    .demo-wrap {
+      max-width: 680px; margin: 0 auto;
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.07);
+    }
+    .demo-bar {
+      background: var(--bg-muted); border-bottom: 1px solid var(--border);
+      padding: 12px 16px; display: flex; align-items: center; gap: 10px;
+    }
+    .demo-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .demo-title { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-left: auto; margin-right: auto; }
+    .demo-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .demo-msg-user {
+      align-self: flex-end; background: var(--mustard); color: #fff;
+      border-radius: 18px 18px 4px 18px; padding: 10px 16px;
+      font-size: 0.88rem; font-weight: 600; max-width: 80%;
+    }
+    .demo-msg-bot {
+      align-self: flex-start; background: var(--bg-muted); border: 1px solid var(--border);
+      border-radius: 4px 18px 18px 18px; padding: 14px 18px;
+      font-size: 0.85rem; color: var(--text); max-width: 90%; line-height: 1.65;
+    }
+    .demo-msg-bot strong { color: var(--mustard); }
+    .demo-msg-locked {
+      align-self: flex-start; background: var(--bg-muted); border: 1px solid var(--border);
+      border-radius: 4px 18px 18px 18px; padding: 14px 18px;
+      font-size: 0.85rem; color: var(--text-muted); max-width: 90%;
+      position: relative; overflow: hidden;
+    }
+    .demo-msg-locked::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
+      background: linear-gradient(to top, var(--bg-muted) 30%, transparent);
+    }
+    .demo-lock-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--text); color: #fff;
+      font-size: 0.75rem; font-weight: 700; padding: 6px 14px;
+      border-radius: 999px; margin-top: 0.5rem;
+    }
+
+    /* Features */
+    .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .feat-card {
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .feat-card:hover { border-color: var(--mustard); box-shadow: 0 4px 20px rgba(212,160,23,0.08); }
+    .feat-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .feat-card h4 { font-size: 0.95rem; font-weight: 800; color: var(--text); margin: 0 0 0.4rem; }
+    .feat-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    /* Platforms */
+    .platform-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 1.5rem; }
+    .platform-chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: 999px; padding: 8px 18px;
+      font-size: 0.83rem; font-weight: 600; color: var(--text);
+    }
+
+    /* Social Proof */
+    .proof-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center; }
+    .proof-num { font-size: 2.2rem; font-weight: 900; color: var(--mustard); letter-spacing: -0.04em; line-height: 1; }
+    .proof-lbl { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+    /* Testimonials */
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .testi-card {
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+    }
+    .testi-stars { color: var(--mustard); font-size: 0.85rem; margin-bottom: 0.75rem; }
+    .testi-text { font-size: 0.88rem; color: var(--text); line-height: 1.65; margin: 0 0 1rem; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 10px; }
+    .testi-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--mustard); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .testi-name { font-size: 0.85rem; font-weight: 700; color: var(--text); }
+    .testi-role { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* Pricing */
+    .pricing-card {
+      max-width: 480px; margin: 0 auto;
+      background: var(--bg-white); border: 2px solid var(--mustard);
+      border-radius: var(--radius-lg); padding: 2.5rem;
+      box-shadow: 0 0 0 6px rgba(212,160,23,0.07);
+      text-align: center;
+    }
+    .price-badge {
+      display: inline-block; background: var(--mustard); color: #fff;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 4px 14px; border-radius: 999px; margin-bottom: 1.5rem;
+    }
+    .price-amount { font-size: 3rem; font-weight: 900; color: var(--text); letter-spacing: -0.05em; line-height: 1; }
+    .price-amount span { font-size: 1rem; font-weight: 500; color: var(--text-muted); }
+    .price-period { color: var(--text-muted); font-size: 0.85rem; margin: 0.25rem 0 1.5rem; }
+    .price-items { list-style: none; padding: 0; margin: 0 0 2rem; text-align: left; display: flex; flex-direction: column; gap: 0.7rem; }
+    .price-items li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text-muted); }
+    .price-items li::before { content: '✓'; color: var(--mustard); font-weight: 700; flex-shrink: 0; }
+    .price-note { font-size: 0.78rem; color: var(--text-light); margin-top: 1rem; }
+
+    /* CTA Final */
+    .js-cta-final { text-align: center; padding: 5rem 1.5rem; background: var(--mustard); }
+    .js-cta-final h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 900; color: #fff; letter-spacing: -0.03em; margin: 0 0 1rem; }
+    .js-cta-final p { color: rgba(255,255,255,0.85); line-height: 1.7; margin: 0 0 2rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .cta-btn-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; color: var(--mustard);
+      font-size: 1rem; font-weight: 800;
+      padding: 14px 32px; border-radius: var(--radius-sm);
+      transition: transform 0.15s, box-shadow 0.15s;
+      text-decoration: none;
+    }
+    .cta-btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+
+    /* FAQ */
+    .faq-list { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+    .faq-item {
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 1.25rem 1.5rem;
+    }
+    .faq-q { font-size: 0.95rem; font-weight: 800; color: var(--text); margin: 0 0 0.5rem; }
+    .faq-a { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; margin: 0; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .pain-grid, .feat-grid { grid-template-columns: repeat(2, 1fr); }
+      .proof-stats { grid-template-columns: repeat(2, 1fr); }
+      .testi-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 680px) {
+      .pain-grid, .feat-grid, .testi-grid, .how-steps { grid-template-columns: 1fr; }
+      .how-steps::before { display: none; }
+      .proof-stats { grid-template-columns: repeat(2, 1fr); }
+      .js-hero { padding: calc(64px + 3rem) 1.25rem 3rem; }
+      .js-sec { padding: 3.5rem 1.25rem; }
+    }
+
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V9C14XZ9SG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V9C14XZ9SG', {
+      'send_page_view': true,
+      'cookie_flags': 'SameSite=None;Secure'
+    });
+  </script>
+</head>
+<body>
+
+<nav class="bk-nav" id="mainNav">
+  <div class="bk-nav-inner">
+    <a href="index.html" class="bk-logo">Berkah<span>Karya</span></a>
+    <ul class="bk-nav-links">
+      <li><a href="services.html">Layanan</a></li>
+      <li><a href="digital-product.html">Produk Digital</a></li>
+      <li><a href="blog.html">Postingan</a></li>
+      <li><a href="tools.html">Tools</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="bk-nav-right">
+      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20mau%20coba%20Ads%20Marketing%20AI" class="bk-nav-cta" target="_blank" rel="noopener">Coba Gratis →</a>
+    </div>
+    <button class="bk-nav-mobile" id="mobileToggle" aria-label="Menu">☰</button>
+  </div>
+  <div class="bk-nav-mobile-menu" id="mobileMenu">
+    <a href="services.html">Layanan</a>
+    <a href="digital-product.html">Produk Digital</a>
+    <a href="blog.html">Postingan</a>
+    <a href="tools.html">Tools</a>
+    <a href="about.html">About</a>
+    <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20mau%20coba%20Ads%20Marketing%20AI" target="_blank" rel="noopener">💬 Coba Gratis</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="js-hero">
+  <div class="js-hero-inner">
+    <div class="js-tag">🤖 AI Ads Generator · Baru Launched</div>
+    <h1>Iklan yang <em>Closing</em>,<br>Dibuat dalam 10 Detik</h1>
+    <p class="js-hero-sub">Tulis produk kamu → AI langsung bikin 2 variasi copywriting iklan siap pakai. Bukan template biasa — pakai formula yang terbukti convert.</p>
+    <div class="js-hero-btns">
+      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20mau%20coba%20Ads%20Marketing%20AI" class="btn-primary" target="_blank" rel="noopener">
+        💬 Coba Gratis via WhatsApp
+      </a>
+      <a href="#demo" class="btn-secondary">Lihat Demo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAIN POINTS ===== -->
+<section class="js-sec alt">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">Masalah yang Kamu Hadapi</span>
+      <h2>Capek Bikin Iklan yang <em>Ga Closing?</em></h2>
+      <p>Udah keluar biaya, tapi ROAS jelek. Ini yang biasanya jadi akar masalahnya:</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon">😩</div>
+        <h4>Nulis Copy Sendiri Lama Banget</h4>
+        <p>Mikir hook, body, CTA — sambil jaga toko. Habis waktu buat nulis, belum tentu hasilnya bagus.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">💸</div>
+        <h4>Budget Habis, Iklan Ga Convert</h4>
+        <p>Udah coba tapi belum berhasil. Boost postingan keluar Rp 500rb, hasilnya 0 order. Copywriting-nya yang salah.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">😵</div>
+        <h4>Ga Tau Formula Copywriting</h4>
+        <p>Iklan kompetitor bisa closing ratusan, punya sendiri sepi. Padahal produknya sama bagusnya.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="js-sec" id="demo">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">Cara Kerja</span>
+      <h2>3 Langkah, <em>Iklan Siap Pakai</em></h2>
+    </div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-num">1</div>
+        <h4>Ketik Produk Kamu</h4>
+        <p>Di WhatsApp / Telegram — cukup sebutkan produk dan target pasar. Contoh: "jual hijab premium untuk wanita 25-35 tahun".</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">2</div>
+        <h4>AI Generate Iklan</h4>
+        <p>Sistem langsung buat 2 variasi iklan lengkap — angle, hook, body, bullet, dan CTA yang kuat dalam &lt; 10 detik.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">3</div>
+        <h4>Copy, Paste, Iklankan</h4>
+        <p>Langsung tempel ke Meta Ads, TikTok Ads, atau feed organik. Tinggal pilih variasi terbaik dan jalankan.</p>
+      </div>
+    </div>
+
+    <!-- Demo Mockup -->
+    <div class="demo-wrap" style="margin-top: 3.5rem;">
+      <div class="demo-bar">
+        <div class="demo-dot" style="background:#ff5f57;"></div>
+        <div class="demo-dot" style="background:#febc2e;"></div>
+        <div class="demo-dot" style="background:#28c840;"></div>
+        <div class="demo-title">BerkahKarya Ads AI · Preview Demo</div>
+      </div>
+      <div class="demo-body">
+        <div class="demo-msg-user">jual skincare anti jerawat buat wanita 20-30 tahun</div>
+        <div class="demo-msg-bot">
+          ✅ <strong>IKLAN #1 — Angle: Pain + Solusi</strong><br><br>
+          🪝 <strong>Hook:</strong><br>
+          "Udah 3 bulan pakai skincare tapi jerawat masih bandel juga?"<br><br>
+          💥 <strong>Body:</strong><br>
+          Bukan salah kulit kamu. Masalahnya ada di formula yang kamu pakai — banyak yang klaim ampuh, tapi isinya cuma air dan parfum.<br><br>
+          [Nama Produk] diformulasi khusus untuk kulit Asia tropis. Niacinamide 10% + Zinc PCA — kombinasi yang secara klinis terbukti kurangi jerawat 87% dalam 4 minggu.<br><br>
+          📌 <strong>Yang kamu dapat:</strong><br>
+          • Kulit bersih tanpa efek kering<br>
+          • Cocok untuk kulit sensitif sekalipun<br>
+          • Hasil kelihatan mulai minggu ke-2<br><br>
+          🔥 <strong>CTA:</strong><br>
+          Bayangin kalau bulan depan kamu udah ga perlu nutup-nutupin jerawat lagi. DM sekarang — stok terbatas.
+        </div>
+        <div style="font-size:0.82rem;color:var(--mustard);font-weight:700;text-align:center;padding:0.25rem 0;">
+          🔥 Ini baru 1 dari 2 iklan yang dibuat sistem
+        </div>
+        <div class="demo-msg-locked">
+          ✅ <strong>IKLAN #2 — Angle: Social Proof + Fear</strong><br><br>
+          🪝 <strong>Hook:</strong><br>
+          "2.847 cewek udah buktiin ini di kulit mereka..."
+        </div>
+        <div style="text-align:center;padding:0.5rem 0;">
+          <span class="demo-lock-badge">🔒 Lanjutannya dikunci · Aktivasi untuk buka</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="js-sec alt">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">Kenapa Ini Beda</span>
+      <h2>Bukan AI Biasa yang <em>Hasilnya Generic</em></h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">🎯</div>
+        <h4>Formula Terbukti Convert</h4>
+        <p>Bukan asal generate teks. Setiap iklan pakai struktur Hook-Body-CTA yang dirancang untuk trigger emosi: pain, desire, fear, curiosity.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔄</div>
+        <h4>2 Variasi Setiap Generate</h4>
+        <p>Selalu dapat 2 angle berbeda — bisa A/B test langsung. Makin banyak variasi, makin besar chance salah satunya jadi winner.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📱</div>
+        <h4>Multi Platform Ready</h4>
+        <p>Copy yang dihasilkan cocok untuk Meta Ads, TikTok Ads, Instagram feed, story, dan caption organik.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">⚡</div>
+        <h4>10 Detik per Iklan</h4>
+        <p>Yang biasanya butuh 1 jam mikir, sekarang jadi 10 detik. Bisa generate puluhan variasi iklan dalam 1 jam kerja.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🇮🇩</div>
+        <h4>Bahasa Indonesia Natural</h4>
+        <p>Bukan terjemahan dari Bahasa Inggris. Ditulis langsung dalam gaya copywriting Indonesia yang terasa real, bukan AI.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">💬</div>
+        <h4>Via WhatsApp / Telegram</h4>
+        <p>Tidak perlu install aplikasi atau belajar tools baru. Langsung di chat yang sudah kamu pakai sehari-hari.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:2.5rem;">
+      <p style="text-align:center;font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">Platform yang didukung:</p>
+      <div class="platform-chips">
+        <div class="platform-chip">📘 Meta Ads (FB/IG)</div>
+        <div class="platform-chip">🎵 TikTok Ads</div>
+        <div class="platform-chip">📸 Instagram Organik</div>
+        <div class="platform-chip">💬 WhatsApp Blast</div>
+        <div class="platform-chip">▶️ YouTube Shorts</div>
+        <div class="platform-chip">🛒 Marketplace</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOCIAL PROOF ===== -->
+<section class="js-sec">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">Sudah Dicoba</span>
+      <h2>Pebisnis Indonesia Udah <em>Rasain Bedanya</em></h2>
+    </div>
+    <div class="proof-stats">
+      <div>
+        <div class="proof-num">500+</div>
+        <div class="proof-lbl">Iklan Digenerate</div>
+      </div>
+      <div>
+        <div class="proof-num">10 dtk</div>
+        <div class="proof-lbl">Rata-rata Generate Time</div>
+      </div>
+      <div>
+        <div class="proof-num">6 niche</div>
+        <div class="proof-lbl">Kategori Produk</div>
+      </div>
+      <div>
+        <div class="proof-num">Rp 99rb</div>
+        <div class="proof-lbl">Harga per Bulan</div>
+      </div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Saya udah nyoba banyak tools AI, tapi ini yang paling ngerti konteks Indonesia. Hook-nya langsung ngena ke target market saya. Pertama kali coba, langsung ada yang DM."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👗</div>
+          <div>
+            <div class="testi-name">Riana S.</div>
+            <div class="testi-role">Seller Hijab Premium · Surabaya</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Yang saya suka, hasilnya ga kayak robot nulis. Natural banget. Saya tinggal ganti nama produk sama harga, langsung bisa dipake. Hemat waktu banget untuk usaha kecil kayak saya."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">🍜</div>
+          <div>
+            <div class="testi-name">Dodi P.</div>
+            <div class="testi-role">Owner UMKM Kuliner · Bandung</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Klien saya tanya 'siapa yang nulis ini?' — padahal AI. Serius, level copy-nya di atas yang biasanya saya buat manual. Sekarang saya pakai ini buat semua campaign klien."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">📊</div>
+          <div>
+            <div class="testi-name">Anggi W.</div>
+            <div class="testi-role">Digital Marketing Freelancer · Jakarta</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="js-sec alt" id="harga">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">Harga</span>
+      <h2>Satu Harga, <em>Generate Tanpa Batas</em></h2>
+      <p>Lebih murah dari 1 post paid endorse. Lebih cepat dari hire copywriter.</p>
+    </div>
+    <div class="pricing-card">
+      <span class="price-badge">⭐ Paling Dipilih</span>
+      <div class="price-amount">Rp 99.000 <span>/ bulan</span></div>
+      <div class="price-period">Bisa dibatalkan kapan saja</div>
+      <ul class="price-items">
+        <li>Generate iklan tanpa batas setiap hari</li>
+        <li>Selalu dapat 2 variasi angle berbeda</li>
+        <li>6 platform: Meta, TikTok, IG, WA, YouTube, Marketplace</li>
+        <li>Update formula otomatis — selalu pakai teknik terbaru</li>
+        <li>Akses via WhatsApp &amp; Telegram</li>
+        <li>Support tim BerkahKarya jika butuh bantuan</li>
+      </ul>
+      <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20mau%20aktivasi%20Ads%20Marketing%20AI.%20Produk%20saya%3A%20" class="btn-primary" style="display:block;text-align:center;padding:14px;" target="_blank" rel="noopener">
+        💬 Aktivasi via WhatsApp
+      </a>
+      <p class="price-note">🔒 Transaksi aman · Tidak ada hidden cost · Bisa stop kapan saja</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="js-sec">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">Pertanyaan Umum</span>
+      <h2>Ada yang <em>Ingin Ditanyakan?</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">Hasilnya bisa langsung dipakai tanpa edit?</p>
+        <p class="faq-a">Sebagian besar bisa langsung pakai. Tapi kami sarankan ganti nama produk, harga, dan detail spesifik brand kamu agar lebih personal. Proses edit biasanya &lt; 2 menit.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Cocok untuk jualan apa saja?</p>
+        <p class="faq-a">Sudah diuji untuk 6+ niche: fashion, kuliner, skincare, jasa, digital produk, dan properti. Selama ada produk dan target market yang jelas, AI bisa generate iklan yang relevan.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Gimana cara aksesnya setelah aktivasi?</p>
+        <p class="faq-a">Tim kami akan kirim link akses WhatsApp / Telegram bot dalam maksimal 1x24 jam. Langsung bisa dipakai tanpa install aplikasi apapun.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Bisa generate berapa iklan per hari?</p>
+        <p class="faq-a">Tidak ada batas. Generate sebanyak yang kamu butuhkan — untuk semua produk dan semua platform dalam 1 akun yang sama.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Kalau tidak cocok, bisa refund?</p>
+        <p class="faq-a">Ada masa trial 3 hari. Jika tidak sesuai ekspektasi, hubungi tim kami dan kami akan proses pengembalian dana tanpa pertanyaan panjang.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section class="js-cta-final">
+  <h2>Iklan Kamu Bisa Closing.<br>Mulai Dari 10 Detik.</h2>
+  <p>Jangan biarkan budget ads habis untuk copy yang salah. Generate iklan yang benar-benar bisa closing — sekarang.</p>
+  <a href="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20mau%20aktivasi%20Ads%20Marketing%20AI.%20Produk%20saya%3A%20" class="cta-btn-white" target="_blank" rel="noopener">
+    💬 Mulai Sekarang — Gratis 3 Hari
+  </a>
+</section>
+
+<footer class="bk-footer">
+  <div class="bk-footer-inner">
+    <div class="bk-footer-brand">
+      <div class="bk-logo">Berkah<span>Karya</span></div>
+      <p>AI Ecosystem untuk bisnis Indonesia — agency kreatif, AI tools, dan produk digital dalam satu ekosistem.</p>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Layanan</h5>
+      <ul>
+        <li><a href="jasa-sosmed.html">Kelola Social Media</a></li>
+        <li><a href="jasa-video-ai.html">Jasa Video AI</a></li>
+        <li><a href="jasa-website.html">Jasa Website</a></li>
+        <li><a href="ads-marketing-ai.html">Ads Marketing AI</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Tools</h5>
+      <ul>
+        <li><a href="ai-video-studio.html">AI Video Studio</a></li>
+        <li><a href="omniroute.html">Omniroute</a></li>
+        <li><a href="tools.html">Semua Tools</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Perusahaan</h5>
+      <ul>
+        <li><a href="about.html">Tentang Kami</a></li>
+        <li><a href="contact.html">Kontak</a></li>
+        <li><a href="legal/privacy-policy.html">Privasi</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bk-footer-bottom">
+    <span>© 2025 BerkahKarya. All rights reserved.</span>
+    <span>Made with ❤️ + 🤖 AI in Indonesia</span>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('mobileToggle');
+  const nav = document.getElementById('mainNav');
+  if (toggle && nav) toggle.addEventListener('click', () => nav.classList.toggle('open'));
+</script>
+  <script src="/lang/id.js"></script>
+  <script src="/lang/en.js"></script>
+  <script src="nav.js"></script>
+  <script src="/analytics.js" defer></script>
+</body>
+</html>
