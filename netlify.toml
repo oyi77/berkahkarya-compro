@@ -8,8 +8,23 @@
   # Build command (optional - for static sites)
   command = "echo 'Static website - no build required'"
 
+# Functions directory
+[functions]
+  directory = "netlify/functions"
+
 # Redirect rules for portfolio sites
 # These allow accessing portfolio sites as subdirectories
+
+# API routes → Netlify Functions
+[[redirects]]
+  from = "/api/generate-ads"
+  to = "/.netlify/functions/generate-ads"
+  status = 200
+
+[[redirects]]
+  from = "/ads-marketing-ai/pro"
+  to = "/ads-marketing-ai/pro/index.html"
+  status = 200
 
 # Main website files
 [[redirects]]

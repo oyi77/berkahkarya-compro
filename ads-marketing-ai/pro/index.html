@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ads Marketing AI Pro — BerkahKarya</title>
+  <meta name="description" content="Generate copywriting iklan unlimited. Platform: TikTok, Meta Ads, Instagram, WhatsApp, Marketplace." />
+  <!-- Robots: noindex (halaman premium) -->
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #d4a017;
+      --gold-light: #f5c842;
+      --bg: #0f0f0f;
+      --bg2: #1a1a1a;
+      --bg3: #242424;
+      --border: #2e2e2e;
+      --text: #ede8e0;
+      --text2: #b8b0a5;
+      --text3: #7a7269;
+      --green: #10b981;
+      --red: #ef4444;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ===== LOCK SCREEN ===== */
+    #lock-screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: radial-gradient(ellipse at 50% 0%, rgba(212,160,23,0.08) 0%, transparent 60%);
+    }
+    .lock-logo {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: -0.03em;
+      margin-bottom: 2rem;
+    }
+    .lock-logo span { color: var(--gold); }
+    .lock-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+    .lock-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .lock-card h1 { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 0.4rem; }
+    .lock-card h1 span { color: var(--gold); }
+    .lock-card p { font-size: 0.85rem; color: var(--text2); line-height: 1.65; margin-bottom: 1.75rem; }
+    .lock-form { display: flex; flex-direction: column; gap: 0.75rem; }
+    .lock-input {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      font-size: 1rem;
+      color: var(--text);
+      font-family: inherit;
+      text-align: center;
+      letter-spacing: 0.1em;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .lock-input:focus { border-color: var(--gold); }
+    .lock-input::placeholder { color: var(--text3); letter-spacing: 0; }
+    .lock-btn {
+      background: var(--gold);
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #1a1100;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .lock-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .lock-btn:active { transform: translateY(0); }
+    .lock-error {
+      color: var(--red);
+      font-size: 0.8rem;
+      display: none;
+      text-align: center;
+    }
+    .lock-error.show { display: block; }
+    .lock-footer { margin-top: 1.5rem; font-size: 0.75rem; color: var(--text3); }
+    .lock-footer a { color: var(--gold); text-decoration: none; }
+
+    /* ===== MAIN APP ===== */
+    #app { display: none; min-height: 100vh; }
+    .app-header {
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .app-logo { font-size: 1rem; font-weight: 900; letter-spacing: -0.03em; }
+    .app-logo span { color: var(--gold); }
+    .app-badge { background: var(--gold); color: #1a1100; font-size: 0.65rem; font-weight: 800; padding: 3px 10px; border-radius: 999px; letter-spacing: 0.05em; }
+    .app-logout { background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; padding: 5px 12px; font-size: 0.75rem; color: var(--text3); cursor: pointer; font-family: inherit; transition: color 0.15s; }
+    .app-logout:hover { color: var(--red); }
+
+    .app-body {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    /* === SIDEBAR INPUT === */
+    .sidebar { display: flex; flex-direction: column; gap: 1rem; }
+    .card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+    .card-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem; }
+    .form-field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.75rem; }
+    .form-field:last-child { margin-bottom: 0; }
+    .form-label { font-size: 0.78rem; color: var(--text2); font-weight: 600; }
+    .form-input, .form-textarea, .form-select {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      color: var(--text);
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--gold); }
+    .form-textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+    .form-select option { background: var(--bg3); }
+
+    .platform-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+    .platform-btn {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 6px;
+      font-size: 0.75rem;
+      color: var(--text2);
+      cursor: pointer;
+      font-family: inherit;
+      text-align: center;
+      transition: all 0.15s;
+    }
+    .platform-btn:hover { border-color: var(--gold); color: var(--text); }
+    .platform-btn.active { background: rgba(212,160,23,0.12); border-color: var(--gold); color: var(--gold); font-weight: 700; }
+
+    .generate-btn {
+      background: var(--gold);
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 13px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #1a1100;
+      cursor: pointer;
+      font-family: inherit;
+      width: 100%;
+      transition: background 0.15s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .generate-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .generate-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    /* === OUTPUT AREA === */
+    .output-area { display: flex; flex-direction: column; gap: 1rem; }
+    .output-header { display: flex; align-items: center; justify-content: space-between; }
+    .output-header h2 { font-size: 1rem; font-weight: 800; }
+    .output-meta { font-size: 0.75rem; color: var(--text3); }
+    .output-placeholder {
+      background: var(--bg2);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 3rem;
+      text-align: center;
+    }
+    .output-placeholder .ph-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .output-placeholder h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .output-placeholder p { font-size: 0.82rem; color: var(--text3); line-height: 1.6; max-width: 300px; margin: 0 auto; }
+
+    /* Ad Result Card */
+    .ad-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: translateY(0); } }
+    .ad-card-header {
+      padding: 0.9rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ad-card-title { font-size: 0.78rem; font-weight: 800; color: var(--gold); }
+    .ad-card-platform { font-size: 0.68rem; background: var(--bg3); border: 1px solid var(--border); padding: 2px 8px; border-radius: 999px; color: var(--text2); }
+    .ad-card-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .ad-field { }
+    .ad-field-lbl { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); margin-bottom: 0.3rem; }
+    .ad-field-val { font-size: 0.88rem; color: var(--text); line-height: 1.65; white-space: pre-wrap; }
+    .ad-field-val.hook { font-size: 1rem; font-weight: 700; color: var(--text); }
+    .ad-card-footer {
+      padding: 0.75rem 1.25rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 0.5rem;
+    }
+    .copy-btn {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      color: var(--text2);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .copy-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .copy-btn.copied { border-color: var(--green); color: var(--green); }
+
+    /* Loading */
+    .loading-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 3rem;
+      text-align: center;
+    }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid var(--border);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-card p { font-size: 0.85rem; color: var(--text3); }
+
+    /* History */
+    .history-list { display: flex; flex-direction: column; gap: 0.5rem; max-height: 200px; overflow-y: auto; }
+    .history-item {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      color: var(--text2);
+      transition: border-color 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .history-item:hover { border-color: var(--gold); color: var(--text); }
+    .history-item .hist-prod { font-weight: 700; color: var(--text); }
+    .history-item .hist-plat { font-size: 0.68rem; color: var(--text3); }
+    .history-empty { font-size: 0.78rem; color: var(--text3); text-align: center; padding: 1rem; }
+
+    @media (max-width: 700px) {
+      .app-body { grid-template-columns: 1fr; }
+      .lock-card { padding: 1.75rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== LOCK SCREEN ===== -->
+<div id="lock-screen">
+  <div class="lock-logo">Berkah<span>Karya</span></div>
+  <div class="lock-card">
+    <div class="lock-icon">🔐</div>
+    <h1>Ads Marketing AI <span>Pro</span></h1>
+    <p>Halaman ini hanya untuk member aktif. Masukkan kode akses yang kamu terima setelah pembayaran.</p>
+    <div class="lock-form">
+      <input
+        type="password"
+        id="password-input"
+        class="lock-input"
+        placeholder="Masukkan kode akses..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button class="lock-btn" id="unlock-btn" onclick="unlock()">
+        🔓 Buka Akses
+      </button>
+      <div class="lock-error" id="lock-error">
+        ❌ Kode akses salah. Cek ulang atau hubungi admin.
+      </div>
+    </div>
+    <div class="lock-footer">
+      Belum punya kode akses? <a href="https://wa.me/6285732740006?text=Halo%2C%20mau%20beli%20akses%20Ads%20Marketing%20AI%20Pro" target="_blank" rel="noopener">Chat admin →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MAIN APP ===== -->
+<div id="app">
+  <header class="app-header">
+    <div class="app-logo">Berkah<span>Karya</span></div>
+    <span class="app-badge">✦ PRO ACCESS</span>
+    <button class="app-logout" onclick="logout()">Keluar</button>
+  </header>
+
+  <div class="app-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="card">
+        <div class="card-title">📦 Produk</div>
+        <div class="form-field">
+          <label class="form-label">Nama / Deskripsi Produk</label>
+          <textarea class="form-textarea" id="inp-produk" placeholder="Contoh: Serum Vitamin C untuk kulit kusam, target ibu rumah tangga 25-40 tahun"></textarea>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Target Market</label>
+          <input class="form-input" id="inp-target" type="text" placeholder="Contoh: Wanita 20-35 tahun, ibu muda" />
+        </div>
+        <div class="form-field">
+          <label class="form-label">Keunggulan Utama (opsional)</label>
+          <input class="form-input" id="inp-keunggulan" type="text" placeholder="Contoh: BPOM, halal, terbukti 7 hari" />
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📱 Platform</div>
+        <div class="platform-grid">
+          <button class="platform-btn active" data-platform="TikTok" onclick="selectPlatform(this)">📱 TikTok</button>
+          <button class="platform-btn" data-platform="Meta Ads" onclick="selectPlatform(this)">📘 Meta Ads</button>
+          <button class="platform-btn" data-platform="Instagram" onclick="selectPlatform(this)">📸 Instagram</button>
+          <button class="platform-btn" data-platform="WhatsApp" onclick="selectPlatform(this)">💬 WhatsApp</button>
+          <button class="platform-btn" data-platform="Marketplace" onclick="selectPlatform(this)">🛍️ Marketplace</button>
+          <button class="platform-btn" data-platform="YouTube" onclick="selectPlatform(this)">▶️ YouTube</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">⚙️ Opsi Tambahan</div>
+        <div class="form-field">
+          <label class="form-label">Jumlah Variasi Iklan</label>
+          <select class="form-select" id="inp-jumlah">
+            <option value="2">2 variasi</option>
+            <option value="3">3 variasi</option>
+            <option value="4">4 variasi</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Nada / Tone</label>
+          <select class="form-select" id="inp-tone">
+            <option value="santai">Santai & Relatable</option>
+            <option value="urgent">Urgent / FOMO</option>
+            <option value="educational">Edukatif</option>
+            <option value="emotional">Emosional / Storytelling</option>
+            <option value="aggressive">Bold & Aggressive</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="generate-btn" id="gen-btn" onclick="generate()">
+        ⚡ Generate Iklan
+      </button>
+
+      <div class="card">
+        <div class="card-title">🕐 Riwayat</div>
+        <div class="history-list" id="history-list">
+          <div class="history-empty">Belum ada riwayat</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Output -->
+    <main class="output-area" id="output-area">
+      <div class="output-header">
+        <h2>Hasil Iklan</h2>
+        <span class="output-meta" id="output-meta"></span>
+      </div>
+      <div class="output-placeholder" id="output-placeholder">
+        <div class="ph-icon">🎯</div>
+        <h3>Siap Generate Iklan</h3>
+        <p>Isi form di kiri, pilih platform, dan klik "Generate Iklan" untuk mulai.</p>
+      </div>
+      <div id="output-results"></div>
+    </main>
+  </div>
+</div>
+
+<script>
+// ===== PASSWORD GATE =====
+const PASS_HASH = '96a4bc2602655473120fcc571ee3d8cfe5f8801f8038ccc06323d305e323331c'; // SHA-256 of 'openclaw'
+
+async function hashStr(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+async function unlock() {
+  const val = document.getElementById('password-input').value.trim();
+  if (!val) return;
+  const h = await hashStr(val);
+  if (h === PASS_HASH) {
+    sessionStorage.setItem('bk_pro_auth', '1');
+    document.getElementById('lock-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    loadHistory();
+  } else {
+    const err = document.getElementById('lock-error');
+    err.classList.add('show');
+    document.getElementById('password-input').value = '';
+    setTimeout(() => err.classList.remove('show'), 3500);
+  }
+}
+
+function logout() {
+  sessionStorage.removeItem('bk_pro_auth');
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('lock-screen').style.display = 'flex';
+  document.getElementById('password-input').value = '';
+}
+
+// Check session on load
+window.addEventListener('DOMContentLoaded', () => {
+  if (sessionStorage.getItem('bk_pro_auth') === '1') {
+    document.getElementById('lock-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    loadHistory();
+  }
+  // Enter key on password
+  document.getElementById('password-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') unlock();
+  });
+});
+
+// ===== PLATFORM SELECT =====
+let selectedPlatform = 'TikTok';
+function selectPlatform(btn) {
+  document.querySelectorAll('.platform-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedPlatform = btn.dataset.platform;
+}
+
+// ===== GENERATE =====
+async function generate() {
+  const produk = document.getElementById('inp-produk').value.trim();
+  const target = document.getElementById('inp-target').value.trim();
+  const keunggulan = document.getElementById('inp-keunggulan').value.trim();
+  const jumlah = parseInt(document.getElementById('inp-jumlah').value);
+  const tone = document.getElementById('inp-tone').value;
+
+  if (!produk) {
+    alert('Isi dulu deskripsi produk ya!');
+    return;
+  }
+
+  const genBtn = document.getElementById('gen-btn');
+  genBtn.disabled = true;
+  genBtn.innerHTML = '<div style="width:18px;height:18px;border:2px solid #1a1100;border-top-color:transparent;border-radius:50%;animation:spin 0.6s linear infinite;"></div> Generating...';
+
+  document.getElementById('output-placeholder').style.display = 'none';
+  document.getElementById('output-results').innerHTML = `
+    <div class="loading-card">
+      <div class="spinner"></div>
+      <p>AI sedang menyusun ${jumlah} variasi iklan untuk ${selectedPlatform}...</p>
+    </div>
+  `;
+
+  try {
+    const resp = await fetch('/api/generate-ads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ produk, target, keunggulan, platform: selectedPlatform, jumlah, tone })
+    });
+
+    if (!resp.ok) throw new Error('API error ' + resp.status);
+    const data = await resp.json();
+    renderAds(data.ads, selectedPlatform);
+    saveHistory(produk, selectedPlatform);
+
+    document.getElementById('output-meta').textContent =
+      `${data.ads.length} iklan · ${selectedPlatform} · ${new Date().toLocaleTimeString('id-ID', {hour:'2-digit',minute:'2-digit'})}`;
+  } catch(e) {
+    document.getElementById('output-results').innerHTML = `
+      <div class="loading-card">
+        <div style="font-size:2rem;margin-bottom:1rem">⚠️</div>
+        <p style="color:#ef4444;">Gagal generate. Cek koneksi internet atau hubungi admin.</p>
+        <p style="margin-top:.5rem;font-size:.75rem;color:var(--text3)">${e.message}</p>
+      </div>
+    `;
+  }
+
+  genBtn.disabled = false;
+  genBtn.innerHTML = '⚡ Generate Iklan';
+}
+
+function renderAds(ads, platform) {
+  const container = document.getElementById('output-results');
+  container.innerHTML = '';
+  ads.forEach((ad, i) => {
+    const card = document.createElement('div');
+    card.className = 'ad-card';
+    const allText = [ad.hook, ad.body, ad.bullets?.join('\n'), ad.cta].filter(Boolean).join('\n\n');
+    card.innerHTML = `
+      <div class="ad-card-header">
+        <span class="ad-card-title">Iklan #${i+1} · ${ad.angle || 'Variasi ' + (i+1)}</span>
+        <span class="ad-card-platform">${platform}</span>
+      </div>
+      <div class="ad-card-body">
+        ${ad.hook ? `<div class="ad-field"><div class="ad-field-lbl">🪝 Hook</div><div class="ad-field-val hook">${escHtml(ad.hook)}</div></div>` : ''}
+        ${ad.body ? `<div class="ad-field"><div class="ad-field-lbl">💥 Body</div><div class="ad-field-val">${escHtml(ad.body)}</div></div>` : ''}
+        ${ad.bullets?.length ? `<div class="ad-field"><div class="ad-field-lbl">📌 Poin Utama</div><div class="ad-field-val">${ad.bullets.map(b=>`• ${escHtml(b)}`).join('\n')}</div></div>` : ''}
+        ${ad.cta ? `<div class="ad-field"><div class="ad-field-lbl">🔥 CTA</div><div class="ad-field-val">${escHtml(ad.cta)}</div></div>` : ''}
+      </div>
+      <div class="ad-card-footer">
+        <button class="copy-btn" onclick="copyAd(this, ${JSON.stringify(escHtml(allText)).replace(/"/g,'&quot;')})">
+          📋 Copy Semua
+        </button>
+        <button class="copy-btn" onclick="copyAd(this, ${JSON.stringify(escHtml(ad.hook||'')).replace(/"/g,'&quot;')})">
+          🪝 Copy Hook
+        </button>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function copyAd(btn, text) {
+  navigator.clipboard.writeText(text.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"'));
+  btn.classList.add('copied');
+  btn.textContent = '✓ Copied!';
+  setTimeout(() => {
+    btn.classList.remove('copied');
+    btn.innerHTML = btn.dataset.orig || btn.textContent;
+  }, 2000);
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ===== HISTORY =====
+function saveHistory(produk, platform) {
+  let hist = JSON.parse(localStorage.getItem('bk_ads_hist') || '[]');
+  hist.unshift({ produk: produk.slice(0,30), platform, time: Date.now() });
+  hist = hist.slice(0, 20);
+  localStorage.setItem('bk_ads_hist', JSON.stringify(hist));
+  loadHistory();
+}
+
+function loadHistory() {
+  const hist = JSON.parse(localStorage.getItem('bk_ads_hist') || '[]');
+  const el = document.getElementById('history-list');
+  if (!hist.length) {
+    el.innerHTML = '<div class="history-empty">Belum ada riwayat</div>';
+    return;
+  }
+  el.innerHTML = hist.map(h => `
+    <div class="history-item">
+      <span class="hist-prod">${h.produk}${h.produk.length >= 30 ? '...' : ''}</span>
+      <span class="hist-plat">${h.platform}</span>
+    </div>
+  `).join('');
+}
+</script>
+</body>
+</html>
