@@ -183,6 +183,8 @@
   <div class="app-tabs">
     <button class="tab-btn active" onclick="switchTab('ads', this)">✍️ Generate Iklan</button>
     <button class="tab-btn" onclick="switchTab('landing', this)">🚀 Landing Page Script</button>
+    <button class="tab-btn" onclick="switchTab('budget', this)">💰 Budget Guide</button>
+    <button class="tab-btn" onclick="switchTab('competitor', this)">🔍 Analisa Kompetitor</button>
   </div>
 
   <!-- ═══ TAB: ADS ═══ -->
@@ -298,6 +300,78 @@
           <p>Generate semua copy untuk landing page — Headline, Subheadline, Benefits, Social Proof, FAQ, CTA, dan lebih banyak lagi. Tinggal copy paste.</p>
         </div>
         <div id="lp-results"></div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ═══ TAB: BUDGET GUIDE ═══ -->
+  <div id="tab-budget" class="tab-panel">
+    <div class="app-body">
+      <aside class="sidebar">
+        <div class="card">
+          <div class="card-title">📦 Produk (opsional)</div>
+          <div class="form-field">
+            <label class="form-label">Nama Produk / Jasa</label>
+            <input class="form-input" id="bg-produk" type="text" placeholder="Contoh: Kursus TikTok Content Creator" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Target Market (opsional)</label>
+            <input class="form-input" id="bg-target" type="text" placeholder="Contoh: UMKM, pemula digital marketing" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Harga Produk / Profit (opsional)</label>
+            <input class="form-input" id="bg-keunggulan" type="text" placeholder="Contoh: Harga 297K, profit 200K" />
+          </div>
+        </div>
+        <button class="gen-btn" id="bg-gen-btn" style="background:var(--green)" onclick="generateBudgetGuide()">💰 Generate Budget Guide</button>
+        <div class="card" style="background: rgba(16,185,129,0.05); border-color: rgba(16,185,129,0.2);">
+          <div class="card-title">💡 Panduan Cepat</div>
+          <p style="font-size:.78rem;color:var(--text2);line-height:1.6;">Budget = 30-100% dari profit per unit. Isi produk untuk rekomendasi spesifik, atau kosongkan untuk panduan umum.</p>
+        </div>
+      </aside>
+      <main class="output-area">
+        <div class="output-placeholder" id="bg-placeholder">
+          <div class="ph-icon">💰</div>
+          <h3>Budget Guide & Evaluasi Iklan</h3>
+          <p>Panduan alokasi budget, cara evaluasi performa, dan kapan harus scale atau stop.</p>
+        </div>
+        <div id="bg-results"></div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ═══ TAB: COMPETITOR ANALYZER ═══ -->
+  <div id="tab-competitor" class="tab-panel">
+    <div class="app-body">
+      <aside class="sidebar">
+        <div class="card">
+          <div class="card-title">🔍 Iklan Kompetitor</div>
+          <div class="form-field">
+            <label class="form-label">Tempel Teks Iklan Kompetitor</label>
+            <textarea class="form-textarea" id="comp-iklan" style="min-height:140px" placeholder="Paste teks iklan kompetitor di sini — caption, hook, body, CTA..."></textarea>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Produk Kamu (opsional)</label>
+            <input class="form-input" id="comp-produk" type="text" placeholder="Contoh: Serum Vitamin C BerkahKarya" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Target Market (opsional)</label>
+            <input class="form-input" id="comp-target" type="text" placeholder="Contoh: Wanita 20-35 tahun" />
+          </div>
+        </div>
+        <button class="gen-btn" id="comp-gen-btn" style="background:var(--blue)" onclick="analyzeCompetitor()">🔍 Analisa & Generate Iklan Baru</button>
+        <div class="card" style="background: rgba(59,130,246,0.05); border-color: rgba(59,130,246,0.2);">
+          <div class="card-title">💡 Cara Pakai</div>
+          <p style="font-size:.78rem;color:var(--text2);line-height:1.6;">Temukan iklan kompetitor yang performanya bagus → paste di sini → AI analisa kelemahannya dan buat versi yang lebih tajam.</p>
+        </div>
+      </aside>
+      <main class="output-area">
+        <div class="output-placeholder" id="comp-placeholder">
+          <div class="ph-icon">🔍</div>
+          <h3>Competitor Ad Analyzer</h3>
+          <p>Analisa angle, hook, emosi & struktur iklan kompetitor. Generate 2 versi yang lebih kuat.</p>
+        </div>
+        <div id="comp-results"></div>
       </main>
     </div>
   </div>
@@ -594,6 +668,241 @@ function renderLanding(s, produk) {
 
   html += `</div></div>`;
   document.getElementById('lp-results').innerHTML = html;
+
+  // Tambah field baru (belief_shift, value_stack, upsell_hint, strategi)
+  const sectionsDiv = document.getElementById('lp-results').querySelector('.landing-sections');
+  if (sectionsDiv) renderLandingExtra(s, sectionsDiv);
+}
+
+// Update renderLanding — tambah field belief_shift, value_stack, upsell_hint, strategi
+function renderLandingExtra(s, container) {
+  // Belief Shift
+  if (s.belief_shift) {
+    container.insertAdjacentHTML('beforeend', `
+      <div class="landing-section">
+        <div class="landing-sec-header" onclick="toggleSection(this)">
+          <span class="landing-sec-title">🔄 Belief Shift <span class="tag">Key Message</span></span>
+          <span style="color:var(--text3);font-size:.8rem">▼</span>
+        </div>
+        <div class="landing-sec-body">
+          <div class="landing-text-block" style="color:var(--gold);font-weight:700">${esc(s.belief_shift)}</div>
+          <div class="landing-copy-wrap"><button class="copy-btn" onclick="copyText(this, \`${esc(s.belief_shift)}\`)">📋 Copy</button></div>
+        </div>
+      </div>`);
+  }
+  // Value Stack
+  if (s.value_stack?.length) {
+    const vsText = s.value_stack.join('\n');
+    container.insertAdjacentHTML('beforeend', `
+      <div class="landing-section">
+        <div class="landing-sec-header" onclick="toggleSection(this)">
+          <span class="landing-sec-title">💎 Value Stack <span class="tag">${s.value_stack.length} item</span></span>
+          <span style="color:var(--text3);font-size:.8rem">▼</span>
+        </div>
+        <div class="landing-sec-body">
+          ${s.value_stack.map(v => `<div class="benefit-row"><span class="benefit-icon">✅</span><div class="benefit-content"><div class="b-desc">${esc(v)}</div></div></div>`).join('')}
+          <div class="landing-copy-wrap"><button class="copy-btn" onclick="copyText(this, \`${esc(vsText)}\`)">📋 Copy</button></div>
+        </div>
+      </div>`);
+  }
+  // Upsell Hint
+  if (s.upsell_hint) {
+    container.insertAdjacentHTML('beforeend', `
+      <div class="landing-section">
+        <div class="landing-sec-header" onclick="toggleSection(this)">
+          <span class="landing-sec-title">🚀 Upsell Mindset <span class="tag">Sisipkan</span></span>
+          <span style="color:var(--text3);font-size:.8rem">▼</span>
+        </div>
+        <div class="landing-sec-body">
+          <div class="landing-text-block">${esc(s.upsell_hint)}</div>
+          <div class="landing-copy-wrap"><button class="copy-btn" onclick="copyText(this, \`${esc(s.upsell_hint)}\`)">📋 Copy</button></div>
+        </div>
+      </div>`);
+  }
+  // Strategi
+  if (s.strategi) {
+    container.insertAdjacentHTML('beforeend', `
+      <div style="background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.25);border-radius:12px;padding:1rem 1.25rem;font-size:.82rem;line-height:1.65;">
+        <div style="font-weight:800;color:var(--green);margin-bottom:.4rem">📈 STRATEGI</div>
+        <div style="color:var(--text2)">${esc(s.strategi)}</div>
+      </div>`);
+  }
+}
+
+// ── BUDGET GUIDE ─────────────────────────────────────────────────────────────
+async function generateBudgetGuide() {
+  const produk     = document.getElementById('bg-produk').value.trim();
+  const target     = document.getElementById('bg-target').value.trim();
+  const keunggulan = document.getElementById('bg-keunggulan').value.trim();
+
+  setLoading('bg-gen-btn', true, '💰 Generate Budget Guide');
+  document.getElementById('bg-placeholder').style.display = 'none';
+  document.getElementById('bg-results').innerHTML = loadingHTML('AI sedang menyusun panduan budget...');
+
+  try {
+    const { guide } = await apiCall({ produk: produk || 'produk digital', target, keunggulan, mode: 'budget_guide' });
+    renderBudgetGuide(guide);
+  } catch(e) {
+    document.getElementById('bg-results').innerHTML = errorHTML(e.message);
+  }
+  setLoading('bg-gen-btn', false, '💰 Generate Budget Guide');
+}
+
+function renderBudgetGuide(g) {
+  if (!g) { document.getElementById('bg-results').innerHTML = errorHTML('Gagal parse guide.'); return; }
+
+  const evalColors = { 'Budget > Revenue': 'var(--red)', 'Budget ≈ Revenue': 'var(--gold)', 'Revenue > Budget': 'var(--green)' };
+
+  let html = `<div class="landing-result">
+    <div class="landing-result-header"><h3>💰 Budget Guide & Evaluasi Iklan</h3></div>
+    <div class="landing-sections">
+
+      <div class="ad-card">
+        <div class="ad-card-body">
+          <div><div class="ad-field-lbl">💰 Budget Rule</div><div class="ad-field-val">${esc(g.budget_rule)}</div></div>
+          <div><div class="ad-field-lbl">🧪 Testing Rule</div><div class="ad-field-val">${esc(g.testing_rule)}</div></div>
+          ${g.warning ? `<div><div class="ad-field-lbl" style="color:var(--red)">⚠️ Warning</div><div class="ad-field-val" style="color:var(--red)">${esc(g.warning)}</div></div>` : ''}
+        </div>
+      </div>
+
+      <div class="ad-card">
+        <div class="ad-card-header"><span class="ad-card-title">📊 Evaluasi Performa</span></div>
+        <div class="ad-card-body">
+          ${(g.evaluasi || []).map(e => {
+            const color = Object.keys(evalColors).find(k => e.kondisi?.includes(k.split(' > ')[0]));
+            return `<div style="padding:.5rem 0;border-bottom:1px solid var(--border)">
+              <div style="font-weight:800;font-size:.82rem;color:${evalColors[color] || 'var(--gold)'};">${esc(e.kondisi)}</div>
+              <div style="font-size:.8rem;color:var(--text2);margin-top:.2rem">→ ${esc(e.aksi)}</div>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+
+      <div class="ad-card">
+        <div class="ad-card-header"><span class="ad-card-title">🚀 Next Step</span></div>
+        <div class="ad-card-body">
+          ${(g.next_step || []).map(n => `
+            <div style="padding:.5rem 0;border-bottom:1px solid var(--border)">
+              <div style="font-weight:700;font-size:.82rem;color:var(--text)">📌 ${esc(n.kondisi)}</div>
+              <div style="font-size:.8rem;color:var(--text2);margin-top:.2rem">→ ${esc(n.aksi)}</div>
+            </div>`).join('')}
+        </div>
+      </div>
+
+      ${g.rekomendasi_untuk_produk ? `
+      <div style="background:rgba(212,160,23,.07);border:1px solid rgba(212,160,23,.25);border-radius:12px;padding:1rem 1.25rem;font-size:.82rem;line-height:1.65;">
+        <div style="font-weight:800;color:var(--gold);margin-bottom:.4rem">⚡ Rekomendasi Spesifik</div>
+        <div style="color:var(--text2)">${esc(g.rekomendasi_untuk_produk)}</div>
+      </div>` : ''}
+
+    </div>
+  </div>`;
+  document.getElementById('bg-results').innerHTML = html;
+}
+
+// ── COMPETITOR ANALYZER ───────────────────────────────────────────────────────
+async function analyzeCompetitor() {
+  const iklan   = document.getElementById('comp-iklan').value.trim();
+  const produk  = document.getElementById('comp-produk').value.trim();
+  const target  = document.getElementById('comp-target').value.trim();
+  if (!iklan) { alert('Paste dulu teks iklan kompetitor!'); return; }
+
+  setLoading('comp-gen-btn', true, '🔍 Analisa & Generate Iklan Baru');
+  document.getElementById('comp-placeholder').style.display = 'none';
+  document.getElementById('comp-results').innerHTML = loadingHTML('AI sedang analisa iklan kompetitor...');
+
+  try {
+    const { result } = await apiCall({ produk, target, iklan_kompetitor: iklan, mode: 'competitor' });
+    renderCompetitorResult(result);
+  } catch(e) {
+    document.getElementById('comp-results').innerHTML = errorHTML(e.message);
+  }
+  setLoading('comp-gen-btn', false, '🔍 Analisa & Generate Iklan Baru');
+}
+
+function renderCompetitorResult(r) {
+  if (!r) { document.getElementById('comp-results').innerHTML = errorHTML('Gagal parse hasil analisa.'); return; }
+  const { analisa, kelemahan, iklan_baru, rekomendasi } = r;
+
+  const hookColor = { kuat: 'var(--green)', lemah: 'var(--red)', sedang: 'var(--gold)' };
+
+  let html = `<div class="landing-result">
+    <div class="landing-result-header"><h3>🔍 Analisa Iklan Kompetitor</h3></div>
+    <div class="landing-sections">
+
+      <!-- Analisa -->
+      <div class="ad-card">
+        <div class="ad-card-header"><span class="ad-card-title">📊 Analisa</span></div>
+        <div class="ad-card-body">
+          <div><div class="ad-field-lbl">🎯 Angle</div><div class="ad-field-val">${esc(analisa?.angle)}</div></div>
+          <div><div class="ad-field-lbl">🪝 Hook Strength</div><div class="ad-field-val" style="color:${hookColor[analisa?.hook_strength?.toLowerCase()] || 'var(--text)'}; font-weight:700">${esc(analisa?.hook_strength)} — ${esc(analisa?.hook_analysis)}</div></div>
+          <div><div class="ad-field-lbl">😤 Emosi Utama</div><div class="ad-field-val">${esc(analisa?.emosi)}</div></div>
+          <div><div class="ad-field-lbl">📐 Struktur</div><div class="ad-field-val">${esc(analisa?.struktur)}</div></div>
+        </div>
+      </div>
+
+      <!-- Kelemahan -->
+      ${kelemahan?.length ? `
+      <div class="ad-card" style="border-color:rgba(239,68,68,.3)">
+        <div class="ad-card-header"><span class="ad-card-title" style="color:var(--red)">⚠️ Kelemahan Kompetitor</span></div>
+        <div class="ad-card-body">
+          ${kelemahan.map((k,i) => `<div style="padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.82rem;color:var(--text2)"><span style="color:var(--red);font-weight:800">${i+1}.</span> ${esc(k)}</div>`).join('')}
+        </div>
+      </div>` : ''}
+
+    </div>
+  </div>`;
+
+  document.getElementById('comp-results').innerHTML = html;
+
+  // Render iklan baru (reuse renderAds logic)
+  const container = document.getElementById('comp-results').querySelector('.landing-sections');
+  const sep = document.createElement('div');
+  sep.style.cssText = 'font-weight:800;color:var(--gold);padding:.5rem 0;font-size:.9rem;';
+  sep.textContent = '🔥 2 Iklan Baru — Lebih Tajam dari Kompetitor';
+  container.appendChild(sep);
+
+  const angleColor = { cause_of_inaction: '#ef4444', false_belief: '#3b82f6', promise_hope: '#10b981' };
+  const angleLabel = { cause_of_inaction: '😨 Fear/Pain', false_belief: '💡 False Belief', promise_hope: '✨ Promise & Hope' };
+
+  (iklan_baru || []).forEach((ad, i) => {
+    const all = [`🎯 ANGLE: ${ad.angle||''}`,`🪝 HOOK:\n${ad.hook||''}`,`💥 BODY:\n${ad.body||''}`,ad.bullets?.length?`📌 BULLET:\n${ad.bullets.map(b=>`• ${b}`).join('\n')}`:'',`🔥 CTA:\n${ad.cta||''}`].filter(Boolean).join('\n\n');
+    const aType = ad.angle_type || (i===0?'cause_of_inaction':'false_belief');
+    const card = document.createElement('div');
+    card.className = 'ad-card';
+    card.innerHTML = `
+      <div class="ad-card-header">
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <span class="ad-card-title">Iklan Baru #${i+1} — ${esc(ad.angle||'')}</span>
+          <span style="font-size:.68rem;font-weight:700;color:${angleColor[aType]||'var(--gold)'}">${angleLabel[aType]||'🎯 Angle'}</span>
+        </div>
+      </div>
+      <div class="ad-card-body">
+        ${ad.hook?`<div><div class="ad-field-lbl">🪝 Hook</div><div class="ad-field-val hook">${esc(ad.hook)}</div></div>`:''}
+        ${ad.body?`<div><div class="ad-field-lbl">💥 Body</div><div class="ad-field-val">${esc(ad.body)}</div></div>`:''}
+        ${ad.bullets?.length?`<div><div class="ad-field-lbl">📌 Bullet</div><div class="ad-field-val">${ad.bullets.map(b=>`• ${esc(b)}`).join('\n')}</div></div>`:''}
+        ${ad.cta?`<div><div class="ad-field-lbl">🔥 CTA</div><div class="ad-field-val">${esc(ad.cta)}</div></div>`:''}
+      </div>
+      <div class="ad-card-footer">
+        <button class="copy-btn" onclick="copyText(this, \`${esc(all)}\`)">📋 Copy Semua</button>
+        ${ad.hook?`<button class="copy-btn" onclick="copyText(this, \`${esc(ad.hook)}\`)">🪝 Hook</button>`:''}
+        ${ad.cta?`<button class="copy-btn" onclick="copyText(this, \`${esc(ad.cta)}\`)">🔥 CTA</button>`:''}
+      </div>`;
+    container.appendChild(card);
+    if (i===0 && (iklan_baru||[]).length > 1) {
+      const s2 = document.createElement('div');
+      s2.style.cssText = 'text-align:center;padding:6px 0;font-size:.8rem;font-weight:800;color:var(--gold);';
+      s2.textContent = '🔥 Ini baru 1 dari 2 iklan yang dibuat sistem';
+      container.appendChild(s2);
+    }
+  });
+
+  if (rekomendasi) {
+    const rec = document.createElement('div');
+    rec.style.cssText = 'background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.25);border-radius:12px;padding:1rem 1.25rem;font-size:.82rem;line-height:1.65;';
+    rec.innerHTML = `<div style="font-weight:800;color:var(--blue);margin-bottom:.4rem">💡 Insight Utama</div><div style="color:var(--text2)">${esc(rekomendasi)}</div>`;
+    container.appendChild(rec);
+  }
 }
 
 function toggleSection(header) {

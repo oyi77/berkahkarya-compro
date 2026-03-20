@@ -77,7 +77,8 @@ exports.handler = async function(event) {
 
   const { produk, target, keunggulan, platform = 'TikTok', jumlah = 2, tone = 'santai', mode = 'ads' } = body;
 
-  if (!produk) {
+  // budget_guide & competitor modes don't require produk
+  if (!produk && !['budget_guide', 'competitor'].includes(mode)) {
     return { statusCode: 400, headers, body: JSON.stringify({ error: 'Produk wajib diisi' }) };
   }
 
@@ -85,6 +86,14 @@ exports.handler = async function(event) {
     if (mode === 'landing') {
       const script = await generateLandingPage(produk, target, keunggulan, tone);
       return { statusCode: 200, headers, body: JSON.stringify({ script }) };
+    } else if (mode === 'budget_guide') {
+      const guide = await generateBudgetGuide(produk, target, keunggulan);
+      return { statusCode: 200, headers, body: JSON.stringify({ guide }) };
+    } else if (mode === 'competitor') {
+      const { iklan_kompetitor } = body;
+      if (!iklan_kompetitor) return { statusCode: 400, headers, body: JSON.stringify({ error: 'iklan_kompetitor wajib diisi' }) };
+      const result = await analyzeCompetitor(iklan_kompetitor, produk, target);
+      return { statusCode: 200, headers, body: JSON.stringify({ result }) };
     } else {
       const ads = await generateAds(produk, target, keunggulan, platform, jumlah, tone);
       return { statusCode: 200, headers, body: JSON.stringify({ ads }) };
@@ -165,36 +174,58 @@ ${keunggulan ? `- Keunggulan: ${keunggulan}` : ''}
 
 // ── Generate Landing Page Script ─────────────────────────────────────────────
 async function generateLandingPage(produk, target, keunggulan, tone) {
-  const systemPrompt = `Kamu adalah copywriter landing page profesional BerkahKarya.
+  const systemPrompt = `Kamu adalah Asisten BerkahKarya Ads Marketing.
 
-TUGAS: Buat SCRIPT LENGKAP landing page yang converting tinggi untuk produk/jasa yang diberikan.
+TUJUAN: Membuat landing page yang mendorong orang untuk beli / chat.
 
-OUTPUT FORMAT — JSON dengan struktur ini (jangan tambah teks lain):
+WAJIB MENGGUNAKAN:
+1. PAS (Problem – Agitate – Solution)
+2. PSP (Proof – Solution – Proof)
+
+STRUKTUR:
+- HEADLINE: Fokus pain atau "How to", maks 10 kata, harus menampar
+- SUBHEADLINE: Menenangkan + memperjelas hasil
+- HERO COPY: Relate → agitate → solusi
+- BELIEF SHIFT: Gunakan "Bukan karena X, tapi karena Y"
+- BENEFITS: Fokus hasil (output), bukan fitur
+- SOCIAL PROOF: Angka / pengalaman / validasi
+- OBJECTION HANDLER: Jawab takut gagal, takut ga cocok, takut ribet
+- OFFER: Formula Result / (Risk × Time × Effort)
+- VALUE STACKING: Produk utama + Bonus + Support + Akses tambahan
+- URGENCY: Terbatas, bisa ditutup, realistis
+- CTA: Tegas, arahkan ke aksi
+- UPSELL MINDSET: Sisipkan mulai dari basic, bisa upgrade
+
+OUTPUT FORMAT — JSON persis ini (jangan tambah teks lain):
 {
-  "headline": "Headline utama yang powerful (max 10 kata)",
-  "subheadline": "Kalimat pendukung yang memperkuat headline (1-2 kalimat)",
-  "hero_copy": "Paragraf pembuka emosional 2-3 kalimat, langsung ke pain point",
+  "headline": "Pain/How-to headline, maks 10 kata, menampar",
+  "subheadline": "Menenangkan + memperjelas hasil (1-2 kalimat)",
+  "hero_copy": "Relate → agitate → solusi (2-3 kalimat PAS)",
+  "belief_shift": "Bukan karena X, tapi karena Y",
   "benefits": [
-    {"icon": "emoji", "title": "benefit title", "desc": "1 kalimat penjelasan"}
+    {"icon": "emoji", "title": "hasil/output konkret", "desc": "1 kalimat fokus output bukan fitur"}
   ],
-  "social_proof": "Kalimat social proof dengan angka: '2.500+ pelanggan puas', rating, dll",
+  "social_proof": "Angka + validasi konkret (mis: '2.500+ pelanggan, rating 4.9/5')",
   "objection_handler": [
-    {"objection": "kekhawatiran umum", "answer": "jawaban meyakinkan singkat"}
+    {"objection": "takut gagal / takut ga cocok / takut ribet", "answer": "jawaban meyakinkan singkat"}
   ],
-  "offer": "Penawaran spesifik: harga, bonus, garansi — tanpa menyebut harga spesifik, fokus value",
-  "urgency": "Kalimat urgensi kuat",
-  "cta_primary": "Teks tombol CTA utama",
-  "cta_secondary": "Teks CTA sekunder (lebih soft)",
-  "closing_copy": "Kalimat penutup yang emosional",
+  "offer": "Value proposition dengan formula Result / (Risk × Time × Effort)",
+  "value_stack": ["Produk utama: ...", "Bonus: ...", "Support: ...", "Akses tambahan: ..."],
+  "urgency": "Kalimat urgensi realistis + batas konkret",
+  "cta_primary": "Teks tombol utama (tegas, arahkan ke WA/beli)",
+  "cta_secondary": "Teks tombol soft (pelajari lebih lanjut)",
+  "closing_copy": "Kalimat penutup emosional",
+  "upsell_hint": "Kalimat upsell mindset: mulai basic, bisa upgrade",
   "faq": [
     {"q": "pertanyaan umum", "a": "jawaban singkat"}
-  ]
+  ],
+  "strategi": "Gunakan landing page ini untuk closing setelah iklan. Arahkan ke WhatsApp untuk final closing."
 }
 
 RULES:
-- Bahasa Indonesia yang natural, tidak kaku
-- Tone sesuai instruksi
-- Benefit minimal 4 poin
+- Bahasa Indonesia natural, tidak kaku
+- Benefit minimal 4 poin (output/hasil, bukan fitur!)
+- Objection handler: WAJIB jawab 3 kekhawatiran
 - FAQ minimal 3 pertanyaan
 - Semua copy harus closing-oriented`;
 
@@ -203,6 +234,96 @@ RULES:
 - Target market: ${target || 'umum'}
 ${keunggulan ? `- Keunggulan: ${keunggulan}` : ''}
 - Tone: ${tone}`;
+
+  const raw = await callClaude(systemPrompt, userPrompt);
+  return parseJSON(raw);
+}
+
+// ── Budget Guide ─────────────────────────────────────────────────────────────
+async function generateBudgetGuide(produk, target, keunggulan) {
+  const systemPrompt = `Kamu adalah Asisten BerkahKarya Ads Marketing.
+Berikan panduan budget & evaluasi iklan yang sederhana dan langsung bisa dipakai.
+
+OUTPUT FORMAT — JSON persis ini:
+{
+  "budget_rule": "Gunakan 30%–100% dari profit produk sebagai budget iklan",
+  "testing_rule": "Jalankan iklan minimal 3 hari. Jangan ambil keputusan terlalu cepat.",
+  "evaluasi": [
+    {"kondisi": "Budget > Revenue", "aksi": "Ubah angle & hook — iklan belum resonan"},
+    {"kondisi": "Budget ≈ Revenue", "aksi": "Optimasi copy & landing page — traffic ok, closing lemah"},
+    {"kondisi": "Revenue > Budget", "aksi": "Lanjut & scale perlahan — jangan ubah terlalu banyak"}
+  ],
+  "next_step": [
+    {"kondisi": "Ada klik tapi belum closing", "aksi": "Perbaiki landing page & CTA"},
+    {"kondisi": "Sudah closing", "aksi": "Fokus scale & upsell — jangan sentuh yang sudah profit"}
+  ],
+  "warning": "Jangan lanjutkan iklan yang rugi tanpa perubahan signifikan",
+  "rekomendasi_untuk_produk": "Rekomendasi spesifik budget & strategi untuk produk ini (2-3 kalimat)"
+}`;
+
+  const userPrompt = `Buat panduan budget iklan untuk:
+- Produk/Jasa: ${produk || 'produk digital'}
+- Target: ${target || 'umum'}
+${keunggulan ? `- Keunggulan: ${keunggulan}` : ''}`;
+
+  const raw = await callClaude(systemPrompt, userPrompt);
+  return parseJSON(raw);
+}
+
+// ── Competitor Analysis ───────────────────────────────────────────────────────
+async function analyzeCompetitor(iklanKompetitor, produk, target) {
+  const systemPrompt = `Kamu adalah Asisten BerkahKarya Ads Marketing — spesialis analisa iklan kompetitor.
+
+TUGAS: Analisa iklan kompetitor, temukan kelemahannya, lalu buat 2 versi iklan yang lebih tajam.
+
+OUTPUT FORMAT — JSON persis ini:
+{
+  "analisa": {
+    "angle": "Angle yang dipakai kompetitor",
+    "hook_strength": "kuat / lemah / sedang",
+    "hook_analysis": "Kenapa hook ini efektif / tidak efektif",
+    "emosi": "Emosi utama yang dipancing (fear, desire, curiosity, dll)",
+    "struktur": "Breakdown struktur iklan kompetitor"
+  },
+  "kelemahan": [
+    "kelemahan 1 (spesifik, actionable)",
+    "kelemahan 2",
+    "kelemahan 3"
+  ],
+  "iklan_baru": [
+    {
+      "angle_type": "cause_of_inaction",
+      "angle": "nama angle (lebih tajam dari kompetitor)",
+      "hook": "hook yang lebih kuat — stop scroll",
+      "body": "body copy PAS yang lebih emosional + objection handling",
+      "bullets": ["manfaat konkret 1", "manfaat konkret 2", "manfaat konkret 3"],
+      "cta": "CTA tegas + urgency"
+    },
+    {
+      "angle_type": "false_belief",
+      "angle": "nama angle (ubah false belief kompetitor)",
+      "hook": "hook yang challenge asumsi audiens",
+      "body": "body copy yang beda pendekatan + objection handling",
+      "bullets": ["manfaat konkret 1", "manfaat konkret 2", "manfaat konkret 3"],
+      "cta": "CTA tegas + urgency"
+    }
+  ],
+  "rekomendasi": "Insight utama dari analisa ini — apa yang harus dioptimalkan (2-3 kalimat)"
+}
+
+RULES:
+- Jujur, critical — jangan validasi iklan kompetitor yang jelek
+- Iklan baru HARUS lebih tajam, lebih emosional, lebih berpotensi closing
+- bullets bisa [] kalau tidak relevan`;
+
+  const userPrompt = `Analisa iklan kompetitor ini:
+
+---
+${iklanKompetitor}
+---
+
+${produk ? `Produk kita: ${produk}` : ''}
+${target ? `Target market: ${target}` : ''}`;
 
   const raw = await callClaude(systemPrompt, userPrompt);
   return parseJSON(raw);
