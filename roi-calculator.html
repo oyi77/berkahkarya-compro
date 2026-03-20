@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROI Calculator — BerkahKarya</title>
+  <meta name="description" content="Hitung ROI bisnis Anda sebelum investasi digital marketing. 3 kalkulator: Paid Ads, SEO, AI Agent. Gratis dan akurat.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ROI Calculator — BerkahKarya">
+  <meta property="og:description" content="Hitung estimasi ROI Paid Ads, SEO, dan AI Agent untuk bisnis Anda. Gratis.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://berkahkarya.org/roi-calculator.html">
+
+  <style>
+    .roi-page-hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 80px 24px 60px;
+      text-align: center;
+      color: #fff;
+    }
+    .roi-page-hero .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 100px;
+      padding: 6px 18px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+    }
+    .roi-page-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .roi-page-hero p {
+      font-size: 1.05rem;
+      opacity: 0.87;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+    .roi-calc-wrapper {
+      padding: 60px 24px 80px;
+      background: #f8fafc;
+    }
+    .roi-calc-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .roi-calc-header {
+      background: linear-gradient(135deg,#667eea,#764ba2);
+      padding: 28px 32px;
+      color: #fff;
+    }
+    .roi-calc-header h2 { font-size: 1.4rem; font-weight: 800; margin: 0 0 6px; }
+    .roi-calc-header p { font-size: 0.9rem; opacity: 0.85; margin: 0; }
+    #bk-roi-calc { padding: 32px; }
+
+    .bk-trust-section {
+      background: #fff;
+      padding: 48px 24px;
+      border-top: 1px solid #e2e8f0;
+    }
+    .roi-faq { max-width: 760px; margin: 0 auto; padding: 60px 24px; }
+    .roi-faq h2 { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 32px; }
+    .faq-item { border-bottom: 1px solid #e2e8f0; padding: 20px 0; }
+    .faq-item summary { font-weight: 700; cursor: pointer; color: #111; font-size: 0.97rem; }
+    .faq-item p { color: #64748b; margin: 12px 0 0; line-height: 1.7; font-size: 0.9rem; }
+    .roi-bottom-cta {
+      background: linear-gradient(135deg,#667eea,#764ba2);
+      padding: 64px 24px;
+      text-align: center;
+      color: #fff;
+    }
+    .roi-bottom-cta h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 12px; }
+    .roi-bottom-cta p { opacity: 0.87; margin-bottom: 28px; }
+    .roi-bottom-cta a {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25D366; color: #fff;
+      padding: 16px 32px; border-radius: 12px;
+      font-weight: 800; text-decoration: none; font-size: 1rem;
+      transition: transform 0.18s, box-shadow 0.18s;
+    }
+    .roi-bottom-cta a:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.4); }
+  </style>
+</head>
+<body>
+  <!-- Nav loaded via nav.js -->
+
+  <section class="roi-page-hero">
+    <div class="hero-tag">🧮 ROI Calculator — Gratis</div>
+    <h1>Berapa ROI Investasi<br>Digital Marketing Anda?</h1>
+    <p>Hitung estimasi return sebelum investasi. 3 kalkulator: Paid Ads, SEO, dan AI Agent. Akurat. Transparan. Gratis.</p>
+  </section>
+
+  <section class="roi-calc-wrapper">
+    <div class="roi-calc-inner">
+      <div class="roi-calc-header">
+        <h2>🧮 ROI Calculator</h2>
+        <p>Masukkan angka bisnis Anda, lihat estimasi return dalam detik.</p>
+      </div>
+      <div id="bk-roi-calc"></div>
+    </div>
+  </section>
+
+  <!-- Trust Badges -->
+  <div class="bk-trust-section" data-trust-badges="true"></div>
+
+  <!-- FAQ -->
+  <section class="roi-faq">
+    <h2>❓ FAQ tentang ROI Calculator</h2>
+    <details class="faq-item">
+      <summary>Seberapa akurat perhitungan ROI ini?</summary>
+      <p>Calculator ini menggunakan formula industri standar berdasarkan benchmark riil. Hasilnya adalah estimasi — actual ROI bergantung pada kualitas eksekusi, niche, dan kondisi pasar. Untuk proyeksi lebih akurat spesifik bisnis Anda, konsultasikan dengan tim kami.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Apakah data yang saya masukkan tersimpan?</summary>
+      <p>Tidak. Calculator ini berjalan sepenuhnya di browser Anda. Tidak ada data yang dikirim ke server kami. Privasi Anda terjamin 100%.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Berapa waktu yang dibutuhkan untuk melihat ROI nyata?</summary>
+      <p>Paid Ads: 1-4 minggu pertama sudah terlihat. SEO: 3-6 bulan untuk hasil signifikan. AI Agent: 2-4 minggu setelah setup lengkap. Timeline bervariasi per niche dan kompetisi.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Bisakah BerkahKarya menjamin ROI seperti di calculator?</summary>
+      <p>Kami tidak menjamin angka spesifik, tapi portofolio kami menunjukkan rata-rata klien mendapat ROI 300-850% dalam 3-12 bulan. Case study detail tersedia di halaman portfolio.</p>
+    </details>
+  </section>
+
+  <section class="roi-bottom-cta">
+    <h2>ROI-nya Menarik?</h2>
+    <p>Konsultasi gratis 30 menit dengan tim BerkahKarya untuk implementasi nyata.</p>
+    <a href="https://wa.me/6285632740006?text=Halo!%20Saya%20baru%20coba%20ROI%20Calculator%20BerkahKarya%20dan%20tertarik%20konsultasi%20lebih%20lanjut." target="_blank" rel="noopener">
+      💬 Konsultasi Gratis Sekarang →
+    </a>
+  </section>
+
+  <script src="/lang/id.js"></script>
+  <script src="/lang/en.js"></script>
+  <script src="/nav.js"></script>
+  <script src="/js/geo-language-detection.js"></script>
+  <script src="/js/language-switcher-component.js"></script>
+  <script src="/js/whatsapp-integration.js"></script>
+  <script src="/js/trust-badges-component.js"></script>
+  <script src="/js/roi-calculator-tool.js"></script>
+</body>
+</html>
