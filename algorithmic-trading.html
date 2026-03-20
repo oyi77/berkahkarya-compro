@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Algorithmic Trading SaaS — BerkahKarya</title>
+  <meta name="description" content="SaaS trading algoritmik berbasis AI. Sinyal entry/exit otomatis untuk XAUUSD, Forex, dan Crypto. Strategi tervalidasi, eksekusi tanpa emosi." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+
+    .js-hero {
+      background: var(--bg-white); border-bottom: 1px solid var(--border);
+      padding: calc(64px + 5rem) 1.5rem 5rem; text-align: center;
+    }
+    .js-hero-inner { max-width: 780px; margin: 0 auto; }
+    .js-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg-muted); border: 1px solid var(--border);
+      border-radius: 999px; padding: 6px 14px; margin-bottom: 1.5rem;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--mustard);
+    }
+    .js-hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.08; margin: 0 0 1.25rem; }
+    .js-hero h1 em { font-style: normal; color: var(--mustard); }
+    .js-hero-sub { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; margin: 0 auto 2rem; max-width: 600px; }
+    .js-hero-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .hero-disclaimer { font-size: 0.72rem; color: var(--text-light); margin-top: 1rem; }
+
+    .js-sec { padding: 5rem 1.5rem; }
+    .js-sec.alt { background: var(--bg-muted); }
+    .js-sec-inner { max-width: var(--max-width); margin: 0 auto; }
+    .js-sec-head { margin-bottom: 3rem; }
+    .js-sec-head.center { text-align: center; }
+    .sec-lbl { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mustard); margin-bottom: 0.6rem; }
+    .js-sec-head h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.2; margin: 0; }
+    .js-sec-head h2 em { font-style: normal; color: var(--mustard); }
+    .js-sec-head p { color: var(--text-muted); line-height: 1.65; margin: 0.75rem 0 0; max-width: 560px; }
+    .js-sec-head.center p { margin-left: auto; margin-right: auto; }
+
+    /* Pain */
+    .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .pain-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; border-left: 3px solid #e53e3e; }
+    .pain-card .pain-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+    .pain-card h4 { font-size: 0.95rem; font-weight: 800; margin: 0 0 0.4rem; }
+    .pain-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    /* Stats ticker */
+    .stat-bar { background: var(--text); color: #fff; padding: 1.25rem 1.5rem; overflow: hidden; }
+    .stat-bar-inner { max-width: var(--max-width); margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1.5rem; }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 1.6rem; font-weight: 900; color: var(--mustard); letter-spacing: -0.04em; line-height: 1; }
+    .stat-lbl { font-size: 0.72rem; color: rgba(255,255,255,0.6); margin-top: 0.2rem; letter-spacing: 0.05em; }
+
+    /* Markets */
+    .market-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .market-card {
+      background: var(--bg-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem; text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .market-card:hover { border-color: var(--mustard); box-shadow: 0 4px 20px rgba(212,160,23,0.08); }
+    .market-card.featured { border-color: var(--mustard); box-shadow: 0 0 0 3px rgba(212,160,23,0.1); }
+    .market-emoji { font-size: 2.2rem; margin-bottom: 0.75rem; }
+    .market-name { font-size: 1.1rem; font-weight: 800; color: var(--text); margin: 0 0 0.3rem; }
+    .market-sub { font-size: 0.78rem; color: var(--text-muted); }
+    .market-badge { display: inline-block; background: var(--mustard); color: #fff; font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-top: 0.5rem; }
+
+    /* Strategy */
+    .strategy-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border-radius: var(--radius); overflow: hidden; }
+    .strategy-item { background: var(--bg-white); padding: 1.5rem 2rem; display: grid; grid-template-columns: 48px 1fr auto; align-items: center; gap: 1.25rem; }
+    .strategy-icon { font-size: 1.5rem; text-align: center; }
+    .strategy-name { font-size: 0.95rem; font-weight: 800; color: var(--text); margin: 0 0 0.25rem; }
+    .strategy-desc { font-size: 0.82rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+    .strategy-tag { font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+    .tag-live { background: #d1fae5; color: #065f46; }
+    .tag-soon { background: var(--bg-muted); color: var(--text-muted); border: 1px solid var(--border); }
+
+    /* Features */
+    .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .feat-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; transition: border-color 0.2s; }
+    .feat-card:hover { border-color: var(--mustard); }
+    .feat-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .feat-card h4 { font-size: 0.95rem; font-weight: 800; color: var(--text); margin: 0 0 0.4rem; }
+    .feat-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+    /* Signal demo */
+    .signal-demo { max-width: 560px; margin: 3rem auto 0; background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.06); }
+    .signal-header { background: var(--text); color: #fff; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .signal-header-title { font-size: 0.85rem; font-weight: 700; }
+    .signal-live { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; color: #6ee7b7; }
+    .signal-live::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #10b981; display: block; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .signal-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .signal-card-entry { background: #d1fae5; border: 1px solid #6ee7b7; border-radius: 8px; padding: 1rem 1.25rem; }
+    .signal-type { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #065f46; margin-bottom: 0.4rem; }
+    .signal-asset { font-size: 1.4rem; font-weight: 900; color: #065f46; }
+    .signal-detail { font-size: 0.82rem; color: #065f46; margin-top: 0.4rem; }
+    .signal-card-info { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
+    .signal-info-item { background: var(--bg-muted); border: 1px solid var(--border); border-radius: 6px; padding: 0.75rem; text-align: center; }
+    .signal-info-lbl { font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+    .signal-info-val { font-size: 1rem; font-weight: 900; color: var(--text); margin-top: 0.2rem; }
+    .signal-info-val.green { color: #10b981; }
+    .signal-info-val.red { color: #ef4444; }
+    .signal-footer { padding: 1rem 1.5rem; background: var(--bg-muted); border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--text-muted); text-align: center; }
+
+    /* Pricing */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .price-card { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; }
+    .price-card.featured { border-color: var(--mustard); box-shadow: 0 0 0 3px rgba(212,160,23,0.1); }
+    .price-badge { display: inline-block; background: var(--mustard); color: #fff; font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; margin-bottom: 1rem; }
+    .price-name { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .price-amount { font-size: 2.2rem; font-weight: 900; color: var(--text); letter-spacing: -0.04em; line-height: 1; }
+    .price-amount span { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); }
+    .price-period { font-size: 0.8rem; color: var(--text-muted); margin: 0.25rem 0 1.5rem; }
+    .price-items { list-style: none; padding: 0; margin: 0 0 1.75rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .price-items li { display: flex; align-items: flex-start; gap: 8px; font-size: 0.85rem; color: var(--text-muted); }
+    .price-items li::before { content: '✓'; color: var(--mustard); font-weight: 700; flex-shrink: 0; }
+    .price-items li.dim { opacity: 0.4; }
+    .price-items li.dim::before { content: '—'; color: var(--text-light); }
+
+    /* Disclaimer */
+    .disclaimer-box { max-width: 680px; margin: 0 auto; background: #fffbeb; border: 1px solid #fcd34d; border-radius: var(--radius-sm); padding: 1.25rem 1.5rem; }
+    .disclaimer-box p { font-size: 0.78rem; color: #92400e; line-height: 1.6; margin: 0; }
+
+    /* CTA Final */
+    .js-cta-final { text-align: center; padding: 5rem 1.5rem; background: var(--mustard); }
+    .js-cta-final h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 900; color: #fff; letter-spacing: -0.03em; margin: 0 0 1rem; }
+    .js-cta-final p { color: rgba(255,255,255,0.85); line-height: 1.7; margin: 0 0 2rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .cta-btn-white { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--mustard); font-size: 1rem; font-weight: 800; padding: 14px 32px; border-radius: var(--radius-sm); transition: transform 0.15s, box-shadow 0.15s; text-decoration: none; }
+    .cta-btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+
+    /* FAQ */
+    .faq-list { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+    .faq-item { background: var(--bg-white); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem 1.5rem; }
+    .faq-q { font-size: 0.95rem; font-weight: 800; color: var(--text); margin: 0 0 0.5rem; }
+    .faq-a { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; margin: 0; }
+
+    @media (max-width: 900px) { .pain-grid, .market-grid, .feat-grid, .pricing-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 680px) { .pain-grid, .market-grid, .feat-grid, .pricing-grid, .strategy-item { grid-template-columns: 1fr; } .strategy-item { display: flex; flex-direction: column; align-items: flex-start; } .signal-card-info { grid-template-columns: 1fr 1fr; } }
+
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V9C14XZ9SG"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-V9C14XZ9SG');</script>
+</head>
+<body>
+
+<nav class="bk-nav" id="mainNav">
+  <div class="bk-nav-inner">
+    <a href="index.html" class="bk-logo">Berkah<span>Karya</span></a>
+    <ul class="bk-nav-links">
+      <li><a href="services.html">Layanan</a></li>
+      <li><a href="digital-product.html">Produk Digital</a></li>
+      <li><a href="blog.html">Postingan</a></li>
+      <li><a href="tools.html">Tools</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="bk-nav-right">
+      <a href="https://wa.me/6285732740006?text=Halo%20BerkahKarya%2C%20saya%20tertarik%20Algorithmic%20Trading%20SaaS" class="bk-nav-cta" target="_blank" rel="noopener">Konsultasi Gratis →</a>
+    </div>
+    <button class="bk-nav-mobile" id="mobileToggle" aria-label="Menu">☰</button>
+  </div>
+  <div class="bk-nav-mobile-menu" id="mobileMenu">
+    <a href="services.html">Layanan</a>
+    <a href="digital-product.html">Produk Digital</a>
+    <a href="blog.html">Postingan</a>
+    <a href="tools.html">Tools</a>
+    <a href="about.html">About</a>
+    <a href="https://wa.me/6285732740006?text=Halo%20BerkahKarya%2C%20saya%20tertarik%20Algorithmic%20Trading%20SaaS" target="_blank" rel="noopener">💬 Konsultasi Gratis</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="js-hero">
+  <div class="js-hero-inner">
+    <div class="js-tag">📈 SaaS · Algorithmic Trading</div>
+    <h1>Trading Algoritmik,<br><em>Tanpa Tebak-Tebakan</em></h1>
+    <p class="js-hero-sub">Sinyal entry/exit otomatis berbasis AI untuk XAUUSD, Forex, dan Crypto. Strategi tervalidasi, eksekusi disiplin — tanpa emosi, tanpa begadang monitor chart.</p>
+    <div class="js-hero-btns">
+      <a href="https://wa.me/6285732740006?text=Halo%20BerkahKarya%2C%20saya%20tertarik%20Algorithmic%20Trading%20SaaS.%20Bisa%20konsultasi%3F" class="btn-primary" target="_blank" rel="noopener">💬 Konsultasi Sekarang</a>
+      <a href="#strategi" class="btn-secondary">Lihat Strategi →</a>
+    </div>
+    <p class="hero-disclaimer">⚠️ Trading mengandung risiko. Hasil masa lalu tidak menjamin keuntungan di masa depan.</p>
+  </div>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-bar-inner">
+    <div class="stat-item">
+      <div class="stat-num">XAUUSD</div>
+      <div class="stat-lbl">Instrumen Utama</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Asia Sesi</div>
+      <div class="stat-lbl">Waktu Entry Optimal</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1:2+</div>
+      <div class="stat-lbl">Risk:Reward Ratio</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Backtested</div>
+      <div class="stat-lbl">Strategi Tervalidasi</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN POINTS -->
+<section class="js-sec alt">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">Masalah Trader</span>
+      <h2>Masih Gagal Trading karena <em>Ini</em></h2>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon">😰</div>
+        <h4>Emosi Merusak Strategi</h4>
+        <p>Udah buat rencana trading, tapi begitu market bergerak — panik, FOMO, dan over-trade. Emosi selalu menang melawan logika.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">⏰</div>
+        <h4>Begadang Monitor Chart</h4>
+        <p>Capek staring di chart berjam-jam, takut miss entry. Hidupnya jadi budak chart — bukan trader yang profitable.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">📉</div>
+        <h4>Strategi Belum Tervalidasi</h4>
+        <p>Coba strategi dari YouTube, forum, atau grup — tapi belum ada backtest proper. Trading pakai feeling = judi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section class="js-sec">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">Pasar yang Didukung</span>
+      <h2>Multi-Market, <em>Satu Platform</em></h2>
+    </div>
+    <div class="market-grid">
+      <div class="market-card featured">
+        <div class="market-emoji">🥇</div>
+        <div class="market-name">XAUUSD (Gold)</div>
+        <div class="market-sub">Emas vs Dolar AS · Volatilitas tinggi · Likuiditas global</div>
+        <div class="market-badge">✓ Aktif</div>
+      </div>
+      <div class="market-card">
+        <div class="market-emoji">💱</div>
+        <div class="market-name">Forex Major</div>
+        <div class="market-sub">EUR/USD, GBP/USD, USD/JPY · 24 jam · Spread rendah</div>
+        <div class="market-badge" style="background:var(--bg-muted);color:var(--text-muted);border:1px solid var(--border);">Segera</div>
+      </div>
+      <div class="market-card">
+        <div class="market-emoji">₿</div>
+        <div class="market-name">Crypto</div>
+        <div class="market-sub">BTC/USDT, ETH/USDT · Spot & Futures · CEX &amp; DEX</div>
+        <div class="market-badge" style="background:var(--bg-muted);color:var(--text-muted);border:1px solid var(--border);">Segera</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY LIST -->
+<section class="js-sec alt" id="strategi">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">Strategi Trading</span>
+      <h2>Strategi yang Sudah <em>Tervalidasi</em></h2>
+      <p>Setiap strategi sudah melalui backtesting ekstensif sebelum digunakan secara live.</p>
+    </div>
+    <div class="strategy-list">
+      <div class="strategy-item">
+        <div class="strategy-icon">🕯️</div>
+        <div>
+          <div class="strategy-name">7-Candle Breakout (Protocol C)</div>
+          <p class="strategy-desc">Range 7 candle H1 di awal sesi → entry saat breakout konfirmasi. XAUUSD, Asia Session 15:00 WIB. Risk:Reward minimal 1:2.</p>
+        </div>
+        <span class="strategy-tag tag-live">✓ Live</span>
+      </div>
+      <div class="strategy-item">
+        <div class="strategy-icon">📊</div>
+        <div>
+          <div class="strategy-name">Momentum Scalping</div>
+          <p class="strategy-desc">Deteksi momentum breakout timeframe M15 dengan konfirmasi volume. Entry cepat, target 15-30 pip, stop ketat.</p>
+        </div>
+        <span class="strategy-tag tag-soon">Segera</span>
+      </div>
+      <div class="strategy-item">
+        <div class="strategy-icon">🔄</div>
+        <div>
+          <div class="strategy-name">Mean Reversion (Asia Range)</div>
+          <p class="strategy-desc">Fade extreme move di luar Asia Range. Counter-trend setup dengan konfirmasi RSI divergence dan key level.</p>
+        </div>
+        <span class="strategy-tag tag-soon">Segera</span>
+      </div>
+      <div class="strategy-item">
+        <div class="strategy-icon">🤖</div>
+        <div>
+          <div class="strategy-name">AI Signal Fusion</div>
+          <p class="strategy-desc">Kombinasi multi-timeframe analysis + sentiment data + technical confluence. Sinyal agregat dari 5+ indikator sebelum konfirmasi entry.</p>
+        </div>
+        <span class="strategy-tag tag-soon">Roadmap Q2 2026</span>
+      </div>
+    </div>
+
+    <!-- Signal Demo -->
+    <div class="signal-demo">
+      <div class="signal-header">
+        <div class="signal-header-title">📡 BerkahKarya Signal Bot</div>
+        <div class="signal-live">LIVE DEMO</div>
+      </div>
+      <div class="signal-body">
+        <div class="signal-card-entry">
+          <div class="signal-type">🟢 BUY SIGNAL · XAUUSD</div>
+          <div class="signal-asset">XAU/USD @ 2,318.50</div>
+          <div class="signal-detail">Strategy: 7-Candle Breakout · Timeframe: H1 · Session: Asia 15:00 WIB</div>
+        </div>
+        <div class="signal-card-info">
+          <div class="signal-info-item">
+            <div class="signal-info-lbl">Entry</div>
+            <div class="signal-info-val">2,318.50</div>
+          </div>
+          <div class="signal-info-item">
+            <div class="signal-info-lbl">Take Profit</div>
+            <div class="signal-info-val green">2,328.50</div>
+          </div>
+          <div class="signal-info-item">
+            <div class="signal-info-lbl">Stop Loss</div>
+            <div class="signal-info-val red">2,313.50</div>
+          </div>
+        </div>
+      </div>
+      <div class="signal-footer">⚠️ Ini contoh sinyal demo — bukan rekomendasi investasi</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="js-sec">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">Fitur Platform</span>
+      <h2>Lebih dari Sekedar <em>Sinyal Trading</em></h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">📲</div>
+        <h4>Sinyal via Telegram</h4>
+        <p>Notifikasi entry/exit langsung ke Telegram. Sinyal lengkap dengan arah, entry price, SL, TP, dan reasoning strategi.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🧮</div>
+        <h4>Auto Risk Calculator</h4>
+        <p>Input balance akun → sistem kalkulasi lot size otomatis sesuai risk tolerance yang kamu set (1%, 2%, atau custom).</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📈</div>
+        <h4>Performance Dashboard</h4>
+        <p>Track win rate, profit factor, drawdown, dan equity curve real-time. Transparent — tidak ada yang disembunyikan.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔒</div>
+        <h4>Disiplin Terjaga</h4>
+        <p>Sistem hanya kirim sinyal yang memenuhi semua kriteria strategi. Tidak ada trade saat kondisi tidak ideal — no emotion, no FOMO.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📚</div>
+        <h4>Edukasi Trading</h4>
+        <p>Setiap sinyal disertai penjelasan setup. Belajar sambil trading — pahami kenapa entry itu valid, bukan sekedar copy signal.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🤝</div>
+        <h4>Community Trader</h4>
+        <p>Komunitas trader aktif di Telegram. Diskusi setup, review trade, dan saling support dengan sesama member.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="js-sec alt" id="harga">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">Harga</span>
+      <h2>Pilih Plan yang <em>Sesuai Kebutuhanmu</em></h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Starter</div>
+        <div class="price-amount">Rp 149.000 <span>/ bulan</span></div>
+        <div class="price-period">Cocok untuk trader baru</div>
+        <ul class="price-items">
+          <li>Sinyal XAUUSD (max 3/hari)</li>
+          <li>Strategi 7-Candle Breakout</li>
+          <li>Risk calculator basic</li>
+          <li class="dim">Performance dashboard</li>
+          <li class="dim">Komunitas premium</li>
+          <li class="dim">Prioritas support</li>
+        </ul>
+        <a href="https://wa.me/6285732740006?text=Halo%20BerkahKarya%2C%20saya%20mau%20daftar%20Algorithmic%20Trading%20plan%20Starter" class="btn-secondary" style="display:block;text-align:center;padding:12px;" target="_blank" rel="noopener">Mulai Starter</a>
+      </div>
+      <div class="price-card featured">
+        <span class="price-badge">⭐ Paling Dipilih</span>
+        <div class="price-name">Pro</div>
+        <div class="price-amount">Rp 299.000 <span>/ bulan</span></div>
+        <div class="price-period">Untuk trader serius</div>
+        <ul class="price-items">
+          <li>Sinyal XAUUSD tanpa batas</li>
+          <li>Semua strategi (termasuk baru)</li>
+          <li>Risk calculator advanced</li>
+          <li>Performance dashboard full</li>
+          <li>Komunitas premium</li>
+          <li class="dim">Prioritas support</li>
+        </ul>
+        <a href="https://wa.me/6285732740006?text=Halo%20BerkahKarya%2C%20saya%20mau%20daftar%20Algorithmic%20Trading%20plan%20Pro" class="btn-primary" style="display:block;text-align:center;padding:12px;" target="_blank" rel="noopener">Mulai Pro</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Elite</div>
+        <div class="price-amount">Rp 799.000 <span>/ bulan</span></div>
+        <div class="price-period">Untuk fund & portfolio manager</div>
+        <ul class="price-items">
+          <li>Semua fitur Pro</li>
+          <li>API akses untuk auto-eksekusi</li>
+          <li>Multi-akun support</li>
+          <li>Performance dashboard full</li>
+          <li>Komunitas premium</li>
+          <li>Prioritas support (response &lt; 2 jam)</li>
+        </ul>
+        <a href="https://wa.me/6285732740006?text=Halo%20BerkahKarya%2C%20saya%20tertarik%20Algorithmic%20Trading%20plan%20Elite" class="btn-secondary" style="display:block;text-align:center;padding:12px;" target="_blank" rel="noopener">Hubungi Tim</a>
+      </div>
+    </div>
+
+    <div class="disclaimer-box" style="margin-top:2rem;">
+      <p>⚠️ <strong>Disclaimer Risiko:</strong> Trading instrumen keuangan mengandung risiko kerugian signifikan. Kinerja historis tidak menjamin hasil di masa depan. Platform ini menyediakan sinyal dan tools analisis — keputusan trading tetap tanggung jawab pengguna. Pastikan kamu memahami risiko sebelum mulai trading.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="js-sec">
+  <div class="js-sec-inner">
+    <div class="js-sec-head center">
+      <span class="sec-lbl">FAQ</span>
+      <h2>Pertanyaan yang <em>Sering Ditanyakan</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">Apakah sinyalnya auto-execute atau manual?</p>
+        <p class="faq-a">Plan Starter dan Pro menggunakan sinyal manual — kamu yang eksekusi di broker sendiri. Plan Elite mendapatkan akses API untuk integrasi auto-eksekusi dengan broker tertentu.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Broker apa yang kompatibel?</p>
+        <p class="faq-a">Sinyal bisa dieksekusi di broker MT4/MT5 mana pun. Untuk auto-eksekusi (Elite), saat ini mendukung broker dengan API terbuka. Tim kami akan bantu setup pada onboarding.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Win rate-nya berapa?</p>
+        <p class="faq-a">Backtesting strategi 7-Candle Breakout menunjukkan win rate 58-65% dengan risk:reward 1:2. Data live trading tersedia untuk diaudit. Ingat: tidak ada strategi dengan win rate 100%.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Modal minimum berapa untuk mulai?</p>
+        <p class="faq-a">Tidak ada minimum dari kami. Tapi kami rekomendasikan modal minimal $500 agar risk management bisa dijalankan dengan proper (max 1-2% per trade).</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Apakah ada masa trial sebelum berlangganan?</p>
+        <p class="faq-a">Ada masa konsultasi gratis di awal. Hubungi tim kami via WhatsApp untuk demo sinyal selama 3 hari sebelum memutuskan berlangganan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="js-cta-final">
+  <h2>Stop Tebak-Tebakan.<br>Mulai Trading dengan Sistem.</h2>
+  <p>Biarkan algoritma yang kerja keras. Kamu tinggal terima sinyal, eksekusi, dan manage risk. Konsultasi pertama gratis.</p>
+  <a href="https://wa.me/6285732740006?text=Halo%20BerkahKarya%2C%20saya%20tertarik%20Algorithmic%20Trading%20SaaS.%20Bisa%20konsultasi%20gratis%3F" class="cta-btn-white" target="_blank" rel="noopener">
+    💬 Konsultasi Gratis Sekarang
+  </a>
+</section>
+
+<footer class="bk-footer">
+  <div class="bk-footer-inner">
+    <div class="bk-footer-brand">
+      <div class="bk-logo">Berkah<span>Karya</span></div>
+      <p>AI Ecosystem untuk bisnis Indonesia — agency kreatif, AI tools, dan produk digital dalam satu ekosistem.</p>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Tools</h5>
+      <ul>
+        <li><a href="ai-video-studio.html">AI Video Studio</a></li>
+        <li><a href="ads-marketing-ai.html">Ads Marketing AI</a></li>
+        <li><a href="omniroute.html">Omniroute</a></li>
+        <li><a href="algorithmic-trading.html">Algorithmic Trading</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Layanan</h5>
+      <ul>
+        <li><a href="jasa-sosmed.html">Social Media</a></li>
+        <li><a href="jasa-video-ai.html">Video AI</a></li>
+        <li><a href="jasa-website.html">Website</a></li>
+      </ul>
+    </div>
+    <div class="bk-footer-col">
+      <h5>Perusahaan</h5>
+      <ul>
+        <li><a href="about.html">Tentang Kami</a></li>
+        <li><a href="contact.html">Kontak</a></li>
+        <li><a href="legal/privacy-policy.html">Privasi</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bk-footer-bottom">
+    <span>© 2025 BerkahKarya. All rights reserved.</span>
+    <span>Made with ❤️ + 🤖 AI in Indonesia</span>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('mobileToggle');
+  const nav = document.getElementById('mainNav');
+  if (toggle && nav) toggle.addEventListener('click', () => nav.classList.toggle('open'));
+</script>
+<script src="/lang/id.js"></script>
+<script src="/lang/en.js"></script>
+<script src="nav.js"></script>
+<script src="/analytics.js" defer></script>
+</body>
+</html>
