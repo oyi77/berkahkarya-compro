@@ -386,20 +386,39 @@ async function generateAds() {
 }
 
 function renderAds(ads, platform) {
-  document.getElementById('ads-results').innerHTML = '';
+  const container = document.getElementById('ads-results');
+  container.innerHTML = '';
+
+  const angleColor = { cause_of_inaction: '#ef4444', promise_hope: '#10b981' };
+  const angleLabel = { cause_of_inaction: '😨 Fear/Pain', promise_hope: '✨ Promise & Hope' };
+
   ads.forEach((ad, i) => {
-    const all = [ad.hook, ad.body, ad.bullets?.join('\n'), ad.cta].filter(Boolean).join('\n\n');
+    const all = [
+      `🎯 ANGLE: ${ad.angle || ''}`,
+      `🪝 HOOK:\n${ad.hook || ''}`,
+      `💥 BODY:\n${ad.body || ''}`,
+      ad.bullets?.length ? `📌 BULLET:\n${ad.bullets.map(b=>`• ${b}`).join('\n')}` : '',
+      `🔥 CTA:\n${ad.cta || ''}`
+    ].filter(Boolean).join('\n\n');
+
+    const aType = ad.angle_type || (i === 0 ? 'cause_of_inaction' : 'promise_hope');
+    const aColor = angleColor[aType] || 'var(--gold)';
+    const aLabel = angleLabel[aType] || '🎯 Angle';
+
     const card = document.createElement('div');
     card.className = 'ad-card';
     card.innerHTML = `
       <div class="ad-card-header">
-        <span class="ad-card-title">Iklan #${i+1} · ${esc(ad.angle || 'Variasi ' + (i+1))}</span>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <span class="ad-card-title">Iklan #${i+1} — ${esc(ad.angle || 'Variasi ' + (i+1))}</span>
+          <span style="font-size:.68rem;font-weight:700;color:${aColor}">${aLabel}</span>
+        </div>
         <span class="ad-card-platform">${platform}</span>
       </div>
       <div class="ad-card-body">
         ${ad.hook ? `<div><div class="ad-field-lbl">🪝 Hook</div><div class="ad-field-val hook">${esc(ad.hook)}</div></div>` : ''}
-        ${ad.body ? `<div><div class="ad-field-lbl">💥 Body</div><div class="ad-field-val">${esc(ad.body)}</div></div>` : ''}
-        ${ad.bullets?.length ? `<div><div class="ad-field-lbl">📌 Poin Utama</div><div class="ad-field-val">${ad.bullets.map(b=>`• ${esc(b)}`).join('\n')}</div></div>` : ''}
+        ${ad.body ? `<div><div class="ad-field-lbl">💥 Body (PAS)</div><div class="ad-field-val">${esc(ad.body)}</div></div>` : ''}
+        ${ad.bullets?.length ? `<div><div class="ad-field-lbl">📌 Bullet</div><div class="ad-field-val">${ad.bullets.map(b=>`• ${esc(b)}`).join('\n')}</div></div>` : ''}
         ${ad.cta ? `<div><div class="ad-field-lbl">🔥 CTA</div><div class="ad-field-val">${esc(ad.cta)}</div></div>` : ''}
       </div>
       <div class="ad-card-footer">
@@ -407,8 +426,27 @@ function renderAds(ads, platform) {
         ${ad.hook ? `<button class="copy-btn" onclick="copyText(this, \`${esc(ad.hook)}\`)">🪝 Hook</button>` : ''}
         ${ad.cta  ? `<button class="copy-btn" onclick="copyText(this, \`${esc(ad.cta)}\`)">🔥 CTA</button>` : ''}
       </div>`;
-    document.getElementById('ads-results').appendChild(card);
+    container.appendChild(card);
+
+    // Separator setelah iklan pertama
+    if (i === 0 && ads.length > 1) {
+      const sep = document.createElement('div');
+      sep.style.cssText = 'text-align:center;padding:8px 0;font-size:.82rem;font-weight:800;color:var(--gold);letter-spacing:.02em;';
+      sep.textContent = '🔥 Ini baru 1 dari 2 iklan yang dibuat sistem';
+      container.appendChild(sep);
+    }
   });
+
+  // Rekomendasi di akhir
+  if (ads.length >= 2) {
+    const rec = document.createElement('div');
+    rec.style.cssText = 'background:rgba(212,160,23,.07);border:1px solid rgba(212,160,23,.25);border-radius:12px;padding:1rem 1.25rem;font-size:.82rem;line-height:1.65;';
+    rec.innerHTML = `
+      <div style="font-weight:800;color:var(--gold);margin-bottom:.4rem">📊 REKOMENDASI</div>
+      <div style="color:var(--text2)">Gunakan <strong style="color:var(--text)">kedua iklan</strong> untuk testing. Jangan pilih 1.</div>
+      <div style="color:var(--text2);margin-top:.3rem">⚡ Fokus ke <strong style="color:var(--text)">hook & angle</strong>, bukan setting ads.</div>`;
+    container.appendChild(rec);
+  }
 }
 
 // ── GENERATE LANDING PAGE ─────────────────────────────────────────────────────

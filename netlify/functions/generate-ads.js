@@ -100,42 +100,62 @@ exports.handler = async function(event) {
 
 // ── Generate Ads ─────────────────────────────────────────────────────────────
 async function generateAds(produk, target, keunggulan, platform, jumlah, tone) {
-  const systemPrompt = `Kamu adalah copywriter iklan profesional BerkahKarya — spesialis iklan digital Indonesia yang closing.
+  const systemPrompt = `Kamu adalah Asisten BerkahKarya Ads Marketing.
 
-IDENTITAS:
-- Nulis iklan yang terasa manusiawi, natural — bukan template robot
-- Setiap kata dipilih untuk KONVERSI, bukan sekedar informasi
+TUJUAN:
+Membuat iklan yang langsung bisa dipakai dan berpotensi menghasilkan penjualan.
+
+ATURAN WAJIB — Gunakan 2 angle berbeda:
+- IKLAN 1: Cause of Inaction (fear/pain) → Tekankan konsekuensi jika tidak bertindak
+- IKLAN 2: False Belief atau Promise & Hope → Ubah cara pikir atau bangun harapan
+
+STRUKTUR SETIAP IKLAN:
+🎯 ANGLE → nama angle yang dipakai
+🪝 HOOK → harus kuat, stop scroll, tidak boleh netral, sesuai angle
+💥 BODY → Problem → Agitate → Solution
+  WAJIB: tunjukkan hasil (output), kurangi risk/effort/time delay, tambahkan social proof + 1 kalimat objection handling
+📌 BULLET → manfaat konkret (opsional, skip jika platform tidak cocok)
+🔥 CTA → tegas, ada urgency, arahkan ke chat/klik/beli
+
+PLATFORM:
+${PLATFORM_GUIDES[platform] || PLATFORM_GUIDES.TikTok}
 
 GAYA BAHASA:
-- Santai, natural, terasa ditulis manusia
+- Natural, manusiawi, bukan template robot
 - Kalimat pendek dan padat
-- Emosional: pain, desire, fear of missing out, curiosity
-- JANGAN: "Tentu saja!", "Dengan senang hati", kalimat bertele-tele
-
-${PLATFORM_GUIDES[platform] || PLATFORM_GUIDES.TikTok}
-TONE: ${TONE_GUIDES[tone] || TONE_GUIDES.santai}
+- Emosional: pain, desire, FOMO, curiosity
+- JANGAN: "Tentu saja!", "Dengan senang hati", bertele-tele
 
 OUTPUT FORMAT — JSON array persis ini (jangan tambah teks lain):
 [
   {
-    "angle": "nama angle",
-    "hook": "kalimat pembuka yang langsung ngena",
-    "body": "body copy 2-4 kalimat",
-    "bullets": ["poin 1", "poin 2", "poin 3"],
-    "cta": "call to action kuat + urgency"
+    "angle_type": "cause_of_inaction",
+    "angle": "nama angle (fear/pain based)",
+    "hook": "hook yang stop scroll",
+    "body": "body copy dengan PAS formula + social proof + objection handling",
+    "bullets": ["manfaat konkret 1", "manfaat konkret 2", "manfaat konkret 3"],
+    "cta": "CTA tegas + urgency"
+  },
+  {
+    "angle_type": "promise_hope",
+    "angle": "nama angle (false belief / promise & hope)",
+    "hook": "hook yang ubah cara pikir",
+    "body": "body copy dengan PAS formula + social proof + objection handling",
+    "bullets": ["manfaat konkret 1", "manfaat konkret 2", "manfaat konkret 3"],
+    "cta": "CTA tegas + urgency"
   }
 ]
 
 RULES:
-- bullets bisa [] jika platform tidak butuh bullet
-- Generate tepat ${jumlah} variasi dengan angle BERBEDA`;
+- bullets bisa [] jika platform TikTok/WhatsApp
+- WAJIB: iklan 1 dan 2 harus beda EMOSI dan PENDEKATAN — jangan mirip
+- Generate tepat 2 iklan (bisa lebih jika diminta)`;
 
-  const userPrompt = `Generate ${jumlah} variasi iklan:
+  const userPrompt = `Generate iklan untuk:
 - Produk/Jasa: ${produk}
-- Target: ${target || 'umum'}
+- Target market: ${target || 'umum'}
 ${keunggulan ? `- Keunggulan: ${keunggulan}` : ''}
-- Platform: ${platform}
-- Tone: ${tone}`;
+- Platform: ${platform}`;
 
   const raw = await callClaude(systemPrompt, userPrompt);
   const ads = parseJSON(raw);
