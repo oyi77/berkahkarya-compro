@@ -51,7 +51,11 @@
 
     btn.addEventListener('click', function () {
       var target = btn.getAttribute('data-target-lang') || 'en';
-      if (window.BerkahKarya && window.BerkahKarya.Language) {
+      // Prefer nav.js's bkSetLanguage (applies full PAGE_RULES + data-i18n)
+      if (typeof window.bkSetLanguage === 'function') {
+        localStorage.setItem('preferredLanguage', target);
+        window.bkSetLanguage(target);
+      } else if (window.BerkahKarya && window.BerkahKarya.Language) {
         window.BerkahKarya.Language.switch(target);
       } else {
         localStorage.setItem('bk_lang', target);

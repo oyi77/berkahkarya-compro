@@ -130,6 +130,38 @@
 
     // ─ services.html ──────────────────────────────────────────────────────────
     { page: '/services', sel: 'h1', id: 'Produk & Jasa<br><em>BerkahKarya</em>', en: 'Products & Services<br><em>BerkahKarya</em>', html: true },
+    { page: '/services', sel: '.page-hero .tag', id: '— Semua Layanan —', en: '— All Services —' },
+    { page: '/services', sel: '.page-hero p', id: null, en: '6 complementary digital solutions — from AI content generation, WhatsApp automation, TikTok agency, to trading bot and SEO. Choose what\'s most relevant for your business right now.' },
+    // Product tabs
+    { page: '/services', sel: '.prod-tab:nth-child(1)', id: '🎬 AI Video Studio', en: '🎬 AI Video Studio' },
+    { page: '/services', sel: '.prod-tab:nth-child(2)', id: '🤖 AI Agent Pro', en: '🤖 AI Agent Pro' },
+    { page: '/services', sel: '.prod-tab:nth-child(3)', id: '📱 TikTok Agency', en: '📱 TikTok Agency' },
+    { page: '/services', sel: '.prod-tab:nth-child(4)', id: '🛒 E-commerce', en: '🛒 E-commerce' },
+    { page: '/services', sel: '.prod-tab:nth-child(5)', id: '📈 Trading Bot', en: '📈 Trading Bot' },
+    { page: '/services', sel: '.prod-tab:nth-child(6)', id: '🔍 SEO & Ads', en: '🔍 SEO & Ads' },
+    // AI Video Studio
+    { page: '/services', sel: '#ai-video .prod-badge', id: 'SaaS · Telegram Bot · Self-Service', en: 'SaaS · Telegram Bot · Self-Service' },
+    { page: '/services', sel: '#ai-video .prod-desc', id: null, en: 'Generate AI-quality video directly from Telegram — no camera, no editor, no studio. Send prompt → receive video ready to upload to TikTok/IG/YouTube in 2–5 minutes.' },
+    { page: '/services', sel: '#ai-video .btn-gold', id: 'Coba Gratis 🎬', en: 'Try Free 🎬' },
+    { page: '/services', sel: '#ai-video .btn-outline', id: 'Tanya WA', en: 'WhatsApp Chat' },
+    // AI Agent Pro
+    { page: '/services', sel: '#ai-agent .prod-badge', id: 'SaaS · API · White-label', en: 'SaaS · API · White-label' },
+    { page: '/services', sel: '#ai-agent .prod-desc', id: null, en: 'AI chatbot agent for WhatsApp/Telegram. Auto-replies, lead qualification, broadcast, follow-up — all automated 24/7 without extra staff.' },
+    // TikTok Agency
+    { page: '/services', sel: '#tiktok .prod-badge', id: 'Agency · Done-for-you', en: 'Agency · Done-for-you' },
+    { page: '/services', sel: '#tiktok .prod-desc', id: null, en: 'TikTok content production and account management for Shopee/Tokopedia sellers. Viral content that converts views into sales.' },
+    // E-commerce
+    { page: '/services', sel: '#ecommerce .prod-badge', id: 'Agency · Konsultasi', en: 'Agency · Consulting' },
+    { page: '/services', sel: '#ecommerce .prod-desc', id: null, en: 'Shopee & Tokopedia store optimization to increase organic ranking and sales. SEO products, store decoration, ad management, competitor analysis.' },
+    // FlashRobs Trading Bot
+    { page: '/services', sel: '#trading .prod-badge', id: 'SaaS · Bot · Algoritmik', en: 'SaaS · Bot · Algorithmic' },
+    { page: '/services', sel: '#trading .prod-desc', id: null, en: 'Automated trading with smart algorithms. Consistent profit without emotion. 7-candle breakout strategy for XAUUSD.' },
+    // SEO
+    { page: '/services', sel: '#seo .prod-badge', id: 'Agency · Managed', en: 'Agency · Managed' },
+    { page: '/services', sel: '#seo .prod-desc', id: null, en: 'Google SEO, Meta Ads, TikTok Ads management. Proven strategy to increase organic traffic and paid campaign ROI.' },
+    // CTA / footer section
+    { page: '/services', sel: '.cta-section h2, .services-cta h2', id: null, en: 'Ready to scale your business?' },
+    { page: '/services', sel: '.cta-section p, .services-cta p', id: null, en: 'Free 30-minute consultation. We analyze your needs and recommend the best solution.' },
 
     // ─ pricing.html ───────────────────────────────────────────────────────────
     { page: '/pricing', sel: 'h1', id: 'Pricing Kami', en: 'Our Pricing' },
@@ -153,7 +185,7 @@
 
   // ── Language Detection ─────────────────────────────────────────────────────
   function detectLang() {
-    var saved = localStorage.getItem('bk_lang');
+    var saved = localStorage.getItem('bk_lang') || localStorage.getItem('preferredLanguage');
     if (saved === 'en' || saved === 'id') return saved;
 
     var urlParam = new URLSearchParams(window.location.search).get('lang');
@@ -291,6 +323,7 @@
 
   function setLanguage(lang) {
     localStorage.setItem('bk_lang', lang);
+    localStorage.setItem('preferredLanguage', lang);
     applyLang(lang);
   }
   window.bkSetLanguage = setLanguage;

@@ -48,6 +48,8 @@
 
     // Trigger nav.js applyLang if available
     if (typeof applyLang === 'function') applyLang(lang);
+    // Trigger nav.js via its exposed global (bkSetLanguage wraps applyLang)
+    if (typeof window.bkSetLanguage === 'function') window.bkSetLanguage(lang);
   }
 
   function switchLanguage(newLang) {
