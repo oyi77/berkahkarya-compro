@@ -611,26 +611,26 @@ footer {
   .duration-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* === AI VIDEO STUDIO: Dark → Cream override === */
-body { background: var(--bg) !important; color: var(--text) !important; font-family: var(--font) !important; }
-:root {
-  --gold: var(--mustard) !important;
-  --bg-2: var(--bg-muted) !important;
-  --bg-3: var(--bg-white) !important;
-  --text-1: var(--text) !important;
-  --text-2: var(--text-muted) !important;
-  --text-3: var(--text-muted) !important;
-  --line: var(--border) !important;
-}
-h1, h2, h3, h4 { font-family: var(--font) !important; color: var(--text) !important; }
-h2 em { color: var(--mustard) !important; font-style: normal !important; }
-p { color: var(--text-muted) !important; }
-.card, .feat-card, .feature-card { background: var(--bg-white) !important; border-color: var(--border) !important; }
-.card:hover { border-color: var(--mustard) !important; }
-.btn-gold, .btn-primary { background: var(--mustard) !important; color: #fff !important; }
-.btn-ghost, .btn-outline { border-color: var(--border) !important; color: var(--text-muted) !important; background: transparent !important; }
+/* === AI VIDEO STUDIO: Dark theme enforcement === */
+/* Override style.css cream defaults — keep this page dark */
+body { background: #080808 !important; color: #ddd6c8 !important; }
+h1, h2, h3, h4 { color: var(--text-1) !important; }
+h1 em, h2 em { color: var(--gold) !important; font-style: italic !important; }
+p { color: var(--text-4) !important; }
 nav:not(.bk-nav) { display: none !important; }
 footer:not(.bk-footer) { display: none !important; }
+/* bk-nav dark override */
+.bk-nav { background: rgba(8,8,8,0.92) !important; border-bottom-color: rgba(255,255,255,0.06) !important; }
+.bk-nav-links a, .bk-logo, .bk-nav-links a { color: rgba(255,255,255,0.75) !important; }
+.bk-logo span { color: var(--gold) !important; }
+.bk-nav-links a:hover { color: var(--gold) !important; }
+.bk-nav-mobile { color: rgba(255,255,255,0.75) !important; }
+.bk-nav-mobile-menu { background: rgba(10,10,10,0.98) !important; border-bottom-color: rgba(255,255,255,0.06) !important; }
+.bk-nav-mobile-menu a { color: rgba(255,255,255,0.75) !important; border-bottom-color: rgba(255,255,255,0.06) !important; }
+/* footer dark override */
+.bk-footer { background: #050505 !important; border-top-color: rgba(255,255,255,0.06) !important; }
+.bk-footer-brand p, .bk-footer-col h4, .bk-footer-col a, .bk-footer-bottom { color: rgba(255,255,255,0.5) !important; }
+.bk-footer-brand .bk-logo { color: rgba(255,255,255,0.9) !important; }
 
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
@@ -1227,7 +1227,11 @@ window.addEventListener('scroll', () => {
 </footer>
   <script src="/lang/id.js"></script>
   <script src="/lang/en.js"></script>
+  <script src="/lang/id.js"></script>
+  <script src="/lang/en.js"></script>
   <script src="nav.js"></script>
+  <script src="/js/geo-language-detection.js"></script>
+  <script src="/js/language-switcher-component.js"></script>
   <script src="/analytics.js" defer></script>
 </body>
 </html>
