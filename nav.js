@@ -192,15 +192,32 @@
     }, 800);
   }
 
+  // ── Keys that contain HTML markup (use innerHTML not textContent) ──────────
+  var HTML_KEYS = {
+    heroTitle: true, pilarTitle: true, servicesTitle: true, omniTitle: true,
+    ctaTitle: true, aboutPageTitle: true, servicesPageTitle: true,
+    toolsPageTitle: true, pricingPageTitle: true
+  };
+
   // ── Apply full-page translations ──────────────────────────────────────────
   function applyLang(lang) {
-    var t = KEY_TRANS[lang] || KEY_TRANS['id'];
+    // Merge KEY_TRANS with external lang files if loaded
+    var extLang = lang === 'en'
+      ? (typeof BK_LANG_EN !== 'undefined' ? BK_LANG_EN : {})
+      : (typeof BK_LANG_ID !== 'undefined' ? BK_LANG_ID : {});
+    var t = Object.assign({}, KEY_TRANS[lang] || KEY_TRANS['id'], extLang);
     var path = window.location.pathname.replace('.html', '').replace(/\/$/, '') || '/';
 
-    // 1. Legacy data-i18n elements (nav, footer keys)
+    // 1. data-i18n elements — use innerHTML for keys with HTML content
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
-      if (t[key] !== undefined) el.textContent = t[key];
+      if (t[key] !== undefined) {
+        if (HTML_KEYS[key]) {
+          el.innerHTML = t[key];
+        } else {
+          el.textContent = t[key];
+        }
+      }
     });
     document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
       var key = el.getAttribute('data-i18n-placeholder');
