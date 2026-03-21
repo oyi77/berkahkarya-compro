@@ -111,6 +111,12 @@ exports.handler = async function(event) {
       if (!iklan_kompetitor) return { statusCode: 400, headers, body: JSON.stringify({ error: 'iklan_kompetitor wajib diisi' }) };
       const result = await analyzeCompetitor(iklan_kompetitor, produk, target);
       return { statusCode: 200, headers, body: JSON.stringify({ result }) };
+    } else if (mode === 'optimize') {
+      const result = await runAutoOptimize(body);
+      return { statusCode: 200, headers, body: JSON.stringify(result) };
+    } else if (mode === 'analyze') {
+      const result = await analyzePerformance(body);
+      return { statusCode: 200, headers, body: JSON.stringify({ result }) };
     } else {
       const ads = await generateAds(produk, target, keunggulan, platform, jumlah, tone);
       return { statusCode: 200, headers, body: JSON.stringify({ ads }) };
@@ -344,6 +350,122 @@ ${target ? `Target market: ${target}` : ''}`;
 
   const raw = await callClaude(systemPrompt, userPrompt);
   return parseJSON(raw);
+}
+
+// ── Auto Optimize Engine ──────────────────────────────────────────────────────
+async function runAutoOptimize(data) {
+  const { spend, revenue, clicks, leads, closing, produk, target, old_ads, old_lp } = data;
+  const roas = revenue / spend;
+  const ctr  = clicks ? ((clicks / (spend * 1000 / 10)) * 100).toFixed(2) : null;
+  const cvr  = leads && clicks ? ((leads / clicks) * 100).toFixed(2) : null;
+  const closingRate = closing && leads ? ((closing / leads) * 100).toFixed(2) : null;
+
+  const systemPrompt = `Kamu adalah AI Performance Marketing Optimizer — ahli diagnosa dan perbaikan iklan yang jelek.
+
+TUGAS: Terima data performa iklan → diagnosis masalah → generate 2 iklan baru + landing page baru yang lebih baik.
+
+OUTPUT FORMAT — JSON persis ini:
+{
+  "analysis": {
+    "main_problem": "1 kalimat root cause utama",
+    "root_cause": "Penjelasan 2-3 kalimat kenapa metrics ini jelek",
+    "priority_level": "HIGH | MEDIUM | LOW",
+    "metrics": {
+      "ROAS": "X.XX",
+      "CTR": "X.XX%",
+      "CVR": "X.XX%",
+      "Closing Rate": "X.XX%",
+      "Verdict": "KILL | OPTIMIZE | SCALE"
+    }
+  },
+  "strategy": {
+    "fix_type": "FULL RESET | HOOK | COPY | LP | AUDIENCE",
+    "what_changed": "Apa yang diubah",
+    "what_preserved": "Apa yang dipertahankan"
+  },
+  "new_ads": {
+    "ad_1": {"angle": "nama angle", "hook": "hook baru", "body": "copy baru", "proof": "social proof", "cta": "CTA"},
+    "ad_2": {"angle": "nama angle", "hook": "hook baru", "body": "copy baru", "proof": "social proof", "cta": "CTA"}
+  },
+  "new_landing_page": "full HTML landing page siap deploy (single file, inline CSS/JS, responsive)",
+  "relaunch_plan": {
+    "audience": "targeting rekomendasi",
+    "budget_strategy": "budget alokasi",
+    "testing_duration": "X hari",
+    "success_metric": "target ROAS/metric"
+  }
+}
+
+RULES:
+- new_landing_page: full HTML dengan countdown timer, sticky CTA (WA + Checkout), social proof
+- Diagnosa harus spesifik berdasarkan angka
+- Iklan baru harus beda angle dari yang lama`;
+
+  const userPrompt = `Data performa iklan:
+- Spend: Rp ${spend?.toLocaleString()}
+- Revenue: Rp ${revenue?.toLocaleString()}
+- ROAS: ${roas.toFixed(2)}x
+${clicks ? `- Clicks: ${clicks}` : ''}
+${leads ? `- Leads: ${leads}` : ''}
+${closing ? `- Closing: ${closing}` : ''}
+${produk ? `- Produk: ${produk}` : ''}
+${target ? `- Target: ${target}` : ''}
+${old_ads ? `\nIklan lama:\n${old_ads}` : ''}
+${old_lp ? `\nLanding page lama:\n${old_lp.slice(0, 500)}...` : ''}
+
+Diagnosis masalah dan generate semua fix sekarang.`;
+
+  const raw = await callClaude(systemPrompt, userPrompt);
+  const result = parseJSON(raw);
+  if (!result) throw new Error('Parse failed');
+  return result;
+}
+
+// ── Performance Analyzer ──────────────────────────────────────────────────────
+async function analyzePerformance(data) {
+  const { spend, revenue, clicks, leads, closing, impressions } = data;
+  const roas = revenue / spend;
+
+  const systemPrompt = `Kamu adalah AI Performance Marketing Analyst — spesialis kalkulasi dan diagnosis iklan.
+
+OUTPUT FORMAT — JSON persis ini:
+{
+  "status": "WINNER | BREAKEVEN | LOSER",
+  "decision": "SCALE | OPTIMIZE | KILL",
+  "decision_reason": "Alasan 1-2 kalimat kenapa keputusan ini",
+  "metrics": {
+    "ROAS": "X.XX",
+    "Break Even ROAS": "X.XX",
+    "CTR": "X.XX% atau N/A",
+    "CVR": "X.XX% atau N/A",
+    "Closing Rate": "X.XX% atau N/A",
+    "CPA": "Rp XXX.XXX atau N/A"
+  },
+  "diagnosis": ["masalah 1 spesifik", "masalah 2", "masalah 3"],
+  "action_items": [
+    {"priority": "HIGH", "action": "aksi konkret 1"},
+    {"priority": "MEDIUM", "action": "aksi konkret 2"},
+    {"priority": "LOW", "action": "aksi konkret 3"}
+  ],
+  "scale_readiness": "READY | NOT READY | NEEDS VALIDATION",
+  "scale_conditions": "Kondisi yang harus dipenuhi sebelum scale"
+}`;
+
+  const userPrompt = `Analisa performa iklan ini:
+- Spend: Rp ${spend?.toLocaleString()}
+- Revenue: Rp ${revenue?.toLocaleString()}
+- ROAS: ${roas.toFixed(2)}x
+${clicks ? `- Clicks: ${clicks}` : ''}
+${leads ? `- Leads: ${leads}` : ''}
+${closing ? `- Closing: ${closing}` : ''}
+${impressions ? `- Impressions: ${impressions}` : ''}
+
+Berikan diagnosis lengkap dan keputusan KILL/OPTIMIZE/SCALE.`;
+
+  const raw = await callClaude(systemPrompt, userPrompt);
+  const result = parseJSON(raw);
+  if (!result) throw new Error('Parse failed');
+  return result;
 }
 
 // ── AI API call with model fallback chain ────────────────────────────────────
