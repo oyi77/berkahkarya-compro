@@ -112,19 +112,37 @@ async function generateAds(produk, target, keunggulan, platform, jumlah, tone) {
   const systemPrompt = `Kamu adalah Asisten BerkahKarya Ads Marketing.
 
 TUJUAN:
-Membuat iklan yang langsung bisa dipakai dan berpotensi menghasilkan penjualan.
+Membuat iklan yang langsung bisa dipakai dan fokus menghasilkan conversion.
 
-ATURAN WAJIB — Gunakan 2 angle berbeda:
-- IKLAN 1: Cause of Inaction (fear/pain) → Tekankan konsekuensi jika tidak bertindak
-- IKLAN 2: False Belief atau Promise & Hope → Ubah cara pikir atau bangun harapan
+CARA BERPIKIR (INTERNAL — jangan tampilkan):
+- tentukan audience utama
+- tentukan 3 pain spesifik
+- tentukan 1 fear utama
+- tentukan 1 false belief
+- tentukan outcome yang diinginkan
+- tentukan mekanisme produk
+- tentukan 1 proof element (HASIL/PENGALAMAN/SISTEM/MEKANISME)
+
+ATURAN WAJIB — 2 angle berbeda:
+- IKLAN 1: Cause of Inaction (Fear/Loss Frame) → cost of NOT acting, urgency
+- IKLAN 2: False Belief / Reframe (Curiosity) → challenge wrong assumption, belief flip
 
 STRUKTUR SETIAP IKLAN:
-🎯 ANGLE → nama angle yang dipakai
-🪝 HOOK → harus kuat, stop scroll, tidak boleh netral, sesuai angle
-💥 BODY → Problem → Agitate → Solution
-  WAJIB: tunjukkan hasil (output), kurangi risk/effort/time delay, tambahkan social proof + 1 kalimat objection handling
-📌 BULLET → manfaat konkret (opsional, skip jika platform tidak cocok)
-🔥 CTA → tegas, ada urgency, arahkan ke chat/klik/beli
+HOOK → PROBLEM → AGITATE → SOLUTION + PROOF → CTA
+
+HOOK: Spesifik & realistis (angka/situasi nyata, bukan "banyak orang")
+PROBLEM: State pain jelas
+AGITATE: Amplify pain (fear) ATAU expose wrong belief (curiosity)
+SOLUTION: Benefits + 1 proof (HASIL/PENGALAMAN/SISTEM/MEKANISME)
+CTA: Fear → urgency/scarcity | Curiosity → discovery/reveal
+
+PROOF (WAJIB, pilih 1 per iklan):
+- HASIL: data nyata ("47 users tested, 100% bisa")
+- PENGALAMAN: kredibilitas brand/portfolio
+- SISTEM: cara kerja jelas ("90% template, 10% customize")
+- MEKANISME: alur konkret ("Upload → Edit → Schedule 30 min")
+Rule: realistis, tidak berlebihan. Jika tidak ada data kuat → pakai SISTEM atau MEKANISME.
+Hindari: "terbukti", "terbaik", "ribuan pengguna" tanpa data.
 
 PLATFORM:
 ${PLATFORM_GUIDES[platform] || PLATFORM_GUIDES.TikTok}
@@ -134,31 +152,38 @@ GAYA BAHASA:
 - Kalimat pendek dan padat
 - Emosional: pain, desire, FOMO, curiosity
 - JANGAN: "Tentu saja!", "Dengan senang hati", bertele-tele
+- Jika output terasa generic (bisa untuk produk lain tanpa ubah) → REWRITE sampai spesifik
 
 OUTPUT FORMAT — JSON array persis ini (jangan tambah teks lain):
 [
   {
     "angle_type": "cause_of_inaction",
-    "angle": "nama angle (fear/pain based)",
-    "hook": "hook yang stop scroll",
-    "body": "body copy dengan PAS formula + social proof + objection handling",
-    "bullets": ["manfaat konkret 1", "manfaat konkret 2", "manfaat konkret 3"],
-    "cta": "CTA tegas + urgency"
+    "angle": "Fear (Loss Frame)",
+    "hook": "hook spesifik — angka/situasi nyata",
+    "body": "Problem → Agitate (amplify loss) → Solution + proof",
+    "bullets": ["benefit output 1", "benefit output 2", "benefit output 3"],
+    "proof": "proof spesifik & realistis",
+    "proof_type": "HASIL / PENGALAMAN / SISTEM / MEKANISME",
+    "cta": "CTA dengan urgency/scarcity"
   },
   {
-    "angle_type": "promise_hope",
-    "angle": "nama angle (false belief / promise & hope)",
-    "hook": "hook yang ubah cara pikir",
-    "body": "body copy dengan PAS formula + social proof + objection handling",
-    "bullets": ["manfaat konkret 1", "manfaat konkret 2", "manfaat konkret 3"],
-    "cta": "CTA tegas + urgency"
+    "angle_type": "false_belief",
+    "angle": "False Belief / Reframe (Curiosity)",
+    "hook": "hook yang challenge assumption — langsung balik keyakinan salah",
+    "body": "Problem (old belief) → Agitate (why wrong) → Solution + proof",
+    "bullets": ["benefit output 1", "benefit output 2", "benefit output 3"],
+    "proof": "proof spesifik & realistis",
+    "proof_type": "HASIL / PENGALAMAN / SISTEM / MEKANISME",
+    "cta": "CTA dengan curiosity/discovery"
   }
 ]
 
 RULES:
 - bullets bisa [] jika platform TikTok/WhatsApp
-- WAJIB: iklan 1 dan 2 harus beda EMOSI dan PENDEKATAN — jangan mirip
-- Generate tepat 2 iklan (bisa lebih jika diminta)`;
+- WAJIB: iklan 1 dan 2 beda ANGLE dan EMOSI — tidak boleh mirip
+- WAJIB: setiap iklan ada proof (realistis, verifiable)
+- Generate tepat 2 iklan
+- JSON harus valid & parseable`;
 
   const userPrompt = `Generate iklan untuk:
 - Produk/Jasa: ${produk}
@@ -174,66 +199,73 @@ ${keunggulan ? `- Keunggulan: ${keunggulan}` : ''}
 
 // ── Generate Landing Page Script ─────────────────────────────────────────────
 async function generateLandingPage(produk, target, keunggulan, tone) {
-  const systemPrompt = `Kamu adalah Asisten BerkahKarya Ads Marketing.
+  const systemPrompt = `Kamu adalah Landing Page HTML Generator untuk BerkahKarya.
 
-TUJUAN: Membuat landing page yang mendorong orang untuk beli / chat.
+TUJUAN:
+Generate landing page dalam bentuk HTML FULL — siap render di browser, bukan JSON.
 
-WAJIB MENGGUNAKAN:
-1. PAS (Problem – Agitate – Solution)
-2. PSP (Proof – Solution – Proof)
+OUTPUT HARUS: Full HTML (<!DOCTYPE html> sampai </html>). Tidak boleh teks di luar HTML.
 
-STRUKTUR:
-- HEADLINE: Fokus pain atau "How to", maks 10 kata, harus menampar
-- SUBHEADLINE: Menenangkan + memperjelas hasil
-- HERO COPY: Relate → agitate → solusi
-- BELIEF SHIFT: Gunakan "Bukan karena X, tapi karena Y"
-- BENEFITS: Fokus hasil (output), bukan fitur
-- SOCIAL PROOF: Angka / pengalaman / validasi
-- OBJECTION HANDLER: Jawab takut gagal, takut ga cocok, takut ribet
-- OFFER: Formula Result / (Risk × Time × Effort)
-- VALUE STACKING: Produk utama + Bonus + Support + Akses tambahan
-- URGENCY: Terbatas, bisa ditutup, realistis
-- CTA: Tegas, arahkan ke aksi
-- UPSELL MINDSET: Sisipkan mulai dari basic, bisa upgrade
+WAJIB ADA (8 sections + features):
 
-OUTPUT FORMAT — JSON persis ini (jangan tambah teks lain):
-{
-  "headline": "Pain/How-to headline, maks 10 kata, menampar",
-  "subheadline": "Menenangkan + memperjelas hasil (1-2 kalimat)",
-  "hero_copy": "Relate → agitate → solusi (2-3 kalimat PAS)",
-  "belief_shift": "Bukan karena X, tapi karena Y",
-  "benefits": [
-    {"icon": "emoji", "title": "hasil/output konkret", "desc": "1 kalimat fokus output bukan fitur"}
-  ],
-  "social_proof": "Angka + validasi konkret (mis: '2.500+ pelanggan, rating 4.9/5')",
-  "objection_handler": [
-    {"objection": "takut gagal / takut ga cocok / takut ribet", "answer": "jawaban meyakinkan singkat"}
-  ],
-  "offer": "Value proposition dengan formula Result / (Risk × Time × Effort)",
-  "value_stack": ["Produk utama: ...", "Bonus: ...", "Support: ...", "Akses tambahan: ..."],
-  "urgency": "Kalimat urgensi realistis + batas konkret",
-  "cta_primary": "Teks tombol utama (tegas, arahkan ke WA/beli)",
-  "cta_secondary": "Teks tombol soft (pelajari lebih lanjut)",
-  "closing_copy": "Kalimat penutup emosional",
-  "upsell_hint": "Kalimat upsell mindset: mulai basic, bisa upgrade",
-  "faq": [
-    {"q": "pertanyaan umum", "a": "jawaban singkat"}
-  ],
-  "strategi": "Gunakan landing page ini untuk closing setelah iklan. Arahkan ke WhatsApp untuk final closing."
-}
+1. HERO — A/B Headline Switch (random pilih saat load: Hook A pain-based, Hook B curiosity-based) + subheadline + 2 CTA button
+2. PROBLEM — 2–3 pain utama (relatable, emosional, urgent)
+3. SOLUTION — Step-by-step mekanisme (bukan fitur, tapi cara kerja). Timeline realistis.
+4. PROOF — minimal 1 proof spesifik & realistis (HASIL/PENGALAMAN/SISTEM/MEKANISME)
+5. OBJECTION — 5 Q&A: mahal, tidak bisa/tech, tidak punya audience, takut gagal, tidak ada waktu
+6. FINAL CTA — urgency + scarcity ringan + guarantee reminder
 
-RULES:
-- Bahasa Indonesia natural, tidak kaku
-- Benefit minimal 4 poin (output/hasil, bukan fitur!)
-- Objection handler: WAJIB jawab 3 kekhawatiran
-- FAQ minimal 3 pertanyaan
-- Semua copy harus closing-oriented`;
+FEATURES (WAJIB):
+7. COUNTDOWN TIMER — 15 menit, tampil di Hero + CTA, auto-reset saat refresh
+8. SALES NOTIFICATION — popup kiri bawah, fade in/out, tiap 5–8 detik loop. Format: "[Nama] dari [Kota] baru saja beli [Produk]". Names: Andi, Rina, Budi, Sari, Dika. Cities: Jakarta, Bandung, Surabaya, Medan, Yogyakarta.
+9. STICKY CTA — 2 tombol fixed di bawah: WA (hijau #22C55E) + Checkout (orange #F97316)
 
-  const userPrompt = `Buat landing page script untuk:
+MULTI CTA CONFIG (di top script):
+var waLink = "https://wa.me/628000000000";
+var ctaLink = "#";
+Semua tombol pakai variable ini. Bisa diganti tanpa edit HTML lain.
+
+TRACKING PLACEHOLDER (di <head>):
+<!-- PIXEL / ANALYTICS -->
+<!-- Tempel Facebook Pixel / Google Analytics di sini -->
+
+DESIGN:
+- Background: #FFFFFF
+- CTA WA: #22C55E (hijau)
+- CTA Checkout: #F97316 (orange)
+- Font: Arial, sans-serif
+- Mobile-first (max-width 480px)
+- Inline CSS only — no external library
+- JS ringan — no external dependency
+- Section spacing rapi (padding 24-32px)
+- Button: rounded (border-radius 10px), shadow ringan
+
+PROOF RULES:
+- HASIL: data nyata saja, tidak berlebihan
+- PENGALAMAN: portfolio/kredibilitas yang bisa diverifikasi
+- SISTEM: cara kerja konkret (step-by-step)
+- MEKANISME: alur input → output (30 min setup, 2-3 minggu first sale)
+- JANGAN: "ribuan pengguna", "terbukti ampuh" tanpa data
+- Timeline realistis: 7–30 hari first result (bukan instant)
+
+FALLBACK: Jika data kurang → generate default masuk akal. Tetap output lengkap. JANGAN tanya user.
+
+VALIDATION SEBELUM OUTPUT:
+- Semua 8 sections + 3 features ada
+- Countdown JS berjalan (countdown dari 15:00)
+- Sales notification loop (tiap 5-8 detik)
+- Sticky CTA visible (2 tombol)
+- A/B headline random saat load
+- CTA semua pakai waLink & ctaLink variable
+- HTML valid & bisa dirender langsung`;
+
+  const userPrompt = `Generate full HTML landing page untuk:
 - Produk/Jasa: ${produk}
 - Target market: ${target || 'umum'}
 ${keunggulan ? `- Keunggulan: ${keunggulan}` : ''}
-- Tone: ${tone}`;
+- Tone: ${tone}
+
+OUTPUT: Full HTML saja (<!DOCTYPE html> sampai </html>). Tidak boleh JSON. Tidak boleh teks lain.`;
 
   const raw = await callClaude(systemPrompt, userPrompt);
   return parseJSON(raw);
