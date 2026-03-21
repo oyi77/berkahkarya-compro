@@ -26,6 +26,14 @@ const MODEL_CHAIN = [
   { base: LAOZHANG_BASE, key: LAOZHANG_KEY, model: 'claude-3-5-haiku-latest' },    // Fallback 6: always fast
 ];
 
+// Fast chain for time-sensitive modes (optimize/analyze) — haiku/flash first
+const FAST_MODEL_CHAIN = [
+  { base: LAOZHANG_BASE, key: LAOZHANG_KEY, model: 'claude-3-5-haiku-latest' },    // Fastest Claude
+  { base: LAOZHANG_BASE, key: LAOZHANG_KEY, model: 'gemini-2.5-flash' },           // Fast Google
+  { base: OMNI_BASE,     key: OMNI_KEY,     model: 'auto/fast' },                   // OmniRouter fast
+  { base: LAOZHANG_BASE, key: LAOZHANG_KEY, model: 'claude-sonnet-4-6' },          // Sonnet as last resort
+];
+
 const DEFAULT_MODEL = MODEL_CHAIN[0].model;
 
 // ── Platform guides ──────────────────────────────────────────────────────────
@@ -404,7 +412,7 @@ ${produk ? `- Produk: ${produk}` : ''}
 ${target ? `- Target: ${target}` : ''}
 ${old_ads ? `\nIklan lama:\n${old_ads.slice(0,400)}` : ''}`;
 
-  const raw = await callClaude(systemPrompt, userPrompt);
+  const raw = await callClaude(systemPrompt, userPrompt, FAST_MODEL_CHAIN);
   const result = parseJSON(raw);
   if (!result || !result.analysis) throw new Error('Parse failed');
   return result;
@@ -451,17 +459,18 @@ ${impressions ? `- Impressions: ${impressions}` : ''}
 
 Keputusan KILL/OPTIMIZE/SCALE dengan alasan konkret.`;
 
-  const raw = await callClaude(systemPrompt, userPrompt);
+  const raw = await callClaude(systemPrompt, userPrompt, FAST_MODEL_CHAIN);
   const result = parseJSON(raw);
   if (!result || !result.decision) throw new Error('Parse failed');
   return result;
 }
 
 // ── AI API call with model fallback chain ────────────────────────────────────
-async function callClaude(systemPrompt, userPrompt) {
+// chain: MODEL_CHAIN (default) or FAST_MODEL_CHAIN (for optimize/analyze)
+async function callClaude(systemPrompt, userPrompt, chain = MODEL_CHAIN) {
   let lastError = null;
 
-  for (const entry of MODEL_CHAIN) {
+  for (const entry of chain) {
     const { base, key, model } = entry;
     try {
       console.log(`[AI] Trying ${base === OMNI_BASE ? 'OmniRouter' : 'LaoZhang'}: ${model}`);
