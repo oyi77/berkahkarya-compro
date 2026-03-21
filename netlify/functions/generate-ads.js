@@ -10,18 +10,23 @@
 const LAOZHANG_BASE = 'https://api.laozhang.ai/v1';
 const LAOZHANG_KEY  = process.env.LAOZHANG_API_KEY || 'sk-Yme2SkDrhbSbCD2F56871153658d4c0e841cA2B51cD0F4E3';
 
-// Fallback chain — tries each model in order until one succeeds
-// Order: best quality → fastest → most reliable
+// OmniRouter (internal multi-provider router exposed via Cloudflare tunnel)
+const OMNI_BASE = process.env.OMNI_API_URL || 'https://omni.aitradepulse.com/v1';
+const OMNI_KEY  = process.env.OMNI_API_KEY  || 'omnirouter-internal';
+
+// Fallback chain — each entry: { base, key, model }
+// Order: LaoZhang best → LaoZhang fast → OmniRouter auto → OmniRouter fast → LaoZhang haiku
 const MODEL_CHAIN = [
-  'claude-opus-4-20250514',     // Primary: best quality
-  'claude-sonnet-4-6',          // Fallback 1: fast Sonnet 4
-  'claude-3-7-sonnet-20250219', // Fallback 2: reliable Sonnet 3.7
-  'gemini-2.5-flash',           // Fallback 3: fast Google model
-  'chatgpt-4o-latest',          // Fallback 4: OpenAI fallback
-  'claude-3-5-haiku-latest',    // Fallback 5: fastest Claude, always fast
+  { base: LAOZHANG_BASE, key: LAOZHANG_KEY, model: 'claude-opus-4-20250514' },     // Primary
+  { base: LAOZHANG_BASE, key: LAOZHANG_KEY, model: 'claude-sonnet-4-6' },          // Fallback 1
+  { base: OMNI_BASE,     key: OMNI_KEY,     model: 'auto/pro-chat' },               // Fallback 2: OmniRouter auto-select best
+  { base: OMNI_BASE,     key: OMNI_KEY,     model: 'auto/fast' },                   // Fallback 3: OmniRouter fastest
+  { base: LAOZHANG_BASE, key: LAOZHANG_KEY, model: 'gemini-2.5-flash' },           // Fallback 4
+  { base: LAOZHANG_BASE, key: LAOZHANG_KEY, model: 'chatgpt-4o-latest' },          // Fallback 5
+  { base: LAOZHANG_BASE, key: LAOZHANG_KEY, model: 'claude-3-5-haiku-latest' },    // Fallback 6: always fast
 ];
 
-const DEFAULT_MODEL = MODEL_CHAIN[0];
+const DEFAULT_MODEL = MODEL_CHAIN[0].model;
 
 // ── Platform guides ──────────────────────────────────────────────────────────
 const PLATFORM_GUIDES = {
@@ -345,34 +350,33 @@ ${target ? `Target market: ${target}` : ''}`;
 async function callClaude(systemPrompt, userPrompt) {
   let lastError = null;
 
-  for (const model of MODEL_CHAIN) {
+  for (const entry of MODEL_CHAIN) {
+    const { base, key, model } = entry;
     try {
-      console.log(`[AI] Trying model: ${model}`);
-      const result = await callModelWithTimeout(model, systemPrompt, userPrompt, 22000);
-      console.log(`[AI] Success with model: ${model}`);
+      console.log(`[AI] Trying ${base === OMNI_BASE ? 'OmniRouter' : 'LaoZhang'}: ${model}`);
+      const result = await callModelWithTimeout(base, key, model, systemPrompt, userPrompt, 22000);
+      console.log(`[AI] Success: ${model}`);
       return result;
     } catch (err) {
-      console.warn(`[AI] Model ${model} failed: ${err.message}`);
+      console.warn(`[AI] Failed (${model}): ${err.message}`);
       lastError = err;
-      // Continue to next model in chain
     }
   }
 
-  // All models failed — throw last error (triggers hardcoded fallback in main handler)
   throw new Error(`All models failed. Last error: ${lastError?.message}`);
 }
 
 // Single model call with AbortController timeout
-async function callModelWithTimeout(model, systemPrompt, userPrompt, timeoutMs = 22000) {
+async function callModelWithTimeout(base, key, model, systemPrompt, userPrompt, timeoutMs = 22000) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
 
   try {
-    const resp = await fetch(`${LAOZHANG_BASE}/chat/completions`, {
+    const resp = await fetch(`${base}/chat/completions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${LAOZHANG_KEY}`
+        'Authorization': `Bearer ${key}`
       },
       body: JSON.stringify({
         model,
