@@ -143,24 +143,6 @@
     /* ── ENGINE BADGE ── */
     .engine-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(212,160,23,.1); border: 1px solid rgba(212,160,23,.3); border-radius: 999px; padding: 3px 10px; font-size: .68rem; color: var(--gold); font-weight: 700; }
 
-    /* ── CAROUSEL ── */
-    .carousel-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: .75rem; margin-top: 1rem; }
-    .carousel-slide { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; animation: slideUp .3s ease; }
-    .carousel-slide-num { font-size: .65rem; font-weight: 800; color: var(--gold); padding: .5rem .75rem .25rem; letter-spacing: .1em; }
-    .carousel-slide-img { position: relative; width: 100%; aspect-ratio: 1/1; background: var(--bg3); overflow: hidden; }
-    .carousel-slide-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .carousel-slide-img .img-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.3) 0%, rgba(0,0,0,.65) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: .6rem; }
-    .carousel-slide-img .img-text { color: #fff; font-weight: 800; font-size: .7rem; line-height: 1.35; text-shadow: 0 1px 4px rgba(0,0,0,.9); }
-    .carousel-slide-body { padding: .6rem .75rem .75rem; flex: 1; }
-    .carousel-slide-label { font-size: .6rem; font-weight: 700; color: var(--text3); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .3rem; }
-    .carousel-slide-text { font-size: .72rem; color: var(--text); line-height: 1.5; }
-    .carousel-img-loading { display: flex; align-items: center; justify-content: center; aspect-ratio: 1/1; background: var(--bg3); }
-    .carousel-img-loading .mini-spin { width: 24px; height: 24px; border: 2px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin .7s linear infinite; }
-    .carousel-download-row { display: flex; gap: .5rem; flex-wrap: wrap; padding: .75rem; border-top: 1px solid var(--border); }
-    .carousel-source-row { text-align: center; font-size: .7rem; color: var(--text3); padding: .5rem; }
-    @media (max-width: 900px) { .carousel-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 600px) { .carousel-grid { grid-template-columns: repeat(2, 1fr); } }
-
     @media (max-width: 700px) {
       .app-body { grid-template-columns: 1fr; }
       .lock-card { padding: 1.75rem 1.25rem; }
@@ -200,10 +182,11 @@
   <!-- Tabs -->
   <div class="app-tabs">
     <button class="tab-btn active" onclick="switchTab('ads', this)">✍️ Generate Iklan</button>
-    <button class="tab-btn" onclick="switchTab('landing', this)">🚀 Landing Page Script</button>
+    <button class="tab-btn" onclick="switchTab('landing', this)">🚀 Landing Page HTML</button>
+    <button class="tab-btn" onclick="switchTab('analyze', this)">📊 Analyze</button>
+    <button class="tab-btn" onclick="switchTab('optimize', this)" style="color:#f97316;border-bottom-color:transparent">🔥 AUTO OPTIMIZE</button>
     <button class="tab-btn" onclick="switchTab('budget', this)">💰 Budget Guide</button>
-    <button class="tab-btn" onclick="switchTab('competitor', this)">🔍 Analisa Kompetitor</button>
-    <button class="tab-btn" onclick="switchTab('carousel', this)">🎠 Carousel</button>
+    <button class="tab-btn" onclick="switchTab('competitor', this)">🔍 Kompetitor</button>
   </div>
 
   <!-- ═══ TAB: ADS ═══ -->
@@ -274,7 +257,7 @@
     </div>
   </div>
 
-  <!-- ═══ TAB: LANDING PAGE ═══ -->
+  <!-- ═══ TAB: LANDING PAGE HTML ═══ -->
   <div id="tab-landing" class="tab-panel">
     <div class="app-body">
       <aside class="sidebar">
@@ -282,15 +265,15 @@
           <div class="card-title">📦 Produk / Jasa</div>
           <div class="form-field">
             <label class="form-label">Deskripsi Produk</label>
-            <textarea class="form-textarea" id="lp-produk" placeholder="Contoh: Kursus online membuat konten TikTok untuk pemula, belajar dari nol sampai viral"></textarea>
+            <textarea class="form-textarea" id="lp-produk" placeholder="Contoh: JENDRALBOT — digital product bundle untuk content creator"></textarea>
           </div>
           <div class="form-field">
             <label class="form-label">Target Market</label>
-            <input class="form-input" id="lp-target" type="text" placeholder="Contoh: UMKM, content creator pemula" />
+            <input class="form-input" id="lp-target" type="text" placeholder="Contoh: freelancer, content creator pemula" />
           </div>
           <div class="form-field">
             <label class="form-label">Keunggulan Utama</label>
-            <textarea class="form-textarea" id="lp-keunggulan" style="min-height:60px" placeholder="Contoh: Mentor berpengalaman, komunitas aktif, garansi uang kembali 30 hari"></textarea>
+            <textarea class="form-textarea" id="lp-keunggulan" style="min-height:60px" placeholder="Contoh: 90% template siap pakai, 7-day money back, setup 30 menit"></textarea>
           </div>
         </div>
         <div class="card">
@@ -305,20 +288,154 @@
               <option value="aggressive">Bold & Aggressive</option>
             </select>
           </div>
+          <div class="form-field">
+            <label class="form-label">WhatsApp Link (opsional)</label>
+            <input class="form-input" id="lp-wa" type="text" placeholder="https://wa.me/628xxx" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Checkout Link (opsional)</label>
+            <input class="form-input" id="lp-checkout" type="text" placeholder="https://lynk.id/... atau #" />
+          </div>
         </div>
-        <button class="gen-btn blue" id="lp-gen-btn" onclick="generateLanding()">🚀 Generate Landing Page Script</button>
+        <button class="gen-btn blue" id="lp-gen-btn" onclick="generateLanding()">🚀 Generate Full HTML Landing Page</button>
         <div class="card" style="background: rgba(212,160,23,0.05); border-color: rgba(212,160,23,0.2);">
-          <div class="card-title">💡 Cara Pakai</div>
-          <p style="font-size:.78rem;color:var(--text2);line-height:1.6;">Generate script → Copy setiap section → Paste ke Canva, Linktree, landing page builder, atau minta developer implementasi.</p>
+          <div class="card-title">💡 Output v2</div>
+          <p style="font-size:.78rem;color:var(--text2);line-height:1.6;">Output sekarang: <strong>Full HTML siap deploy</strong> — termasuk countdown timer, A/B headline, sticky CTA (WA + Checkout), dan sales notification popup. Tinggal download & upload.</p>
         </div>
       </aside>
       <main class="output-area">
         <div class="output-placeholder" id="lp-placeholder">
           <div class="ph-icon">🚀</div>
-          <h3>Landing Page Script Generator</h3>
-          <p>Generate semua copy untuk landing page — Headline, Subheadline, Benefits, Social Proof, FAQ, CTA, dan lebih banyak lagi. Tinggal copy paste.</p>
+          <h3>Landing Page HTML Generator v2</h3>
+          <p>Generate full HTML landing page siap deploy — dengan countdown timer, A/B headline switch, sticky CTA (WA + Checkout), dan sales notification otomatis.</p>
         </div>
         <div id="lp-results"></div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ═══ TAB: ANALYZE PERFORMANCE (NEW) ═══ -->
+  <div id="tab-analyze" class="tab-panel">
+    <div class="app-body">
+      <aside class="sidebar">
+        <div class="card">
+          <div class="card-title">📊 Data Performa Iklan</div>
+          <div class="form-field">
+            <label class="form-label">Spend (IDR)</label>
+            <input class="form-input" id="az-spend" type="number" placeholder="Contoh: 500000" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Revenue (IDR)</label>
+            <input class="form-input" id="az-revenue" type="number" placeholder="Contoh: 750000" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Clicks (opsional)</label>
+            <input class="form-input" id="az-clicks" type="number" placeholder="Contoh: 250" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Leads (opsional)</label>
+            <input class="form-input" id="az-leads" type="number" placeholder="Contoh: 50" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Closing / Sales (opsional)</label>
+            <input class="form-input" id="az-closing" type="number" placeholder="Contoh: 10" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Impressions (opsional)</label>
+            <input class="form-input" id="az-impressions" type="number" placeholder="Contoh: 10000" />
+          </div>
+        </div>
+        <button class="gen-btn" id="az-gen-btn" style="background:var(--blue)" onclick="analyzePerformance()">📊 Analyze & Get Decision</button>
+        <div class="card" style="background: rgba(59,130,246,0.05); border-color: rgba(59,130,246,0.2);">
+          <div class="card-title">💡 Output</div>
+          <p style="font-size:.78rem;color:var(--text2);line-height:1.6;">Score 0–100 · Status WINNER/BREAKEVEN/LOSER · Decision KILL/OPTIMIZE/SCALE · 3 action konkret · Next step jelas.</p>
+        </div>
+      </aside>
+      <main class="output-area">
+        <div class="output-placeholder" id="az-placeholder">
+          <div class="ph-icon">📊</div>
+          <h3>Performance Analyzer</h3>
+          <p>Input data iklan → dapat score, diagnosis masalah utama, dan keputusan KILL / OPTIMIZE / SCALE dengan action konkret.</p>
+        </div>
+        <div id="az-results"></div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ═══ TAB: AUTO OPTIMIZE (NEW) ═══ -->
+  <div id="tab-optimize" class="tab-panel">
+    <div class="app-body">
+      <aside class="sidebar">
+        <div class="card" style="border-color:rgba(249,115,22,0.3);background:rgba(249,115,22,0.03);">
+          <div class="card-title" style="color:#f97316">🔥 Auto Optimization Engine</div>
+          <p style="font-size:.78rem;color:var(--text2);line-height:1.6;margin-bottom:.5rem;">Input data performa → AI auto-diagnosis → generate Ads BARU + Landing Page BARU yang sudah diperbaiki. 1 klik, siap relaunch.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">📊 Data Performa (Wajib: Spend + Revenue)</div>
+          <div class="form-field">
+            <label class="form-label">Spend (IDR)</label>
+            <input class="form-input" id="opt-spend" type="number" placeholder="Contoh: 500000" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Revenue (IDR)</label>
+            <input class="form-input" id="opt-revenue" type="number" placeholder="Contoh: 350000" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Clicks</label>
+            <input class="form-input" id="opt-clicks" type="number" placeholder="Contoh: 200" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Leads</label>
+            <input class="form-input" id="opt-leads" type="number" placeholder="Contoh: 30" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Closing / Sales</label>
+            <input class="form-input" id="opt-closing" type="number" placeholder="Contoh: 5" />
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">📦 Produk (Opsional tapi direkomendasikan)</div>
+          <div class="form-field">
+            <label class="form-label">Produk / Jasa</label>
+            <input class="form-input" id="opt-produk" type="text" placeholder="Contoh: JENDRALBOT digital product" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Target Market</label>
+            <input class="form-input" id="opt-target" type="text" placeholder="Contoh: content creator pemula" />
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">📝 Versi Lama (Opsional — untuk hindari duplikasi)</div>
+          <div class="form-field">
+            <label class="form-label">Hook Ads Lama</label>
+            <textarea class="form-textarea" id="opt-old-ads" style="min-height:60px" placeholder="Paste hook/copy ads lama (opsional) — AI akan buat yang berbeda"></textarea>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Headline LP Lama</label>
+            <textarea class="form-textarea" id="opt-old-lp" style="min-height:50px" placeholder="Paste headline landing page lama (opsional)"></textarea>
+          </div>
+        </div>
+        <button class="gen-btn" id="opt-gen-btn" style="background:linear-gradient(135deg,#f97316,#ea580c);color:white;" onclick="runOptimize()">🔥 RUN AUTO OPTIMIZE</button>
+        <div class="card" style="background:rgba(249,115,22,0.04);border-color:rgba(249,115,22,0.15);">
+          <div class="card-title">⚡ Cara Kerja</div>
+          <p style="font-size:.78rem;color:var(--text2);line-height:1.7;">
+            1️⃣ Hitung metrics otomatis<br>
+            2️⃣ Identifikasi 1 masalah utama<br>
+            3️⃣ Tentukan fix strategy<br>
+            4️⃣ Generate 2 ads baru<br>
+            5️⃣ Generate LP HTML baru<br>
+            6️⃣ Buat relaunch plan
+          </p>
+        </div>
+      </aside>
+      <main class="output-area">
+        <div class="output-placeholder" id="opt-placeholder">
+          <div class="ph-icon">🔥</div>
+          <h3>Auto Optimization Engine</h3>
+          <p>Input data → AI diagnosis masalah → generate ulang ads + landing page yang sudah diperbaiki → siap relaunch dalam hitungan detik.</p>
+          <p style="margin-top:1rem;font-size:.8rem;color:var(--text3);">Minimal input: Spend + Revenue. Semua field lain opsional.</p>
+        </div>
+        <div id="opt-results"></div>
       </main>
     </div>
   </div>
@@ -394,58 +511,6 @@
       </main>
     </div>
   </div>
-  <!-- ═══ TAB: CAROUSEL ═══ -->
-  <div id="tab-carousel" class="tab-panel">
-    <div class="app-body">
-      <aside class="sidebar">
-        <div class="card">
-          <div class="card-title">🎠 Carousel Ads</div>
-          <div class="form-field">
-            <label class="form-label">Nama / Deskripsi Produk</label>
-            <textarea class="form-textarea" id="car-produk" placeholder="Contoh: Serum Vitamin C untuk kulit kusam"></textarea>
-          </div>
-          <div class="form-field">
-            <label class="form-label">Hook (opsional — dari Engine Ads)</label>
-            <input type="text" class="form-input" id="car-hook" placeholder="Paste hook dari tab Generate Iklan..." />
-          </div>
-          <div class="form-field">
-            <label class="form-label">Target Market</label>
-            <input type="text" class="form-input" id="car-target" placeholder="Contoh: ibu muda 25-35 tahun" />
-          </div>
-          <div class="form-field">
-            <label class="form-label">Keunggulan Produk</label>
-            <input type="text" class="form-input" id="car-keunggulan" placeholder="Contoh: BPOM certified, tanpa parabens" />
-          </div>
-          <div class="form-field">
-            <label class="form-label">Style Visual</label>
-            <select class="form-select" id="car-style">
-              <option value="minimalist product photography dark background">Minimalis Dark</option>
-              <option value="vibrant colorful social media advertisement">Vibrant & Colorful</option>
-              <option value="clean white modern product shoot">Clean White Modern</option>
-              <option value="lifestyle photography warm tones">Lifestyle Warm</option>
-              <option value="bold typography graphic design">Bold Typography</option>
-            </select>
-          </div>
-        </div>
-        <button class="gen-btn" id="car-gen-btn" onclick="generateCarousel()" style="background:var(--blue);color:white">
-          🎠 Generate 5 Slides
-        </button>
-        <div style="font-size:.72rem;color:var(--text3);line-height:1.6;padding:.25rem 0">
-          Generates 5-slide carousel dengan gambar AI + copy dari hook & angle iklan. Gratis, tanpa batas.
-        </div>
-      </aside>
-
-      <main class="output-area">
-        <div id="car-placeholder" class="output-placeholder">
-          <div class="ph-icon">🎠</div>
-          <h3>Carousel Ads Generator</h3>
-          <p>Generate 5 slide carousel siap pakai untuk Instagram & TikTok.<br/>Gambar AI + copy otomatis dari angle iklan kamu.</p>
-        </div>
-        <div id="car-results"></div>
-      </main>
-    </div>
-  </div>
-
 </div>
 
 <script>
@@ -594,27 +659,332 @@ function renderAds(ads, platform) {
   }
 }
 
-// ── GENERATE LANDING PAGE ─────────────────────────────────────────────────────
+// ── GENERATE LANDING PAGE HTML ────────────────────────────────────────────────
 async function generateLanding() {
   const produk = document.getElementById('lp-produk').value.trim();
   if (!produk) { alert('Isi dulu deskripsi produk!'); return; }
 
-  const target    = document.getElementById('lp-target').value.trim();
-  const keunggulan= document.getElementById('lp-keunggulan').value.trim();
-  const tone      = document.getElementById('lp-tone').value;
+  const target     = document.getElementById('lp-target').value.trim();
+  const keunggulan = document.getElementById('lp-keunggulan').value.trim();
+  const tone       = document.getElementById('lp-tone').value;
+  const waLink     = document.getElementById('lp-wa').value.trim() || 'https://wa.me/628000000000';
+  const ctaLink    = document.getElementById('lp-checkout').value.trim() || '#';
 
-  setLoading('lp-gen-btn', true, '🚀 Generate Landing Page Script');
+  setLoading('lp-gen-btn', true, '🚀 Generate Full HTML Landing Page');
   document.getElementById('lp-placeholder').style.display = 'none';
-  document.getElementById('lp-results').innerHTML = loadingHTML('AI sedang menyusun script landing page...');
+  document.getElementById('lp-results').innerHTML = loadingHTML('AI sedang generate full HTML landing page...');
 
   try {
-    const { script } = await apiCall({ produk, target, keunggulan, tone, mode: 'landing' });
-    renderLanding(script, produk);
-    saveHistory(produk, 'Landing Page', 'landing');
+    const res = await apiCall({ produk, target, keunggulan, tone, mode: 'landing' });
+    // Backend returns HTML string or { script } JSON
+    let htmlContent = '';
+    if (typeof res === 'string' && res.trim().startsWith('<!DOCTYPE')) {
+      htmlContent = res;
+    } else if (res.html) {
+      htmlContent = res.html;
+    } else if (res.script) {
+      // Fallback: old JSON format — render classic view
+      renderLanding(res.script, produk);
+      return;
+    }
+    if (htmlContent) {
+      renderLandingHTML(htmlContent, produk);
+    } else {
+      renderLanding(res.script || res, produk);
+    }
+    saveHistory(produk, 'Landing Page HTML', 'landing');
   } catch(e) {
     document.getElementById('lp-results').innerHTML = errorHTML(e.message);
   }
-  setLoading('lp-gen-btn', false, '🚀 Generate Landing Page Script');
+  setLoading('lp-gen-btn', false, '🚀 Generate Full HTML Landing Page');
+}
+
+function renderLandingHTML(htmlContent, produk) {
+  const escaped = htmlContent.replace(/`/g, '\\`');
+  const blob = new Blob([htmlContent], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+
+  document.getElementById('lp-results').innerHTML = `
+    <div class="landing-result">
+      <div class="landing-result-header">
+        <h3>🚀 Landing Page HTML — Siap Deploy</h3>
+        <div style="display:flex;gap:8px">
+          <a href="${url}" download="landing-page-${produk.slice(0,20).replace(/\s/g,'-')}.html"
+             style="background:var(--green);color:white;border:none;border-radius:8px;padding:6px 14px;font-size:.78rem;font-weight:700;cursor:pointer;text-decoration:none;">
+            ⬇️ Download HTML
+          </a>
+          <button class="copy-btn" onclick="copyText(this, \`${escaped}\`)">📋 Copy HTML</button>
+        </div>
+      </div>
+      <div style="padding:1rem;background:rgba(16,185,129,0.05);border-bottom:1px solid var(--border);">
+        <div style="font-size:.78rem;color:var(--text2);line-height:1.6;">
+          ✅ Full HTML siap deploy · Countdown timer aktif · A/B headline (random) · Sticky CTA (WA + Checkout) · Sales notification popup
+        </div>
+      </div>
+      <div style="padding:1rem;">
+        <div style="font-size:.78rem;font-weight:700;color:var(--text3);margin-bottom:8px;">Preview (iframe)</div>
+        <iframe srcdoc="${htmlContent.replace(/"/g,'&quot;').replace(/'/g,'&#39;')}"
+          style="width:100%;height:500px;border:1px solid var(--border);border-radius:8px;background:#fff;"
+          sandbox="allow-scripts"></iframe>
+      </div>
+      <div style="padding:1rem;border-top:1px solid var(--border);">
+        <div style="font-size:.78rem;font-weight:700;color:var(--gold);margin-bottom:8px;">💡 Cara Ganti CTA Link:</div>
+        <div style="background:var(--bg3);border-radius:8px;padding:12px;font-size:.78rem;font-family:monospace;color:var(--text2);">
+          var waLink = "https://wa.me/628xxx";<br>
+          var ctaLink = "https://lynk.id/...";
+        </div>
+        <div style="font-size:.75rem;color:var(--text3);margin-top:8px;">Edit 2 baris ini di atas HTML, semua tombol otomatis ikut.</div>
+      </div>
+    </div>`;
+}
+
+// ── ANALYZE PERFORMANCE (NEW) ─────────────────────────────────────────────────
+// ── RUN AUTO OPTIMIZE ─────────────────────────────────────────────────────────
+async function runOptimize() {
+  const spend   = document.getElementById('opt-spend').value;
+  const revenue = document.getElementById('opt-revenue').value;
+  if (!spend || !revenue) { alert('Spend dan Revenue wajib diisi!'); return; }
+
+  const data = {
+    spend: parseFloat(spend),
+    revenue: parseFloat(revenue),
+    clicks:  parseFloat(document.getElementById('opt-clicks').value) || undefined,
+    leads:   parseFloat(document.getElementById('opt-leads').value) || undefined,
+    closing: parseFloat(document.getElementById('opt-closing').value) || undefined,
+    produk:  document.getElementById('opt-produk').value.trim() || undefined,
+    target:  document.getElementById('opt-target').value.trim() || undefined,
+    old_ads: document.getElementById('opt-old-ads').value.trim() || undefined,
+    old_lp:  document.getElementById('opt-old-lp').value.trim() || undefined,
+    mode: 'optimize'
+  };
+
+  setLoading('opt-gen-btn', true, '🔥 RUN AUTO OPTIMIZE');
+  document.getElementById('opt-placeholder').style.display = 'none';
+  document.getElementById('opt-results').innerHTML = loadingHTML('AI sedang diagnosis + generate ads baru + landing page baru...');
+
+  try {
+    const res = await apiCall(data);
+    renderOptimize(res);
+  } catch(e) {
+    document.getElementById('opt-results').innerHTML = errorHTML(e.message);
+  }
+  setLoading('opt-gen-btn', false, '🔥 RUN AUTO OPTIMIZE');
+}
+
+function renderOptimize(r) {
+  if (!r || !r.analysis) { document.getElementById('opt-results').innerHTML = errorHTML('Gagal parse hasil optimizer.'); return; }
+
+  const problemColor = r.analysis.priority_level === 'HIGH' ? 'var(--red)' : r.analysis.priority_level === 'MEDIUM' ? 'var(--gold)' : 'var(--green)';
+  const fixTypeColor = r.strategy?.fix_type === 'FULL RESET' ? 'var(--red)' : r.strategy?.fix_type === 'HOOK' ? 'var(--gold)' : 'var(--blue)';
+
+  const metricsHtml = Object.entries(r.analysis.metrics || {}).map(([k,v]) =>
+    `<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:.82rem;">
+       <span style="color:var(--text3);font-weight:700;font-size:.72rem;text-transform:uppercase">${k.replace(/_/g,' ')}</span>
+       <span style="color:var(--text);font-weight:600">${v||'N/A'}</span>
+     </div>`).join('');
+
+  const ad1 = r.new_ads?.ad_1 || {};
+  const ad2 = r.new_ads?.ad_2 || {};
+  const plan = r.relaunch_plan || {};
+
+  const ad1Text = `[${ad1.angle}]\n🪝 ${ad1.hook}\n\n${ad1.body}\n\n✅ Proof: ${ad1.proof}\n🔥 CTA: ${ad1.cta}`;
+  const ad2Text = `[${ad2.angle}]\n🪝 ${ad2.hook}\n\n${ad2.body}\n\n✅ Proof: ${ad2.proof}\n🔥 CTA: ${ad2.cta}`;
+
+  const lpHtml = r.new_landing_page || '';
+  const lpBlob = lpHtml ? URL.createObjectURL(new Blob([lpHtml], {type:'text/html'})) : null;
+
+  document.getElementById('opt-results').innerHTML = `
+    <div class="landing-result">
+      <div class="landing-result-header">
+        <h3>🔥 Optimization Result</h3>
+        <span style="font-size:.75rem;padding:4px 10px;border-radius:999px;font-weight:700;background:${problemColor}20;color:${problemColor}">${r.analysis.priority_level} PRIORITY</span>
+      </div>
+
+      <!-- Diagnosis -->
+      <div style="padding:1rem;border-bottom:1px solid var(--border);background:rgba(239,68,68,0.04);">
+        <div style="font-size:.72rem;font-weight:700;color:var(--red);margin-bottom:4px;">🔍 PROBLEM IDENTIFIED</div>
+        <div style="font-size:1rem;font-weight:800;color:var(--text)">${esc(r.analysis.main_problem||'')}</div>
+        <div style="font-size:.82rem;color:var(--text2);margin-top:4px;line-height:1.5">${esc(r.analysis.root_cause||'')}</div>
+      </div>
+
+      <!-- Strategy -->
+      <div style="padding:1rem;border-bottom:1px solid var(--border);">
+        <div style="font-size:.72rem;font-weight:700;color:${fixTypeColor};margin-bottom:6px;">⚙️ FIX STRATEGY: <span style="color:var(--text);font-size:.85rem">${r.strategy?.fix_type||''}</span></div>
+        <div style="font-size:.8rem;color:var(--text2);line-height:1.5">✅ Changed: ${esc(r.strategy?.what_changed||'')}</div>
+        <div style="font-size:.8rem;color:var(--text3);margin-top:2px">🔒 Preserved: ${esc(r.strategy?.what_preserved||'')}</div>
+      </div>
+
+      <!-- Metrics -->
+      <div class="landing-section">
+        <div class="landing-sec-header" onclick="toggleSection(this)">
+          <span class="landing-sec-title">📊 Metrics <span class="tag">Kalkulasi</span></span>
+          <span style="color:var(--text3);font-size:.8rem">▼</span>
+        </div>
+        <div class="landing-sec-body">${metricsHtml}</div>
+      </div>
+
+      <!-- New Ads -->
+      <div class="landing-section">
+        <div class="landing-sec-header" onclick="toggleSection(this)">
+          <span class="landing-sec-title">✍️ 2 Ads Baru <span class="tag">Siap Pakai</span></span>
+          <span style="color:var(--text3);font-size:.8rem">▼</span>
+        </div>
+        <div class="landing-sec-body">
+          ${ad1.hook ? `
+          <div style="margin-bottom:1rem;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1rem;">
+            <div style="font-size:.72rem;font-weight:700;color:var(--red);margin-bottom:6px">AD 1 — ${esc(ad1.angle||'Fear')}</div>
+            <div style="font-size:.78rem;font-weight:700;color:var(--gold);margin-bottom:4px">🪝 ${esc(ad1.hook)}</div>
+            <div style="font-size:.82rem;color:var(--text2);white-space:pre-wrap;line-height:1.6">${esc(ad1.body||'')}</div>
+            ${ad1.proof ? `<div style="font-size:.75rem;color:var(--green);margin-top:6px">✅ ${esc(ad1.proof)}</div>` : ''}
+            ${ad1.cta ? `<div style="font-size:.78rem;font-weight:700;color:var(--text);margin-top:6px">🔥 ${esc(ad1.cta)}</div>` : ''}
+            <button class="copy-btn" style="margin-top:8px" onclick="copyText(this,\`${esc(ad1Text)}\`)">📋 Copy Ad 1</button>
+          </div>` : ''}
+          ${ad2.hook ? `
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1rem;">
+            <div style="font-size:.72rem;font-weight:700;color:var(--blue);margin-bottom:6px">AD 2 — ${esc(ad2.angle||'Curiosity')}</div>
+            <div style="font-size:.78rem;font-weight:700;color:var(--gold);margin-bottom:4px">🪝 ${esc(ad2.hook)}</div>
+            <div style="font-size:.82rem;color:var(--text2);white-space:pre-wrap;line-height:1.6">${esc(ad2.body||'')}</div>
+            ${ad2.proof ? `<div style="font-size:.75rem;color:var(--green);margin-top:6px">✅ ${esc(ad2.proof)}</div>` : ''}
+            ${ad2.cta ? `<div style="font-size:.78rem;font-weight:700;color:var(--text);margin-top:6px">🔥 ${esc(ad2.cta)}</div>` : ''}
+            <button class="copy-btn" style="margin-top:8px" onclick="copyText(this,\`${esc(ad2Text)}\`)">📋 Copy Ad 2</button>
+          </div>` : ''}
+        </div>
+      </div>
+
+      <!-- New Landing Page -->
+      ${lpHtml ? `
+      <div class="landing-section">
+        <div class="landing-sec-header" onclick="toggleSection(this)">
+          <span class="landing-sec-title">🚀 Landing Page Baru <span class="tag">Full HTML</span></span>
+          <span style="color:var(--text3);font-size:.8rem">▼</span>
+        </div>
+        <div class="landing-sec-body">
+          <div style="display:flex;gap:8px;margin-bottom:12px;">
+            <a href="${lpBlob}" download="optimized-landing-page.html"
+               style="background:var(--green);color:white;border:none;border-radius:8px;padding:7px 14px;font-size:.78rem;font-weight:700;cursor:pointer;text-decoration:none;">⬇️ Download HTML</a>
+            <button class="copy-btn" onclick="copyText(this,\`${lpHtml.replace(/`/g,'\\`')}\`)">📋 Copy HTML</button>
+          </div>
+          <iframe srcdoc="${lpHtml.replace(/"/g,'&quot;').replace(/'/g,'&#39;')}"
+            style="width:100%;height:450px;border:1px solid var(--border);border-radius:8px;background:#fff;"
+            sandbox="allow-scripts"></iframe>
+        </div>
+      </div>` : ''}
+
+      <!-- Relaunch Plan -->
+      <div style="padding:1rem;background:rgba(16,185,129,0.04);border-top:1px solid var(--border);">
+        <div style="font-size:.72rem;font-weight:700;color:var(--green);margin-bottom:8px;">🎯 RELAUNCH PLAN</div>
+        <div style="font-size:.82rem;color:var(--text2);line-height:1.7">
+          👥 Audience: ${esc(plan.audience||'')}<br>
+          💰 Budget: ${esc(plan.budget_strategy||'')}<br>
+          ⏱ Testing: ${esc(plan.testing_duration||'3-7 hari')}<br>
+          🎯 Target: ${esc(plan.success_metric||'ROAS > 1.5 dalam 3 hari')}
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── ANALYZE PERFORMANCE ────────────────────────────────────────────────────────
+async function analyzePerformance() {
+  const spend   = document.getElementById('az-spend').value;
+  const revenue = document.getElementById('az-revenue').value;
+  if (!spend || !revenue) { alert('Spend dan Revenue wajib diisi!'); return; }
+
+  const data = {
+    spend: parseFloat(spend),
+    revenue: parseFloat(revenue),
+    clicks: parseFloat(document.getElementById('az-clicks').value) || undefined,
+    leads: parseFloat(document.getElementById('az-leads').value) || undefined,
+    closing: parseFloat(document.getElementById('az-closing').value) || undefined,
+    impressions: parseFloat(document.getElementById('az-impressions').value) || undefined,
+    mode: 'analyze'
+  };
+
+  setLoading('az-gen-btn', true, '📊 Analyzing...');
+  document.getElementById('az-placeholder').style.display = 'none';
+  document.getElementById('az-results').innerHTML = loadingHTML('AI sedang kalkulasi metrics & diagnosis...');
+
+  try {
+    const res = await apiCall(data);
+    const result = res.result || res;
+    renderAnalyze(result);
+  } catch(e) {
+    document.getElementById('az-results').innerHTML = errorHTML(e.message);
+  }
+  setLoading('az-gen-btn', false, '📊 Analyze & Get Decision');
+}
+
+function renderAnalyze(r) {
+  if (!r) { document.getElementById('az-results').innerHTML = errorHTML('Gagal parse hasil analisis.'); return; }
+
+  const statusColor = r.status === 'WINNER' ? 'var(--green)' : r.status === 'BREAKEVEN' ? 'var(--gold)' : 'var(--red)';
+  const decisionColor = r.decision === 'SCALE' ? 'var(--green)' : r.decision === 'OPTIMIZE' ? 'var(--gold)' : 'var(--red)';
+  const score = r.score || 0;
+  const scoreColor = score >= 70 ? 'var(--green)' : score >= 50 ? 'var(--gold)' : 'var(--red)';
+
+  const metricsHtml = Object.entries(r.metrics || {}).map(([k,v]) =>
+    `<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:.82rem;">
+      <span style="color:var(--text3);text-transform:uppercase;font-size:.72rem;font-weight:700;">${k}</span>
+      <span style="color:var(--text);font-weight:600;">${v || 'N/A'}</span>
+    </div>`
+  ).join('');
+
+  const actionsHtml = (r.action || []).map((a, i) =>
+    `<div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:.83rem;line-height:1.5;">
+      <span style="color:var(--gold);font-weight:800;">${i+1}.</span> ${esc(a)}
+    </div>`
+  ).join('');
+
+  document.getElementById('az-results').innerHTML = `
+    <div class="landing-result">
+      <div class="landing-result-header">
+        <h3>📊 Performance Analysis</h3>
+        <span style="font-size:.75rem;color:var(--text3);">Score: <strong style="color:${scoreColor}">${score}/100</strong></span>
+      </div>
+
+      <!-- Status + Decision -->
+      <div style="display:flex;gap:12px;padding:1rem;">
+        <div style="flex:1;text-align:center;padding:16px;background:var(--bg3);border-radius:10px;border:2px solid ${statusColor}20;">
+          <div style="font-size:.72rem;color:var(--text3);font-weight:700;margin-bottom:4px;">STATUS</div>
+          <div style="font-size:1.3rem;font-weight:900;color:${statusColor};">${r.status}</div>
+        </div>
+        <div style="flex:1;text-align:center;padding:16px;background:var(--bg3);border-radius:10px;border:2px solid ${decisionColor}20;">
+          <div style="font-size:.72rem;color:var(--text3);font-weight:700;margin-bottom:4px;">DECISION</div>
+          <div style="font-size:1.3rem;font-weight:900;color:${decisionColor};">${r.decision}</div>
+        </div>
+        <div style="flex:1;text-align:center;padding:16px;background:var(--bg3);border-radius:10px;">
+          <div style="font-size:.72rem;color:var(--text3);font-weight:700;margin-bottom:4px;">SCORE</div>
+          <div style="font-size:1.3rem;font-weight:900;color:${scoreColor};">${score}</div>
+        </div>
+      </div>
+
+      <!-- Metrics -->
+      <div class="landing-section">
+        <div class="landing-sec-header" onclick="toggleSection(this)">
+          <span class="landing-sec-title">📊 Metrics <span class="tag">Kalkulasi</span></span>
+          <span style="color:var(--text3);font-size:.8rem">▼</span>
+        </div>
+        <div class="landing-sec-body">${metricsHtml}</div>
+      </div>
+
+      <!-- Diagnosis -->
+      <div style="padding:1rem;border-bottom:1px solid var(--border);">
+        <div style="font-size:.75rem;font-weight:700;color:var(--red);margin-bottom:6px;">🔍 MAIN PROBLEM</div>
+        <div style="font-size:.9rem;font-weight:700;color:var(--text);">${esc(r.problem || '-')}</div>
+        <div style="font-size:.82rem;color:var(--text2);margin-top:6px;line-height:1.5;">${esc(r.root_cause || '')}</div>
+      </div>
+
+      <!-- Actions -->
+      <div style="padding:1rem;border-bottom:1px solid var(--border);">
+        <div style="font-size:.75rem;font-weight:700;color:var(--gold);margin-bottom:8px;">⚡ ACTION (3 Langkah)</div>
+        ${actionsHtml}
+      </div>
+
+      <!-- Next Step -->
+      <div style="padding:1rem;background:rgba(59,130,246,0.05);">
+        <div style="font-size:.75rem;font-weight:700;color:var(--blue);margin-bottom:4px;">🎯 NEXT STEP</div>
+        <div style="font-size:.85rem;color:var(--text2);line-height:1.5;">${esc(r.next_step || '')}</div>
+      </div>
+    </div>`;
 }
 
 function renderLanding(s, produk) {
@@ -1023,164 +1393,6 @@ function copyText(btn, text) {
     btn.textContent = '✓ Copied!';
     setTimeout(() => { btn.classList.remove('copied'); btn.textContent = orig; }, 2000);
   });
-}
-
-// ── CAROUSEL GENERATOR ───────────────────────────────────────────────────────
-async function generateCarousel() {
-  const produk     = document.getElementById('car-produk').value.trim();
-  const hookInput  = document.getElementById('car-hook').value.trim();
-  const target     = document.getElementById('car-target').value.trim();
-  const keunggulan = document.getElementById('car-keunggulan').value.trim();
-  const style      = document.getElementById('car-style').value;
-
-  if (!produk) { alert('Isi dulu deskripsi produk!'); return; }
-
-  setLoading('car-gen-btn', true, '🎠 Generate 5 Slides');
-  document.getElementById('car-placeholder').style.display = 'none';
-
-  // Show loading grid
-  document.getElementById('car-results').innerHTML = `
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
-      <div style="font-weight:800;margin-bottom:1rem;font-size:.9rem">🎠 Generating 5 Slides...</div>
-      <div class="carousel-grid">${Array.from({length:5},(_,i)=>`
-        <div class="carousel-slide">
-          <div class="carousel-slide-num">SLIDE ${i+1}</div>
-          <div class="carousel-img-loading"><div class="mini-spin"></div></div>
-          <div class="carousel-slide-body" style="padding:.75rem">
-            <div style="background:var(--bg3);border-radius:6px;height:60px;"></div>
-          </div>
-        </div>`).join('')}
-      </div>
-    </div>`;
-
-  try {
-    // Step 1: Generate copy via ads API
-    const { ads } = await apiCall({ produk, target, keunggulan, platform: 'Instagram', jumlah: 2, tone: 'santai', mode: 'ads' });
-    const ad = ads?.[0] || {};
-
-    // Build 5 slides from ad content
-    const slides = buildCarouselSlides(ad, produk, target, keunggulan, hookInput);
-
-    // Step 2: Generate images via Pollinations.ai (parallel)
-    const imagePrompts = slides.map(s => buildImgPrompt(s.visual, style, produk));
-    const imageUrls = imagePrompts.map(prompt => buildPollinationsUrl(prompt));
-
-    renderCarousel(slides, imageUrls, produk);
-  } catch(e) {
-    document.getElementById('car-results').innerHTML = errorHTML(e.message);
-  }
-
-  setLoading('car-gen-btn', false, '🎠 Generate 5 Slides');
-}
-
-function buildCarouselSlides(ad, produk, target, keunggulan, hookOverride) {
-  // 5 slides: Hook → Problem → Solution → Proof → CTA
-  const hook = hookOverride || ad.hook || `Kenapa ${produk} ini beda?`;
-  const body  = ad.body  || `Banyak yang udah coba banyak produk tapi hasilnya sama. ${produk} hadir dengan solusi yang berbeda.`;
-  const cta   = ad.cta   || `DM sekarang — stok terbatas!`;
-
-  // Split body ke kalimat-kalimat
-  const sentences = body.replace(/\n/g,' ').split(/[.!?]+/).map(s=>s.trim()).filter(s=>s.length>10);
-
-  return [
-    {
-      num: 1, label: 'HOOK', role: '🪝 Hook / Stop-Scroll',
-      text: hook,
-      visual: `hook attention grabbing text: "${hook.slice(0,60)}"`,
-      subtext: 'Swipe untuk lihat lebih →'
-    },
-    {
-      num: 2, label: 'PROBLEM', role: '😤 Problem Agitate',
-      text: sentences[0] || `Masih bingung kenapa hasilnya gitu-gitu aja?`,
-      visual: `person frustrated problem struggling relatable`,
-      subtext: 'Kamu bukan sendirian...'
-    },
-    {
-      num: 3, label: 'SOLUSI', role: '✅ Solution',
-      text: sentences[1] || `${produk} hadir dengan pendekatan yang terbukti berbeda.`,
-      visual: `product solution reveal transformation ${produk}`,
-      subtext: keunggulan || 'Terbukti & aman dipakai'
-    },
-    {
-      num: 4, label: 'BUKTI', role: '⭐ Social Proof',
-      text: ad.bullets?.slice(0,2).map(b=>`✅ ${b}`).join('\n') || `✅ ${keunggulan || 'Terbukti ribuan pengguna'}\n✅ Hasil nyata bukan janji`,
-      visual: `customer testimonial review stars happy result`,
-      subtext: '2.500+ pelanggan puas'
-    },
-    {
-      num: 5, label: 'CTA', role: '🔥 Call to Action',
-      text: cta,
-      visual: `call to action urgent limited offer product`,
-      subtext: 'DM atau klik link di bio'
-    }
-  ];
-}
-
-function buildImgPrompt(visual, style, produk) {
-  return `${style}, ${visual}, professional advertising photography, high quality, sharp, cinematic lighting, no text watermark`;
-}
-
-function buildPollinationsUrl(prompt) {
-  // Pollinations.ai — free, no API key, stable
-  const seed = Math.floor(Math.random() * 999999);
-  const encoded = encodeURIComponent(prompt);
-  return `https://image.pollinations.ai/prompt/${encoded}?width=800&height=800&seed=${seed}&nologo=true&enhance=true`;
-}
-
-function renderCarousel(slides, imageUrls, produk) {
-  const container = document.getElementById('car-results');
-
-  let slidesHtml = slides.map((s, i) => {
-    const imgUrl = imageUrls[i];
-    return `
-      <div class="carousel-slide">
-        <div class="carousel-slide-num">SLIDE ${s.num} — ${s.label}</div>
-        <div class="carousel-slide-img">
-          <img
-            src="${imgUrl}"
-            alt="Slide ${s.num}"
-            loading="lazy"
-            onerror="this.parentElement.innerHTML='<div style=\\'display:flex;align-items:center;justify-content:center;height:100%;font-size:.75rem;color:var(--text3);padding:.5rem;text-align:center;\\'>Gambar sedang dimuat...<br/>Coba reload jika tidak muncul</div>'"
-          />
-          <div class="img-overlay">
-            <div class="img-text">${s.label}</div>
-          </div>
-        </div>
-        <div class="carousel-slide-body">
-          <div class="carousel-slide-label">${s.role}</div>
-          <div class="carousel-slide-text">${esc(s.text)}</div>
-          ${s.subtext ? `<div style="margin-top:.4rem;font-size:.65rem;color:var(--text3)">${esc(s.subtext)}</div>` : ''}
-        </div>
-        <div class="carousel-download-row">
-          <a href="${imgUrl}" download="slide-${s.num}.jpg" target="_blank">
-            <button class="copy-btn" style="font-size:.68rem">⬇️ Download</button>
-          </a>
-          <button class="copy-btn" style="font-size:.68rem" onclick="copyText(this, \`${esc(s.text)}\`)">📋 Copy Text</button>
-        </div>
-      </div>`;
-  }).join('');
-
-  const fullCopy = slides.map(s => `[SLIDE ${s.num} — ${s.label}]\n${s.text}`).join('\n\n---\n\n');
-
-  container.innerHTML = `
-    <div class="landing-result">
-      <div class="landing-result-header">
-        <h3>🎠 5-Slide Carousel — ${esc(produk.slice(0,30))}</h3>
-        <button class="copy-btn" onclick="copyText(this, \`${esc(fullCopy)}\`)">📋 Copy Semua Teks</button>
-      </div>
-      <div style="padding:1rem 1.25rem">
-        <div class="carousel-grid">${slidesHtml}</div>
-        <div class="carousel-source-row" style="margin-top:.75rem">
-          ⚡ Gambar via <strong>Pollinations.ai</strong> (gratis, unlimited) · Refresh untuk gambar baru
-        </div>
-        <div style="background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.25);border-radius:10px;padding:.85rem 1rem;margin-top:.75rem;font-size:.8rem;line-height:1.6">
-          <strong style="color:var(--blue)">📌 Cara Pakai:</strong><br/>
-          1. Download gambar tiap slide (klik ⬇️)<br/>
-          2. Upload ke Instagram Carousel / TikTok Slideshow<br/>
-          3. Tambah teks copy di caption atau sticker teks di dalam app
-        </div>
-      </div>
-    </div>`;
 }
 
 // History
