@@ -9,7 +9,19 @@
 
 const LAOZHANG_BASE = 'https://api.laozhang.ai/v1';
 const LAOZHANG_KEY  = process.env.LAOZHANG_API_KEY || 'sk-Yme2SkDrhbSbCD2F56871153658d4c0e841cA2B51cD0F4E3';
-const DEFAULT_MODEL = 'claude-opus-4-20250514';
+
+// Fallback chain — tries each model in order until one succeeds
+// Order: best quality → fastest → most reliable
+const MODEL_CHAIN = [
+  'claude-opus-4-20250514',     // Primary: best quality
+  'claude-sonnet-4-6',          // Fallback 1: fast Sonnet 4
+  'claude-3-7-sonnet-20250219', // Fallback 2: reliable Sonnet 3.7
+  'gemini-2.5-flash',           // Fallback 3: fast Google model
+  'chatgpt-4o-latest',          // Fallback 4: OpenAI fallback
+  'claude-3-5-haiku-latest',    // Fallback 5: fastest Claude, always fast
+];
+
+const DEFAULT_MODEL = MODEL_CHAIN[0];
 
 // ── Platform guides ──────────────────────────────────────────────────────────
 const PLATFORM_GUIDES = {
@@ -329,32 +341,64 @@ ${target ? `Target market: ${target}` : ''}`;
   return parseJSON(raw);
 }
 
-// ── Claude API call ──────────────────────────────────────────────────────────
+// ── AI API call with model fallback chain ────────────────────────────────────
 async function callClaude(systemPrompt, userPrompt) {
-  const resp = await fetch(`${LAOZHANG_BASE}/chat/completions`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${LAOZHANG_KEY}`
-    },
-    body: JSON.stringify({
-      model: DEFAULT_MODEL,
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: userPrompt }
-      ],
-      temperature: 0.85,
-      max_tokens: 3000
-    })
-  });
+  let lastError = null;
 
-  if (!resp.ok) {
-    const err = await resp.text();
-    throw new Error(`Claude API ${resp.status}: ${err.slice(0, 200)}`);
+  for (const model of MODEL_CHAIN) {
+    try {
+      console.log(`[AI] Trying model: ${model}`);
+      const result = await callModelWithTimeout(model, systemPrompt, userPrompt, 22000);
+      console.log(`[AI] Success with model: ${model}`);
+      return result;
+    } catch (err) {
+      console.warn(`[AI] Model ${model} failed: ${err.message}`);
+      lastError = err;
+      // Continue to next model in chain
+    }
   }
 
-  const data = await resp.json();
-  return data.choices?.[0]?.message?.content || '';
+  // All models failed — throw last error (triggers hardcoded fallback in main handler)
+  throw new Error(`All models failed. Last error: ${lastError?.message}`);
+}
+
+// Single model call with AbortController timeout
+async function callModelWithTimeout(model, systemPrompt, userPrompt, timeoutMs = 22000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const resp = await fetch(`${LAOZHANG_BASE}/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${LAOZHANG_KEY}`
+      },
+      body: JSON.stringify({
+        model,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userPrompt }
+        ],
+        temperature: 0.85,
+        max_tokens: 3000
+      }),
+      signal: controller.signal
+    });
+
+    if (!resp.ok) {
+      const err = await resp.text().catch(() => '');
+      throw new Error(`HTTP ${resp.status}: ${err.slice(0, 150)}`);
+    }
+
+    const data = await resp.json();
+    const content = data.choices?.[0]?.message?.content || '';
+    if (!content) throw new Error('Empty response from model');
+    return content;
+
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
