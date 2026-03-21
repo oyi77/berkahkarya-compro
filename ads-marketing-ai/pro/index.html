@@ -183,7 +183,8 @@
   <div class="app-tabs">
     <button class="tab-btn active" onclick="switchTab('ads', this)">✍️ Generate Iklan</button>
     <button class="tab-btn" onclick="switchTab('landing', this)">🚀 Landing Page HTML</button>
-    <button class="tab-btn" onclick="switchTab('analyze', this)">📊 Analyze Performa</button>
+    <button class="tab-btn" onclick="switchTab('analyze', this)">📊 Analyze</button>
+    <button class="tab-btn" onclick="switchTab('optimize', this)" style="color:#f97316;border-bottom-color:transparent">🔥 AUTO OPTIMIZE</button>
     <button class="tab-btn" onclick="switchTab('budget', this)">💰 Budget Guide</button>
     <button class="tab-btn" onclick="switchTab('competitor', this)">🔍 Kompetitor</button>
   </div>
@@ -357,6 +358,84 @@
           <p>Input data iklan → dapat score, diagnosis masalah utama, dan keputusan KILL / OPTIMIZE / SCALE dengan action konkret.</p>
         </div>
         <div id="az-results"></div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ═══ TAB: AUTO OPTIMIZE (NEW) ═══ -->
+  <div id="tab-optimize" class="tab-panel">
+    <div class="app-body">
+      <aside class="sidebar">
+        <div class="card" style="border-color:rgba(249,115,22,0.3);background:rgba(249,115,22,0.03);">
+          <div class="card-title" style="color:#f97316">🔥 Auto Optimization Engine</div>
+          <p style="font-size:.78rem;color:var(--text2);line-height:1.6;margin-bottom:.5rem;">Input data performa → AI auto-diagnosis → generate Ads BARU + Landing Page BARU yang sudah diperbaiki. 1 klik, siap relaunch.</p>
+        </div>
+        <div class="card">
+          <div class="card-title">📊 Data Performa (Wajib: Spend + Revenue)</div>
+          <div class="form-field">
+            <label class="form-label">Spend (IDR)</label>
+            <input class="form-input" id="opt-spend" type="number" placeholder="Contoh: 500000" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Revenue (IDR)</label>
+            <input class="form-input" id="opt-revenue" type="number" placeholder="Contoh: 350000" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Clicks</label>
+            <input class="form-input" id="opt-clicks" type="number" placeholder="Contoh: 200" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Leads</label>
+            <input class="form-input" id="opt-leads" type="number" placeholder="Contoh: 30" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Closing / Sales</label>
+            <input class="form-input" id="opt-closing" type="number" placeholder="Contoh: 5" />
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">📦 Produk (Opsional tapi direkomendasikan)</div>
+          <div class="form-field">
+            <label class="form-label">Produk / Jasa</label>
+            <input class="form-input" id="opt-produk" type="text" placeholder="Contoh: JENDRALBOT digital product" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Target Market</label>
+            <input class="form-input" id="opt-target" type="text" placeholder="Contoh: content creator pemula" />
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">📝 Versi Lama (Opsional — untuk hindari duplikasi)</div>
+          <div class="form-field">
+            <label class="form-label">Hook Ads Lama</label>
+            <textarea class="form-textarea" id="opt-old-ads" style="min-height:60px" placeholder="Paste hook/copy ads lama (opsional) — AI akan buat yang berbeda"></textarea>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Headline LP Lama</label>
+            <textarea class="form-textarea" id="opt-old-lp" style="min-height:50px" placeholder="Paste headline landing page lama (opsional)"></textarea>
+          </div>
+        </div>
+        <button class="gen-btn" id="opt-gen-btn" style="background:linear-gradient(135deg,#f97316,#ea580c);color:white;" onclick="runOptimize()">🔥 RUN AUTO OPTIMIZE</button>
+        <div class="card" style="background:rgba(249,115,22,0.04);border-color:rgba(249,115,22,0.15);">
+          <div class="card-title">⚡ Cara Kerja</div>
+          <p style="font-size:.78rem;color:var(--text2);line-height:1.7;">
+            1️⃣ Hitung metrics otomatis<br>
+            2️⃣ Identifikasi 1 masalah utama<br>
+            3️⃣ Tentukan fix strategy<br>
+            4️⃣ Generate 2 ads baru<br>
+            5️⃣ Generate LP HTML baru<br>
+            6️⃣ Buat relaunch plan
+          </p>
+        </div>
+      </aside>
+      <main class="output-area">
+        <div class="output-placeholder" id="opt-placeholder">
+          <div class="ph-icon">🔥</div>
+          <h3>Auto Optimization Engine</h3>
+          <p>Input data → AI diagnosis masalah → generate ulang ads + landing page yang sudah diperbaiki → siap relaunch dalam hitungan detik.</p>
+          <p style="margin-top:1rem;font-size:.8rem;color:var(--text3);">Minimal input: Spend + Revenue. Semua field lain opsional.</p>
+        </div>
+        <div id="opt-results"></div>
       </main>
     </div>
   </div>
@@ -660,6 +739,151 @@ function renderLandingHTML(htmlContent, produk) {
 }
 
 // ── ANALYZE PERFORMANCE (NEW) ─────────────────────────────────────────────────
+// ── RUN AUTO OPTIMIZE ─────────────────────────────────────────────────────────
+async function runOptimize() {
+  const spend   = document.getElementById('opt-spend').value;
+  const revenue = document.getElementById('opt-revenue').value;
+  if (!spend || !revenue) { alert('Spend dan Revenue wajib diisi!'); return; }
+
+  const data = {
+    spend: parseFloat(spend),
+    revenue: parseFloat(revenue),
+    clicks:  parseFloat(document.getElementById('opt-clicks').value) || undefined,
+    leads:   parseFloat(document.getElementById('opt-leads').value) || undefined,
+    closing: parseFloat(document.getElementById('opt-closing').value) || undefined,
+    produk:  document.getElementById('opt-produk').value.trim() || undefined,
+    target:  document.getElementById('opt-target').value.trim() || undefined,
+    old_ads: document.getElementById('opt-old-ads').value.trim() || undefined,
+    old_lp:  document.getElementById('opt-old-lp').value.trim() || undefined,
+    mode: 'optimize'
+  };
+
+  setLoading('opt-gen-btn', true, '🔥 RUN AUTO OPTIMIZE');
+  document.getElementById('opt-placeholder').style.display = 'none';
+  document.getElementById('opt-results').innerHTML = loadingHTML('AI sedang diagnosis + generate ads baru + landing page baru...');
+
+  try {
+    const res = await apiCall(data);
+    renderOptimize(res);
+  } catch(e) {
+    document.getElementById('opt-results').innerHTML = errorHTML(e.message);
+  }
+  setLoading('opt-gen-btn', false, '🔥 RUN AUTO OPTIMIZE');
+}
+
+function renderOptimize(r) {
+  if (!r || !r.analysis) { document.getElementById('opt-results').innerHTML = errorHTML('Gagal parse hasil optimizer.'); return; }
+
+  const problemColor = r.analysis.priority_level === 'HIGH' ? 'var(--red)' : r.analysis.priority_level === 'MEDIUM' ? 'var(--gold)' : 'var(--green)';
+  const fixTypeColor = r.strategy?.fix_type === 'FULL RESET' ? 'var(--red)' : r.strategy?.fix_type === 'HOOK' ? 'var(--gold)' : 'var(--blue)';
+
+  const metricsHtml = Object.entries(r.analysis.metrics || {}).map(([k,v]) =>
+    `<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:.82rem;">
+       <span style="color:var(--text3);font-weight:700;font-size:.72rem;text-transform:uppercase">${k.replace(/_/g,' ')}</span>
+       <span style="color:var(--text);font-weight:600">${v||'N/A'}</span>
+     </div>`).join('');
+
+  const ad1 = r.new_ads?.ad_1 || {};
+  const ad2 = r.new_ads?.ad_2 || {};
+  const plan = r.relaunch_plan || {};
+
+  const ad1Text = `[${ad1.angle}]\n🪝 ${ad1.hook}\n\n${ad1.body}\n\n✅ Proof: ${ad1.proof}\n🔥 CTA: ${ad1.cta}`;
+  const ad2Text = `[${ad2.angle}]\n🪝 ${ad2.hook}\n\n${ad2.body}\n\n✅ Proof: ${ad2.proof}\n🔥 CTA: ${ad2.cta}`;
+
+  const lpHtml = r.new_landing_page || '';
+  const lpBlob = lpHtml ? URL.createObjectURL(new Blob([lpHtml], {type:'text/html'})) : null;
+
+  document.getElementById('opt-results').innerHTML = `
+    <div class="landing-result">
+      <div class="landing-result-header">
+        <h3>🔥 Optimization Result</h3>
+        <span style="font-size:.75rem;padding:4px 10px;border-radius:999px;font-weight:700;background:${problemColor}20;color:${problemColor}">${r.analysis.priority_level} PRIORITY</span>
+      </div>
+
+      <!-- Diagnosis -->
+      <div style="padding:1rem;border-bottom:1px solid var(--border);background:rgba(239,68,68,0.04);">
+        <div style="font-size:.72rem;font-weight:700;color:var(--red);margin-bottom:4px;">🔍 PROBLEM IDENTIFIED</div>
+        <div style="font-size:1rem;font-weight:800;color:var(--text)">${esc(r.analysis.main_problem||'')}</div>
+        <div style="font-size:.82rem;color:var(--text2);margin-top:4px;line-height:1.5">${esc(r.analysis.root_cause||'')}</div>
+      </div>
+
+      <!-- Strategy -->
+      <div style="padding:1rem;border-bottom:1px solid var(--border);">
+        <div style="font-size:.72rem;font-weight:700;color:${fixTypeColor};margin-bottom:6px;">⚙️ FIX STRATEGY: <span style="color:var(--text);font-size:.85rem">${r.strategy?.fix_type||''}</span></div>
+        <div style="font-size:.8rem;color:var(--text2);line-height:1.5">✅ Changed: ${esc(r.strategy?.what_changed||'')}</div>
+        <div style="font-size:.8rem;color:var(--text3);margin-top:2px">🔒 Preserved: ${esc(r.strategy?.what_preserved||'')}</div>
+      </div>
+
+      <!-- Metrics -->
+      <div class="landing-section">
+        <div class="landing-sec-header" onclick="toggleSection(this)">
+          <span class="landing-sec-title">📊 Metrics <span class="tag">Kalkulasi</span></span>
+          <span style="color:var(--text3);font-size:.8rem">▼</span>
+        </div>
+        <div class="landing-sec-body">${metricsHtml}</div>
+      </div>
+
+      <!-- New Ads -->
+      <div class="landing-section">
+        <div class="landing-sec-header" onclick="toggleSection(this)">
+          <span class="landing-sec-title">✍️ 2 Ads Baru <span class="tag">Siap Pakai</span></span>
+          <span style="color:var(--text3);font-size:.8rem">▼</span>
+        </div>
+        <div class="landing-sec-body">
+          ${ad1.hook ? `
+          <div style="margin-bottom:1rem;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1rem;">
+            <div style="font-size:.72rem;font-weight:700;color:var(--red);margin-bottom:6px">AD 1 — ${esc(ad1.angle||'Fear')}</div>
+            <div style="font-size:.78rem;font-weight:700;color:var(--gold);margin-bottom:4px">🪝 ${esc(ad1.hook)}</div>
+            <div style="font-size:.82rem;color:var(--text2);white-space:pre-wrap;line-height:1.6">${esc(ad1.body||'')}</div>
+            ${ad1.proof ? `<div style="font-size:.75rem;color:var(--green);margin-top:6px">✅ ${esc(ad1.proof)}</div>` : ''}
+            ${ad1.cta ? `<div style="font-size:.78rem;font-weight:700;color:var(--text);margin-top:6px">🔥 ${esc(ad1.cta)}</div>` : ''}
+            <button class="copy-btn" style="margin-top:8px" onclick="copyText(this,\`${esc(ad1Text)}\`)">📋 Copy Ad 1</button>
+          </div>` : ''}
+          ${ad2.hook ? `
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1rem;">
+            <div style="font-size:.72rem;font-weight:700;color:var(--blue);margin-bottom:6px">AD 2 — ${esc(ad2.angle||'Curiosity')}</div>
+            <div style="font-size:.78rem;font-weight:700;color:var(--gold);margin-bottom:4px">🪝 ${esc(ad2.hook)}</div>
+            <div style="font-size:.82rem;color:var(--text2);white-space:pre-wrap;line-height:1.6">${esc(ad2.body||'')}</div>
+            ${ad2.proof ? `<div style="font-size:.75rem;color:var(--green);margin-top:6px">✅ ${esc(ad2.proof)}</div>` : ''}
+            ${ad2.cta ? `<div style="font-size:.78rem;font-weight:700;color:var(--text);margin-top:6px">🔥 ${esc(ad2.cta)}</div>` : ''}
+            <button class="copy-btn" style="margin-top:8px" onclick="copyText(this,\`${esc(ad2Text)}\`)">📋 Copy Ad 2</button>
+          </div>` : ''}
+        </div>
+      </div>
+
+      <!-- New Landing Page -->
+      ${lpHtml ? `
+      <div class="landing-section">
+        <div class="landing-sec-header" onclick="toggleSection(this)">
+          <span class="landing-sec-title">🚀 Landing Page Baru <span class="tag">Full HTML</span></span>
+          <span style="color:var(--text3);font-size:.8rem">▼</span>
+        </div>
+        <div class="landing-sec-body">
+          <div style="display:flex;gap:8px;margin-bottom:12px;">
+            <a href="${lpBlob}" download="optimized-landing-page.html"
+               style="background:var(--green);color:white;border:none;border-radius:8px;padding:7px 14px;font-size:.78rem;font-weight:700;cursor:pointer;text-decoration:none;">⬇️ Download HTML</a>
+            <button class="copy-btn" onclick="copyText(this,\`${lpHtml.replace(/`/g,'\\`')}\`)">📋 Copy HTML</button>
+          </div>
+          <iframe srcdoc="${lpHtml.replace(/"/g,'&quot;').replace(/'/g,'&#39;')}"
+            style="width:100%;height:450px;border:1px solid var(--border);border-radius:8px;background:#fff;"
+            sandbox="allow-scripts"></iframe>
+        </div>
+      </div>` : ''}
+
+      <!-- Relaunch Plan -->
+      <div style="padding:1rem;background:rgba(16,185,129,0.04);border-top:1px solid var(--border);">
+        <div style="font-size:.72rem;font-weight:700;color:var(--green);margin-bottom:8px;">🎯 RELAUNCH PLAN</div>
+        <div style="font-size:.82rem;color:var(--text2);line-height:1.7">
+          👥 Audience: ${esc(plan.audience||'')}<br>
+          💰 Budget: ${esc(plan.budget_strategy||'')}<br>
+          ⏱ Testing: ${esc(plan.testing_duration||'3-7 hari')}<br>
+          🎯 Target: ${esc(plan.success_metric||'ROAS > 1.5 dalam 3 hari')}
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── ANALYZE PERFORMANCE ────────────────────────────────────────────────────────
 async function analyzePerformance() {
   const spend   = document.getElementById('az-spend').value;
   const revenue = document.getElementById('az-revenue').value;

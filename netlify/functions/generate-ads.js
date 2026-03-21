@@ -77,13 +77,16 @@ exports.handler = async function(event) {
 
   const { produk, target, keunggulan, platform = 'TikTok', jumlah = 2, tone = 'santai', mode = 'ads' } = body;
 
-  // budget_guide, competitor, analyze modes don't require produk
-  if (!produk && !['budget_guide', 'competitor', 'analyze'].includes(mode)) {
+  // modes that don't require produk
+  if (!produk && !['budget_guide', 'competitor', 'analyze', 'optimize'].includes(mode)) {
     return { statusCode: 400, headers, body: JSON.stringify({ error: 'Produk wajib diisi' }) };
   }
 
   try {
-    if (mode === 'analyze') {
+    if (mode === 'optimize') {
+      const result = await optimizeAds(body);
+      return { statusCode: 200, headers, body: JSON.stringify(result) };
+    } else if (mode === 'analyze') {
       const result = await analyzePerformance(body);
       return { statusCode: 200, headers, body: JSON.stringify({ result }) };
     } else if (mode === 'landing') {
@@ -369,6 +372,83 @@ ${target ? `Target market: ${target}` : ''}`;
   return parseJSON(raw);
 }
 
+// ── Auto Optimizer (Full Pipeline) ────────────────────────────────────────────
+async function optimizeAds(data) {
+  const { spend, revenue, clicks, leads, closing, impressions, old_ads, old_lp, produk, target } = data;
+
+  const systemPrompt = `Kamu adalah BerkahKarya Auto Optimization Engine.
+
+Tugas kamu: Analyze → Diagnose → Fix → Regenerate Ads + LP → Relaunch Plan.
+Kamu BUKAN analyzer biasa. Kamu adalah OPTIMIZER — output harus langsung bisa dipakai.
+
+FLOW (5 steps internal, output 1 JSON):
+STEP 1: ANALYZE → hitung CR_lead, CR_sales, ROAS, profit dari input
+STEP 2: IDENTIFY 1 PRIORITY PROBLEM (pilih 1):
+  - NO TRACTION (clicks=0 OR leads=0 OR closing=0) → FULL RESET
+  - PROFIT NEGATIVE (ROAS<1.0) → ganti hook atau perbaiki LP
+  - LOW CONVERSION (CR_lead<10% OR CR_sales<5%) → LP issue atau offer issue
+  - LOW CTR (CTR<1% jika impressions ada) → hook + creative
+STEP 3: FIX STRATEGY → map problem ke fix_type (HOOK/LP/OFFER/FULL RESET)
+STEP 4: GENERATE 2 ADS BARU (beda dari old_ads jika ada, lebih spesifik, 1 proof per ad)
+STEP 5: GENERATE FULL HTML LANDING PAGE (fix problem utama)
+
+LP HTML WAJIB ADA: A/B headline (random JS), countdown 15min, sticky CTA WA+Checkout, sales notification popup, pixel placeholder.
+LP DESIGN: bg #FFFFFF, WA #22C55E, Checkout #F97316, Arial, mobile-first max-width:480px, inline CSS only.
+LP CONFIG di top JS:
+var waLink = "https://wa.me/628000000000";
+var ctaLink = "#";
+
+PROOF (realistis, pilih 1 per ad): HASIL=data nyata | PENGALAMAN=portfolio | SISTEM=cara kerja | MEKANISME=alur konkret
+JANGAN: over-claim, "ribuan pengguna", "terbukti ampuh" tanpa data.
+Jika data kurang → generate default masuk akal. JANGAN tanya user.
+
+OUTPUT: valid JSON saja — tidak ada teks lain di luar JSON. Semua field terisi.
+
+{
+  "analysis": {
+    "metrics": { "cr_lead": "X%", "cr_sales": "X%", "roas": "X.XX", "profit": "IDR X" },
+    "main_problem": "NO TRACTION / HOOK / LANDING PAGE / OFFER",
+    "root_cause": "...",
+    "priority_level": "HIGH / MEDIUM / LOW"
+  },
+  "strategy": {
+    "fix_type": "HOOK / LP / OFFER / FULL RESET",
+    "what_changed": "...",
+    "what_preserved": "..."
+  },
+  "new_ads": {
+    "ad_1": { "angle": "Fear (Loss Frame)", "hook": "...", "body": "...", "proof": "...", "proof_type": "HASIL/PENGALAMAN/SISTEM/MEKANISME", "cta": "..." },
+    "ad_2": { "angle": "Curiosity (False Belief)", "hook": "...", "body": "...", "proof": "...", "proof_type": "HASIL/PENGALAMAN/SISTEM/MEKANISME", "cta": "..." }
+  },
+  "new_landing_page": "<!DOCTYPE html><html lang='id'>FULL HTML HERE</html>",
+  "relaunch_plan": {
+    "audience": "...",
+    "budget_strategy": "...",
+    "testing_duration": "3-7 hari",
+    "success_metric": "ROAS > 1.5 dalam 3 hari"
+  }
+}`;
+
+  const userPrompt = `Data performa iklan:
+- Spend: IDR ${spend || 0}
+- Revenue: IDR ${revenue || 0}
+${clicks ? `- Clicks: ${clicks}` : '- Clicks: tidak tersedia'}
+${leads ? `- Leads: ${leads}` : '- Leads: tidak tersedia'}
+${closing ? `- Closing: ${closing}` : '- Closing: tidak tersedia'}
+${impressions ? `- Impressions: ${impressions}` : '- Impressions: tidak tersedia'}
+${produk ? `- Produk: ${produk}` : ''}
+${target ? `- Target: ${target}` : ''}
+${old_ads ? `\nAds lama:\n${old_ads}` : ''}
+${old_lp ? `\nLanding page lama (headline/hook):\n${old_lp}` : ''}
+
+Jalankan full optimization pipeline. Output JSON saja.`;
+
+  const raw = await callClaude(systemPrompt, userPrompt, 4000);
+  const parsed = parseJSON(raw);
+  if (!parsed) throw new Error('Optimizer: failed to parse JSON response');
+  return parsed;
+}
+
 // ── Analyze Performance ───────────────────────────────────────────────────────
 async function analyzePerformance(data) {
   const { spend, revenue, clicks, leads, closing, impressions } = data;
@@ -441,7 +521,7 @@ Analisa dan berikan keputusan.`;
 }
 
 // ── Claude API call ──────────────────────────────────────────────────────────
-async function callClaude(systemPrompt, userPrompt) {
+async function callClaude(systemPrompt, userPrompt, maxTokens = 3000) {
   const resp = await fetch(`${LAOZHANG_BASE}/chat/completions`, {
     method: 'POST',
     headers: {
@@ -455,7 +535,7 @@ async function callClaude(systemPrompt, userPrompt) {
         { role: 'user', content: userPrompt }
       ],
       temperature: 0.85,
-      max_tokens: 3000
+      max_tokens: maxTokens
     })
   });
 
