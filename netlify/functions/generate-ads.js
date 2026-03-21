@@ -77,15 +77,23 @@ exports.handler = async function(event) {
 
   const { produk, target, keunggulan, platform = 'TikTok', jumlah = 2, tone = 'santai', mode = 'ads' } = body;
 
-  // budget_guide & competitor modes don't require produk
-  if (!produk && !['budget_guide', 'competitor'].includes(mode)) {
+  // budget_guide, competitor, analyze modes don't require produk
+  if (!produk && !['budget_guide', 'competitor', 'analyze'].includes(mode)) {
     return { statusCode: 400, headers, body: JSON.stringify({ error: 'Produk wajib diisi' }) };
   }
 
   try {
-    if (mode === 'landing') {
-      const script = await generateLandingPage(produk, target, keunggulan, tone);
-      return { statusCode: 200, headers, body: JSON.stringify({ script }) };
+    if (mode === 'analyze') {
+      const result = await analyzePerformance(body);
+      return { statusCode: 200, headers, body: JSON.stringify({ result }) };
+    } else if (mode === 'landing') {
+      const html = await generateLandingPage(produk, target, keunggulan, tone);
+      // Return as html field (string) for new UI, script for backward compat
+      const isHTML = typeof html === 'string' && html.trim().startsWith('<!DOCTYPE');
+      if (isHTML) {
+        return { statusCode: 200, headers: { ...headers, 'Content-Type': 'application/json' }, body: JSON.stringify({ html }) };
+      }
+      return { statusCode: 200, headers, body: JSON.stringify({ script: html }) };
     } else if (mode === 'budget_guide') {
       const guide = await generateBudgetGuide(produk, target, keunggulan);
       return { statusCode: 200, headers, body: JSON.stringify({ guide }) };
@@ -356,6 +364,77 @@ ${iklanKompetitor}
 
 ${produk ? `Produk kita: ${produk}` : ''}
 ${target ? `Target market: ${target}` : ''}`;
+
+  const raw = await callClaude(systemPrompt, userPrompt);
+  return parseJSON(raw);
+}
+
+// ── Analyze Performance ───────────────────────────────────────────────────────
+async function analyzePerformance(data) {
+  const { spend, revenue, clicks, leads, closing, impressions } = data;
+
+  const systemPrompt = `Kamu adalah AI Performance Analyst untuk Meta Ads & TikTok Ads.
+
+Hitung metrics dari input. Tentukan status, score, diagnosis, dan action.
+
+HITUNG:
+- CPC = spend / clicks
+- CPL = spend / leads
+- CPA = spend / closing
+- CR_lead = leads / clicks (%)
+- CR_sales = closing / leads (%)
+- ROAS = revenue / spend
+- PROFIT = revenue - spend
+
+STATUS:
+- revenue > spend → WINNER
+- revenue ≈ spend (80-120%) → BREAKEVEN
+- revenue < spend → LOSER
+
+SCORING (0-100):
+- CTR: <1% → 30, 1-3% → 60, >3% → 85
+- CR_lead: <10% → 30, 10-20% → 60, >20% → 85
+- CR_sales: <5% → 30, 5-15% → 60, >15% → 85
+- profit: negatif → 20, BEP → 50, positif → 90
+Final = rata-rata score yang tersedia
+
+PRIORITY DIAGNOSIS (fokus 1 masalah):
+1. clicks=0 OR leads=0 → NO TRACTION → KILL
+2. revenue < spend → UNPROFITABLE → KILL atau OPTIMIZE
+3. CR rendah → LOW CONVERSION → OPTIMIZE
+4. CTR rendah → HOOK/CREATIVE → OPTIMIZE
+
+DECISION: score < 50 → KILL | 50-70 → OPTIMIZE | >70 → SCALE
+
+OUTPUT JSON saja (tidak ada teks lain):
+{
+  "status": "WINNER / BREAKEVEN / LOSER",
+  "score": 0-100,
+  "metrics": {
+    "cpc": "IDR X.XXX",
+    "cpl": "IDR X.XXX",
+    "cpa": "IDR X.XXX",
+    "cr_lead": "X.XX%",
+    "cr_sales": "X.XX%",
+    "roas": "X.XX",
+    "profit": "IDR X.XXX"
+  },
+  "problem": "...",
+  "root_cause": "...",
+  "decision": "KILL / OPTIMIZE / SCALE",
+  "action": ["action 1", "action 2", "action 3"],
+  "next_step": "..."
+}`;
+
+  const userPrompt = `Data performa iklan:
+- Spend: IDR ${spend}
+- Revenue: IDR ${revenue}
+${clicks ? `- Clicks: ${clicks}` : '- Clicks: tidak tersedia'}
+${leads ? `- Leads: ${leads}` : '- Leads: tidak tersedia'}
+${closing ? `- Closing: ${closing}` : '- Closing: tidak tersedia'}
+${impressions ? `- Impressions: ${impressions}` : '- Impressions: tidak tersedia'}
+
+Analisa dan berikan keputusan.`;
 
   const raw = await callClaude(systemPrompt, userPrompt);
   return parseJSON(raw);
