@@ -16,7 +16,8 @@ export interface ServiceData {
   cta: { title: string; description: string; button: { text: string; href: string } };
 }
 
-export const servicesData: Record<string, Record<string, ServiceData>> = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const _servicesData: any = {
 
   'custom-documents': {
     id: {
@@ -643,6 +644,132 @@ export const servicesData: Record<string, Record<string, ServiceData>> = {
     },
   },
 
+  'deep-research': {
+    id: {
+      slug: 'deep-research',
+      meta: { title: 'Jasa Deep Research — BerkahKarya', description: 'Riset mendalam untuk bisnis, kompetitor, pasar, teknologi. Laporan lengkap dengan data, insight, rekomendasi. Mulai Rp 200K.' },
+      hero: {
+        eyebrow: '🔍 DEEP RESEARCH',
+        title: 'Riset Mendalam\nDalam 24-48 Jam',
+        description: 'Butuh data kompetitor, analisa pasar, atau riset teknologi untuk keputusan bisnis? Kami lakukan deep research dengan metodologi terstruktur — data valid, insight actionable, laporan profesional.',
+        buttons: [
+          { text: 'Pesan Research →', href: `${WA}?text=Halo%20BerkahKarya%2C%20saya%20mau%20jasa%20deep%20research`, primary: true },
+          { text: 'Lihat Contoh', href: '#features', primary: false },
+        ],
+      },
+      problem: {
+        hook: 'Kalau kamu masih riset sendiri pakai Google 3 jam tanpa hasil jelas, kamu buang waktu.',
+        pains: [
+          { icon: '⏰', text: 'Riset sendiri makan 5-10 jam. Hasilnya? Data mentah tanpa insight yang bisa dieksekusi.' },
+          { icon: '📊', text: 'Tidak tahu kompetitor pricing, strategi marketing, atau kelemahan mereka.' },
+          { icon: '🤔', text: 'Keputusan bisnis based on feeling, bukan data. Risk tinggi, confidence rendah.' },
+          { icon: '💸', text: 'Hire konsultan research mahal (puluhan juta). Untuk riset kecil tidak worth it.' },
+        ],
+        bridge: 'Deep research profesional: data terstruktur, insight actionable, harga masuk akal.',
+      },
+      features: [
+        { icon: '🎯', title: 'Competitor Analysis', desc: 'Pricing, positioning, marketing strategy, strengths/weaknesses kompetitor utama.' },
+        { icon: '📈', title: 'Market Research', desc: 'Ukuran pasar, tren, segmentasi customer, peluang growth yang belum digarap.' },
+        { icon: '🔬', title: 'Technology Research', desc: 'Stack teknologi, tools, framework, API — untuk product development atau vendor selection.' },
+        { icon: '📋', title: 'Industry Report', desc: 'Landscape industri, key players, regulasi, best practices yang relevan.' },
+        { icon: '💡', title: 'Actionable Insights', desc: 'Bukan hanya data mentah — kami berikan rekomendasi konkret yang bisa langsung dieksekusi.' },
+        { icon: '📄', title: 'Professional Report', desc: 'Laporan terstruktur dengan executive summary, data visualization, dan referensi lengkap.' },
+      ],
+      howItWorks: {
+        title: 'Dari Brief ke Laporan dalam 3 Tahap',
+        steps: [
+          { num: '1', title: 'Brief & Scope', desc: 'Anda jelaskan topik, tujuan research, dan pertanyaan bisnis yang ingin dijawab. Kami tentukan scope dan metodologi.' },
+          { num: '2', title: 'Research & Analysis', desc: 'Tim research kumpulkan data dari berbagai sumber, validasi, dan analisa dengan framework terstruktur.' },
+          { num: '3', title: 'Report & Presentation', desc: 'Laporan lengkap dikirim dalam format .docx dan .pdf. Include 1x revision dan 30 menit Q&A call.' },
+        ],
+      },
+      pricing: [
+        { name: 'Quick Research', price: 'Rp 200K', period: '/topik', features: ['1 topik spesifik', 'Research 4-6 jam', 'Laporan 5-10 halaman', 'Data + insight dasar', 'Delivery 24 jam', '1x revisi'], cta: { text: 'Pesan Quick Research', href: `${WA}?text=Halo%2C%20saya%20mau%20Quick%20Research` } },
+        { name: 'Standard Research', price: 'Rp 500K', period: '/topik', highlight: true, features: ['1 topik kompleks', 'Research 1-2 hari', 'Laporan 15-25 halaman', 'Data + insight + rekomendasi', 'Executive summary', 'Delivery 48 jam', '2x revisi', '30 menit Q&A call'], cta: { text: 'Pesan Standard Research', href: `${WA}?text=Halo%2C%20saya%20mau%20Standard%20Research` } },
+        { name: 'Comprehensive', price: 'Rp 1jt+', period: '/project', features: ['Multi-topik atau industri', 'Research 3-5 hari', 'Laporan 30-50+ halaman', 'Deep analysis + strategic recommendations', 'Data visualization', 'Delivery 5-7 hari', 'Unlimited revisi', '1 jam presentation call'], cta: { text: 'Konsultasi Sekarang', href: `${WA}?text=Halo%2C%20saya%20mau%20Comprehensive%20Research` } },
+      ],
+      faq: {
+        title: 'Pertanyaan yang Sering Ditanyakan',
+        items: [
+          { q: 'Topik research apa saja yang bisa dikerjakan?', a: 'Competitor analysis, market research, technology stack research, industry landscape, pricing strategy, customer segmentation, product positioning, vendor comparison, regulatory research.' },
+          { q: 'Sumber data dari mana?', a: 'Public sources: company websites, annual reports, press releases, industry publications, government data, academic papers. Kami tidak melakukan illegal scraping atau breach confidentiality.' },
+          { q: 'Berapa lama proses research?', a: 'Quick: 24 jam. Standard: 48 jam. Comprehensive: 5-7 hari. Timeline final tergantung kompleksitas topik.' },
+          { q: 'Format laporan seperti apa?', a: 'Laporan profesional dalam .docx dan .pdf. Include: executive summary, methodology, findings, data visualization (charts/tables), insights, recommendations, references.' },
+          { q: 'Apakah data dijamin akurat?', a: 'Kami validasi data dari multiple sources dan cantumkan referensi lengkap. Namun, untuk data yang bersifat estimasi atau projection, kami jelaskan assumption dan limitation-nya.' },
+        ],
+      },
+      stats: [
+        { value: '24-48h', label: 'Delivery time standar' },
+        { value: '15-50', label: 'Halaman laporan lengkap' },
+        { value: '100%', label: 'Data tervalidasi' },
+        { value: '30 Min', label: 'Q&A call included' },
+      ],
+      cta: { title: 'Keputusan Bisnis Berdasarkan Data, Bukan Feeling', description: 'Konsultasi gratis 15 menit. Kami bantu tentukan scope research yang tepat untuk kebutuhan Anda.', button: { text: 'Konsultasi Gratis →', href: `${WA}?text=Halo%20BerkahKarya%2C%20saya%20mau%20konsultasi%20deep%20research` } },
+    },
+    en: {
+      slug: 'deep-research',
+      meta: { title: 'Deep Research Service — BerkahKarya', description: 'In-depth research for business, competitors, markets, technology. Complete reports with data, insights, recommendations. From $13.' },
+      hero: {
+        eyebrow: '🔍 DEEP RESEARCH',
+        title: 'In-Depth Research\nIn 24-48 Hours',
+        description: 'Need competitor data, market analysis, or technology research for business decisions? We conduct deep research with structured methodology — valid data, actionable insights, professional reports.',
+        buttons: [
+          { text: 'Order Research →', href: `${WA}?text=Hello%20BerkahKarya%2C%20I%20want%20deep%20research%20service`, primary: true },
+          { text: 'See Examples', href: '#features', primary: false },
+        ],
+      },
+      problem: {
+        hook: 'If you still research yourself on Google for 3 hours with no clear results, you are wasting time.',
+        pains: [
+          { icon: '⏰', text: 'Self-research takes 5-10 hours. The result? Raw data with no actionable insights.' },
+          { icon: '📊', text: 'You do not know competitor pricing, marketing strategies, or their weaknesses.' },
+          { icon: '🤔', text: 'Business decisions based on feeling, not data. High risk, low confidence.' },
+          { icon: '💸', text: 'Hiring research consultants is expensive (tens of millions). Not worth it for small research.' },
+        ],
+        bridge: 'Professional deep research: structured data, actionable insights, reasonable pricing.',
+      },
+      features: [
+        { icon: '🎯', title: 'Competitor Analysis', desc: 'Pricing, positioning, marketing strategy, strengths/weaknesses of key competitors.' },
+        { icon: '📈', title: 'Market Research', desc: 'Market size, trends, customer segmentation, untapped growth opportunities.' },
+        { icon: '🔬', title: 'Technology Research', desc: 'Tech stack, tools, frameworks, APIs — for product development or vendor selection.' },
+        { icon: '📋', title: 'Industry Report', desc: 'Industry landscape, key players, regulations, relevant best practices.' },
+        { icon: '💡', title: 'Actionable Insights', desc: 'Not just raw data — we provide concrete recommendations you can execute immediately.' },
+        { icon: '📄', title: 'Professional Report', desc: 'Structured report with executive summary, data visualization, and complete references.' },
+      ],
+      howItWorks: {
+        title: 'From Brief to Report in 3 Phases',
+        steps: [
+          { num: '1', title: 'Brief & Scope', desc: 'You explain the topic, research objectives, and business questions to answer. We define scope and methodology.' },
+          { num: '2', title: 'Research & Analysis', desc: 'Research team collects data from various sources, validates, and analyzes with structured framework.' },
+          { num: '3', title: 'Report & Presentation', desc: 'Complete report delivered in .docx and .pdf. Includes 1 revision and 30-minute Q&A call.' },
+        ],
+      },
+      pricing: [
+        { name: 'Quick Research', price: '$13', period: '/topic', features: ['1 specific topic', '4-6 hours research', '5-10 page report', 'Data + basic insights', '24-hour delivery', '1 revision'], cta: { text: 'Order Quick Research', href: `${WA}?text=Hello%2C%20I%20want%20Quick%20Research` } },
+        { name: 'Standard Research', price: '$33', period: '/topic', highlight: true, features: ['1 complex topic', '1-2 days research', '15-25 page report', 'Data + insights + recommendations', 'Executive summary', '48-hour delivery', '2 revisions', '30-minute Q&A call'], cta: { text: 'Order Standard Research', href: `${WA}?text=Hello%2C%20I%20want%20Standard%20Research` } },
+        { name: 'Comprehensive', price: '$66+', period: '/project', features: ['Multi-topic or industry', '3-5 days research', '30-50+ page report', 'Deep analysis + strategic recommendations', 'Data visualization', '5-7 day delivery', 'Unlimited revisions', '1-hour presentation call'], cta: { text: 'Consult Now', href: `${WA}?text=Hello%2C%20I%20want%20Comprehensive%20Research` } },
+      ],
+      faq: {
+        title: 'Frequently Asked Questions',
+        items: [
+          { q: 'What research topics can you handle?', a: 'Competitor analysis, market research, technology stack research, industry landscape, pricing strategy, customer segmentation, product positioning, vendor comparison, regulatory research.' },
+          { q: 'Where does the data come from?', a: 'Public sources: company websites, annual reports, press releases, industry publications, government data, academic papers. We do not conduct illegal scraping or breach confidentiality.' },
+          { q: 'How long does research take?', a: 'Quick: 24 hours. Standard: 48 hours. Comprehensive: 5-7 days. Final timeline depends on topic complexity.' },
+          { q: 'What is the report format?', a: 'Professional report in .docx and .pdf. Includes: executive summary, methodology, findings, data visualization (charts/tables), insights, recommendations, references.' },
+          { q: 'Is the data guaranteed accurate?', a: 'We validate data from multiple sources and provide complete references. For estimates or projections, we explain assumptions and limitations.' },
+        ],
+      },
+      stats: [
+        { value: '24-48h', label: 'Standard delivery time' },
+        { value: '15-50', label: 'Complete report pages' },
+        { value: '100%', label: 'Validated data' },
+        { value: '30 Min', label: 'Q&A call included' },
+      ],
+      cta: { title: 'Business Decisions Based on Data, Not Feeling', description: 'Free 15-minute consultation. We help define the right research scope for your needs.', button: { text: 'Free Consultation →', href: `${WA}?text=Hello%20BerkahKarya%2C%20I%20want%20deep%20research%20consultation` } },
+    },
+  },
+
 };
 
+export const servicesData: { [slug: string]: { id: ServiceData; en: ServiceData } } = _servicesData;
 export const servicesSlugs = Object.keys(servicesData);
