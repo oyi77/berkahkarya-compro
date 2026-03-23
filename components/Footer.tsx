@@ -20,6 +20,7 @@ export default function Footer() {
             <li><a href={`/${locale}/ai-agent-pro`}>AI Agent Pro</a></li>
             <li><a href={`/${locale}/algorithmic-trading`}>Algo Trading</a></li>
             <li><a href={`/${locale}/digital-products`}>{locale === 'id' ? 'Produk Digital' : 'Digital Products'}</a></li>
+            <li><a href={`/${locale}/omniroute`}>OmniRoute API</a></li>
           </ul>
         </div>
         <div>

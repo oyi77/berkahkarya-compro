@@ -7,6 +7,7 @@ const navLinks = [
   { slug: 'ai-video-studio', id: 'Video AI', en: 'AI Video' },
   { slug: 'adforge-ai', id: 'Iklan AI', en: 'AI Ads' },
   { slug: 'ai-agent-pro', id: 'Agent AI', en: 'AI Agent' },
+  { slug: 'omniroute', id: 'OmniRoute', en: 'OmniRoute' },
   { slug: 'team', id: 'Tim', en: 'Team' },
   { slug: 'contact', id: 'Kontak', en: 'Contact' },
 ];

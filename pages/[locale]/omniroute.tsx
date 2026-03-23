@@ -2,14 +2,15 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Layout from '@/components/Layout';
 import HeroSection from '@/components/HeroSection';
 import ProblemSection from '@/components/ProblemSection';
-import PillarGrid from '@/components/PillarGrid';
-import ServiceGrid from '@/components/ServiceGrid';
-import TestimonialSection from '@/components/TestimonialSection';
-import StatsRow from '@/components/StatsRow';
+import FeatureGrid from '@/components/FeatureGrid';
+import ProvidersGrid from '@/components/ProvidersGrid';
+import CodeBlock from '@/components/CodeBlock';
 import HowItWorks from '@/components/HowItWorks';
+import PricingTable from '@/components/PricingTable';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
-import { homeData } from '@/data/home';
+import { omnirouteData } from '@/data/omniroute';
+import { characters } from '@/data/characters';
 
 type Locale = 'id' | 'en';
 
@@ -22,24 +23,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => ({
   props: { locale: (params?.locale as Locale) || 'id' },
 });
 
-export default function HomePage({ locale }: { locale: Locale }) {
-  const d = homeData[locale];
+export default function OmniRoutePage({ locale }: { locale: Locale }) {
+  const d = omnirouteData[locale];
   return (
     <Layout title={d.meta.title} description={d.meta.description}>
-      <HeroSection
-        eyebrow={d.hero.eyebrow}
-        title={d.hero.title}
-        description={d.hero.description}
-        buttons={[...d.hero.buttons]}
-        dark
-        character={{ src: '/characters/vilona.jpg', alt: 'Vilona — AI General Manager' }}
-      />
+      <HeroSection eyebrow={d.hero.eyebrow} title={d.hero.title} description={d.hero.description} buttons={[...d.hero.buttons]} dark character={{ src: '/characters/vilona-side.jpg', alt: 'Vilona — API Architect' }} />
       <ProblemSection hook={d.problem.hook} pains={[...d.problem.pains]} bridge={d.problem.bridge} />
-      <PillarGrid title={d.pillars.title} items={[...d.pillars.items]} />
-      <ServiceGrid title={d.services.title} subtitle={d.services.subtitle} items={[...d.services.items]} />
-      <TestimonialSection title={d.testimonials.title} items={[...d.testimonials.items]} />
-      <StatsRow items={[...d.stats]} />
+      <FeatureGrid items={[...d.features]} />
+      <ProvidersGrid title={d.providers.title} items={[...d.providers.items]} />
+      <CodeBlock title={d.codeExample.title} code={d.codeExample.code} />
       <HowItWorks title={d.howItWorks.title} steps={[...d.howItWorks.steps]} />
+      <PricingTable tiers={d.pricing.map(t => ({ ...t, features: [...t.features], cta: { ...t.cta } }))} />
       <FAQSection title={d.faq.title} items={[...d.faq.items]} />
       <CTASection title={d.cta.title} description={d.cta.description} button={{ ...d.cta.button }} />
     </Layout>

@@ -8,4 +8,5 @@ export const characters = {
   'digital-products': { src: '/characters/paijo.jpg', alt: 'Coder $String$ — Creator' },
   team: { src: '/characters/vilona.jpg', alt: 'Vilona — Team Lead' },
   contact: { src: '/characters/eddie.jpg', alt: 'Eddie — Ready to Help' },
+  omniroute: { src: '/characters/vilona-side.jpg', alt: 'Vilona — API Architect' },
 } as const;

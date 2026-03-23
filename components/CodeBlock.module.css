@@ -1,0 +1,38 @@
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+  text-align: center;
+}
+.container h2 { color: var(--text-white); margin-bottom: 2rem; }
+.window {
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: left;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.dots {
+  padding: 0.75rem 1rem;
+  display: flex;
+  gap: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.dotRed, .dotYellow, .dotGreen {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dotRed { background: #ff5f57; }
+.dotYellow { background: #ffbd2e; }
+.dotGreen { background: #28ca42; }
+.code {
+  padding: 1.25rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.8;
+  overflow-x: auto;
+  white-space: pre;
+  margin: 0;
+}
