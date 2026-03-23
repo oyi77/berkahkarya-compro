@@ -85,8 +85,8 @@ export const productsFullData: Record<string, Record<string, ProductFull>> = {
         title: 'Product Photo to\nViral TikTok Video in 3 Minutes.',
         description: 'Your competitors upload 10 videos a week with AI. You\'re still paying Rp 500K/video and waiting 3 days. Flip it 180°: upload photo → cinematic video ready to publish — straight from Telegram, zero editing skills needed.',
         buttons: [
-          { text: '🚀 Try Free — 3 Credits Activated Now', href: `${WA}?text=Hello%2C%20I%20want%20to%20try%20AI%20Video%20Studio%20free`, primary: true },
-          { text: 'See Pricing', href: '#pricing', primary: false },
+          { text: '🚀 Try Free — 3 Credits Activated Now', href: SAAS, primary: true },
+          { text: 'See Offer', href: '#offer', primary: false },
         ],
       },
       problem: {
@@ -121,9 +121,9 @@ export const productsFullData: Record<string, Record<string, ProductFull>> = {
         { quote: 'Ad CTR went from 1.2% to 4.8% after switching from static photos to AI video. ROAS also jumped dramatically.', name: 'Sari M.', role: 'Digital Marketer, Jakarta', avatar: '👩‍💻' },
       ],
       pricing: [
-        { name: 'Starter', price: 'Rp 49K', period: '/mo', features: ['10 videos/month', 'All 8 niches', '720p resolution', '3 free credits on signup', 'Telegram support'], cta: { text: 'Start Free', href: `${WA}?text=I%20want%20the%20Starter%20AI%20Video%20Studio%20plan` } },
-        { name: 'Creator', price: 'Rp 149K', period: '/mo', highlight: true, features: ['50 videos/month', 'All 8 niches', '1080p resolution', 'Priority render', 'Credits never expire', 'Priority support'], cta: { text: 'Choose Creator', href: `${WA}?text=I%20want%20the%20Creator%20AI%20Video%20Studio%20plan` } },
-        { name: 'Agency', price: 'Rp 399K', period: '/mo', features: ['200 videos/month', 'Custom branding', '4K resolution', 'API access', 'Dedicated support', 'White-label option'], cta: { text: 'Contact Us', href: WA } },
+        { name: 'Starter', price: 'Rp 49K', period: '/mo', features: ['10 videos/month', 'All 8 niches', '720p resolution', '3 free credits on signup', 'Telegram support'], cta: { text: 'Start Free', href: SAAS } },
+        { name: 'Creator', price: 'Rp 149K', period: '/mo', highlight: true, features: ['50 videos/month', 'All 8 niches', '1080p resolution', 'Priority render', 'Credits never expire', 'Priority support'], cta: { text: 'Choose Creator', href: SAAS } },
+        { name: 'Agency', price: 'Rp 399K', period: '/mo', features: ['200 videos/month', 'Custom branding', '4K resolution', 'API access', 'Dedicated support', 'White-label option'], cta: { text: 'Contact Us', href: SAAS } },
       ],
       faq: {
         title: 'Frequently Asked Questions',
@@ -135,7 +135,7 @@ export const productsFullData: Record<string, Record<string, ProductFull>> = {
           { q: 'Does it work for food/culinary products?', a: 'Yes, culinary is one of our 8 niches. Results are very cinematic and appetizing.' },
         ],
       },
-      cta: { title: 'Your Competitors Already Uploaded 10 Videos Today', description: 'Start with 3 free credits now. No credit card. 2-minute setup via Telegram.', button: { text: 'Try Free Now →', href: `${WA}?text=Hello%2C%20I%20want%20to%20try%20AI%20Video%20Studio%203%20free%20credits` } },
+      cta: { title: 'Your Competitors Already Uploaded 10 Videos Today', description: 'Start with 3 free credits now. No credit card. 2-minute setup via Telegram.', button: { text: 'Try Free Now →', href: SAAS } },
     },
   },
 
