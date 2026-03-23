@@ -16,6 +16,133 @@ export interface ServiceData {
   cta: { title: string; description: string; button: { text: string; href: string } };
 }
 
+const WA2 = 'https://wa.me/6285732740006';
+
+const _securityAudit: { id: ServiceData; en: ServiceData } = {
+  id: {
+    slug: 'security-audit',
+    meta: { title: 'Jasa Security Audit — BerkahKarya', description: 'Audit keamanan website, API, dan infrastruktur. OWASP Top 10, penetration testing, laporan vulnerability. Mulai Rp 1jt.' },
+    hero: {
+      eyebrow: '🛡️ SECURITY AUDIT',
+      title: 'Audit Keamanan\nSebelum Hacker Menemukannya',
+      description: 'Website atau API Anda sudah diuji keamanannya? 60% startup tidak tahu mereka punya vulnerability kritis sampai terkena breach. Kami audit dan laporan sebelum itu terjadi.',
+      buttons: [
+        { text: 'Pesan Audit →', href: `${WA2}?text=Halo%20BerkahKarya%2C%20saya%20mau%20jasa%20security%20audit`, primary: true },
+        { text: 'Lihat Scope', href: '#features', primary: false },
+      ],
+    },
+    problem: {
+      hook: 'Kalau bisnis online kamu belum pernah diaudit, kamu tidak tahu apa yang tidak kamu tahu.',
+      pains: [
+        { icon: '🔓', text: 'SQL injection, XSS, CSRF — vulnerability klasik yang masih ada di 70% aplikasi web.' },
+        { icon: '💸', text: 'Data breach rata-rata merugikan $4.45 juta (IBM 2023). Satu exploit bisa bankrupt startup.' },
+        { icon: '😱', text: 'API keys, credentials, dan secrets bocor di public repo — sudah ada yang akses?' },
+        { icon: '⚖️', text: 'Regulasi data (PDPA Indonesia, GDPR) mewajibkan standar keamanan tertentu.' },
+      ],
+      bridge: 'Audit sekarang lebih murah dari breach nanti. Jauh lebih murah.',
+    },
+    features: [
+      { icon: '🌐', title: 'Web Application Testing', desc: 'OWASP Top 10: SQL injection, XSS, CSRF, broken auth, insecure deserialization, dan lainnya.' },
+      { icon: '🔌', title: 'API Security Review', desc: 'REST/GraphQL endpoint testing: authentication, authorization, rate limiting, data exposure.' },
+      { icon: '🏗️', title: 'Infrastructure Scan', desc: 'Port scanning, service fingerprinting, misconfiguration detection pada server dan cloud.' },
+      { icon: '🔑', title: 'Secrets Detection', desc: 'Scan Git history, codebase, dan config files untuk API keys, passwords, dan credentials bocor.' },
+      { icon: '📋', title: 'Vulnerability Report', desc: 'Laporan detail: severity level, CVSS score, bukti exploit, dan langkah remediation.' },
+      { icon: '✅', title: 'Retest Included', desc: 'Setelah fix, kami retest vulnerability yang ditemukan. Gratis dalam 30 hari.' },
+    ],
+    howItWorks: {
+      title: 'Dari Scope ke Laporan dalam 3 Fase',
+      steps: [
+        { num: '1', title: 'Scoping & Agreement', desc: 'Tentukan target (URL, IP range, API), scope pengujian, dan tanda tangani rules of engagement. NDA termasuk.' },
+        { num: '2', title: 'Testing & Analysis', desc: 'Automated scanning + manual testing oleh security researcher. Validasi setiap finding untuk zero false positive.' },
+        { num: '3', title: 'Report & Remediation', desc: 'Laporan lengkap dengan severity, bukti, dan rekomendasi fix. Include 1 jam consultation call.' },
+      ],
+    },
+    pricing: [
+      { name: 'Web Basic', price: 'Rp 1jt', period: '/audit', features: ['1 web app atau API', 'OWASP Top 10 check', 'Automated + manual scan', 'Laporan PDF', 'Severity: Critical & High', 'Delivery 3-5 hari', '1x retest gratis'], cta: { text: 'Pesan Web Basic', href: `${WA2}?text=Halo%2C%20saya%20mau%20Security%20Audit%20Web%20Basic` } },
+      { name: 'Comprehensive', price: 'Rp 3jt', period: '/audit', highlight: true, features: ['Web app + API + infrastructure', 'Full OWASP + custom tests', 'Secrets detection scan', 'Laporan detail + CVSS score', 'All severity levels', 'Delivery 7-10 hari', 'Unlimited retest 30 hari', '1 jam consultation call'], cta: { text: 'Pesan Comprehensive', href: `${WA2}?text=Halo%2C%20saya%20mau%20Security%20Audit%20Comprehensive` } },
+      { name: 'Enterprise', price: 'Rp 7jt+', period: '/audit', features: ['Full scope (web + API + infra + mobile)', 'Red team simulation', 'Social engineering test', 'Executive + technical report', 'Compliance mapping (PDPA/ISO 27001)', 'Delivery 2-4 minggu', 'Quarterly retest included', 'Dedicated security engineer'], cta: { text: 'Hubungi Kami', href: `${WA2}?text=Halo%2C%20saya%20mau%20Enterprise%20Security%20Audit` } },
+    ],
+    faq: {
+      title: 'Pertanyaan yang Sering Ditanyakan',
+      items: [
+        { q: 'Apakah audit akan merusak sistem saya?', a: 'Tidak. Semua testing dilakukan non-destructive dan sesuai scope yang disepakati. Tidak ada data yang dimodifikasi atau dihapus.' },
+        { q: 'Apakah ada NDA?', a: 'Ya. Kami tanda tangani NDA sebelum audit dimulai. Semua findings bersifat confidential dan tidak dishare ke pihak ketiga.' },
+        { q: 'Apa bedanya automated scan vs manual testing?', a: 'Automated scan cepat dan menemukan vulnerabilities umum. Manual testing menemukan logic flaws dan business-level vulnerabilities yang tidak bisa dideteksi tools.' },
+        { q: 'Berapa lama waktu audit?', a: 'Web Basic: 3-5 hari. Comprehensive: 7-10 hari. Enterprise: 2-4 minggu. Tergantung ukuran dan kompleksitas target.' },
+        { q: 'Bagaimana kalau tidak ada vulnerability yang ditemukan?', a: 'Laporan tetap dikirim dengan detail testing methodology dan scope yang dicoverd. Clean report juga valuable sebagai bukti due diligence.' },
+      ],
+    },
+    stats: [
+      { value: '70%', label: 'App punya vuln kritis (rata2)' },
+      { value: 'OWASP', label: 'Top 10 methodology' },
+      { value: '0', label: 'False positive guarantee' },
+      { value: '30 Hr', label: 'Free retest window' },
+    ],
+    cta: { title: 'Audit Sekarang, Sebelum Hacker Lebih Dulu', description: 'Konsultasi gratis 15 menit. Kami bantu tentukan scope audit yang sesuai anggaran Anda.', button: { text: 'Konsultasi Gratis →', href: `${WA2}?text=Halo%20BerkahKarya%2C%20saya%20mau%20konsultasi%20security%20audit` } },
+  },
+  en: {
+    slug: 'security-audit',
+    meta: { title: 'Security Audit Service — BerkahKarya', description: 'Website, API, and infrastructure security audit. OWASP Top 10, penetration testing, vulnerability reports. From $66.' },
+    hero: {
+      eyebrow: '🛡️ SECURITY AUDIT',
+      title: 'Security Audit\nBefore Hackers Find It',
+      description: 'Has your website or API been security-tested? 60% of startups do not know they have critical vulnerabilities until a breach occurs. We audit and report before that happens.',
+      buttons: [
+        { text: 'Order Audit →', href: `${WA2}?text=Hello%20BerkahKarya%2C%20I%20want%20a%20security%20audit`, primary: true },
+        { text: 'View Scope', href: '#features', primary: false },
+      ],
+    },
+    problem: {
+      hook: 'If your online business has never been audited, you do not know what you do not know.',
+      pains: [
+        { icon: '🔓', text: 'SQL injection, XSS, CSRF — classic vulnerabilities still present in 70% of web applications.' },
+        { icon: '💸', text: 'The average data breach costs $4.45M (IBM 2023). One exploit can bankrupt a startup.' },
+        { icon: '😱', text: 'API keys, credentials, and secrets leaked in public repos — has someone already accessed them?' },
+        { icon: '⚖️', text: 'Data regulations (PDPA Indonesia, GDPR) mandate specific security standards.' },
+      ],
+      bridge: 'Auditing now is cheaper than a breach later. Much cheaper.',
+    },
+    features: [
+      { icon: '🌐', title: 'Web Application Testing', desc: 'OWASP Top 10: SQL injection, XSS, CSRF, broken auth, insecure deserialization, and more.' },
+      { icon: '🔌', title: 'API Security Review', desc: 'REST/GraphQL endpoint testing: authentication, authorization, rate limiting, data exposure.' },
+      { icon: '🏗️', title: 'Infrastructure Scan', desc: 'Port scanning, service fingerprinting, misconfiguration detection on servers and cloud.' },
+      { icon: '🔑', title: 'Secrets Detection', desc: 'Scan Git history, codebase, and config files for leaked API keys, passwords, and credentials.' },
+      { icon: '📋', title: 'Vulnerability Report', desc: 'Detailed report: severity level, CVSS score, proof of exploit, and remediation steps.' },
+      { icon: '✅', title: 'Retest Included', desc: 'After fixes, we retest found vulnerabilities. Free within 30 days.' },
+    ],
+    howItWorks: {
+      title: 'From Scope to Report in 3 Phases',
+      steps: [
+        { num: '1', title: 'Scoping & Agreement', desc: 'Define target (URL, IP range, API), testing scope, and sign rules of engagement. NDA included.' },
+        { num: '2', title: 'Testing & Analysis', desc: 'Automated scanning + manual testing by security researcher. Every finding validated for zero false positives.' },
+        { num: '3', title: 'Report & Remediation', desc: 'Complete report with severity, proof, and fix recommendations. Includes 1-hour consultation call.' },
+      ],
+    },
+    pricing: [
+      { name: 'Web Basic', price: '$66', period: '/audit', features: ['1 web app or API', 'OWASP Top 10 check', 'Automated + manual scan', 'PDF report', 'Critical & High severity', 'Delivery 3-5 days', '1x free retest'], cta: { text: 'Order Web Basic', href: `${WA2}?text=Hello%2C%20I%20want%20Web%20Basic%20Security%20Audit` } },
+      { name: 'Comprehensive', price: '$200', period: '/audit', highlight: true, features: ['Web app + API + infrastructure', 'Full OWASP + custom tests', 'Secrets detection scan', 'Detailed report + CVSS score', 'All severity levels', 'Delivery 7-10 days', 'Unlimited retest 30 days', '1-hour consultation call'], cta: { text: 'Order Comprehensive', href: `${WA2}?text=Hello%2C%20I%20want%20Comprehensive%20Security%20Audit` } },
+      { name: 'Enterprise', price: '$465+', period: '/audit', features: ['Full scope (web + API + infra + mobile)', 'Red team simulation', 'Social engineering test', 'Executive + technical report', 'Compliance mapping (PDPA/ISO 27001)', 'Delivery 2-4 weeks', 'Quarterly retest included', 'Dedicated security engineer'], cta: { text: 'Contact Us', href: `${WA2}?text=Hello%2C%20I%20want%20Enterprise%20Security%20Audit` } },
+    ],
+    faq: {
+      title: 'Frequently Asked Questions',
+      items: [
+        { q: 'Will the audit damage my system?', a: 'No. All testing is non-destructive and within the agreed scope. No data is modified or deleted.' },
+        { q: 'Is there an NDA?', a: 'Yes. We sign an NDA before the audit begins. All findings are confidential and never shared with third parties.' },
+        { q: 'What is the difference between automated scanning and manual testing?', a: 'Automated scanning is fast and finds common vulnerabilities. Manual testing finds logic flaws and business-level vulnerabilities that tools cannot detect.' },
+        { q: 'How long does an audit take?', a: 'Web Basic: 3-5 days. Comprehensive: 7-10 days. Enterprise: 2-4 weeks. Depends on target size and complexity.' },
+        { q: 'What if no vulnerabilities are found?', a: 'A report is still delivered with testing methodology and covered scope details. A clean report is also valuable as proof of due diligence.' },
+      ],
+    },
+    stats: [
+      { value: '70%', label: 'Apps have critical vulns (avg)' },
+      { value: 'OWASP', label: 'Top 10 methodology' },
+      { value: '0', label: 'False positive guarantee' },
+      { value: '30 Days', label: 'Free retest window' },
+    ],
+    cta: { title: 'Audit Now, Before Hackers Get There First', description: 'Free 15-minute consultation. We help define the right audit scope for your budget.', button: { text: 'Free Consultation →', href: `${WA2}?text=Hello%20BerkahKarya%2C%20I%20want%20security%20audit%20consultation` } },
+  },
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const _servicesData: any = {
 
@@ -771,5 +898,8 @@ const _servicesData: any = {
 
 };
 
-export const servicesData: { [slug: string]: { id: ServiceData; en: ServiceData } } = _servicesData;
+export const servicesData: { [slug: string]: { id: ServiceData; en: ServiceData } } = {
+  ..._servicesData,
+  'security-audit': _securityAudit,
+};
 export const servicesSlugs = Object.keys(servicesData);

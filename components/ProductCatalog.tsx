@@ -1,35 +1,24 @@
 import styles from './ProductCatalog.module.css';
-import { trackCTAClick } from '@/lib/tracking';
 
-interface CatalogItem { icon: string; name: string; price: string; desc: string; href: string }
+interface Product { emoji: string; name: string; category: string; desc: string; price: string; href: string }
 
-interface Props {
-  title: string;
-  items: CatalogItem[];
-}
-
-export default function ProductCatalog({ title, items }: Props) {
+export default function ProductCatalog({ title, items }: { title: string; items: Product[] }) {
   return (
-    <section className="dark-bg" id="catalog">
+    <section className="light-bg" id="catalog">
       <div className={styles.container}>
-        <h2 className="text-white">{title}</h2>
+        <h2>{title}</h2>
         <div className={styles.grid}>
-          {items.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.card}
-              onClick={() => trackCTAClick(`catalog_${item.name}`, item.href)}
-            >
-              <span className={styles.icon}>{item.icon}</span>
-              <div className={styles.info}>
-                <h3>{item.name}</h3>
-                <span className={styles.price}>{item.price}</span>
+          {items.map((p) => (
+            <div key={p.name} className={`card-light ${styles.card}`}>
+              <span className={styles.emoji}>{p.emoji}</span>
+              <span className={styles.cat}>{p.category}</span>
+              <h3 className={styles.name}>{p.name}</h3>
+              <p className={styles.desc}>{p.desc}</p>
+              <div className={styles.footer}>
+                <span className={styles.price}>{p.price}</span>
+                <a href={p.href} target="_blank" rel="noopener noreferrer" className={styles.btn}>Beli Sekarang →</a>
               </div>
-              <p className={styles.desc}>{item.desc}</p>
-            </a>
+            </div>
           ))}
         </div>
       </div>
