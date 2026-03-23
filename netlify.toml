@@ -1,97 +1,14 @@
-# Netlify Configuration for Berkah Karya Websites
-# This configuration sets up the main website and portfolio sub-sites
-
 [build]
-  # Set the root directory as the publish directory
-  publish = "."
-  
-  # Build command (optional - for static sites)
-  command = "echo 'Static website - no build required'"
+  command = "npm run build"
+  publish = ".next"
 
-# Functions directory
-[functions]
-  directory = "netlify/functions"
+[build.environment]
+  NODE_VERSION = "18"
 
-# Redirect rules for portfolio sites
-# These allow accessing portfolio sites as subdirectories
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
-# API routes → Netlify Functions
-[[redirects]]
-  from = "/api/generate-ads"
-  to = "/.netlify/functions/generate-ads"
-  status = 200
-
-[[redirects]]
-  from = "/ads-marketing-ai/pro"
-  to = "/ads-marketing-ai/pro/index.html"
-  status = 200
-
-# Main website files
-[[redirects]]
-  from = "/"
-  to = "/index.html"
-  status = 200
-
-# Shopee & TikTok Portfolio
-[[redirects]]
-  from = "/ecommerce"
-  to = "/portfolio_sites/shopee_tiktok/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/ecommerce/*"
-  to = "/portfolio_sites/shopee_tiktok/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/shopee-tiktok"
-  to = "/portfolio_sites/shopee_tiktok/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/shopee-tiktok/*"
-  to = "/portfolio_sites/shopee_tiktok/:splat"
-  status = 200
-
-# SEO Portfolio
-[[redirects]]
-  from = "/seo"
-  to = "/portfolio_sites/seo/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/seo/*"
-  to = "/portfolio_sites/seo/:splat"
-  status = 200
-
-# FlashRobs Trading Portfolio
-[[redirects]]
-  from = "/trading"
-  to = "/portfolio_sites/flashrobs/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/trading/*"
-  to = "/portfolio_sites/flashrobs/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/flashrobs"
-  to = "/portfolio_sites/flashrobs/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/flashrobs/*"
-  to = "/portfolio_sites/flashrobs/:splat"
-  status = 200
-
-# Handle main website assets
-[[redirects]]
-  from = "/main_website/*"
-  to = "/main_website/:splat"
-  status = 200
-
-# Headers for better performance and security
+# Headers for security
 [[headers]]
   for = "/*"
   [headers.values]
@@ -102,21 +19,6 @@
 
 # Cache static assets
 [[headers]]
-  for = "/main_website/images/*"
+  for = "/_next/static/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000"
-
-[[headers]]
-  for = "/portfolio_sites/*/images/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
-
-[[headers]]
-  for = "*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
-
-[[headers]]
-  for = "*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
+    Cache-Control = "public, max-age=31536000, immutable"

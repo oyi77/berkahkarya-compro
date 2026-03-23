@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Berkah Karya Digital Marketing & Agency Website — Next.js Bilingual (ID/EN)",
   "scripts": {
-    "build": "echo 'Build completed - static website ready for deployment'",
+    "build": "next build",
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint"
