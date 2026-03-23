@@ -7,7 +7,7 @@ export const homeData = {
     hero: {
       eyebrow: 'DIPERCAYA 500+ BISNIS INDONESIA',
       title: 'Kompetitor Anda Sudah\nPakai AI. Anda Kapan?',
-      description: 'Bisnis yang masih 100% manual akan kalah dalam 2 tahun. BerkahKarya adalah satu-satunya ekosistem AI Indonesia yang cover video, iklan, agen, dan trading — semua dari satu dashboard.',
+      description: 'Bisnis yang masih 100% manual akan kalah dalam 2 tahun. BerkahKarya bikin sales Anda ngebut, operasional makin canggih, dan semuanya jalan otomatis — sambil pangkas biaya operasional hingga 60% karena AI Agent yang bekerja untuk Anda 24 jam tanpa henti.',
       buttons: [
         { text: 'Konsultasi Gratis →', href: 'https://wa.me/6285732740006?text=Halo%20BerkahKarya%2C%20saya%20mau%20konsultasi%20solusi%20AI', primary: true },
         { text: 'Lihat Demo', href: '#products', primary: false },
@@ -89,7 +89,7 @@ export const homeData = {
     hero: {
       eyebrow: 'TRUSTED BY 500+ INDONESIAN BUSINESSES',
       title: 'Your Competitors Already\nUse AI. When Will You?',
-      description: 'Businesses that are still 100% manual will lose within 2 years. BerkahKarya is the only Indonesian AI ecosystem covering video, ads, agents, and trading — all from one dashboard.',
+      description: 'Businesses still running 100% manual will lose within 2 years. BerkahKarya turbocharges your sales, makes operations smarter, and automates everything — while cutting operational costs by up to 60% with AI Agents working for you 24/7.',
       buttons: [
         { text: 'Free Consultation →', href: 'https://wa.me/6285732740006?text=Hello%20BerkahKarya%2C%20I%20want%20AI%20consultation', primary: true },
         { text: 'See Demo', href: '#products', primary: false },
