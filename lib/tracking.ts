@@ -6,8 +6,8 @@ export const TRACKING = {
   // Google Analytics 4
   GA_ID: 'G-V9C14XZ9SG',
 
-  // Meta (Facebook) Pixel — FILL IN YOUR PIXEL ID
-  META_PIXEL_ID: '',  // e.g., '123456789012345'
+  // Meta (Facebook) Pixel
+  META_PIXEL_ID: '771021905629860',
 
   // Pinterest domain verification
   PINTEREST_VERIFICATION: '9212df9ddce352a5ada074e7d33a9e77',
