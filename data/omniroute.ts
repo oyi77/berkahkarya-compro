@@ -58,9 +58,9 @@ export const omnirouteData = {
 # ✓ ROUTED → gemini-2.0-flash (98ms, cost: $0.00012)`,
     },
     pricing: [
-      { name: 'Free', price: 'Rp 0', period: '', features: ['1,000 requests/bulan', '7 model gratis (auto/free-*)', 'Basic routing', 'Community support'], cta: { text: 'Mulai Gratis', href: WA } },
-      { name: 'Pro', price: 'Rp 75K', period: '/bulan', highlight: true, features: ['398 model — akses semua', '50,000 requests/bulan', 'Auto-failover + smart routing', 'Usage dashboard', 'Support Telegram <5 menit', 'Multiple API keys', 'Bayar lokal (GoPay/OVO/DANA)'], cta: { text: 'Pilih Pro', href: WA } },
-      { name: 'Enterprise', price: 'Custom', period: '', features: ['Unlimited requests', 'Custom routing rules', 'SLA 99.9%', 'Dedicated infrastructure', 'On-premise option', 'Technical account manager', 'Priority failover'], cta: { text: 'Hubungi Kami', href: WA } },
+      { name: 'Starter', price: 'Rp 75K', period: '/bulan', features: ['10,000 requests/bulan', '398 model — akses semua', 'Auto-failover + smart routing', 'Usage dashboard', 'Email support', 'Single API key'], cta: { text: 'Bayar Sekarang', href: 'https://pay.berkahkarya.org/omniroute-starter' } },
+      { name: 'Pro', price: 'Rp 285K', period: '/bulan', highlight: true, features: ['100,000 requests/bulan', '398 model — akses semua', 'Auto-failover + smart routing', 'Usage dashboard', 'Support Telegram <5 menit', 'Multiple API keys (5 keys)', 'Priority routing', 'Bayar lokal (GoPay/OVO/DANA)'], cta: { text: 'Bayar Sekarang', href: 'https://pay.berkahkarya.org/omniroute-pro' } },
+      { name: 'Enterprise', price: 'Custom', period: '', features: ['Unlimited requests', 'Custom routing rules', 'SLA 99.9%', 'Dedicated infrastructure', 'On-premise option', 'Technical account manager', 'Priority failover', 'Custom contract'], cta: { text: 'Hubungi Kami', href: `${WA}?text=Halo%2C%20saya%20tertarik%20OmniRoute%20Enterprise` } },
     ],
     faq: {
       title: 'FAQ',
@@ -132,9 +132,9 @@ export const omnirouteData = {
 # ✓ ROUTED → gemini-2.0-flash (98ms, cost: $0.00012)`,
     },
     pricing: [
-      { name: 'Free', price: '$0', period: '', features: ['1,000 requests/month', '7 free models (auto/free-*)', 'Basic routing', 'Community support'], cta: { text: 'Start Free', href: WA } },
-      { name: 'Pro', price: '$5', period: '/mo', highlight: true, features: ['398 models — all access', '50,000 requests/month', 'Auto-failover + smart routing', 'Usage dashboard', 'Telegram support <5min', 'Multiple API keys', 'Local payment (GoPay/OVO/DANA)'], cta: { text: 'Choose Pro', href: WA } },
-      { name: 'Enterprise', price: 'Custom', period: '', features: ['Unlimited requests', 'Custom routing rules', '99.9% SLA', 'Dedicated infrastructure', 'On-premise option', 'Technical account manager', 'Priority failover'], cta: { text: 'Contact Us', href: WA } },
+      { name: 'Starter', price: '$5', period: '/mo', features: ['10,000 requests/month', '398 models — all access', 'Auto-failover + smart routing', 'Usage dashboard', 'Email support', 'Single API key'], cta: { text: 'Pay Now', href: 'https://pay.berkahkarya.org/omniroute-starter' } },
+      { name: 'Pro', price: '$19', period: '/mo', highlight: true, features: ['100,000 requests/month', '398 models — all access', 'Auto-failover + smart routing', 'Usage dashboard', 'Telegram support <5min', 'Multiple API keys (5 keys)', 'Priority routing', 'Local payment (GoPay/OVO/DANA)'], cta: { text: 'Pay Now', href: 'https://pay.berkahkarya.org/omniroute-pro' } },
+      { name: 'Enterprise', price: 'Custom', period: '', features: ['Unlimited requests', 'Custom routing rules', '99.9% SLA', 'Dedicated infrastructure', 'On-premise option', 'Technical account manager', 'Priority failover', 'Custom contract'], cta: { text: 'Contact Us', href: `${WA}?text=Hello%2C%20I%27m%20interested%20in%20OmniRoute%20Enterprise` } },
     ],
     faq: {
       title: 'FAQ',
