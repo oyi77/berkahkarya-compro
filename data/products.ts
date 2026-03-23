@@ -2,8 +2,12 @@ export interface ProductData {
   slug: string;
   meta: { title: string; description: string };
   hero: { eyebrow: string; title: string; description: string; buttons: { text: string; href: string; primary?: boolean }[] };
+  problem?: { hook: string; pains: { icon: string; text: string }[]; bridge: string };
   features: { icon: string; title: string; desc: string }[];
+  howItWorks?: { title: string; steps: { num: string; title: string; desc: string }[] };
   pricing: { name: string; price: string; period: string; highlight?: boolean; features: string[]; cta: { text: string; href: string } }[];
+  faq?: { title: string; items: { q: string; a: string }[] };
+  stats?: { value: string; label: string }[];
   cta: { title: string; description: string; button: { text: string; href: string } };
 }
 

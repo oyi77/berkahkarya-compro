@@ -1,4 +1,5 @@
 import styles from './PricingTable.module.css';
+import { trackCTAClick, trackMetaEvent } from '@/lib/tracking';
 
 interface Tier {
   name: string;
@@ -10,6 +11,15 @@ interface Tier {
 }
 
 export default function PricingTable({ tiers }: { tiers: Tier[] }) {
+  const handleClick = (tier: Tier) => {
+    trackCTAClick(`pricing_${tier.name}`, tier.cta.href);
+    trackMetaEvent('InitiateCheckout', {
+      content_name: tier.name,
+      value: tier.price,
+      currency: 'IDR',
+    });
+  };
+
   return (
     <section className="light-bg" id="pricing">
       <div className={styles.container}>
@@ -26,7 +36,13 @@ export default function PricingTable({ tiers }: { tiers: Tier[] }) {
                   <li key={f}>✓ {f}</li>
                 ))}
               </ul>
-              <a href={t.cta.href} className={`${styles.btn} ${t.highlight ? styles.btnHighlight : ''}`} target="_blank" rel="noopener noreferrer">
+              <a
+                href={t.cta.href}
+                className={`${styles.btn} ${t.highlight ? styles.btnHighlight : ''}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => handleClick(t)}
+              >
                 {t.cta.text}
               </a>
             </div>

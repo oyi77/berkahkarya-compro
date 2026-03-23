@@ -1,5 +1,6 @@
 import styles from './HeroSection.module.css';
 import CharacterAvatar from './CharacterAvatar';
+import { trackCTAClick } from '@/lib/tracking';
 
 interface Button {
   text: string;
@@ -33,6 +34,7 @@ export default function HeroSection({ eyebrow, title, description, buttons, dark
                   className={btn.primary ? styles.primary : styles.secondary}
                   target={btn.href.startsWith('http') ? '_blank' : undefined}
                   rel={btn.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  onClick={() => trackCTAClick(`hero_${btn.text}`, btn.href)}
                 >
                   {btn.text}
                 </a>
