@@ -11,8 +11,8 @@ export const teamData = {
       { name: 'Vilona', role: 'AI General Manager', desc: 'AI Strategic Architect — critical thinker, data-driven, futuristic. Mengelola operasional dan strategi bisnis.', avatar: '/characters/vilona.jpg' },
       { name: 'Eddie', role: 'Social Media AI', desc: 'AI-powered social media manager. Monitoring dan analytics 90+ akun sosial media 24/7.', avatar: '/characters/eddie.jpg' },
       { name: 'Veris', role: 'Marketing Director', desc: 'Ads Master sejak 2014. Expert di Facebook Ads, Google Ads, dan TikTok Ads.', avatar: '/characters/veris.jpg' },
-      { name: 'Sony', role: 'Operations Manager', desc: 'Project execution expert. Memastikan setiap project berjalan on-time dan on-budget.', avatar: '' },
-      { name: 'Babi', role: 'Trading Strategist', desc: 'XAUUSD trading master. Merancang dan mengoptimasi strategi algo trading.', avatar: '' },
+      { name: 'Sony', role: 'Operations Manager', desc: 'Project execution expert. Memastikan setiap project berjalan on-time dan on-budget.', avatar: '/characters/sony.jpg' },
+      { name: 'Babi', role: 'Trading Strategist', desc: 'XAUUSD trading master. Merancang dan mengoptimasi strategi algo trading.', avatar: '/characters/babi.jpg' },
     ],
     cta: {
       title: 'Mau Gabung Tim Kami?',
@@ -32,8 +32,8 @@ export const teamData = {
       { name: 'Vilona', role: 'AI General Manager', desc: 'AI Strategic Architect — critical thinker, data-driven, futuristic. Manages operations and business strategy.', avatar: '/characters/vilona.jpg' },
       { name: 'Eddie', role: 'Social Media AI', desc: 'AI-powered social media manager. Monitoring and analytics for 90+ social media accounts 24/7.', avatar: '/characters/eddie.jpg' },
       { name: 'Veris', role: 'Marketing Director', desc: 'Ads Master since 2014. Expert in Facebook Ads, Google Ads, and TikTok Ads.', avatar: '/characters/veris.jpg' },
-      { name: 'Sony', role: 'Operations Manager', desc: 'Project execution expert. Ensures every project runs on-time and on-budget.', avatar: '' },
-      { name: 'Babi', role: 'Trading Strategist', desc: 'XAUUSD trading master. Designs and optimizes algo trading strategies.', avatar: '' },
+      { name: 'Sony', role: 'Operations Manager', desc: 'Project execution expert. Ensures every project runs on-time and on-budget.', avatar: '/characters/sony.jpg' },
+      { name: 'Babi', role: 'Trading Strategist', desc: 'XAUUSD trading master. Designs and optimizes algo trading strategies.', avatar: '/characters/babi.jpg' },
     ],
     cta: {
       title: 'Want to Join Our Team?',
