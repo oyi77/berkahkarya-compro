@@ -1,5 +1,6 @@
 const WA = 'https://wa.me/6285732740006';
 const STORE = 'https://lynk.id/jendralbot';
+const SAAS = 'https://saas.aitradepulse.com/';
 
 export interface ProductFull {
   slug: string;
@@ -24,8 +25,8 @@ export const productsFullData: Record<string, Record<string, ProductFull>> = {
         title: 'Foto Produk Jadi Video\nTikTok Viral dalam 3 Menit.',
         description: 'Kompetitor kamu upload 10 video seminggu pakai AI. Kamu masih bayar editor Rp 500K/video dan nunggu 3 hari. Sekarang bisa balik 180°: upload foto → video cinematic siap publish — langsung dari Telegram, tanpa skill editing.',
         buttons: [
-          { text: '🚀 Coba Gratis — 3 Kredit Langsung Aktif', href: `${WA}?text=Halo%2C%20saya%20mau%20coba%20AI%20Video%20Studio%20gratis`, primary: true },
-          { text: 'Lihat Harga', href: '#pricing', primary: false },
+          { text: '🚀 Coba Gratis — 3 Kredit Langsung Aktif', href: SAAS, primary: true },
+          { text: 'Lihat Penawaran', href: '#offer', primary: false },
         ],
       },
       problem: {
@@ -60,9 +61,9 @@ export const productsFullData: Record<string, Record<string, ProductFull>> = {
         { quote: 'CTR iklan naik dari 1.2% ke 4.8% begitu ganti dari foto statis ke video AI. ROAS juga naik drastis.', name: 'Sari M.', role: 'Digital Marketer, Jakarta', avatar: '👩‍💻' },
       ],
       pricing: [
-        { name: 'Starter', price: 'Rp 49K', period: '/bulan', features: ['10 video/bulan', 'Semua 8 niche', 'Resolusi 720p', '3 kredit gratis perdana', 'Support via Telegram'], cta: { text: 'Mulai Gratis', href: `${WA}?text=Saya%20mau%20paket%20Starter%20AI%20Video%20Studio` } },
-        { name: 'Creator', price: 'Rp 149K', period: '/bulan', highlight: true, features: ['50 video/bulan', 'Semua 8 niche', 'Resolusi 1080p', 'Priority render (lebih cepat)', 'Kredit tidak kadaluarsa', 'Priority support'], cta: { text: 'Pilih Creator', href: `${WA}?text=Saya%20mau%20paket%20Creator%20AI%20Video%20Studio` } },
-        { name: 'Agency', price: 'Rp 399K', period: '/bulan', features: ['200 video/bulan', 'Custom branding', 'Resolusi 4K', 'API access', 'Dedicated support', 'White-label option'], cta: { text: 'Hubungi Kami', href: WA } },
+        { name: 'Starter', price: 'Rp 49K', period: '/bulan', features: ['10 video/bulan', 'Semua 8 niche', 'Resolusi 720p', '3 kredit gratis perdana', 'Support via Telegram'], cta: { text: 'Mulai Gratis', href: SAAS } },
+        { name: 'Creator', price: 'Rp 149K', period: '/bulan', highlight: true, features: ['50 video/bulan', 'Semua 8 niche', 'Resolusi 1080p', 'Priority render (lebih cepat)', 'Kredit tidak kadaluarsa', 'Priority support'], cta: { text: 'Pilih Creator', href: SAAS } },
+        { name: 'Agency', price: 'Rp 399K', period: '/bulan', features: ['200 video/bulan', 'Custom branding', 'Resolusi 4K', 'API access', 'Dedicated support', 'White-label option'], cta: { text: 'Hubungi Kami', href: SAAS } },
       ],
       faq: {
         title: 'Pertanyaan yang Sering Ditanyakan',
@@ -74,7 +75,7 @@ export const productsFullData: Record<string, Record<string, ProductFull>> = {
           { q: 'Bisa untuk produk makanan/kuliner?', a: 'Ya, kuliner adalah salah satu dari 8 niche kami. Hasilnya sangat cinematic dan menggugah selera.' },
         ],
       },
-      cta: { title: 'Kompetitor Kamu Sudah Upload 10 Video Hari Ini', description: 'Mulai 3 kredit gratis sekarang. Tidak perlu kartu kredit. Setup 2 menit via Telegram.', button: { text: 'Coba Gratis Sekarang →', href: `${WA}?text=Halo%2C%20saya%20mau%20coba%20AI%20Video%20Studio%203%20kredit%20gratis` } },
+      cta: { title: 'Kompetitor Kamu Sudah Upload 10 Video Hari Ini', description: 'Mulai 3 kredit gratis sekarang. Tidak perlu kartu kredit. Setup 2 menit via Telegram.', button: { text: 'Coba Gratis Sekarang →', href: SAAS } },
     },
     en: {
       slug: 'ai-video-studio',
