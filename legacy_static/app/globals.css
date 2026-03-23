@@ -1,0 +1,324 @@
+/* ============================================================
+   BERKAH KARYA — Global Design System (Next.js Rebuild)
+   Fonts: Poppins (headings), Inter (body), Outfit (accent)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+/* ── CSS Variables / Design Tokens ──────────────────────────── */
+:root {
+  /* Fonts */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-accent: 'Outfit', sans-serif;
+
+  /* Primary — Red */
+  --primary: #DC2626;
+  --primary-dark: #B91C1C;
+  --primary-light: #EF4444;
+  --primary-50: rgba(220, 38, 38, 0.08);
+  --primary-100: rgba(220, 38, 38, 0.15);
+
+  /* Accent — Teal */
+  --accent: #14B8A6;
+  --accent-dark: #0D9488;
+  --accent-light: #2DD4BF;
+  --accent-50: rgba(20, 184, 166, 0.08);
+  --accent-100: rgba(20, 184, 166, 0.15);
+
+  /* Dark / Hero backgrounds */
+  --dark-900: #0A0A0A;
+  --dark-800: #111111;
+  --dark-700: #1A1A1A;
+  --dark-600: #262626;
+  --dark-500: #333333;
+
+  /* Light sections */
+  --light-50: #FAFAFA;
+  --light-100: #F5F5F5;
+  --light-200: #E5E5E5;
+  --light-300: #D4D4D4;
+
+  /* Text */
+  --text-primary: #111111;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+  --text-on-dark: #FFFFFF;
+  --text-on-dark-muted: rgba(255, 255, 255, 0.6);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  --gradient-hero: linear-gradient(180deg, var(--dark-900) 0%, var(--dark-800) 50%, var(--dark-700) 100%);
+  --gradient-cta: linear-gradient(135deg, var(--primary) 0%, #991B1B 100%);
+
+  /* Spacing */
+  --max-width: 1200px;
+  --section-pad: 6rem 1.5rem;
+  --section-pad-sm: 4rem 1rem;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-glow-primary: 0 0 30px rgba(220, 38, 38, 0.3);
+  --shadow-glow-accent: 0 0 30px rgba(20, 184, 166, 0.3);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.15s var(--ease-out);
+  --transition-normal: 0.3s var(--ease-out);
+
+  /* Typography scale (desktop) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-hero: 4.5rem;  /* 72px */
+}
+
+/* ── Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--light-50);
+  color: var(--text-primary);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* ── Typography Classes ─────────────────────────────────────── */
+.text-hero {
+  font-size: var(--text-hero);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.text-section-title {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.text-card-title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.text-body { font-size: var(--text-base); line-height: 1.7; }
+.text-body-lg { font-size: var(--text-lg); line-height: 1.7; }
+.text-small { font-size: var(--text-sm); }
+.text-accent-font { font-family: var(--font-accent); }
+
+/* ── Button Styles ──────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: var(--text-base);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  min-height: 48px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: #fff;
+  border: 1.5px solid var(--primary);
+  box-shadow: var(--shadow-glow-primary);
+}
+.btn-primary:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(220, 38, 38, 0.4);
+}
+
+.btn-accent {
+  background: var(--gradient-accent);
+  color: #fff;
+  border: 1.5px solid var(--accent);
+  box-shadow: var(--shadow-glow-accent);
+}
+.btn-accent:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-on-dark);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-outline-dark {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1.5px solid var(--light-300);
+}
+.btn-outline-dark:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* ── Section Wrappers ───────────────────────────────────────── */
+.section-dark {
+  background: var(--gradient-hero);
+  color: var(--text-on-dark);
+  padding: var(--section-pad);
+}
+
+.section-light {
+  background: var(--light-50);
+  color: var(--text-primary);
+  padding: var(--section-pad);
+}
+
+.section-white {
+  background: #fff;
+  color: var(--text-primary);
+  padding: var(--section-pad);
+}
+
+.section-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ── Card Base ──────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border: 1px solid var(--light-200);
+  border-radius: var(--radius);
+  padding: 2rem;
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  border-color: var(--primary-100);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.card-dark {
+  background: var(--dark-600);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  padding: 2rem;
+  color: var(--text-on-dark);
+  transition: all var(--transition-normal);
+}
+
+.card-dark:hover {
+  border-color: rgba(20, 184, 166, 0.3);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+}
+
+/* ── Glass Effect ───────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-dark {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Grid Utilities ─────────────────────────────────────────── */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+/* ── Badge ──────────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.badge-primary { background: var(--primary-50); color: var(--primary); }
+.badge-accent { background: var(--accent-50); color: var(--accent); }
+.badge-dark { background: var(--dark-600); color: var(--text-on-dark); }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  :root {
+    --text-hero: 3.5rem;
+    --text-4xl: 2rem;
+  }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --text-hero: 2.5rem;
+    --text-4xl: 1.75rem;
+    --text-3xl: 1.5rem;
+    --section-pad: 4rem 1rem;
+  }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .grid-4 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --text-hero: 2rem;
+    --text-4xl: 1.5rem;
+  }
+}

@@ -1,0 +1,36 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.card {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.card:hover {
+  border-color: var(--teal-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.icon { font-size: 2rem; }
+.card h3 { font-size: 1.1rem; font-weight: 700; }
+.desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+.link { font-size: 0.85rem; font-weight: 700; color: var(--teal-primary); margin-top: auto; }
+.office {
+  text-align: center;
+  padding: 2rem;
+}
+.office h3 { margin-bottom: 0.75rem; }
+.office p { font-size: 0.9rem; color: var(--text-muted); }
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }

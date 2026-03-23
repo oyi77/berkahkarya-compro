@@ -1,0 +1,26 @@
+import { NextRequest, NextResponse } from 'next/server';
+
+const DEFAULT_LOCALE = 'id';
+const SUPPORTED = new Set(['id', 'en']);
+
+export function middleware(request: NextRequest) {
+ const { pathname } = request.nextUrl;
+
+ if (pathname.startsWith('/_next') || pathname.startsWith('/api') || pathname.includes('.')) {
+ return NextResponse.next();
+ }
+
+ const segments = pathname.split('/').filter(Boolean);
+ const locale = segments[0];
+
+ if (!locale || !SUPPORTED.has(locale)) {
+ const redirectURL = new URL(`/${DEFAULT_LOCALE}${pathname.startsWith('/') ? pathname : `/${pathname}`}`, request.url);
+ return NextResponse.redirect(redirectURL);
+ }
+
+ return NextResponse.next();
+}
+
+export const config = {
+ matcher: ['/((?!_next|api|.*\..*).*)'],
+};
