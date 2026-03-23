@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import styles from './Header.module.css';
 
 const navLinks = [
@@ -7,14 +8,21 @@ const navLinks = [
   { slug: 'ai-video-studio', id: 'Video AI', en: 'AI Video' },
   { slug: 'adforge-ai', id: 'Iklan AI', en: 'AI Ads' },
   { slug: 'ai-agent-pro', id: 'Agent AI', en: 'AI Agent' },
+  { slug: 'algorithmic-trading', id: 'Trading', en: 'Trading' },
   { slug: 'omniroute', id: 'OmniRoute', en: 'OmniRoute' },
   { slug: 'team', id: 'Tim', en: 'Team' },
-  { slug: 'contact', id: 'Kontak', en: 'Contact' },
 ];
 
 export default function Header() {
   const router = useRouter();
   const locale = (router.query.locale as string) || 'id';
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const switchLocale = () => {
     const target = locale === 'id' ? 'en' : 'id';
@@ -22,23 +30,36 @@ export default function Header() {
     router.push(path);
   };
 
+  const currentSlug = (router.query.locale ? router.asPath.split('/').pop() : '') || '';
+
   return (
-    <header className={styles.header}>
-      <div className={styles.container}>
+    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+      <nav className={styles.nav}>
         <Link href={`/${locale}`} className={styles.logo}>
           Berkah<span>Karya</span>
         </Link>
-        <nav className={styles.nav}>
+        <ul className={styles.links}>
           {navLinks.map((link) => (
-            <Link key={link.slug} href={`/${locale}/${link.slug}`} className={styles.link}>
-              {locale === 'id' ? link.id : link.en}
-            </Link>
+            <li key={link.slug}>
+              <Link
+                href={`/${locale}/${link.slug}`}
+                className={currentSlug === link.slug || (link.slug === '' && currentSlug === locale) ? styles.active : ''}
+              >
+                {locale === 'id' ? link.id : link.en}
+              </Link>
+            </li>
           ))}
-        </nav>
-        <button onClick={switchLocale} className={styles.langButton}>
-          🌐 {locale === 'id' ? 'EN' : 'ID'}
-        </button>
-      </div>
+        </ul>
+        <div className={styles.actions}>
+          <button onClick={switchLocale} className={styles.langBtn}>
+            🌐 {locale === 'id' ? 'EN' : 'ID'}
+          </button>
+          <a href="https://wa.me/6285732740006" target="_blank" rel="noopener noreferrer" className={styles.ctaBtn}>
+            💬 {locale === 'id' ? 'Mulai Gratis' : 'Start Free'}
+          </a>
+          <button className={styles.menuBtn} aria-label="Menu">☰</button>
+        </div>
+      </nav>
     </header>
   );
 }

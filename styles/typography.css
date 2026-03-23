@@ -1,29 +1,30 @@
-h1,h2,h3,h4,h5,h6{
- font-family:var(--font-heading);
- color:inherit;
- line-height:1.2;
- letter-spacing:-0.03em;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: inherit;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
 }
 
-h1{font-size:72px;font-weight:800;line-height:1.1;}
-@media(max-width:1024px){h1{font-size:56px;}}
-@media(max-width:768px){h1{font-size:40px;}}
-@media(max-width:480px){h1{font-size:28px;}}
+h1 { font-size: 72px; font-weight: 900; line-height: 1.08; }
+@media (max-width: 1024px) { h1 { font-size: 56px; } }
+@media (max-width: 768px)  { h1 { font-size: 40px; } }
+@media (max-width: 480px)  { h1 { font-size: 32px; } }
 
-h2{font-size:48px;font-weight:800;}
-@media(max-width:1024px){h2{font-size:40px;}}
-@media(max-width:768px){h2{font-size:32px;}}
-@media(max-width:480px){h2{font-size:24px;}}
+h2 { font-size: 48px; font-weight: 800; }
+@media (max-width: 1024px) { h2 { font-size: 40px; } }
+@media (max-width: 768px)  { h2 { font-size: 30px; } }
+@media (max-width: 480px)  { h2 { font-size: 24px; } }
 
-h3{font-size:20px;font-weight:700;}
+h3 { font-size: 20px; font-weight: 700; }
+h4 { font-size: 17px; font-weight: 700; }
 
-p{font-family:var(--font-body);font-size:16px;line-height:1.6;color:inherit;}
-@media(max-width:768px){p{font-size:14px;}}
+p { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: inherit; }
+@media (max-width: 768px) { p { font-size: 14.5px; } }
 
-small{font-size:13px;font-weight:500;letter-spacing:0.5px;}
-
-.text-white{color:var(--text-white)!important;}
-.text-primary{color:var(--text-primary)!important;}
-.text-muted{color:var(--text-muted)!important;}
-.text-white-85{color:var(--text-white-85)!important;}
-.text-white-70{color:var(--text-white-70)!important;}
+/* Helpers */
+.text-white   { color: var(--text-white)   !important; }
+.text-primary { color: var(--text-primary) !important; }
+.text-muted   { color: var(--text-muted)   !important; }
+.text-teal    { color: var(--teal-primary)  !important; }
+.text-white-85{ color: var(--text-white-85) !important; }
+.text-white-70{ color: var(--text-white-70) !important; }

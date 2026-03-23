@@ -1,48 +1,104 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
 @import url('./colors.css');
 @import url('./typography.css');
 
-:root {
- font-family: var(--font-body);
- background-color: var(--light-bg);
- color: var(--text-primary);
-}
-
 *, *::before, *::after {
- box-sizing: border-box;
- margin:0;
- padding:0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
- scroll-behavior: smooth;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
- min-height:100vh;
- background-color: var(--light-bg);
- color: var(--text-primary);
+  font-family: var(--font-body);
+  background-color: var(--dark-hero);
+  color: var(--text-white);
+  min-height: 100vh;
+  line-height: 1.6;
 }
 
-button {
- font-family: inherit;
- cursor: pointer;
- border: none;
- background: none;
-}
+img { max-width: 100%; height: auto; display: block; }
 
-img {
- max-width:100%;
- height: auto;
-}
+a { color: inherit; text-decoration: none; }
 
-a {
- color: inherit;
- text-decoration: none;
-}
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
 a:focus-visible,
 button:focus-visible {
- outline:2px solid var(--teal-primary);
- outline-offset:4px;
+  outline: 2px solid var(--teal-primary);
+  outline-offset: 4px;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark-hero); }
+::-webkit-scrollbar-thumb { background: var(--teal-primary); border-radius: 3px; }
+
+/* ─── Selection ─── */
+::selection { background: rgba(0,217,255,0.25); color: var(--text-white); }
+
+/* ─── Utility: teal glow button ─── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2.25rem;
+  background: linear-gradient(135deg, var(--teal-primary) 0%, var(--teal-hover) 100%);
+  color: var(--dark-hero);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 24px rgba(0,217,255,0.35);
+  transition: transform 0.15s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,217,255,0.5);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2.25rem;
+  border: 1.5px solid var(--dark-border-hover);
+  color: var(--text-white-85);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.btn-ghost:hover {
+  border-color: var(--teal-primary);
+  color: var(--teal-primary);
+  background: rgba(0,217,255,0.05);
+}
+
+/* ─── Section eyebrow ─── */
+.eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal-primary);
+  margin-bottom: 0.75rem;
+}
+
+/* ─── Dividers ─── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--dark-border), transparent);
+  margin: 0;
 }

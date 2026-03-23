@@ -1,26 +1,30 @@
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 5rem 1.5rem;
-  text-align: center;
+.wrap { background: var(--dark-hero); position: relative; overflow: hidden; }
+.wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(124,58,237,0.07) 0%, transparent 65%);
+  pointer-events: none;
 }
-.container h2 { margin-bottom: 2.5rem; }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  text-align: left;
+.container { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 5.5rem 1.5rem; text-align: center; }
+.label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal-primary); margin-bottom: 0.6rem; }
+.container h2 { color: var(--text-white); margin-bottom: 3rem; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; text-align: left; }
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
 }
-.card { padding: 1.75rem; display: flex; flex-direction: column; gap: 1rem; }
-.quote {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.7;
-  font-style: italic;
-  flex: 1;
-}
-.author { display: flex; align-items: center; gap: 0.75rem; }
-.avatar { font-size: 1.5rem; }
-.name { display: block; font-weight: 700; font-size: 0.85rem; }
-.role { display: block; font-size: 0.75rem; color: var(--text-light); }
+.card:hover { border-color: rgba(0,217,255,0.2); background: rgba(255,255,255,0.06); transform: translateY(-3px); }
+.stars { color: #F59E0B; font-size: 0.9rem; letter-spacing: 0.05em; }
+.quote { font-size: 0.9rem; color: var(--text-white-80); line-height: 1.75; flex: 1; font-style: italic; }
+.author { display: flex; align-items: center; gap: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.07); }
+.avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, rgba(0,217,255,0.2), rgba(124,58,237,0.2)); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
+.name { font-size: 0.88rem; font-weight: 700; color: var(--text-white); }
+.role { font-size: 0.75rem; color: var(--text-white-50); }
 @media (max-width: 900px) { .grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }

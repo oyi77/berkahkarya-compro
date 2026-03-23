@@ -9,6 +9,7 @@ import StatsRow from '@/components/StatsRow';
 import HowItWorks from '@/components/HowItWorks';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
+import RecentPosts from '@/components/RecentPosts';
 import { homeData } from '@/data/home';
 
 type Locale = 'id' | 'en';
@@ -41,6 +42,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
       <StatsRow items={[...d.stats]} />
       <HowItWorks title={d.howItWorks.title} steps={[...d.howItWorks.steps]} />
       <FAQSection title={d.faq.title} items={[...d.faq.items]} />
+      <RecentPosts locale={locale} />
       <CTASection title={d.cta.title} description={d.cta.description} button={{ ...d.cta.button }} />
     </Layout>
   );

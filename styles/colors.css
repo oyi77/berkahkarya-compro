@@ -1,52 +1,106 @@
 :root {
- --font-heading:'Poppins',sans-serif;
- --font-body:'Inter',sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
 
- --red-primary:#FF3B3B;
- --red-light:#FF5A5A;
- --teal-primary:#00D9FF;
- --teal-hover:#00B8D4;
- --dark-hero:#0F1419;
- --dark-secondary:#1a2536;
- --dark-bg:#0B0B0F;
- --light-bg:#F8F9FA;
- --white:#FFFFFF;
- --text-primary:#1A1F2E;
- --text-muted:#666666;
- --text-light:#999999;
- --text-white:#FFFFFF;
- --text-white-85:rgba(255,255,255,0.85);
- --text-white-70:rgba(255,255,255,0.70);
- --text-white-60:rgba(255,255,255,0.60);
- --success:#10B981;
- --warning:#F59E0B;
- --error:#EF4444;
- --violet:#7C3AED;
- --border-light:#E5E7EB;
- --border-dark:rgba(0,217,255,0.1);
- --glass-bg:rgba(255,255,255,0.05);
+  /* Brand palette */
+  --teal-primary: #00D9FF;
+  --teal-hover: #00B8D4;
+  --teal-glow: rgba(0, 217, 255, 0.25);
+  --violet: #7C3AED;
+  --violet-light: #9D5FFF;
+  --violet-glow: rgba(124, 58, 237, 0.25);
+  --gold: #F59E0B;
+  --success: #10B981;
+  --error: #EF4444;
+
+  /* Dark surfaces */
+  --dark-hero: #080C14;
+  --dark-secondary: #0D1526;
+  --dark-card: rgba(255,255,255,0.04);
+  --dark-card-hover: rgba(255,255,255,0.07);
+  --dark-border: rgba(0,217,255,0.12);
+  --dark-border-hover: rgba(0,217,255,0.35);
+
+  /* Light surfaces */
+  --light-bg: #F4F6FA;
+  --white: #FFFFFF;
+  --border-light: #E2E8F0;
+  --card-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  --card-shadow-hover: 0 12px 40px rgba(0,0,0,0.12);
+
+  /* Text */
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --text-light: #94A3B8;
+  --text-white: #FFFFFF;
+  --text-white-85: rgba(255,255,255,0.85);
+  --text-white-70: rgba(255,255,255,0.70);
+  --text-white-50: rgba(255,255,255,0.50);
+  --text-white-60: rgba(255,255,255,0.60);
 }
 
+/* ─── Section helpers ─── */
 .dark-bg {
- background:linear-gradient(135deg,var(--dark-hero)0%,var(--dark-secondary)50%,var(--dark-bg)100%);
- color:var(--text-white);
+  background: var(--dark-hero);
+  color: var(--text-white);
+  position: relative;
+  overflow: hidden;
 }
+.dark-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,217,255,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 70% at 80% 20%, rgba(124,58,237,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 80% at 60% 80%, rgba(0,217,255,0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.dark-bg > * { position: relative; z-index: 1; }
 
 .light-bg {
- background:var(--white);
- color:var(--text-primary);
+  background: var(--light-bg);
+  color: var(--text-primary);
+}
+.white-bg {
+  background: var(--white);
+  color: var(--text-primary);
+}
+
+/* ─── Card styles ─── */
+.card-dark {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  transition: background 0.25s, border-color 0.25s, transform 0.2s, box-shadow 0.2s;
+}
+.card-dark:hover {
+  background: var(--dark-card-hover);
+  border-color: var(--dark-border-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(0,217,255,0.08);
 }
 
 .card-light {
- background:var(--white);
- border:1.5px solid var(--border-light);
- border-radius:16px;
- box-shadow:020px40px rgba(0,0,0,0.05);
+  background: var(--white);
+  border: 1.5px solid var(--border-light);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.card-light:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(0,217,255,0.3);
 }
 
-.card-dark {
- background:var(--glass-bg);
- border:1px solid var(--border-dark);
- backdrop-filter:blur(10px);
- border-radius:16px;
+/* ─── Gradient text ─── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--teal-primary) 0%, var(--violet-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

@@ -2,12 +2,7 @@ import styles from './HeroSection.module.css';
 import CharacterAvatar from './CharacterAvatar';
 import { trackCTAClick } from '@/lib/tracking';
 
-interface Button {
-  text: string;
-  href: string;
-  primary?: boolean;
-}
-
+interface Button { text: string; href: string; primary?: boolean }
 interface HeroProps {
   eyebrow?: string;
   title: string;
@@ -17,14 +12,14 @@ interface HeroProps {
   character?: { src: string; alt: string };
 }
 
-export default function HeroSection({ eyebrow, title, description, buttons, dark = true, character }: HeroProps) {
+export default function HeroSection({ eyebrow, title, description, buttons, character }: HeroProps) {
   return (
-    <section className={dark ? 'dark-bg' : 'light-bg'}>
+    <section className={styles.hero}>
       <div className={`${styles.container} ${character ? styles.withCharacter : ''}`}>
         <div className={styles.content}>
           {eyebrow && <span className={styles.badge}>{eyebrow}</span>}
-          <h1 className={dark ? 'text-white' : 'text-primary'} style={{ whiteSpace: 'pre-line' }}>{title}</h1>
-          <p className={dark ? 'text-white-85' : 'text-muted'}>{description}</p>
+          <h1 style={{ whiteSpace: 'pre-line' }}>{title}</h1>
+          <p>{description}</p>
           {buttons && buttons.length > 0 && (
             <div className={styles.buttons}>
               {buttons.map((btn) => (
@@ -41,6 +36,11 @@ export default function HeroSection({ eyebrow, title, description, buttons, dark
               ))}
             </div>
           )}
+          <div className={styles.strip}>
+            <div className={styles.stripItem}><span>✓</span><span>Setup &lt;5 menit</span></div>
+            <div className={styles.stripItem}><span>✓</span><span>Garansi 7 hari</span></div>
+            <div className={styles.stripItem}><span>✓</span><span>Support via Telegram</span></div>
+          </div>
         </div>
         {character && (
           <div className={styles.characterWrap}>
