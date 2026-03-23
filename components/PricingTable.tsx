@@ -1,5 +1,5 @@
 import styles from './PricingTable.module.css';
-import { trackCTAClick, trackMetaEvent, sendMetaCAPI } from '@/lib/tracking';
+import { trackCTAClick, trackMetaEvent, sendMetaCAPI, trackTikTokEvent, sendTikTokCAPI } from '@/lib/tracking';
 
 interface Tier {
   name: string;
@@ -23,6 +23,9 @@ export default function PricingTable({ tiers }: { tiers: Tier[] }) {
       value: tier.price,
       currency: 'IDR',
     });
+    // TikTok Pixel + Events API — InitiateCheckout
+    trackTikTokEvent('InitiateCheckout', { content_name: tier.name, content_type: 'product' });
+    sendTikTokCAPI('InitiateCheckout', { content_name: tier.name });
   };
 
   return (

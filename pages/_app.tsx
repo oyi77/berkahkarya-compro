@@ -20,6 +20,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         window.fbq('track', 'PageView');
       }
 
+      // TikTok Pixel — page view on route change
+      if (typeof window !== 'undefined' && window.ttq && TRACKING.TIKTOK_PIXEL_ID) {
+        window.ttq.page();
+      }
+
       // Track ViewContent with page info
       const pageName = url.split('/').pop() || 'home';
       const pageType = url.includes('/id/') || url.includes('/en/') ? 'page' : 'home';
