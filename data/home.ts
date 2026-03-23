@@ -41,6 +41,9 @@ export const homeData = {
         { emoji: '📈', name: 'Algo Trading', desc: 'Sistem trading otomatis yang sudah dibacktest 5+ tahun. Eksekusi tanpa emosi.', href: '/id/algorithmic-trading' },
         { emoji: '📦', name: 'Produk Digital', desc: 'Template, course, dan tools AI siap pakai — mulai dari Rp 49K.', href: '/id/digital-products' },
         { emoji: '🌐', name: 'OmniRoute API', desc: 'Satu endpoint untuk semua AI model. GPT-4, Claude, Gemini — hemat 70% biaya API.', href: '/id/omniroute' },
+        { emoji: '📱', name: 'Social Media Management', desc: '90 akun dikelola AI. Konten otomatis, auto-posting, analytics — mulai Rp 1.5jt/bulan.', href: '/id/social-media-management' },
+        { emoji: '📄', name: 'Custom Documents', desc: 'Laporan, proposal, invoice, CV, kontrak profesional dalam 15-60 menit. Branded sesuai perusahaan.', href: '/id/custom-documents' },
+        { emoji: '🤖', name: 'AI Automation', desc: 'Chatbot, workflow automation, integrasi API. 190+ scripts battle-tested. Hemat 60% waktu operasional.', href: '/id/ai-automation' },
       ],
     },
     testimonials: {
@@ -123,6 +126,9 @@ export const homeData = {
         { emoji: '📈', name: 'Algo Trading', desc: 'Automated trading system backtested 5+ years. Execution without emotion.', href: '/en/algorithmic-trading' },
         { emoji: '📦', name: 'Digital Products', desc: 'Ready-to-use templates, courses, and AI tools — starting from $3.', href: '/en/digital-products' },
         { emoji: '🌐', name: 'OmniRoute API', desc: 'One endpoint for all AI models. GPT-4, Claude, Gemini — save 70% on API costs.', href: '/en/omniroute' },
+        { emoji: '📱', name: 'Social Media Management', desc: '90 accounts managed by AI. Automated content, auto-posting, analytics — from $99/month.', href: '/en/social-media-management' },
+        { emoji: '📄', name: 'Custom Documents', desc: 'Professional reports, proposals, invoices, CVs, contracts in 15-60 minutes. Branded to your company.', href: '/en/custom-documents' },
+        { emoji: '🤖', name: 'AI Automation', desc: 'Chatbots, workflow automation, API integrations. 190+ battle-tested scripts. Save 60% operational time.', href: '/en/ai-automation' },
       ],
     },
     testimonials: {
