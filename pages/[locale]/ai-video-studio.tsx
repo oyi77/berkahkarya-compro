@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { useEffect } from 'react';
 import Layout from '@/components/Layout';
 import HeroSection from '@/components/HeroSection';
 import ProblemSection from '@/components/ProblemSection';
@@ -11,6 +12,7 @@ import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import { productsFullData } from '@/data/products';
 import { characters } from '@/data/characters';
+import { trackViewContent } from '@/lib/tracking';
 
 type Locale = 'id' | 'en';
 export const getStaticPaths: GetStaticPaths = async () => ({ paths: [{ params: { locale: 'id' } }, { params: { locale: 'en' } }], fallback: false });
@@ -19,6 +21,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => ({ props: { 
 export default function AIVideoStudio({ locale }: { locale: Locale }) {
   const d = productsFullData['ai-video-studio'][locale];
   const pr = d.pricing.map(t => ({ ...t, features: [...t.features], cta: { ...t.cta } }));
+  
+  useEffect(() => {
+    trackViewContent('AI Video Studio', 'product_page');
+  }, []);
+  
   return (
     <Layout title={d.meta.title} description={d.meta.description}>
       <HeroSection eyebrow={d.hero.eyebrow} title={d.hero.title} description={d.hero.description} buttons={[...d.hero.buttons]} dark character={characters['ai-video-studio']} />

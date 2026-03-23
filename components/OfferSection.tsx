@@ -1,4 +1,5 @@
 import styles from './OfferSection.module.css';
+import { trackCTAClick } from '@/lib/tracking';
 
 interface OfferSectionProps {
   locale: 'id' | 'en';
@@ -160,10 +161,22 @@ export default function OfferSection({ locale }: OfferSectionProps) {
           <ul className={styles.offerItems}>
             {c.offerItems.map((item, i) => <li key={i}>{item}</li>)}
           </ul>
-          <a href={SAAS_URL} target="_blank" rel="noopener noreferrer" className={styles.ctaBtn}>
+          <a 
+            href={SAAS_URL} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className={styles.ctaBtn}
+            onClick={() => trackCTAClick('offer_primary_cta', SAAS_URL)}
+          >
             {c.ctaText}
           </a>
-          <a href={SAAS_URL} target="_blank" rel="noopener noreferrer" className={styles.ctaSecondary}>
+          <a 
+            href={SAAS_URL} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className={styles.ctaSecondary}
+            onClick={() => trackCTAClick('offer_secondary_cta', SAAS_URL)}
+          >
             {c.ctaSecondary}
           </a>
         </div>
