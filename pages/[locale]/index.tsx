@@ -34,6 +34,7 @@ export default function HomePage({ locale }: Props) {
         description={d.hero.description}
         buttons={[...d.hero.buttons]}
         dark
+        character={{ src: '/characters/vilona.jpg', alt: 'Vilona — AI General Manager' }}
       />
       <PillarGrid title={d.pillars.title} items={[...d.pillars.items]} />
       <ServiceGrid title={d.services.title} subtitle={d.services.subtitle} items={[...d.services.items]} />

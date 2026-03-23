@@ -1,8 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Layout from '@/components/Layout';
 import HeroSection from '@/components/HeroSection';
-import CTASection from '@/components/CTASection';
 import { contactData } from '@/data/contact';
+import { characters } from '@/data/characters';
 import styles from '@/styles/contact.module.css';
 
 type Locale = 'id' | 'en';
@@ -20,7 +20,7 @@ export default function ContactPage({ locale }: { locale: Locale }) {
   const d = contactData[locale];
   return (
     <Layout title={d.meta.title} description={d.meta.description}>
-      <HeroSection eyebrow={d.hero.eyebrow} title={d.hero.title} description={d.hero.description} dark />
+      <HeroSection eyebrow={d.hero.eyebrow} title={d.hero.title} description={d.hero.description} dark character={characters.contact} />
       <section className="light-bg">
         <div className={styles.container}>
           <div className={styles.grid}>

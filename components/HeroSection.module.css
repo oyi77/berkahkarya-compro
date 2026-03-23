@@ -1,5 +1,5 @@
 .container {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 6rem 1.5rem 5rem;
   text-align: center;
@@ -8,6 +8,32 @@
   align-items: center;
   gap: 1.25rem;
 }
+
+/* With character layout — side by side */
+.withCharacter {
+  flex-direction: row;
+  text-align: left;
+  align-items: center;
+  gap: 3rem;
+  padding: 5rem 1.5rem 4rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex: 1;
+}
+
+.withCharacter .content {
+  align-items: flex-start;
+}
+
+.characterWrap {
+  flex-shrink: 0;
+  position: relative;
+}
+
 .badge {
   display: inline-block;
   font-size: 0.72rem;
@@ -18,22 +44,26 @@
   border-radius: 999px;
   background: rgba(0, 217, 255, 0.12);
   color: var(--teal-primary);
+  width: fit-content;
 }
+
 .container h1 {
   max-width: 760px;
 }
+
 .container p {
   max-width: 600px;
   font-size: 1.1rem;
   line-height: 1.7;
 }
+
 .buttons {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  justify-content: center;
   margin-top: 0.5rem;
 }
+
 .primary {
   display: inline-block;
   padding: 0.85rem 2rem;
@@ -46,6 +76,7 @@
   transition: background 0.2s, transform 0.15s;
 }
 .primary:hover { background: var(--teal-hover); transform: translateY(-1px); }
+
 .secondary {
   display: inline-block;
   padding: 0.85rem 2rem;
@@ -58,6 +89,14 @@
   transition: border-color 0.2s;
 }
 .secondary:hover { border-color: var(--teal-primary); color: var(--teal-primary); }
+
 @media (max-width: 768px) {
   .container { padding: 4rem 1.25rem 3rem; }
+  .withCharacter {
+    flex-direction: column;
+    text-align: center;
+  }
+  .withCharacter .content {
+    align-items: center;
+  }
 }

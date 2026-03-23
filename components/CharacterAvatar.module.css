@@ -1,0 +1,40 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.image {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Sizes */
+.sm { width: 48px; height: 48px; }
+.md { width: 80px; height: 80px; }
+.lg { width: 120px; height: 120px; }
+.xl { width: 180px; height: 180px; }
+.hero { width: 280px; height: 280px; }
+
+/* Glow effect */
+.glow {
+  box-shadow:
+    0 0 20px rgba(0, 217, 255, 0.3),
+    0 0 60px rgba(0, 217, 255, 0.1);
+}
+
+/* Float animation */
+.float {
+  animation: floatUp 3s ease-in-out infinite;
+}
+
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@media (max-width: 768px) {
+  .hero { width: 180px; height: 180px; }
+  .xl { width: 120px; height: 120px; }
+}
