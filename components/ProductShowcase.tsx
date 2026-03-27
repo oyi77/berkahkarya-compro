@@ -101,8 +101,8 @@ const products: Record<'id' | 'en', Product[]> = {
     },
     {
       emoji: '🌐',
-      name: 'OmniRoute API',
-      tagline: '398 Model AI — Rp 75K/Bulan Flat',
+      name: '1Ai',
+      tagline: '398 AI Models — Rp 75K/Bulan Flat',
       desc: 'Satu endpoint untuk GPT-4, Claude, Gemini, DeepSeek, Llama, dan 393+ model lainnya. Auto-failover, hemat 70% biaya API.',
       benefits: [
         '398 model AI vs OpenRouter 200 model',
@@ -113,7 +113,7 @@ const products: Record<'id' | 'en', Product[]> = {
       priceSub: '/bulan flat',
       priceLabel: 'Mulai dari',
       cta: 'Coba Gratis →',
-      href: '/id/omniroute',
+      href: '/id/1ai',
       badge: { label: '🆕 NEW', type: 'new' },
     },
     {
@@ -337,7 +337,7 @@ const products: Record<'id' | 'en', Product[]> = {
     },
     {
       emoji: '🌐',
-      name: 'OmniRoute API',
+      name: '1Ai',
       tagline: '398 AI Models — $5/Month Flat',
       desc: 'One endpoint for GPT-4, Claude, Gemini, DeepSeek, Llama, and 393+ models. Auto-failover, save 70% on API costs.',
       benefits: [
@@ -349,7 +349,7 @@ const products: Record<'id' | 'en', Product[]> = {
       priceSub: '/month flat',
       priceLabel: 'Starting from',
       cta: 'Try Free →',
-      href: '/en/omniroute',
+      href: '/en/1ai',
       badge: { label: '🆕 NEW', type: 'new' },
     },
     {
