@@ -898,8 +898,134 @@ const _servicesData: any = {
 
 };
 
+const _certificateDesign: { id: ServiceData; en: ServiceData } = {
+  id: {
+    slug: 'certificate-design',
+    meta: { title: 'Jasa Design Sertifikat — BerkahKarya', description: 'Design sertifikat profesional, branded, terintegrasi dengan sistem. Untuk training, kursus, event. Mulai Rp 100K per design.' },
+    hero: {
+      eyebrow: '🎓 CERTIFICATE DESIGN',
+      title: 'Sertifikat Profesional\nDalam 1 Jam',
+      description: 'Sertifikat training, kursus, atau event dengan design profesional, branded, dan siap cetak. Fully customizable dengan logo, warna, dan informasi event Anda.',
+      buttons: [
+        { text: 'Pesan Design →', href: 'https://wa.me/6285732740006?text=Halo%20BerkahKarya%2C%20saya%20mau%20design%20sertifikat', primary: true },
+        { text: 'Lihat Portofolio', href: '#features', primary: false },
+      ],
+    },
+    problem: {
+      hook: 'Sertifikat template generic membuat program training Anda terlihat amatiran.',
+      pains: [
+        { icon: '📄', text: 'Design sertifikat sendiri makan waktu dan hasilnya tidak profesional.' },
+        { icon: '🎨', text: 'Template umum — tidak unique, tidak memorable untuk peserta.' },
+        { icon: '⏰', text: 'Update data peserta satu per satu — manual dan error-prone.' },
+        { icon: '💸', text: 'Hire designer untuk sertifikat? Mahal dan tidak practical untuk volume besar.' },
+      ],
+      bridge: 'Design profesional + branding Anda dalam 1 jam, harga terjangkau.',
+    },
+    features: [
+      { icon: '🎨', title: 'Design Profesional', desc: 'Template modern, elegan, bisa disesuaikan dengan brand guidelines Anda.' },
+      { icon: '🏢', title: 'Fully Branded', desc: 'Logo, warna perusahaan, font custom — 100% match brand Anda.' },
+      { icon: '📋', title: 'Custom Layout', desc: 'Nama peserta, tanggal, nomor sertifikat, skill yang dikuasai — semua bisa disesuaikan.' },
+      { icon: '🖨️', title: 'Print Ready', desc: 'File PDF siap cetak. Ukuran A4, A3, atau custom sesuai kebutuhan.' },
+      { icon: '⚡', title: 'Delivery 1 Jam', desc: 'Dari brief sampai file final dalam 1 jam. Tidak ada waiting list.' },
+      { icon: '📊', title: 'Batch Export', desc: 'Generate 100+ sertifikat dengan data peserta via CSV — otomatis & cepat.' },
+    ],
+    howItWorks: {
+      title: 'Dari Brief ke Sertifikat dalam 3 Langkah',
+      steps: [
+        { num: '1', title: 'Kirim Brief', desc: 'Logo, warna, nama program, dan daftar peserta via WhatsApp atau email.' },
+        { num: '2', title: 'Design & Approve', desc: 'Design draft dalam 30 menit. Anda review dan approve. 1x revisi gratis.' },
+        { num: '3', title: 'Download & Cetak', desc: 'File PDF dikirim. Siap cetak atau digital distribute ke peserta.' },
+      ],
+    },
+    pricing: [
+      { name: 'Single Design', price: 'Rp 100K', period: '/design', features: ['1 design template', 'Branded sesuai brief', 'PDF file', 'Delivery 1 jam', '1x revisi'], cta: { text: 'Pesan Sekarang', href: 'https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20sertifikat%20single' } },
+      { name: 'Batch Export', price: 'Rp 500K', period: '/paket', highlight: true, features: ['1 design template + batch setup', 'Data peserta via CSV', 'Generate 50-100+ sertifikat otomatis', 'PDF + PNG format', 'Delivery 2 jam', '1x revisi total'], cta: { text: 'Pesan Batch Export', href: 'https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20batch%20export%20sertifikat' } },
+      { name: 'Paket Tahunan', price: 'Rp 1.5jt', period: '/tahun', features: ['Unlimited design requests', 'Unlimited batch export', 'Priority support', 'Yearly brand refresh', 'Dedicated designer'], cta: { text: 'Pilih Tahunan', href: 'https://wa.me/6285732740006?text=Halo%2C%20saya%20mau%20paket%20tahunan%20sertifikat' } },
+    ],
+    faq: {
+      title: 'Pertanyaan yang Sering Ditanyakan',
+      items: [
+        { q: 'Ukuran sertifikat apa saja yang bisa?', a: 'A4 (standar), A3, atau custom size. Format landscape atau portrait sesuai design.' },
+        { q: 'Bisa export data peserta dari spreadsheet?', a: 'Ya. Kirim CSV dengan kolom: nama, tanggal, nomor_sertifikat, skill. Kami generate otomatis semua sertifikat.' },
+        { q: 'Format file apa yang dikirim?', a: 'PDF (untuk print) dan PNG (untuk digital/email). Kedua format dikirim sekaligus.' },
+        { q: 'Apakah bisa pakai signature digital?', a: 'Ya. Bisa tambahkan QR code unik per sertifikat untuk verifikasi digital.' },
+        { q: 'Berapa lama waktu delivery?', a: 'Single design: 1 jam. Batch export: 2 jam. Urgent (30 menit)? Bisa, tambah Rp 100K.' },
+      ],
+    },
+    stats: [
+      { value: '1 Jam', label: 'Delivery tercepat' },
+      { value: '100+', label: 'Bisa generate per batch' },
+      { value: '100%', label: 'Branded & custom' },
+      { value: '0', label: 'Setup fee untuk batch' },
+    ],
+    cta: { title: 'Sertifikat Profesional Sekarang', description: 'Order sekarang. Kirim brief → 1 jam → File siap cetak.', button: { text: 'Pesan via WhatsApp →', href: 'https://wa.me/6285732740006?text=Halo%20BerkahKarya%2C%20saya%20mau%20pesan%20sertifikat%20profesional' } },
+  },
+  en: {
+    slug: 'certificate-design',
+    meta: { title: 'Certificate Design Service — BerkahKarya', description: 'Professional, branded certificate design. For training, courses, events. From $7 per design.' },
+    hero: {
+      eyebrow: '🎓 CERTIFICATE DESIGN',
+      title: 'Professional Certificates\nIn 1 Hour',
+      description: 'Training, course, or event certificates with professional design, branded, and print-ready. Fully customizable with your logo, colors, and event information.',
+      buttons: [
+        { text: 'Order Design →', href: 'https://wa.me/6285732740006?text=Hello%20BerkahKarya%2C%20I%20want%20certificate%20design', primary: true },
+        { text: 'View Portfolio', href: '#features', primary: false },
+      ],
+    },
+    problem: {
+      hook: 'Generic template certificates make your training program look amateurish.',
+      pains: [
+        { icon: '📄', text: 'Designing certificates yourself takes time and the result does not look professional.' },
+        { icon: '🎨', text: 'Generic templates — not unique, not memorable for participants.' },
+        { icon: '⏰', text: 'Updating participant data one by one — manual and error-prone.' },
+        { icon: '💸', text: 'Hire a designer for certificates? Expensive and not practical for large volumes.' },
+      ],
+      bridge: 'Professional design + your branding in 1 hour, affordable price.',
+    },
+    features: [
+      { icon: '🎨', title: 'Professional Design', desc: 'Modern, elegant templates customizable to your brand guidelines.' },
+      { icon: '🏢', title: 'Fully Branded', desc: 'Logo, company colors, custom fonts — 100% match your brand.' },
+      { icon: '📋', title: 'Custom Layout', desc: 'Participant name, date, certificate number, skills mastered — all customizable.' },
+        { icon: '🖨️', title: 'Print Ready', desc: 'PDF ready to print. A4, A3, or custom size as needed.' },
+      { icon: '⚡', title: '1-Hour Delivery', desc: 'From brief to final file in 1 hour. No waiting list.' },
+      { icon: '📊', title: 'Batch Export', desc: 'Generate 100+ certificates with participant data via CSV — automatic & fast.' },
+    ],
+    howItWorks: {
+      title: 'From Brief to Certificate in 3 Steps',
+      steps: [
+        { num: '1', title: 'Send Brief', desc: 'Logo, colors, program name, and participant list via WhatsApp or email.' },
+        { num: '2', title: 'Design & Approve', desc: 'Design draft in 30 minutes. You review and approve. 1 free revision.' },
+        { num: '3', title: 'Download & Print', desc: 'PDF file sent. Ready to print or digital distribute to participants.' },
+      ],
+    },
+    pricing: [
+      { name: 'Single Design', price: '$7', period: '/design', features: ['1 design template', 'Branded per brief', 'PDF file', '1-hour delivery', '1 revision'], cta: { text: 'Order Now', href: 'https://wa.me/6285732740006?text=Hello%2C%20I%20want%20single%20certificate%20design' } },
+      { name: 'Batch Export', price: '$33', period: '/pack', highlight: true, features: ['1 design template + batch setup', 'Participant data via CSV', 'Generate 50-100+ certificates automatically', 'PDF + PNG format', '2-hour delivery', '1 revision total'], cta: { text: 'Order Batch Export', href: 'https://wa.me/6285732740006?text=Hello%2C%20I%20want%20batch%20export%20certificates' } },
+      { name: 'Yearly Plan', price: '$99', period: '/year', features: ['Unlimited design requests', 'Unlimited batch export', 'Priority support', 'Yearly brand refresh', 'Dedicated designer'], cta: { text: 'Choose Yearly', href: 'https://wa.me/6285732740006?text=Hello%2C%20I%20want%20yearly%20certificate%20plan' } },
+    ],
+    faq: {
+      title: 'Frequently Asked Questions',
+      items: [
+        { q: 'What certificate sizes are available?', a: 'A4 (standard), A3, or custom size. Landscape or portrait per design.' },
+        { q: 'Can I export participant data from a spreadsheet?', a: 'Yes. Send CSV with columns: name, date, certificate_number, skill. We generate all certificates automatically.' },
+        { q: 'What file formats are provided?', a: 'PDF (for printing) and PNG (for digital/email). Both formats sent at once.' },
+        { q: 'Can I add digital signatures?', a: 'Yes. Add unique QR codes per certificate for digital verification.' },
+        { q: 'How long is delivery?', a: 'Single design: 1 hour. Batch export: 2 hours. Urgent (30 min)? Possible, add $5 rush fee.' },
+      ],
+    },
+    stats: [
+      { value: '1 Hour', label: 'Fastest delivery' },
+      { value: '100+', label: 'Per batch generation' },
+      { value: '100%', label: 'Branded & custom' },
+      { value: '0', label: 'Batch setup fee' },
+    ],
+    cta: { title: 'Professional Certificates Now', description: 'Order now. Send brief → 1 hour → File ready to print.', button: { text: 'Order via WhatsApp →', href: 'https://wa.me/6285732740006?text=Hello%20BerkahKarya%2C%20I%20want%20professional%20certificates' } },
+  },
+};
+
 export const servicesData: { [slug: string]: { id: ServiceData; en: ServiceData } } = {
   ..._servicesData,
   'security-audit': _securityAudit,
+  'certificate-design': _certificateDesign,
 };
 export const servicesSlugs = Object.keys(servicesData);
