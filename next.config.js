@@ -2,10 +2,8 @@
 const nextConfig = {
  reactStrictMode: true,
  swcMinify: true,
- output: 'export', // Enable static export for Netlify
- images: {
-   unoptimized: true, // Required for static export
- },
+ // Use Netlify server runtime (more reliable for query params + dynamic routing)
+ // Remove 'output: export' to allow server-side rendering
 };
 
 module.exports = nextConfig;
