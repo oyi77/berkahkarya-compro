@@ -1,120 +1,87 @@
 import React from 'react';
 import Layout from '@/components/Layout';
-import Link from 'next/link';
+import styles from './LandingPage.module.css';
 
-type Locale = 'id' | 'en';
-
-export default function LP1({ locale }: { locale: Locale }) {
-  const isIndo = locale === 'id';
-  
+export default function LP1({ locale = 'id' }: { locale?: string }) {
   return (
     <Layout 
-      title={isIndo ? "Konten Ini Bikin Laku" : "This Content Drives Sales"}
-      description="Buat konten profesional dengan AI dalam hitungan menit."
+      title="Konten Ini Bikin Laku — AI Content Studio | BerkahKarya"
+      description="Buat konten viral yang bikin produk laku keras. AI-Powered Content Creation."
     >
-      <div className="bg-[#05050a] text-white min-h-screen font-sans selection:bg-purple-500/30 selection:text-white relative overflow-hidden">
-        {/* Background Gradients */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[150px]"></div>
-          <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px]"></div>
-          <div className="absolute bottom-0 left-1/3 w-[450px] h-[450px] bg-cyan-500/10 rounded-full blur-[130px]"></div>
-        </div>
-
-        <main className="max-w-6xl mx-auto px-4 py-20 relative z-10 flex flex-col items-center text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8">
-            <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-            </span>
-            <span className="text-sm font-medium text-gray-300">AI-Powered Content Creation</span>
-          </div>
-
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black mb-6 leading-tight">
-            <span>Konten Ini</span><br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-blue-500 to-green-500">Bikin Laku</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-gray-400 max-w-2xl mb-12">
-            "Banyak seller sebenarnya punya produk bagus, tapi kalah di konten. Ternyata sekarang ada cara bikin konten lebih cepat tanpa ribet edit manual."
-          </p>
-
-          {/* Featured Image Section */}
-          <div className="relative w-full max-w-4xl mb-16 group">
-            <img 
-              src="https://i.postimg.cc/zGJdvMgf/Gemini-Generated-Image-ttxwt9ttxwt9ttxw.png" 
-              alt="AI Video Generation Comparison" 
-              className="rounded-3xl border border-white/10 shadow-2xl shadow-purple-500/10"
-            />
-            {/* Overlays */}
-            <div className="absolute top-4 left-4 sm:top-8 sm:left-8 px-4 py-2 bg-red-500 text-white font-bold rounded-lg shadow-lg">BEFORE</div>
-            <div className="absolute top-4 right-4 sm:top-8 sm:right-8 px-4 py-2 bg-green-500 text-white font-bold rounded-lg shadow-lg">AFTER</div>
-          </div>
-
-          {/* Stats Comparison */}
-          <div className="grid md:grid-cols-2 gap-6 w-full max-w-4xl mb-12">
-            <div className="p-8 rounded-3xl border border-red-500/20 bg-red-500/5 backdrop-blur-sm text-left">
-              <h3 className="text-red-400 font-bold mb-4 uppercase tracking-widest text-sm">CARA LAMA</h3>
-              <ul className="space-y-4">
-                <li className="flex items-center gap-3 text-gray-400">
-                  <span className="text-red-500">✗</span> Waktu: 3 Jam+
-                </li>
-                <li className="flex items-center gap-3 text-gray-400">
-                  <span className="text-red-500">✗</span> Biaya: Jutaan
-                </li>
-                <li className="flex items-center gap-3 text-gray-400">
-                  <span className="text-red-500">✗</span> Hasil: Sepi
-                </li>
-              </ul>
+      <div className={styles.wrapper}>
+        {/* Hero Section */}
+        <section className={styles.hero}>
+          <div className={styles.heroInner}>
+            <div className={styles.badge}>
+              <span className={styles.badgeDot}></span>
+              <span>AI-Powered Content Creation</span>
             </div>
-            <div className="p-8 rounded-3xl border border-green-500/20 bg-green-500/5 backdrop-blur-sm text-left">
-              <h3 className="text-green-400 font-bold mb-4 uppercase tracking-widest text-sm">PAKAI AI</h3>
-              <ul className="space-y-4">
-                <li className="flex items-center gap-3 text-gray-200">
-                  <span className="text-green-500">✓</span> Waktu: &lt; 5 Menit
-                </li>
-                <li className="flex items-center gap-3 text-gray-200">
-                  <span className="text-green-500">✓</span> Biaya: Hitungan Perak
-                </li>
-                <li className="flex items-center gap-3 text-gray-200">
-                  <span className="text-green-500">✓</span> Hasil: Laku!
-                </li>
-              </ul>
+            
+            <h1 className={styles.title}>
+              Konten Ini<br/>
+              <span className={styles.gradientText}>Bikin Laku</span>
+            </h1>
+            
+            <p className={styles.subtitle}>
+              Upload foto produk → dapat video viral + caption + hashtag dalam hitungan menit. 
+              Tanpa skill editing. Tanpa ribet.
+            </p>
+            
+            <div className={styles.ctaRow}>
+              <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+                🚀 Coba Gratis Sekarang
+              </a>
+            </div>
+            
+            <div className={styles.trustStrip}>
+              <span>✓ Gratis 3 kredit</span>
+              <span>✓ Tanpa kartu kredit</span>
+              <span>✓ Langsung pakai</span>
             </div>
           </div>
+        </section>
 
-          {/* CTA */}
-          <a 
-            href="https://saas.aitradepulse.com/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="group relative inline-flex items-center justify-center px-10 py-5 font-bold text-white transition-all duration-200 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full hover:scale-105 active:scale-95 shadow-lg shadow-purple-500/25"
-          >
-            Pelajari Selengkapnya
-            <span className="ml-2 animate-bounce-x">→</span>
-          </a>
-
-          {/* Trust Badge */}
-          <div className="mt-12 flex items-center gap-4 text-gray-500">
-            <div className="flex -space-x-3">
-              {[1,2,3].map(i => (
-                <div key={i} className="w-10 h-10 rounded-full border-2 border-[#05050a] bg-gradient-to-br from-gray-700 to-gray-800"></div>
-              ))}
+        {/* Features Section */}
+        <section className={styles.section}>
+          <div className={styles.container}>
+            <span className={styles.eyebrow}>Kenapa Ini Works</span>
+            <h2 className={styles.sectionTitle}>
+              Kenapa Konten Ini <span className={styles.gradientText}>Bikin Laku?</span>
+            </h2>
+            
+            <div className={styles.grid3}>
+              <div className={styles.card}>
+                <div className={styles.cardIcon}>🎯</div>
+                <h3>Hook yang Nangkep</h3>
+                <p>AI analisis 10.000+ video viral untuk generate hook yang bikin scroll berhenti. Terbukti naikkan watch time 3x lipat.</p>
+              </div>
+              <div className={styles.card}>
+                <div className={styles.cardIcon}>🎬</div>
+                <h3>Video Cinematic</h3>
+                <p>Foto produk biasa jadi video bergerak profesional. Kualitas studio, harga warung kopi.</p>
+              </div>
+              <div className={styles.card}>
+                <div className={styles.cardIcon}>📈</div>
+                <h3>Optimized untuk FYP</h3>
+                <p>Caption, hashtag, timing posting — semua di-optimize AI berdasarkan data real-time trending.</p>
+              </div>
             </div>
-            <p className="text-sm">Dipercaya 50,000+ kreator Indonesia</p>
           </div>
-        </main>
+        </section>
+
+        {/* Final CTA */}
+        <section className={styles.finalCta}>
+          <div className={styles.container}>
+            <h2 className={styles.sectionTitle}>
+              Siap Bikin Konten yang <span className={styles.gradientText}>Laku Keras?</span>
+            </h2>
+            <p className={styles.subtitle}>Join 500+ seller yang udah buktiin hasilnya.</p>
+            <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+              🚀 Mulai Gratis — 3 Kredit Aktif
+            </a>
+          </div>
+        </section>
       </div>
-      <style jsx>{`
-        @keyframes bounce-x {
-          0%, 100% { transform: translateX(0); }
-          50% { transform: translateX(5px); }
-        }
-        .animate-bounce-x {
-          animation: bounce-x 1s infinite;
-        }
-      `}</style>
     </Layout>
   );
 }

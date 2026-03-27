@@ -1,108 +1,91 @@
 import React from 'react';
 import Layout from '@/components/Layout';
+import styles from './LandingPage.module.css';
 
-type Locale = 'id' | 'en';
-
-export default function LP3({ locale }: { locale: Locale }) {
-  const isIndo = locale === 'id';
-  
+export default function LP3({ locale = 'id' }: { locale?: string }) {
   return (
     <Layout 
-      title={isIndo ? "Masih Edit Manual?" : "Still Editing Manually?"}
-      description="Buat konten profesional dengan AI dalam hitungan menit."
+      title="Masih Edit Manual? — AI Content Studio | BerkahKarya"
+      description="Stop edit manual. AI bikin video viral otomatis. BerkahKarya AI Content Studio."
     >
-      <div className="bg-[#05050a] text-white min-h-screen font-sans selection:bg-red-500/30 selection:text-white relative overflow-hidden">
-        {/* Background Gradients */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-red-500/10 rounded-full blur-[150px]"></div>
-          <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[120px]"></div>
-          <div className="absolute bottom-0 left-1/3 w-[450px] h-[450px] bg-blue-500/10 rounded-full blur-[130px]"></div>
-        </div>
-
-        <main className="max-w-6xl mx-auto px-4 py-20 relative z-10 flex flex-col items-center text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8 animate-pulse text-sm text-red-400 font-bold tracking-wide">
-            😫 Lagi Capek Edit Video?
-          </div>
-
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black mb-6 leading-tight">
-            <span>Masih</span><br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-purple-500 to-blue-500">Edit Manual?</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-gray-400 max-w-2xl mb-12">
-            "Kalau tiap konten harus mulai dari nol, wajar kalau capek duluan. Sekarang ada workflow yang bikin semuanya jadi lebih cepat."
-          </p>
-
-          {/* Image */}
-          <div className="relative w-full max-w-2xl mb-16 shadow-2xl shadow-red-500/10 rounded-3xl overflow-hidden border border-white/10">
-            <img 
-              src="https://i.postimg.cc/5tW8jQGG/Gemini-Generated-Image-d1nxoed1nxoed1nx.png" 
-              alt="Frustrated Editor" 
-              className="w-full h-auto"
-            />
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 w-full max-w-4xl text-left mb-16">
-            {/* CARA LAMA */}
-            <div className="p-8 rounded-3xl border border-red-500/20 bg-red-500/5 backdrop-blur-sm">
-                <h3 className="text-red-400 font-black mb-6 text-xl">CARA LAMA</h3>
-                <ul className="space-y-4">
-                  <li className="flex items-center gap-3 text-red-200">
-                    <span className="text-red-500 font-bold">😫</span> Manual & Melelahkan
-                  </li>
-                  <li className="flex items-center gap-3 text-red-200/70">
-                    <span className="text-red-500 font-bold">✗</span> Edit berjam-jam
-                  </li>
-                  <li className="flex items-center gap-3 text-red-200/70">
-                    <span className="text-red-500 font-bold">✗</span> Perlu skill editing
-                  </li>
-                  <li className="flex items-center gap-3 text-red-200/70">
-                    <span className="text-red-500 font-bold">✗</span> Hasil kurang konsisten
-                  </li>
-                  <li className="flex items-center gap-3 text-red-200/70">
-                    <span className="text-red-500 font-bold">✗</span> Budget mahal
-                  </li>
-                </ul>
+      <div className={styles.wrapper}>
+        {/* Hero Section */}
+        <section className={styles.hero}>
+          <div className={styles.heroInner}>
+            <div className={styles.badge}>
+              <span className={styles.badgeDot}></span>
+              <span>Ada Cara Lebih Cepat</span>
             </div>
-            {/* PAKAI AI */}
-            <div className="p-8 rounded-3xl border border-green-500/20 bg-green-500/5 backdrop-blur-sm">
-                <h3 className="text-green-400 font-black mb-6 text-xl">PAKAI AI</h3>
-                <ul className="space-y-4">
-                  <li className="flex items-center gap-3 text-green-200">
-                    <span className="text-green-500 font-bold">⚡</span> Otomatis & Cepat
-                  </li>
-                  <li className="flex items-center gap-3 text-green-200">
-                    <span className="text-green-500 font-bold">✓</span> Selesai dalam menit
-                  </li>
-                  <li className="flex items-center gap-3 text-green-200">
-                    <span className="text-green-500 font-bold">✓</span> Tanpa skill khusus
-                  </li>
-                  <li className="flex items-center gap-3 text-green-200">
-                    <span className="text-green-500 font-bold">✓</span> Hasil profesional
-                  </li>
-                  <li className="flex items-center gap-3 text-green-200">
-                    <span className="text-green-500 font-bold">✓</span> Hemat budget
-                  </li>
-                </ul>
+            
+            <h1 className={styles.title}>
+              Masih<br/>
+              <span className={styles.gradientTextOrange}>Edit Manual?</span>
+            </h1>
+            
+            <p className={styles.subtitle}>
+              Sementara kamu habis 3 jam edit 1 video, kompetitor upload 10 video pakai AI. 
+              Waktu = uang. Stop buang waktu.
+            </p>
+            
+            <div className={styles.ctaRow}>
+              <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+                😫 Stop Kerja Rodi
+              </a>
+            </div>
+            
+            <div className={styles.trustStrip}>
+              <span>✓ Hemat 3 jam/video</span>
+              <span>✓ Output 10x lebih banyak</span>
+              <span>✓ Kualitas tetap pro</span>
             </div>
           </div>
+        </section>
 
-          {/* CTA */}
-          <a 
-            href="https://saas.aitradepulse.com/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="px-12 py-5 font-black text-white bg-gradient-to-r from-red-600 to-purple-600 rounded-2xl hover:scale-105 transition-all shadow-xl shadow-red-500/20 active:scale-95 text-lg"
-          >
-            SAYA MAU YANG CEPAT ⚡
-          </a>
-
-          <div className="mt-12 text-sm text-gray-500">
-            ⚡ Dipercaya 50,000+ kreator Indonesia
+        {/* Comparison Section */}
+        <section className={styles.section}>
+          <div className={styles.container}>
+            <span className={styles.eyebrow}>Perbandingan</span>
+            <h2 className={styles.sectionTitle}>
+              Edit Manual vs <span className={styles.gradientText}>AI Studio</span>
+            </h2>
+            
+            <div className={styles.compareGrid}>
+              <div className={styles.compareOld}>
+                <h3>❌ Edit Manual</h3>
+                <ul>
+                  <li><span className={styles.xMark}>✗</span> 3-4 jam untuk 1 video 30 detik</li>
+                  <li><span className={styles.xMark}>✗</span> Perlu skill CapCut/Premiere</li>
+                  <li><span className={styles.xMark}>✗</span> Bayar editor Rp 300K-700K/video</li>
+                  <li><span className={styles.xMark}>✗</span> Revisi bolak-balik capek</li>
+                  <li><span className={styles.xMark}>✗</span> Max upload 3x seminggu</li>
+                </ul>
+              </div>
+              <div className={styles.compareNew}>
+                <h3>🚀 AI Studio</h3>
+                <ul>
+                  <li><span className={styles.checkMark}>✓</span> 5 menit untuk 1 video</li>
+                  <li><span className={styles.checkMark}>✓</span> Zero skill — upload aja</li>
+                  <li><span className={styles.checkMark}>✓</span> Rp 8.000/video</li>
+                  <li><span className={styles.checkMark}>✓</span> Instant result, no revisi</li>
+                  <li><span className={styles.checkMark}>✓</span> Upload 3x sehari santai</li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </main>
+        </section>
+
+        {/* Final CTA */}
+        <section className={styles.finalCta}>
+          <div className={styles.container}>
+            <h2 className={styles.sectionTitle}>
+              Udahan <span className={styles.gradientText}>Kerja Rodinya</span>
+            </h2>
+            <p className={styles.subtitle}>Biar AI yang kerja. Kamu fokus scaling bisnis.</p>
+            <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+              😫 Gue Mau Upgrade
+            </a>
+          </div>
+        </section>
       </div>
     </Layout>
   );

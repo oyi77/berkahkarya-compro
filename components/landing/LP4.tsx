@@ -1,86 +1,91 @@
 import React from 'react';
 import Layout from '@/components/Layout';
+import styles from './LandingPage.module.css';
 
-type Locale = 'id' | 'en';
-
-export default function LP4({ locale }: { locale: Locale }) {
-  const isIndo = locale === 'id';
-  
+export default function LP4({ locale = 'id' }: { locale?: string }) {
   return (
     <Layout 
-      title={isIndo ? "Tinggal Upload Doang" : "Just Upload It"}
-      description="Buat konten profesional dengan AI dalam hitungan menit."
+      title="Tinggal Upload Doang — AI Content Studio | BerkahKarya"
+      description="Video viral tinggal upload. AI yang kerjain sisanya. BerkahKarya AI Content Studio."
     >
-      <div className="bg-[#05050a] text-white min-h-screen font-sans selection:bg-cyan-500/30 selection:text-white relative overflow-hidden">
-        {/* Background Gradients */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[150px]"></div>
-          <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px]"></div>
-          <div className="absolute bottom-0 right-1/3 w-[450px] h-[450px] bg-purple-500/10 rounded-full blur-[130px]"></div>
-        </div>
-
-        <main className="max-w-6xl mx-auto px-4 py-20 relative z-10 flex flex-col items-center text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8 text-sm text-cyan-400 font-bold tracking-wide">
-            ⚡ Super Simple Process
-          </div>
-
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black mb-6 leading-tight">
-            <span>Tinggal</span><br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500">Upload Doang</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-gray-400 max-w-2xl mb-12">
-            "Gak perlu banyak tools atau edit panjang. Sekarang cukup dari satu input, bisa langsung jadi konten yang siap pakai."
-          </p>
-
-          {/* Featured Image */}
-          <div className="relative w-full max-w-4xl mb-16 rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-cyan-500/10">
-            <img 
-              src="https://i.postimg.cc/MGJ1Xf4N/Gemini-Generated-Image-m9dyorm9dyorm9dy.png" 
-              alt="Simple Upload Workflow" 
-              className="w-full h-auto"
-            />
-          </div>
-
-          {/* 3 Step Process */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-4xl mb-16 relative">
-            {/* Step 1 */}
-            <div className="p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all cursor-default">
-              <span className="text-cyan-400 font-bold mb-4 block text-xs tracking-widest uppercase">STEP 1</span>
-              <h3 className="text-2xl font-black text-white mb-2">UPLOAD</h3>
-              <p className="text-sm text-gray-400">Kirim foto produk kamu ke bot</p>
+      <div className={styles.wrapper}>
+        {/* Hero Section */}
+        <section className={styles.hero}>
+          <div className={styles.heroInner}>
+            <div className={styles.badge}>
+              <span className={styles.badgeDot}></span>
+              <span>Zero Effort Content</span>
             </div>
-            {/* Step 2 */}
-            <div className="p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all cursor-default relative overflow-hidden group">
-              <span className="text-purple-400 font-bold mb-4 block text-xs tracking-widest uppercase">STEP 2</span>
-              <h3 className="text-2xl font-black text-white mb-2">AI MAGIC</h3>
-              <p className="text-sm text-gray-400">Proses otomatis oleh AI</p>
-              <div className="absolute inset-0 bg-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            
+            <h1 className={styles.title}>
+              Tinggal<br/>
+              <span className={styles.gradientTextTeal}>Upload Doang</span>
+            </h1>
+            
+            <p className={styles.subtitle}>
+              Upload foto produk. AI generate video + caption + hashtag + jadwal posting. 
+              Kamu? Tinggal terima notifikasi "Video ready".
+            </p>
+            
+            <div className={styles.ctaRow}>
+              <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+                ⚡ Mau Yang Gampang
+              </a>
             </div>
-            {/* Step 3 */}
-            <div className="p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all cursor-default">
-              <span className="text-green-400 font-bold mb-4 block text-xs tracking-widest uppercase">STEP 3</span>
-              <h3 className="text-2xl font-black text-white mb-2">DONE</h3>
-              <p className="text-sm text-gray-400">Konten siap pakai & viral!</p>
+            
+            <div className={styles.trustStrip}>
+              <span>✓ Upload sekali</span>
+              <span>✓ Dapat 4 output</span>
+              <span>✓ AI handle sisanya</span>
             </div>
           </div>
+        </section>
 
-          {/* CTA */}
-          <a 
-            href="https://saas.aitradepulse.com/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="px-12 py-5 font-black text-white bg-gradient-to-r from-cyan-600 to-blue-600 rounded-2xl hover:scale-105 transition-all shadow-xl shadow-cyan-500/20 active:scale-95 text-xl"
-          >
-            COBA SEKARANG 🚀
-          </a>
-
-          <div className="mt-12 text-sm text-gray-500 font-medium">
-            🚀 Dipercaya 50,000+ kreator Indonesia
+        {/* What You Get Section */}
+        <section className={styles.section}>
+          <div className={styles.container}>
+            <span className={styles.eyebrow}>Output</span>
+            <h2 className={styles.sectionTitle}>
+              Upload 1 Foto, <span className={styles.gradientText}>Dapat 4 Ini</span>
+            </h2>
+            
+            <div className={styles.grid4}>
+              <div className={styles.card}>
+                <div className={styles.cardIcon}>🎬</div>
+                <h3>Video Cinematic</h3>
+                <p>Foto jadi video bergerak professional. Siap TikTok/Reels.</p>
+              </div>
+              <div className={styles.card}>
+                <div className={styles.cardIcon}>📝</div>
+                <h3>Caption Viral</h3>
+                <p>Hook + storytelling + CTA. Copywriting level agency.</p>
+              </div>
+              <div className={styles.card}>
+                <div className={styles.cardIcon}>#️⃣</div>
+                <h3>Hashtag Optimized</h3>
+                <p>Mix trending + niche + branded. Maximum reach.</p>
+              </div>
+              <div className={styles.card}>
+                <div className={styles.cardIcon}>📅</div>
+                <h3>Best Time to Post</h3>
+                <p>AI suggest waktu posting optimal berdasar niche kamu.</p>
+              </div>
+            </div>
           </div>
-        </main>
+        </section>
+
+        {/* Final CTA */}
+        <section className={styles.finalCta}>
+          <div className={styles.container}>
+            <h2 className={styles.sectionTitle}>
+              Mau Yang <span className={styles.gradientText}>Gampang?</span>
+            </h2>
+            <p className={styles.subtitle}>3 kredit gratis. Langsung cobain.</p>
+            <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+              ⚡ Upload Sekarang
+            </a>
+          </div>
+        </section>
       </div>
     </Layout>
   );

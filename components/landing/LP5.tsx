@@ -1,85 +1,99 @@
 import React from 'react';
 import Layout from '@/components/Layout';
+import styles from './LandingPage.module.css';
 
-type Locale = 'id' | 'en';
-
-export default function LP5({ locale }: { locale: Locale }) {
-  const isIndo = locale === 'id';
-  
+export default function LP5({ locale = 'id' }: { locale?: string }) {
   return (
     <Layout 
-      title={isIndo ? "Ini Cara Baru" : "The New Way"}
-      description="Buat konten profesional dengan AI dalam hitungan menit."
+      title="Ini Cara Baru — AI Content Studio | BerkahKarya"
+      description="Cara baru bikin konten viral. AI Content Studio dari BerkahKarya."
     >
-      <div className="bg-[#05050a] text-white min-h-screen font-sans selection:bg-green-500/30 selection:text-white relative overflow-hidden">
-        {/* Background Gradients */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-green-500/10 rounded-full blur-[150px]"></div>
-          <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px]"></div>
-          <div className="absolute bottom-0 right-1/3 w-[450px] h-[450px] bg-blue-500/10 rounded-full blur-[130px]"></div>
-        </div>
-
-        <main className="max-w-6xl mx-auto px-4 py-20 relative z-10 flex flex-col items-center text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8 text-sm text-green-400 font-bold tracking-wide">
-            🚀 New Method 2024
-          </div>
-
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black mb-6 leading-tight">
-            <span>Ini Cara</span><br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-500 via-cyan-500 to-blue-500">Baru</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-gray-400 max-w-2xl mb-12">
-            "Banyak orang masih pakai cara lama buat bikin konten. Padahal sekarang sudah ada cara yang lebih cepat dan lebih praktis."
-          </p>
-
-          {/* Featured Image */}
-          <div className="relative w-full max-w-4xl mb-16 rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-green-500/10 border-t-white/20">
-            <img 
-              src="https://i.postimg.cc/fbQYkSF6/Gemini-Generated-Image-n24qbzn24qbzn24q.png" 
-              alt="New Evolution of Content" 
-              className="w-full h-auto"
-            />
-          </div>
-
-          {/* Stats Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 w-full max-w-5xl mb-12">
-            <div className="p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md hover:border-green-500/30 transition-all cursor-default">
-              <span className="block text-3xl sm:text-4xl font-black text-green-400 mb-1">+847%</span>
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest leading-relaxed">Engagement</span>
+      <div className={styles.wrapper}>
+        {/* Hero Section */}
+        <section className={styles.hero}>
+          <div className={styles.heroInner}>
+            <div className={styles.badge}>
+              <span className={styles.badgeDot}></span>
+              <span>The Future is Here</span>
             </div>
-            <div className="p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md hover:border-cyan-500/30 transition-all cursor-default">
-              <span className="block text-3xl sm:text-4xl font-black text-cyan-400 mb-1">52K</span>
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest leading-relaxed">Views</span>
+            
+            <h1 className={styles.title}>
+              Ini<br/>
+              <span className={styles.gradientTextIndigo}>Cara Baru</span>
+            </h1>
+            
+            <p className={styles.subtitle}>
+              Yang lain masih pakai cara 2020. Kamu? Pakai teknologi 2025. 
+              Image-to-Video AI yang bikin konten viral dalam hitungan menit.
+            </p>
+            
+            <div className={styles.ctaRow}>
+              <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+                🚀 Upgrade Cara Kerja
+              </a>
             </div>
-            <div className="p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md hover:border-blue-500/30 transition-all cursor-default">
-              <span className="block text-3xl sm:text-4xl font-black text-blue-400 mb-1">2.3K</span>
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest leading-relaxed">Sales</span>
-            </div>
-            <div className="p-8 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md hover:border-white/30 transition-all cursor-default">
-              <span className="block text-3xl sm:text-4xl font-black text-white mb-1">4.9★</span>
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-widest leading-relaxed">Rating</span>
+            
+            <div className={styles.trustStrip}>
+              <span>✓ Teknologi terbaru</span>
+              <span>✓ First mover advantage</span>
+              <span>✓ Gratis coba</span>
             </div>
           </div>
+        </section>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 mb-16">
-            <span className="px-4 py-2 border border-white/10 rounded-lg text-sm bg-white/5 text-gray-300">✓ 50K+ Users</span>
-            <span className="px-4 py-2 border border-white/10 rounded-lg text-sm bg-white/5 text-gray-300">✓ Free Trial</span>
-            <span className="px-4 py-2 border border-white/10 rounded-lg text-sm bg-white/5 text-gray-300">✓ Indonesia</span>
+        {/* Timeline Section */}
+        <section className={styles.section}>
+          <div className={styles.container}>
+            <span className={styles.eyebrow}>Evolusi</span>
+            <h2 className={styles.sectionTitle}>
+              Evolusi <span className={styles.gradientText}>Bikin Konten</span>
+            </h2>
+            
+            <div className={styles.timeline}>
+              <div className={`${styles.timelineItem} ${styles.timelineOld}`}>
+                <div className={styles.timelineDot}></div>
+                <div className={styles.timelineContent}>
+                  <h3>2018 — Foto Statis</h3>
+                  <p>Upload foto produk ke IG. Engagement rendah. Algoritma gak suka.</p>
+                </div>
+              </div>
+              <div className={`${styles.timelineItem} ${styles.timelineOld}`}>
+                <div className={styles.timelineDot}></div>
+                <div className={styles.timelineContent}>
+                  <h3>2020 — Edit Manual</h3>
+                  <p>Belajar CapCut/Premiere. Habis waktu berjam-jam. Output terbatas.</p>
+                </div>
+              </div>
+              <div className={`${styles.timelineItem} ${styles.timelineOld}`}>
+                <div className={styles.timelineDot}></div>
+                <div className={styles.timelineContent}>
+                  <h3>2022 — Hire Editor</h3>
+                  <p>Outsource ke freelancer. Mahal, inkonsisten, revisi tanpa akhir.</p>
+                </div>
+              </div>
+              <div className={`${styles.timelineItem} ${styles.timelineNew}`}>
+                <div className={styles.timelineDot}></div>
+                <div className={styles.timelineContent}>
+                  <h3>2025 — AI Content Studio 🚀</h3>
+                  <p>Upload foto → video viral otomatis. 5 menit. Rp 8.000. Tanpa skill.</p>
+                </div>
+              </div>
+            </div>
           </div>
+        </section>
 
-          {/* CTA */}
-          <a 
-            href="https://saas.aitradepulse.com/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="px-12 py-5 font-black text-white bg-gradient-to-r from-green-600 to-cyan-600 rounded-full hover:scale-105 transition-all shadow-xl shadow-green-500/20 active:scale-95 text-xl"
-          >
-            Pelajari Lebih Lanjut 
-          </a>
-        </main>
+        {/* Final CTA */}
+        <section className={styles.finalCta}>
+          <div className={styles.container}>
+            <h2 className={styles.sectionTitle}>
+              Siap <span className={styles.gradientText}>Upgrade?</span>
+            </h2>
+            <p className={styles.subtitle}>Jangan ketinggalan. Kompetitor udah pakai ini.</p>
+            <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+              🚀 Mulai Sekarang
+            </a>
+          </div>
+        </section>
       </div>
     </Layout>
   );
