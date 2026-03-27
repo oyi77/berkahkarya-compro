@@ -192,6 +192,89 @@
   font-weight: 700;
 }
 
+/* ── Hero Image Section ── */
+.imageSection {
+  padding: 0 1.5rem 4rem;
+  background: var(--dark-hero);
+  position: relative;
+}
+
+.heroImageWrapper {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(0,217,255,0.1);
+  border: 1px solid var(--dark-border);
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.imageOverlayLeft,
+.imageOverlayRight {
+  position: absolute;
+  top: 1rem;
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.imageOverlayLeft {
+  left: 1rem;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 4px 15px rgba(239,68,68,0.4);
+}
+
+.imageOverlayRight {
+  right: 1rem;
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 4px 15px rgba(16,185,129,0.4);
+}
+
+@media (max-width: 768px) {
+  .imageSection {
+    padding: 0 1rem 3rem;
+  }
+  
+  .heroImageWrapper {
+    border-radius: 16px;
+  }
+  
+  .imageOverlayLeft,
+  .imageOverlayRight {
+    font-size: 0.65rem;
+    padding: 0.4rem 0.9rem;
+    top: 0.75rem;
+  }
+  
+  .imageOverlayLeft {
+    left: 0.75rem;
+  }
+  
+  .imageOverlayRight {
+    right: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .imageOverlayLeft,
+  .imageOverlayRight {
+    font-size: 0.55rem;
+    padding: 0.3rem 0.7rem;
+    top: 0.5rem;
+  }
+}
+
 /* ── Section ── */
 .section {
   padding: 5rem 1.5rem;

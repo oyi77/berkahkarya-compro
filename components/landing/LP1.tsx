@@ -41,6 +41,21 @@ export default function LP1({ locale = 'id' }: { locale?: string }) {
           </div>
         </section>
 
+        {/* Hero Image Section */}
+        <section className={styles.imageSection}>
+          <div className={styles.container}>
+            <div className={styles.heroImageWrapper}>
+              <img 
+                src="https://i.postimg.cc/zGJdvMgf/Gemini-Generated-Image-ttxwt9ttxwt9ttxw.png" 
+                alt="AI Video Generation - Before and After Comparison"
+                className={styles.heroImage}
+              />
+              <div className={styles.imageOverlayLeft}>BEFORE</div>
+              <div className={styles.imageOverlayRight}>AFTER</div>
+            </div>
+          </div>
+        </section>
+
         {/* Features Section */}
         <section className={styles.section}>
           <div className={styles.container}>
