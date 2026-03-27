@@ -5,7 +5,6 @@
  * Access: /id/ab-test-monitor or /en/ab-test-monitor
  */
 
-import { GetStaticPaths, GetStaticProps } from 'next';
 import React, { useEffect, useState } from 'react';
 
 type Locale = 'id' | 'en';
