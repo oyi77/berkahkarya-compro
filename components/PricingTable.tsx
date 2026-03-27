@@ -1,15 +1,47 @@
 import styles from './PricingTable.module.css';
-import { trackCTAClick, trackMetaEvent, sendMetaCAPI, trackTikTokEvent, sendTikTokCAPI } from '@/lib/tracking';
+import { trackAddToCart, trackInitiateCheckout, trackPricingSelect } from '@/lib/tracking';
 
 interface Tier { name: string; price: string; period: string; highlight?: boolean; features: string[]; cta: { text: string; href: string } }
 
+// Parse price string to number
+function parsePrice(priceStr: string): number {
+  const cleaned = priceStr.replace(/[^0-9]/g, '');
+  return parseInt(cleaned, 10) || 0;
+}
+
 export default function PricingTable({ tiers }: { tiers: Tier[] }) {
   const handleClick = (tier: Tier) => {
-    trackCTAClick(`pricing_${tier.name}`, tier.cta.href);
-    trackMetaEvent('InitiateCheckout', { content_name: tier.name, value: tier.price, currency: 'IDR' });
-    sendMetaCAPI('InitiateCheckout', { content_name: tier.name, value: tier.price, currency: 'IDR' });
-    trackTikTokEvent('InitiateCheckout', { content_name: tier.name, content_type: 'product' });
-    sendTikTokCAPI('InitiateCheckout', { content_name: tier.name });
+    const priceValue = parsePrice(tier.price);
+    const isExternal = tier.cta.href.startsWith('http');
+    
+    // Track pricing selection
+    trackPricingSelect({
+      tier_name: tier.name,
+      price: priceValue,
+      currency: 'IDR',
+      action: 'click',
+    });
+    
+    // Track AddToCart for external links
+    if (isExternal) {
+      trackAddToCart({
+        content_name: `Plan: ${tier.name}`,
+        content_id: tier.name.toLowerCase().replace(/\s+/g, '-'),
+        content_type: 'subscription',
+        value: priceValue,
+        currency: 'IDR',
+        destination: tier.cta.href.includes('wa.me') ? 'whatsapp' : 'saas_app',
+        destination_url: tier.cta.href,
+      });
+    }
+    
+    // Track InitiateCheckout
+    trackInitiateCheckout({
+      content_name: tier.name,
+      content_id: tier.name.toLowerCase(),
+      value: priceValue,
+      currency: 'IDR',
+    });
   };
 
   return (
