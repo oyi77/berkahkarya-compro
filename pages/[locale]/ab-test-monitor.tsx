@@ -28,23 +28,15 @@ interface EventStats {
   ctr: number; // clicks / views
 }
 
-export const getStaticPaths: GetStaticPaths = async () => ({
-  paths: [
-    { params: { locale: 'id' } },
-    { params: { locale: 'en' } },
-  ],
-  fallback: false,
-});
-
-export const getStaticProps: GetStaticProps = async ({ params }) => ({
-  props: { locale: (params?.locale as Locale) || 'id' },
-});
+// Use dynamic rendering instead of static generation to avoid build issues
+// export const getStaticPaths: GetStaticPaths = async () => ({...});
+// export const getStaticProps: GetStaticProps = async ({...});
 
 type Props = {
-  locale: Locale;
+  locale?: Locale;
 };
 
-export default function ABTestMonitor({ locale }: Props) {
+export default function ABTestMonitor({ locale = 'id' }: Props) {
   const [events, setEvents] = useState<AnalyticsEvent[]>([]);
   const [stats, setStats] = useState<Record<number, EventStats>>({});
   const [lastUpdate, setLastUpdate] = useState<string>('');
