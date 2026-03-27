@@ -1,0 +1,25 @@
+{
+  "name": "BerkahKarya — AI Ecosystem",
+  "short_name": "BerkahKarya",
+  "description": "AI Ecosystem untuk bisnis Indonesia. Video AI, chatbot, automation, trading algoritmik.",
+  "start_url": "/id",
+  "display": "standalone",
+  "background_color": "#080C14",
+  "theme_color": "#00D9FF",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "id",
+  "dir": "ltr"
+}

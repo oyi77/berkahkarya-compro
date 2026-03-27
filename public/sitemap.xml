@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://berkahkarya.org/id</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- AI & Automation -->
+  <url>
+    <loc>https://berkahkarya.org/id/ai-video-studio</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/ai-video-studio"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/ai-video-studio"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/ai-video-studio</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/ai-video-studio"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/ai-video-studio"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://berkahkarya.org/id/ai-agent-pro</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/ai-agent-pro"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/ai-agent-pro"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/ai-agent-pro</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/ai-agent-pro"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/ai-agent-pro"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://berkahkarya.org/id/ai-automation</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/ai-automation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/ai-automation"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/ai-automation</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/ai-automation"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/ai-automation"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://berkahkarya.org/id/adforge-ai</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/adforge-ai"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/adforge-ai"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/adforge-ai</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/adforge-ai"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/adforge-ai"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Digital Services -->
+  <url>
+    <loc>https://berkahkarya.org/id/website-development</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/website-development"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/website-development"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/website-development</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/website-development"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/website-development"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://berkahkarya.org/id/social-media-management</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/social-media-management"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/social-media-management"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/social-media-management</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/social-media-management"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/social-media-management"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://berkahkarya.org/id/video-production</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/video-production"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/video-production"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/video-production</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/video-production"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/video-production"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://berkahkarya.org/id/custom-documents</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/custom-documents"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/custom-documents"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/custom-documents</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/custom-documents"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/custom-documents"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://berkahkarya.org/id/certificate-design</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/certificate-design"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/certificate-design"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/certificate-design</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/certificate-design"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/certificate-design"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Research & Security -->
+  <url>
+    <loc>https://berkahkarya.org/id/deep-research</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/deep-research"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/deep-research"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/deep-research</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/deep-research"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/deep-research"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://berkahkarya.org/id/security-audit</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/security-audit"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/security-audit"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/security-audit</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/security-audit"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/security-audit"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Trading & Fintech -->
+  <url>
+    <loc>https://berkahkarya.org/id/algorithmic-trading</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/algorithmic-trading"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/algorithmic-trading"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/algorithmic-trading</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/algorithmic-trading"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/algorithmic-trading"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://berkahkarya.org/id/omniroute</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/omniroute"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/omniroute"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/omniroute</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/omniroute"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/omniroute"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Digital Products -->
+  <url>
+    <loc>https://berkahkarya.org/id/digital-products</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/digital-products"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/digital-products"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/digital-products</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/digital-products"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/digital-products"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Other Pages -->
+  <url>
+    <loc>https://berkahkarya.org/id/team</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/team"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/team"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/team</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/team"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/team"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://berkahkarya.org/id/portfolio</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/portfolio"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/portfolio</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/portfolio"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://berkahkarya.org/id/contact</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/contact"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://berkahkarya.org/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://berkahkarya.org/id/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://berkahkarya.org/en/contact"/>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
