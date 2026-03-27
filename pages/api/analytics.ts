@@ -6,7 +6,6 @@
  */
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { logger } from '@/utils/logger';
 
 interface AnalyticsEvent {
   timestamp: string;
@@ -31,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // Log event
-    logger.info('[Analytics] Event received', {
+    console.log('[Analytics] Event received', {
       event: event.event,
       lpVariant: event.lpVariant,
       locale: event.locale,
@@ -50,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       event: event.event,
     });
   } catch (error) {
-    logger.error('[Analytics] Error processing event', { error });
+    console.error('[Analytics] Error processing event', error);
     res.status(500).json({ error: 'Failed to process analytics event' });
   }
 }
