@@ -7,7 +7,6 @@
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
 
 type Locale = 'id' | 'en';
 
@@ -117,13 +116,7 @@ export default function ABTestMonitor({ locale }: Props) {
   };
 
   return (
-    <>
-      <Head>
-        <title>A/B Test Monitor - BerkahKarya AI Video Studio</title>
-        <meta name="robots" content="noindex" />
-      </Head>
-
-      <div style={{
+    <div style={{
         minHeight: '100vh',
         background: 'linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%)',
         color: '#fff',
@@ -287,7 +280,7 @@ export default function ABTestMonitor({ locale }: Props) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
