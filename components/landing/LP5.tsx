@@ -1,7 +1,10 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Layout from '@/components/Layout';
 import styles from './LandingPage.module.css';
+import TrackedCTA from './TrackedCTA';
 
 export default function LP5({ locale = 'id' }: { locale?: string }) {
   return (
@@ -29,9 +32,14 @@ export default function LP5({ locale = 'id' }: { locale?: string }) {
             </p>
             
             <div className={styles.ctaRow}>
-              <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+              <TrackedCTA 
+                href="https://saas.aitradepulse.com/" 
+                className={styles.btnPrimary}
+                productName="AI Video Studio - LP5 Hero"
+                productId="ai-video-studio-lp5"
+              >
                 🚀 Upgrade Cara Kerja
-              </a>
+              </TrackedCTA>
             </div>
             
             <div className={styles.trustStrip}>
@@ -107,9 +115,14 @@ export default function LP5({ locale = 'id' }: { locale?: string }) {
               Siap <span className={styles.gradientText}>Upgrade?</span>
             </h2>
             <p className={styles.subtitle}>Jangan ketinggalan. Kompetitor udah pakai ini.</p>
-            <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+            <TrackedCTA 
+              href="https://saas.aitradepulse.com/" 
+              className={styles.btnPrimary}
+              productName="AI Video Studio - LP5 Footer"
+              productId="ai-video-studio-lp5-footer"
+            >
               🚀 Mulai Sekarang
-            </a>
+            </TrackedCTA>
           </div>
         </section>
       </div>

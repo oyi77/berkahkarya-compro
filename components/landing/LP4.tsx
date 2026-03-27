@@ -1,7 +1,10 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Layout from '@/components/Layout';
 import styles from './LandingPage.module.css';
+import TrackedCTA from './TrackedCTA';
 
 export default function LP4({ locale = 'id' }: { locale?: string }) {
   return (
@@ -29,9 +32,14 @@ export default function LP4({ locale = 'id' }: { locale?: string }) {
             </p>
             
             <div className={styles.ctaRow}>
-              <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+              <TrackedCTA 
+                href="https://saas.aitradepulse.com/" 
+                className={styles.btnPrimary}
+                productName="AI Video Studio - LP4 Hero"
+                productId="ai-video-studio-lp4"
+              >
                 ⚡ Mau Yang Gampang
-              </a>
+              </TrackedCTA>
             </div>
             
             <div className={styles.trustStrip}>
@@ -99,9 +107,14 @@ export default function LP4({ locale = 'id' }: { locale?: string }) {
               Mau Yang <span className={styles.gradientText}>Gampang?</span>
             </h2>
             <p className={styles.subtitle}>3 kredit gratis. Langsung cobain.</p>
-            <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+            <TrackedCTA 
+              href="https://saas.aitradepulse.com/" 
+              className={styles.btnPrimary}
+              productName="AI Video Studio - LP4 Footer"
+              productId="ai-video-studio-lp4-footer"
+            >
               ⚡ Upload Sekarang
-            </a>
+            </TrackedCTA>
           </div>
         </section>
       </div>

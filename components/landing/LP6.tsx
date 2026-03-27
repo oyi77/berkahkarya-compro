@@ -1,7 +1,10 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Layout from '@/components/Layout';
 import styles from './LandingPage.module.css';
+import TrackedCTA from './TrackedCTA';
 
 export default function LP6({ locale = 'id' }: { locale?: string }) {
   return (
@@ -29,9 +32,14 @@ export default function LP6({ locale = 'id' }: { locale?: string }) {
             </p>
             
             <div className={styles.ctaRow}>
-              <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+              <TrackedCTA 
+                href="https://saas.aitradepulse.com/" 
+                className={styles.btnPrimary}
+                productName="AI Video Studio - LP6 Hero"
+                productId="ai-video-studio-lp6"
+              >
                 ⭐ Mau Hasil Kayak Gini
-              </a>
+              </TrackedCTA>
             </div>
             
             <div className={styles.trustStrip}>
@@ -138,9 +146,14 @@ export default function LP6({ locale = 'id' }: { locale?: string }) {
               Giliran Kamu <span className={styles.gradientText}>Buktiin</span>
             </h2>
             <p className={styles.subtitle}>Join 500+ seller yang udah rasain hasilnya.</p>
-            <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+            <TrackedCTA 
+              href="https://saas.aitradepulse.com/" 
+              className={styles.btnPrimary}
+              productName="AI Video Studio - LP6 Footer"
+              productId="ai-video-studio-lp6-footer"
+            >
               ⭐ Coba Gratis Sekarang
-            </a>
+            </TrackedCTA>
           </div>
         </section>
       </div>

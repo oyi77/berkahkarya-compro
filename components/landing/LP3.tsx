@@ -1,7 +1,10 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Layout from '@/components/Layout';
 import styles from './LandingPage.module.css';
+import TrackedCTA from './TrackedCTA';
 
 export default function LP3({ locale = 'id' }: { locale?: string }) {
   return (
@@ -29,9 +32,14 @@ export default function LP3({ locale = 'id' }: { locale?: string }) {
             </p>
             
             <div className={styles.ctaRow}>
-              <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+              <TrackedCTA 
+                href="https://saas.aitradepulse.com/" 
+                className={styles.btnPrimary}
+                productName="AI Video Studio - LP3 Hero"
+                productId="ai-video-studio-lp3"
+              >
                 😫 Stop Kerja Rodi
-              </a>
+              </TrackedCTA>
             </div>
             
             <div className={styles.trustStrip}>
@@ -99,9 +107,14 @@ export default function LP3({ locale = 'id' }: { locale?: string }) {
               Udahan <span className={styles.gradientText}>Kerja Rodinya</span>
             </h2>
             <p className={styles.subtitle}>Biar AI yang kerja. Kamu fokus scaling bisnis.</p>
-            <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+            <TrackedCTA 
+              href="https://saas.aitradepulse.com/" 
+              className={styles.btnPrimary}
+              productName="AI Video Studio - LP3 Footer"
+              productId="ai-video-studio-lp3-footer"
+            >
               😫 Gue Mau Upgrade
-            </a>
+            </TrackedCTA>
           </div>
         </section>
       </div>

@@ -1,7 +1,10 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Layout from '@/components/Layout';
 import styles from './LandingPage.module.css';
+import TrackedCTA from './TrackedCTA';
 
 export default function LP1({ locale = 'id' }: { locale?: string }) {
   return (
@@ -29,9 +32,14 @@ export default function LP1({ locale = 'id' }: { locale?: string }) {
             </p>
             
             <div className={styles.ctaRow}>
-              <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+              <TrackedCTA 
+                href="https://saas.aitradepulse.com/" 
+                className={styles.btnPrimary}
+                productName="AI Video Studio - LP1 Hero"
+                productId="ai-video-studio-lp1"
+              >
                 🚀 Coba Gratis Sekarang
-              </a>
+              </TrackedCTA>
             </div>
             
             <div className={styles.trustStrip}>
@@ -96,9 +104,14 @@ export default function LP1({ locale = 'id' }: { locale?: string }) {
               Siap Bikin Konten yang <span className={styles.gradientText}>Laku Keras?</span>
             </h2>
             <p className={styles.subtitle}>Join 500+ seller yang udah buktiin hasilnya.</p>
-            <a href="https://saas.aitradepulse.com/" target="_blank" rel="noopener noreferrer" className={styles.btnPrimary}>
+            <TrackedCTA 
+              href="https://saas.aitradepulse.com/" 
+              className={styles.btnPrimary}
+              productName="AI Video Studio - LP1 Footer"
+              productId="ai-video-studio-lp1-footer"
+            >
               🚀 Mulai Gratis — 3 Kredit Aktif
-            </a>
+            </TrackedCTA>
           </div>
         </section>
       </div>
