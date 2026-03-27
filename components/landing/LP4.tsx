@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Layout from '@/components/Layout';
 import styles from './LandingPage.module.css';
 
@@ -45,10 +46,14 @@ export default function LP4({ locale = 'id' }: { locale?: string }) {
         <section className={styles.imageSection}>
           <div className={styles.container}>
             <div className={styles.heroImageWrapper}>
-              <img 
+              <Image 
                 src="https://i.postimg.cc/MGJ1Xf4N/Gemini-Generated-Image-m9dyorm9dyorm9dy.png" 
                 alt="AI Content Studio - Tinggal Upload Doang"
+                width={900}
+                height={600}
                 className={styles.heroImage}
+                priority
+                quality={75}
               />
             </div>
           </div>
