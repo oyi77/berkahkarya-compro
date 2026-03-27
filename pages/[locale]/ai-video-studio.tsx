@@ -6,17 +6,16 @@
 
 import React from 'react';
 import { GetServerSideProps } from 'next';
-import dynamic from 'next/dynamic';
+
+// Static imports (no dynamic/lazy loading)
+import LP1 from '@/components/landing/LP1';
+import LP2 from '@/components/landing/LP2';
+import LP3 from '@/components/landing/LP3';
+import LP4 from '@/components/landing/LP4';
+import LP5 from '@/components/landing/LP5';
+import LP6 from '@/components/landing/LP6';
 
 type Locale = 'id' | 'en';
-
-// Dynamic imports
-const LP1 = dynamic(() => import('@/components/landing/LP1'));
-const LP2 = dynamic(() => import('@/components/landing/LP2'));
-const LP3 = dynamic(() => import('@/components/landing/LP3'));
-const LP4 = dynamic(() => import('@/components/landing/LP4'));
-const LP5 = dynamic(() => import('@/components/landing/LP5'));
-const LP6 = dynamic(() => import('@/components/landing/LP6'));
 
 const LP_MAP = {
   '1': LP1,
