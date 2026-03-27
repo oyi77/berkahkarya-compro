@@ -1,9 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { useEffect } from 'react';
 import Layout from '@/components/Layout';
 import HeroSection from '@/components/HeroSection';
 import ProblemSection from '@/components/ProblemSection';
 import PillarGrid from '@/components/PillarGrid';
-import ServiceGrid from '@/components/ServiceGrid';
+import ProductShowcase from '@/components/ProductShowcase';
 import TestimonialSection from '@/components/TestimonialSection';
 import StatsRow from '@/components/StatsRow';
 import HowItWorks from '@/components/HowItWorks';
@@ -11,6 +12,7 @@ import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import RecentPosts from '@/components/RecentPosts';
 import { homeData } from '@/data/home';
+import { trackGAEvent, trackMetaEvent, sendMetaCAPI, trackTikTokEvent, sendTikTokCAPI } from '@/lib/tracking';
 
 type Locale = 'id' | 'en';
 
@@ -25,6 +27,41 @@ export const getStaticProps: GetStaticProps = async ({ params }) => ({
 
 export default function HomePage({ locale }: { locale: Locale }) {
   const d = homeData[locale];
+
+  useEffect(() => {
+    const referrer = document.referrer || 'direct';
+    const path = window.location.pathname;
+
+    // GA4 — PageView + referrer
+    trackGAEvent('page_view', {
+      page_path: path,
+      page_title: d.meta.title,
+      referrer,
+      locale,
+    });
+
+    // Meta Pixel + CAPI
+    trackMetaEvent('ViewContent', {
+      content_name: 'Homepage',
+      content_type: 'landing_page',
+    });
+    sendMetaCAPI('ViewContent', {
+      content_name: 'Homepage',
+      content_type: 'landing_page',
+      referrer_url: referrer,
+    });
+
+    // TikTok Pixel + Events API
+    trackTikTokEvent('ViewContent', {
+      content_name: 'Homepage',
+      content_type: 'landing_page',
+    });
+    sendTikTokCAPI('ViewContent', {
+      content_name: 'Homepage',
+      content_type: 'landing_page',
+    });
+  }, [locale, d.meta.title]);
+
   return (
     <Layout title={d.meta.title} description={d.meta.description}>
       <HeroSection
@@ -37,7 +74,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
       />
       <ProblemSection hook={d.problem.hook} pains={[...d.problem.pains]} bridge={d.problem.bridge} />
       <PillarGrid title={d.pillars.title} items={[...d.pillars.items]} />
-      <ServiceGrid title={d.services.title} subtitle={d.services.subtitle} items={[...d.services.items]} />
+      <ProductShowcase locale={locale} />
       <TestimonialSection title={d.testimonials.title} items={[...d.testimonials.items]} />
       <StatsRow items={[...d.stats]} />
       <HowItWorks title={d.howItWorks.title} steps={[...d.howItWorks.steps]} />
