@@ -5,8 +5,10 @@ import Image from 'next/image';
 import Layout from '@/components/Layout';
 import styles from './LandingPage.module.css';
 import TrackedCTA from './TrackedCTA';
+import { useEngagementTracking } from '@/hooks/useEngagementTracking';
 
 export default function LP2({ locale = 'id' }: { locale?: string }) {
+  useEngagementTracking('AI Video Studio - LP2', '0', 'ai-video-studio-lp2');
   return (
     <Layout 
       title="Serius, Sesimpel Ini? — AI Content Studio | BerkahKarya"

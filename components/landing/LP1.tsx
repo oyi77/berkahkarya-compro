@@ -5,8 +5,12 @@ import Image from 'next/image';
 import Layout from '@/components/Layout';
 import styles from './LandingPage.module.css';
 import TrackedCTA from './TrackedCTA';
+import { useEngagementTracking } from '@/hooks/useEngagementTracking';
 
 export default function LP1({ locale = 'id' }: { locale?: string }) {
+  // Track scroll depth, time on page, and product view
+  useEngagementTracking('AI Video Studio - LP1', '0', 'ai-video-studio-lp1');
+
   return (
     <Layout 
       title="Konten Ini Bikin Laku — AI Content Studio | BerkahKarya"

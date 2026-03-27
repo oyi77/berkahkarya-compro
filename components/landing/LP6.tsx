@@ -5,8 +5,10 @@ import Image from 'next/image';
 import Layout from '@/components/Layout';
 import styles from './LandingPage.module.css';
 import TrackedCTA from './TrackedCTA';
+import { useEngagementTracking } from '@/hooks/useEngagementTracking';
 
 export default function LP6({ locale = 'id' }: { locale?: string }) {
+  useEngagementTracking('AI Video Studio - LP6', '0', 'ai-video-studio-lp6');
   return (
     <Layout 
       title="Hasil Nyata Seller — AI Content Studio | BerkahKarya"

@@ -5,8 +5,10 @@ import Image from 'next/image';
 import Layout from '@/components/Layout';
 import styles from './LandingPage.module.css';
 import TrackedCTA from './TrackedCTA';
+import { useEngagementTracking } from '@/hooks/useEngagementTracking';
 
 export default function LP4({ locale = 'id' }: { locale?: string }) {
+  useEngagementTracking('AI Video Studio - LP4', '0', 'ai-video-studio-lp4');
   return (
     <Layout 
       title="Tinggal Upload Doang — AI Content Studio | BerkahKarya"

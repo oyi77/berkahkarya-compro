@@ -5,8 +5,10 @@ import Image from 'next/image';
 import Layout from '@/components/Layout';
 import styles from './LandingPage.module.css';
 import TrackedCTA from './TrackedCTA';
+import { useEngagementTracking } from '@/hooks/useEngagementTracking';
 
 export default function LP5({ locale = 'id' }: { locale?: string }) {
+  useEngagementTracking('AI Video Studio - LP5', '0', 'ai-video-studio-lp5');
   return (
     <Layout 
       title="Ini Cara Baru — AI Content Studio | BerkahKarya"

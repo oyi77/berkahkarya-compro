@@ -712,3 +712,583 @@ export function getAttributionReport() {
     }),
   };
 }
+
+// ============================================
+// WHATSAPP TRACKING — Specific WA link tracking
+// ============================================
+
+/**
+ * Track WhatsApp click with full attribution
+ * Use: trackWhatsAppClick('Sales Inquiry', '6281234567890', 'Halo, saya mau tanya...')
+ */
+export function trackWhatsAppClick(params: {
+  intent: string;           // e.g., "Sales Inquiry", "Support", "Order"
+  phone_number: string;     // e.g., "6281234567890"
+  message?: string;         // Pre-filled message
+  product_name?: string;    // e.g., "AI Video Studio Growth"
+  product_value?: number;   // e.g., 149000
+}) {
+  const session = getUserSession();
+  const referrerSource = getReferrerSource(session.first_touch.referrer);
+  
+  const waUrl = `https://wa.me/${params.phone_number}${params.message ? '?text=' + encodeURIComponent(params.message) : ''}`;
+  
+  const eventData = {
+    content_name: params.intent,
+    content_type: 'whatsapp_inquiry',
+    content_ids: [params.product_name || params.intent],
+    value: params.product_value || 0,
+    currency: 'IDR',
+    // Attribution
+    destination: 'whatsapp',
+    destination_url: waUrl,
+    phone_number: params.phone_number,
+    intent_type: params.intent,
+    product_name: params.product_name,
+    session_id: session.session_id,
+    referrer_source: referrerSource,
+    utm_source: session.first_touch.utm_source,
+    utm_campaign: session.first_touch.utm_campaign,
+    landing_page: session.first_touch.landing_page,
+    page_views_before: session.page_views,
+  };
+
+  addEventToJourney(`WhatsApp:${params.intent}`);
+
+  // GA4
+  trackGAEvent('contact', {
+    method: 'whatsapp',
+    intent: params.intent,
+    product: params.product_name,
+    value: params.product_value,
+    traffic_source: referrerSource,
+  });
+
+  // Also track as AddToCart for funnel
+  trackMetaEvent('AddToCart', eventData);
+  sendMetaCAPI('AddToCart', eventData);
+
+  // Lead event for WhatsApp
+  trackMetaEvent('Lead', {
+    content_name: `WA: ${params.intent}`,
+    content_category: 'WhatsApp',
+    value: params.product_value,
+  });
+  sendMetaCAPI('Lead', {
+    content_name: `WA: ${params.intent}`,
+    content_category: 'WhatsApp',
+  });
+
+  // TikTok
+  trackTikTokEvent('Contact', eventData);
+  sendTikTokCAPI('Contact', eventData);
+
+  console.log('[Tracking] WhatsApp Click:', eventData);
+}
+
+// ============================================
+// PRICING PAGE TRACKING
+// ============================================
+
+/**
+ * Track pricing page view
+ */
+export function trackPricingView(pricingTier?: string) {
+  const session = getUserSession();
+  const referrerSource = getReferrerSource(session.first_touch.referrer);
+
+  const eventData = {
+    content_name: 'Pricing Page',
+    content_type: 'pricing',
+    content_category: pricingTier || 'all_tiers',
+    session_id: session.session_id,
+    referrer_source: referrerSource,
+    utm_source: session.first_touch.utm_source,
+  };
+
+  addEventToJourney('PricingView');
+
+  // GA4
+  trackGAEvent('view_pricing', {
+    tier: pricingTier,
+    traffic_source: referrerSource,
+  });
+
+  // Meta
+  trackMetaEvent('ViewContent', {
+    ...eventData,
+    content_type: 'pricing_page',
+  });
+
+  console.log('[Tracking] Pricing View:', eventData);
+}
+
+/**
+ * Track pricing tier selection (hover/click)
+ */
+export function trackPricingSelect(params: {
+  tier_name: string;        // e.g., "Starter", "Growth", "Kingdom"
+  price: number;            // e.g., 49000, 149000, 499000
+  currency?: string;
+  action: 'hover' | 'click' | 'select';
+}) {
+  const session = getUserSession();
+  const referrerSource = getReferrerSource(session.first_touch.referrer);
+
+  const eventData = {
+    content_name: params.tier_name,
+    content_type: 'pricing_tier',
+    value: params.price,
+    currency: params.currency || 'IDR',
+    action: params.action,
+    session_id: session.session_id,
+    referrer_source: referrerSource,
+  };
+
+  if (params.action === 'click' || params.action === 'select') {
+    addEventToJourney(`PricingSelect:${params.tier_name}`);
+
+    // Track as AddToCart when they click a tier
+    trackAddToCart({
+      content_name: `Plan: ${params.tier_name}`,
+      content_id: params.tier_name.toLowerCase(),
+      content_type: 'subscription',
+      value: params.price,
+      currency: params.currency || 'IDR',
+      destination: 'pricing_select',
+      destination_url: window.location.href,
+    });
+  }
+
+  // GA4
+  trackGAEvent('select_pricing', {
+    tier: params.tier_name,
+    price: params.price,
+    action: params.action,
+    traffic_source: referrerSource,
+  });
+
+  console.log('[Tracking] Pricing Select:', eventData);
+}
+
+// ============================================
+// SCROLL DEPTH TRACKING
+// ============================================
+
+let scrollMilestones: number[] = [];
+
+/**
+ * Initialize scroll depth tracking
+ * Call this in useEffect on page mount
+ */
+export function initScrollTracking() {
+  if (typeof window === 'undefined') return;
+
+  scrollMilestones = [];
+  const thresholds = [25, 50, 75, 90, 100];
+
+  const handleScroll = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+
+    thresholds.forEach(threshold => {
+      if (scrollPercent >= threshold && !scrollMilestones.includes(threshold)) {
+        scrollMilestones.push(threshold);
+        trackScrollDepth(threshold);
+      }
+    });
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  
+  // Return cleanup function
+  return () => window.removeEventListener('scroll', handleScroll);
+}
+
+function trackScrollDepth(percent: number) {
+  const session = getUserSession();
+  const pageName = window.location.pathname;
+
+  addEventToJourney(`Scroll:${percent}%`);
+
+  // GA4
+  trackGAEvent('scroll_depth', {
+    percent: percent,
+    page: pageName,
+    session_id: session.session_id,
+  });
+
+  // Meta custom event (only at key milestones)
+  if (percent >= 75) {
+    trackMetaCustomEvent('HighEngagement', {
+      scroll_depth: percent,
+      page: pageName,
+    });
+  }
+
+  console.log(`[Tracking] Scroll Depth: ${percent}%`);
+}
+
+// ============================================
+// TIME ON PAGE TRACKING
+// ============================================
+
+let pageLoadTime: number = 0;
+let timeTrackingInterval: NodeJS.Timeout | null = null;
+
+/**
+ * Initialize time on page tracking
+ */
+export function initTimeTracking() {
+  if (typeof window === 'undefined') return;
+
+  pageLoadTime = Date.now();
+  const milestones = [30, 60, 120, 300]; // seconds
+  let trackedMilestones: number[] = [];
+
+  timeTrackingInterval = setInterval(() => {
+    const secondsOnPage = Math.floor((Date.now() - pageLoadTime) / 1000);
+    
+    milestones.forEach(milestone => {
+      if (secondsOnPage >= milestone && !trackedMilestones.includes(milestone)) {
+        trackedMilestones.push(milestone);
+        trackTimeOnPage(milestone);
+      }
+    });
+  }, 5000);
+
+  // Track on page unload
+  const handleUnload = () => {
+    const totalSeconds = Math.floor((Date.now() - pageLoadTime) / 1000);
+    trackTimeOnPage(totalSeconds, true);
+  };
+
+  window.addEventListener('beforeunload', handleUnload);
+
+  return () => {
+    if (timeTrackingInterval) clearInterval(timeTrackingInterval);
+    window.removeEventListener('beforeunload', handleUnload);
+  };
+}
+
+function trackTimeOnPage(seconds: number, isFinal = false) {
+  const session = getUserSession();
+  const pageName = window.location.pathname;
+
+  // GA4
+  trackGAEvent('time_on_page', {
+    seconds: seconds,
+    page: pageName,
+    is_final: isFinal,
+    session_id: session.session_id,
+  });
+
+  // High engagement (2+ minutes)
+  if (seconds >= 120 && !isFinal) {
+    trackMetaCustomEvent('HighEngagement', {
+      engagement_type: 'time',
+      seconds: seconds,
+      page: pageName,
+    });
+    addEventToJourney(`TimeEngaged:${seconds}s`);
+  }
+
+  console.log(`[Tracking] Time on Page: ${seconds}s${isFinal ? ' (final)' : ''}`);
+}
+
+// ============================================
+// VIDEO TRACKING
+// ============================================
+
+/**
+ * Track video play events
+ */
+export function trackVideoPlay(params: {
+  video_title: string;
+  video_id?: string;
+  video_duration?: number;
+  video_position?: number;  // percentage
+}) {
+  const session = getUserSession();
+
+  addEventToJourney(`VideoPlay:${params.video_title}`);
+
+  // GA4
+  trackGAEvent('video_start', {
+    video_title: params.video_title,
+    video_id: params.video_id,
+  });
+
+  // Meta
+  trackMetaCustomEvent('VideoPlay', {
+    content_name: params.video_title,
+    content_id: params.video_id,
+  });
+
+  // TikTok
+  trackTikTokEvent('ViewContent', {
+    content_type: 'video',
+    content_name: params.video_title,
+  });
+
+  console.log('[Tracking] Video Play:', params);
+}
+
+/**
+ * Track video completion
+ */
+export function trackVideoComplete(params: {
+  video_title: string;
+  video_id?: string;
+  watch_time_seconds: number;
+}) {
+  const session = getUserSession();
+
+  addEventToJourney(`VideoComplete:${params.video_title}`);
+
+  // GA4
+  trackGAEvent('video_complete', {
+    video_title: params.video_title,
+    video_id: params.video_id,
+    watch_time: params.watch_time_seconds,
+  });
+
+  // Meta - high intent signal
+  trackMetaEvent('Lead', {
+    content_name: `Video Completed: ${params.video_title}`,
+    content_category: 'video_engagement',
+  });
+
+  console.log('[Tracking] Video Complete:', params);
+}
+
+// ============================================
+// FORM TRACKING
+// ============================================
+
+/**
+ * Track form interactions
+ */
+export function trackFormStart(formName: string) {
+  const session = getUserSession();
+
+  addEventToJourney(`FormStart:${formName}`);
+
+  trackGAEvent('form_start', {
+    form_name: formName,
+    session_id: session.session_id,
+  });
+
+  console.log('[Tracking] Form Start:', formName);
+}
+
+export function trackFormSubmit(params: {
+  form_name: string;
+  form_type: 'contact' | 'signup' | 'inquiry' | 'order' | 'other';
+  email?: string;  // Will be hashed
+  phone?: string;  // Will be hashed
+  value?: number;
+}) {
+  const session = getUserSession();
+  const referrerSource = getReferrerSource(session.first_touch.referrer);
+
+  addEventToJourney(`FormSubmit:${params.form_name}`);
+
+  // GA4
+  trackGAEvent('form_submit', {
+    form_name: params.form_name,
+    form_type: params.form_type,
+    traffic_source: referrerSource,
+  });
+
+  // Meta - Lead event
+  trackMetaEvent('Lead', {
+    content_name: params.form_name,
+    content_category: params.form_type,
+    value: params.value,
+    currency: 'IDR',
+  });
+
+  sendMetaCAPI('Lead', {
+    content_name: params.form_name,
+    content_category: params.form_type,
+    // Note: email/phone should be hashed on server-side for CAPI
+  });
+
+  // TikTok
+  trackTikTokEvent('SubmitForm', {
+    content_name: params.form_name,
+    content_type: params.form_type,
+  });
+
+  sendTikTokCAPI('SubmitForm', {
+    content_name: params.form_name,
+  });
+
+  console.log('[Tracking] Form Submit:', params);
+}
+
+// ============================================
+// SOCIAL SHARE TRACKING
+// ============================================
+
+export function trackSocialShare(params: {
+  platform: 'facebook' | 'twitter' | 'linkedin' | 'whatsapp' | 'telegram' | 'copy_link' | 'other';
+  content_name: string;
+  content_url?: string;
+}) {
+  const session = getUserSession();
+
+  addEventToJourney(`Share:${params.platform}`);
+
+  // GA4
+  trackGAEvent('share', {
+    method: params.platform,
+    content_type: 'page',
+    content_id: params.content_name,
+  });
+
+  // Meta
+  trackMetaCustomEvent('Share', {
+    platform: params.platform,
+    content_name: params.content_name,
+  });
+
+  console.log('[Tracking] Social Share:', params);
+}
+
+// ============================================
+// DOWNLOAD TRACKING
+// ============================================
+
+export function trackDownload(params: {
+  file_name: string;
+  file_type: string;      // e.g., "pdf", "video", "image"
+  file_category?: string; // e.g., "ebook", "guide", "template"
+}) {
+  const session = getUserSession();
+  const referrerSource = getReferrerSource(session.first_touch.referrer);
+
+  addEventToJourney(`Download:${params.file_name}`);
+
+  // GA4
+  trackGAEvent('file_download', {
+    file_name: params.file_name,
+    file_extension: params.file_type,
+    file_category: params.file_category,
+    traffic_source: referrerSource,
+  });
+
+  // Meta - Lead for lead magnet downloads
+  if (params.file_category === 'ebook' || params.file_category === 'guide') {
+    trackMetaEvent('Lead', {
+      content_name: params.file_name,
+      content_category: 'download',
+    });
+  }
+
+  console.log('[Tracking] Download:', params);
+}
+
+// ============================================
+// SEARCH TRACKING
+// ============================================
+
+export function trackSearch(params: {
+  search_term: string;
+  results_count?: number;
+  search_type?: 'product' | 'content' | 'global';
+}) {
+  const session = getUserSession();
+
+  addEventToJourney(`Search:${params.search_term}`);
+
+  // GA4
+  trackGAEvent('search', {
+    search_term: params.search_term,
+    results_count: params.results_count,
+  });
+
+  // Meta
+  trackMetaEvent('Search', {
+    search_string: params.search_term,
+    content_type: params.search_type,
+  });
+
+  // TikTok
+  trackTikTokEvent('Search', {
+    query: params.search_term,
+  });
+
+  console.log('[Tracking] Search:', params);
+}
+
+// ============================================
+// ERROR TRACKING
+// ============================================
+
+export function trackError(params: {
+  error_type: 'page_not_found' | 'api_error' | 'payment_failed' | 'form_error' | 'other';
+  error_message: string;
+  error_page?: string;
+}) {
+  const session = getUserSession();
+
+  addEventToJourney(`Error:${params.error_type}`);
+
+  // GA4
+  trackGAEvent('error', {
+    error_type: params.error_type,
+    error_message: params.error_message,
+    page: params.error_page || window.location.pathname,
+    session_id: session.session_id,
+  });
+
+  console.log('[Tracking] Error:', params);
+}
+
+// ============================================
+// ENGAGEMENT SCORE — Calculate user engagement
+// ============================================
+
+export function calculateEngagementScore(): number {
+  const session = getUserSession();
+  let score = 0;
+
+  // Page views (max 20 points)
+  score += Math.min(session.page_views * 2, 20);
+
+  // Events (max 40 points)
+  const eventTypes = new Set(session.events.map(e => e.split(':')[0]));
+  
+  if (eventTypes.has('AddToCart')) score += 15;
+  if (eventTypes.has('InitiateCheckout')) score += 10;
+  if (eventTypes.has('WhatsApp')) score += 10;
+  if (eventTypes.has('FormSubmit')) score += 10;
+  if (eventTypes.has('VideoComplete')) score += 5;
+  if (eventTypes.has('Scroll')) score += 5;
+  if (eventTypes.has('TimeEngaged')) score += 5;
+  if (eventTypes.has('PricingSelect')) score += 10;
+  if (eventTypes.has('Download')) score += 5;
+
+  // Time since first touch (recency bonus, max 20 points)
+  const hoursSinceFirst = (Date.now() - session.first_touch.timestamp) / (1000 * 60 * 60);
+  if (hoursSinceFirst < 1) score += 20;
+  else if (hoursSinceFirst < 24) score += 15;
+  else if (hoursSinceFirst < 72) score += 10;
+  else if (hoursSinceFirst < 168) score += 5;
+
+  return Math.min(score, 100);
+}
+
+/**
+ * Get engagement tier based on score
+ */
+export function getEngagementTier(): 'cold' | 'warm' | 'hot' | 'burning' {
+  const score = calculateEngagementScore();
+  if (score >= 80) return 'burning';
+  if (score >= 50) return 'hot';
+  if (score >= 25) return 'warm';
+  return 'cold';
+}
