@@ -39,7 +39,7 @@ const navLinks: NavItem[] = [
       // Trading & Finance
       { slug: '__divider__', id: '📈 Trading & Fintech', en: '📈 Trading & Fintech' },
       { slug: 'algorithmic-trading', id: 'Trading Algoritmik', en: 'Algorithmic Trading' },
-      { slug: '1ai', id: '1Ai', en: '1Ai' },
+      { slug: 'one-ai', id: '1Ai', en: '1Ai' },
       // Digital Products
       { slug: '__divider__', id: '📦 Produk Digital', en: '📦 Digital Products' },
       { slug: 'digital-products', id: 'Produk Digital', en: 'Digital Products' },

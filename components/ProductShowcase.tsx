@@ -113,7 +113,7 @@ const products: Record<'id' | 'en', Product[]> = {
       priceSub: '/bulan flat',
       priceLabel: 'Mulai dari',
       cta: 'Coba Gratis →',
-      href: '/id/1ai',
+      href: '/id/one-ai',
       badge: { label: '🆕 NEW', type: 'new' },
     },
     {
@@ -349,7 +349,7 @@ const products: Record<'id' | 'en', Product[]> = {
       priceSub: '/month flat',
       priceLabel: 'Starting from',
       cta: 'Try Free →',
-      href: '/en/1ai',
+      href: '/en/one-ai',
       badge: { label: '🆕 NEW', type: 'new' },
     },
     {

@@ -9,7 +9,7 @@ import HowItWorks from '@/components/HowItWorks';
 import PricingTable from '@/components/PricingTable';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
-import { omnirouteData as oneAIData } from '@/data/1ai';
+import { omnirouteData as oneAIData } from '@/data/one-ai';
 import { characters } from '@/data/characters';
 
 type Locale = 'id' | 'en';
