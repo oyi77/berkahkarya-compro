@@ -37,6 +37,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({ params, qu
   const lpParam = query.lp as string || '1';
   const lpVariant = (lpParam && ['1', '2', '3', '4', '5', '6'].includes(lpParam)) ? lpParam : '1';
 
+  console.log('[AI Video Studio] Query:', { lpParam, lpVariant, locale });
+
   return {
     props: {
       locale,
