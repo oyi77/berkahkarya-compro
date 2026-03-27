@@ -1,11 +1,11 @@
 /**
- * AI Video Studio - Multi-LP Query Param Router
+ * AI Video Studio - Multi-LP Query Param Router (Server-Side Rendered)
  * Routes based on ?lp=1|2|3|4|5|6
  * Default: LP1
  */
 
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import React from 'react';
+import { GetServerSideProps } from 'next';
 import dynamic from 'next/dynamic';
 
 type Locale = 'id' | 'en';
@@ -27,53 +27,25 @@ const LP_MAP = {
   '6': LP6,
 } as const;
 
-export default function AIVideoStudio() {
-  const router = useRouter();
-  const [lpVariant, setLpVariant] = useState<string>('1');
-  const [isReady, setIsReady] = useState(false);
+type Props = {
+  locale: Locale;
+  lpVariant: string;
+};
 
-  useEffect(() => {
-    if (!router.isReady) return;
+export const getServerSideProps: GetServerSideProps<Props> = async ({ params, query }) => {
+  const locale = (params?.locale as Locale) || 'id';
+  const lpParam = query.lp as string || '1';
+  const lpVariant = (lpParam && ['1', '2', '3', '4', '5', '6'].includes(lpParam)) ? lpParam : '1';
 
-    // Get locale from router params
-    const locale = router.query.locale as string || 'id';
-    
-    // Get LP variant from query param
-    const lpParam = router.query.lp as string || '1';
-    const variant = (lpParam && ['1', '2', '3', '4', '5', '6'].includes(lpParam)) ? lpParam : '1';
-    
-    setLpVariant(variant);
-    setIsReady(true);
+  return {
+    props: {
+      locale,
+      lpVariant,
+    },
+  };
+};
 
-    // Track event
-    if (typeof window !== 'undefined') {
-      const event = {
-        timestamp: new Date().toISOString(),
-        event: 'lpViewed',
-        lpVariant: parseInt(variant),
-        locale,
-        url: router.asPath,
-      };
-      
-      console.log('[Analytics]', event);
-      
-      try {
-        const events = JSON.parse(window.localStorage.getItem('berkahkarya_events') || '[]');
-        events.push(event);
-        window.localStorage.setItem('berkahkarya_events', JSON.stringify(events.slice(-100)));
-      } catch (e) {
-        console.error('[Analytics] Failed to save event', e);
-      }
-    }
-  }, [router.isReady, router.query, router.asPath]);
-
-  if (!isReady) {
-    return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading...</div>;
-  }
-
-  // Get locale
-  const locale = (router.query.locale as Locale) || 'id';
-
+export default function AIVideoStudio({ locale, lpVariant }: Props) {
   // Get component based on variant
   const CurrentLP = LP_MAP[lpVariant as keyof typeof LP_MAP] || LP1;
 
