@@ -23,34 +23,34 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# /1ai → served by one-ai page (URL stays as /1ai)
+# /1ai → /one-ai (301)
 [[redirects]]
   from = "/id/1ai"
   to = "/id/one-ai"
-  status = 200
+  status = 301
   force = true
 
 [[redirects]]
   from = "/en/1ai"
   to = "/en/one-ai"
-  status = 200
+  status = 301
   force = true
 
-# OmniRoute → 1ai (301 permanent, SEO-safe)
+# OmniRoute → one-ai (301 permanent, SEO-safe)
 [[redirects]]
   from = "/id/omniroute"
-  to = "/id/1ai"
+  to = "/id/one-ai"
   status = 301
   force = true
 
 [[redirects]]
   from = "/en/omniroute"
-  to = "/en/1ai"
+  to = "/en/one-ai"
   status = 301
   force = true
 
 [[redirects]]
   from = "/omniroute"
-  to = "/id/1ai"
+  to = "/id/one-ai"
   status = 301
   force = true
