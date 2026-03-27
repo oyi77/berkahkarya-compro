@@ -1,0 +1,138 @@
+/* Portfolio Page Styles */
+
+.stats {
+  padding: 4rem 1.5rem;
+  background: linear-gradient(180deg, var(--dark-hero) 0%, var(--dark-surface) 100%);
+}
+
+.statsGrid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.statItem {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(0,217,255,0.1);
+}
+
+.statValue {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--teal-primary);
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: var(--text-white-60);
+  font-weight: 500;
+}
+
+/* Portfolio Section */
+.portfolio {
+  padding: 5rem 1.5rem;
+  background: var(--dark-surface);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.category {
+  margin-bottom: 4rem;
+}
+
+.category:last-child {
+  margin-bottom: 0;
+}
+
+.categoryTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-white);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid rgba(0,217,255,0.2);
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.projectCard {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 1.75rem;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.projectCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0,217,255,0.3);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.projectName {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 0.5rem;
+}
+
+.projectDesc {
+  font-size: 0.9rem;
+  color: var(--text-white-70);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.projectClient {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--teal-primary);
+  background: rgba(0,217,255,0.1);
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .projectsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .statValue {
+    font-size: 2rem;
+  }
+  
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .categoryTitle {
+    font-size: 1.25rem;
+  }
+}
