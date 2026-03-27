@@ -41,6 +41,19 @@ export default function LP3({ locale = 'id' }: { locale?: string }) {
           </div>
         </section>
 
+        {/* Hero Image Section */}
+        <section className={styles.imageSection}>
+          <div className={styles.container}>
+            <div className={styles.heroImageWrapper}>
+              <img 
+                src="https://i.postimg.cc/5tW8jQGG/Gemini-Generated-Image-d1nxoed1nxoed1nx.png" 
+                alt="AI Content Studio - Stop Edit Manual"
+                className={styles.heroImage}
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Comparison Section */}
         <section className={styles.section}>
           <div className={styles.container}>

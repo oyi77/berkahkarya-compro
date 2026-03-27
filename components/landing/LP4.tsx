@@ -41,6 +41,19 @@ export default function LP4({ locale = 'id' }: { locale?: string }) {
           </div>
         </section>
 
+        {/* Hero Image Section */}
+        <section className={styles.imageSection}>
+          <div className={styles.container}>
+            <div className={styles.heroImageWrapper}>
+              <img 
+                src="https://i.postimg.cc/MGJ1Xf4N/Gemini-Generated-Image-m9dyorm9dyorm9dy.png" 
+                alt="AI Content Studio - Tinggal Upload Doang"
+                className={styles.heroImage}
+              />
+            </div>
+          </div>
+        </section>
+
         {/* What You Get Section */}
         <section className={styles.section}>
           <div className={styles.container}>

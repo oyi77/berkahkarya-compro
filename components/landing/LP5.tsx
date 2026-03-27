@@ -41,6 +41,19 @@ export default function LP5({ locale = 'id' }: { locale?: string }) {
           </div>
         </section>
 
+        {/* Hero Image Section */}
+        <section className={styles.imageSection}>
+          <div className={styles.container}>
+            <div className={styles.heroImageWrapper}>
+              <img 
+                src="https://i.postimg.cc/fbQYkSF6/Gemini-Generated-Image-n24qbzn24qbzn24q.png" 
+                alt="AI Content Studio - Ini Cara Baru"
+                className={styles.heroImage}
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Timeline Section */}
         <section className={styles.section}>
           <div className={styles.container}>

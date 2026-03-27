@@ -41,6 +41,19 @@ export default function LP2({ locale = 'id' }: { locale?: string }) {
           </div>
         </section>
 
+        {/* Hero Image Section */}
+        <section className={styles.imageSection}>
+          <div className={styles.container}>
+            <div className={styles.heroImageWrapper}>
+              <img 
+                src="https://i.postimg.cc/8PsRYSMn/Gemini-Generated-Image-je8mgkje8mgkje8m.png" 
+                alt="AI Content Studio - Sesimpel Ini"
+                className={styles.heroImage}
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Steps Section */}
         <section className={styles.section}>
           <div className={styles.container}>
