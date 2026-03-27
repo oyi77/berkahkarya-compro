@@ -13,7 +13,7 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 
 export const getStaticProps: GetStaticProps = async ({ params }) => ({
   props: { locale: (params?.locale as Locale) || 'id' },
-  revalidate: 3600,
+  
 });
 
 type Props = {
