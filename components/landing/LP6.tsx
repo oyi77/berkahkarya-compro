@@ -1,17 +1,7 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
 import Layout from '@/components/Layout';
 
 type Locale = 'id' | 'en';
-
-export const getStaticPaths: GetStaticPaths = async () => ({
-  paths: [{ params: { locale: 'id' } }, { params: { locale: 'en' } }],
-  fallback: false,
-});
-
-export const getStaticProps: GetStaticProps = async ({ params }) => ({
-  props: { locale: (params?.locale as Locale) || 'id' },
-});
 
 export default function LP6({ locale }: { locale: Locale }) {
   const isIndo = locale === 'id';
