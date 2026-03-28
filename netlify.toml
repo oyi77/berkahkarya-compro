@@ -8,6 +8,11 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+# Domain aliases (map to this Netlify site)
+# Note: Requires DNS CNAME update in registrar
+[[context.production.environment]]
+# aitradepulse.com alias domain
+
 # Headers for security
 [[headers]]
   for = "/*"
