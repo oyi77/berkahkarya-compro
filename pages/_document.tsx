@@ -5,6 +5,71 @@ export default function Document() {
   return (
     <Html lang="id">
       <Head>
+        {/* UTM Parameter & Attribution Capture (Full Funnel Tracking) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                if (typeof window === 'undefined') return;
+                
+                // Helper: Get cookie value
+                function getCookie(name) {
+                  const value = \`; \${document.cookie}\`;
+                  const parts = value.split(\`; \${name}=\`);
+                  if (parts.length === 2) return parts.pop().split(';').shift();
+                  return '';
+                }
+                
+                // Helper: Set cookie
+                function setCookie(name, value, days = 7) {
+                  const date = new Date();
+                  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                  const expires = \`expires=\${date.toUTCString()}\`;
+                  document.cookie = \`\${name}=\${value};\${expires};path=/\`;
+                }
+                
+                // Capture UTM parameters on page load
+                const params = new URLSearchParams(window.location.search);
+                const utmSource = params.get('utm_source') || 'berkahkarya.org';
+                const utmMedium = params.get('utm_medium') || 'organic';
+                const utmCampaign = params.get('utm_campaign') || '';
+                const utmContent = params.get('utm_content') || '';
+                const lpVariant = params.get('lpVariant') || params.get('lp') || 'default';
+                
+                // Meta & TikTok attribution IDs
+                const fbc = params.get('fbc') || getCookie('_fbc');
+                const fbp = params.get('fbp') || getCookie('_fbp');
+                const ttclid = params.get('ttclid') || getCookie('_tt_enable_cookie');
+                
+                // Store in sessionStorage (survives navigation within same domain)
+                sessionStorage.setItem('utm_source', utmSource);
+                sessionStorage.setItem('utm_medium', utmMedium);
+                sessionStorage.setItem('utm_campaign', utmCampaign);
+                sessionStorage.setItem('utm_content', utmContent);
+                sessionStorage.setItem('lp_variant', lpVariant);
+                sessionStorage.setItem('fbc', fbc);
+                sessionStorage.setItem('fbp', fbp);
+                sessionStorage.setItem('ttclid', ttclid);
+                
+                // Also set first-party cookies (7 days)
+                setCookie('_utm_source', utmSource, 7);
+                setCookie('_utm_campaign', utmCampaign, 7);
+                setCookie('_lp_variant', lpVariant, 7);
+                
+                // Log for debugging
+                console.log('UTM Tracking Captured:', {
+                  utm_source: utmSource,
+                  utm_campaign: utmCampaign,
+                  lp_variant: lpVariant,
+                  has_fbc: !!fbc,
+                  has_fbp: !!fbp,
+                  has_ttclid: !!ttclid
+                });
+              })();
+            `,
+          }}
+        />
+
         {/* Pinterest Domain Verification */}
         <meta name="p:domain_verify" content={TRACKING.PINTEREST_VERIFICATION} />
 
