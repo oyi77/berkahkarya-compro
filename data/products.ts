@@ -630,6 +630,7 @@ export const productsFullData: Record<string, Record<string, ProductFull>> = {
 
 // Digital product catalog items
 export const dpCatalog = [
+  { emoji: '❤️', name: 'Ebook Suami Sejati', category: 'Personal', desc: 'Panduan lengkap membangun keharmonisan rumah tangga — komunikasi, kedekatan, dan kepercayaan diri sebagai suami.', price: 'Rp 99.000', href: 'https://lynk.id/jendralbot/l7qdy174d73d/checkout' },
   { emoji: '📣', name: 'AI Ad Engine', category: 'Bisnis', desc: 'Stop buang budget iklan untuk creative yang tidak convert. Biarkan AI yang buat winning ads-nya.', price: 'Rp 75.000', href: `${STORE}` },
   { emoji: '⚡', name: 'AI Creative Tools', category: 'Bisnis', desc: 'Dari blank page ke konten viral dalam 5 menit — dengan AI sebagai co-creator kamu.', price: 'Rp 75.000', href: `${STORE}` },
   { emoji: '📸', name: 'Food Menu AI Studio', category: 'Bisnis', desc: 'Foto makananmu seperti bintang 5 — cukup dengan HP dan panduan yang tepat.', price: 'Rp 75.000', href: `${STORE}` },
