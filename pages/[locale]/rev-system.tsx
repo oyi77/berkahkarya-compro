@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Layout from '@/components/Layout';
 import { revSystemData } from '@/data/rev-system';
 import Head from 'next/head';
-import { trackGAEvent, trackMetaEvent, sendMetaCAPI, trackTikTokEvent, sendTikTokCAPI } from '@/lib/tracking';
 
 type Locale = 'id' | 'en';
 
@@ -16,7 +15,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => ({
   props: { locale: (params?.locale as Locale) || 'id' },
 });
 
-export default function HomePage({ locale }: { locale: Locale }) {
+export default function RevSystem({ locale }: { locale: Locale }) {
   const d = revSystemData[locale];
   const [formState, setFormState] = useState({
     name: '',
@@ -29,37 +28,6 @@ export default function HomePage({ locale }: { locale: Locale }) {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    const referrer = document.referrer || 'direct';
-    const path = window.location.pathname;
-
-    trackGAEvent('page_view', {
-      page_path: path,
-      page_title: d.meta.title,
-      referrer,
-      locale,
-    });
-
-    trackMetaEvent('ViewContent', {
-      content_name: 'Homepage - REV System',
-      content_type: 'landing_page',
-    });
-    sendMetaCAPI('ViewContent', {
-      content_name: 'Homepage - REV System',
-      content_type: 'landing_page',
-      referrer_url: referrer,
-    });
-
-    trackTikTokEvent('ViewContent', {
-      content_name: 'Homepage - REV System',
-      content_type: 'landing_page',
-    });
-    sendTikTokCAPI('ViewContent', {
-      content_name: 'Homepage - REV System',
-      content_type: 'landing_page',
-    });
-  }, [locale, d.meta.title]);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -71,9 +39,6 @@ export default function HomePage({ locale }: { locale: Locale }) {
       });
       if (res.ok) {
         setSubmitted(true);
-        // Track Lead
-        trackMetaEvent('Lead', { content_name: 'Growth Audit Request' });
-        trackGAEvent('generate_lead', { method: 'audit_form' });
       }
     } catch (err) {
       console.error(err);
@@ -139,6 +104,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
            <div className="logos-wrap">
               <span className="trust-text">TRUSTED BY HIGH-GROWTH BRANDS</span>
               <div className="logos-scroll">
+                 {/* Decorative placeholder logos */}
                  <div className="logo-item">VELOCE</div>
                  <div className="logo-item">STRATOS</div>
                  <div className="logo-item">NEXUS</div>
