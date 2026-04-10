@@ -44,6 +44,7 @@ export const homeData = {
         { emoji: '📱', name: 'Social Media Management', desc: '90 akun dikelola AI. Konten otomatis, auto-posting, analytics — mulai Rp 1.5jt/bulan.', href: '/id/social-media-management' },
         { emoji: '📄', name: 'Custom Documents', desc: 'Laporan, proposal, invoice, CV, kontrak profesional dalam 15-60 menit. Branded sesuai perusahaan.', href: '/id/custom-documents' },
         { emoji: '🤖', name: 'AI Automation', desc: 'Chatbot, workflow automation, integrasi API. 190+ scripts battle-tested. Hemat 60% waktu operasional.', href: '/id/ai-automation' },
+        { emoji: '🏢', name: 'Solusi Korporasi', desc: 'Sistem AI kustom untuk skala perusahaan besar. Efisiensi total di seluruh departemen.', href: 'https://lynk.id/letscorp' },
       ],
     },
     testimonials: {
@@ -81,7 +82,7 @@ export const homeData = {
     cta: {
       title: 'Setiap Hari Tanpa AI = Revenue yang Hilang',
       description: 'Konsultasi 30 menit, gratis. Kami analisa bisnis Anda dan tunjukkan di mana AI bisa langsung menghasilkan ROI.',
-      button: { text: 'Konsultasi Gratis Sekarang →', href: 'https://wa.me/6285732740006?text=Halo%20BerkahKarya%2C%20saya%20mau%20konsultasi%20AI%20untuk%20bisnis%20saya' },
+      button: { text: 'Solusi Korporasi (LYNK) →', href: 'https://lynk.id/letscorp' },
     },
   },
   en: {
@@ -129,6 +130,7 @@ export const homeData = {
         { emoji: '📱', name: 'Social Media Management', desc: '90 accounts managed by AI. Automated content, auto-posting, analytics — from $99/month.', href: '/en/social-media-management' },
         { emoji: '📄', name: 'Custom Documents', desc: 'Professional reports, proposals, invoices, CVs, contracts in 15-60 minutes. Branded to your company.', href: '/en/custom-documents' },
         { emoji: '🤖', name: 'AI Automation', desc: 'Chatbots, workflow automation, API integrations. 190+ battle-tested scripts. Save 60% operational time.', href: '/en/ai-automation' },
+        { emoji: '🏢', name: 'Corporate Solutions', desc: 'Custom AI systems for enterprise scale. Total efficiency across all departments.', href: 'https://lynk.id/letscorp' },
       ],
     },
     testimonials: {
@@ -166,7 +168,7 @@ export const homeData = {
     cta: {
       title: 'Every Day Without AI = Lost Revenue',
       description: '30-minute consultation, free. We analyze your business and show you where AI can immediately generate ROI.',
-      button: { text: 'Get Free Consultation Now →', href: 'https://wa.me/6285732740006?text=Hello%20BerkahKarya%2C%20I%20want%20AI%20consultation%20for%20my%20business' },
+      button: { text: 'Corporate Solutions (LYNK) →', href: 'https://lynk.id/letscorp' },
     },
   },
 } as const;
