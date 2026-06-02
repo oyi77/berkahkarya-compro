@@ -7,12 +7,7 @@ export default function Document() {
       <Head>
         {/* Drive Tracking (emrld.ltd) - Veris */}
         <script
-          nowprocket="true"
-          data-noptimize="1"
-          data-cfasync="false"
-          data-wpfc-render="false"
-          seraph-accel-crit="1"
-          data-no-defer="1"
+          {...({ nowprocket: '', 'data-noptimize': '1', 'data-cfasync': 'false', 'data-wpfc-render': 'false', 'seraph-accel-crit': '1', 'data-no-defer': '1' } as any)}
           dangerouslySetInnerHTML={{
             __html: `(function () {
  var script = document.createElement("script");
