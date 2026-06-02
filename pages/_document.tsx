@@ -5,6 +5,24 @@ export default function Document() {
   return (
     <Html lang="id">
       <Head>
+        {/* Drive Tracking (emrld.ltd) - Veris */}
+        <script
+          nowprocket="true"
+          data-noptimize="1"
+          data-cfasync="false"
+          data-wpfc-render="false"
+          seraph-accel-crit="1"
+          data-no-defer="1"
+          dangerouslySetInnerHTML={{
+            __html: `(function () {
+ var script = document.createElement("script");
+ script.async = 1;
+ script.src = 'https://emrld.ltd/NTM1NDYx.js?t=535461';
+ document.head.appendChild(script);
+ })();`,
+          }}
+        />
+
         {/* Google Tag Manager #1: GTM-5MXPQQRT (Full Funnel Tracking) */}
         <script
           dangerouslySetInnerHTML={{
