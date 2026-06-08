@@ -9,10 +9,11 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Domain aliases (map to this Netlify site)
-# Note: Requires DNS CNAME update in registrar
-[[context.production.environment]]
-# aitradepulse.com alias domain
+# Environment variables for production
+[context.production.environment]
+  META_PIXEL_ID = "771021905629860"
+  META_CAPI_ACCESS_TOKEN = "EAAJxIW8ZC3KsBRA2FCAeMLs1BKQcQYmdCRCaVnnTrjZArCKhjNxDnbJUuvIeTKKvjRzjRwGS3l0cmZBKIYEQKBGZCIcZC5PI0S2mlcZBiS3HEBrZAJBRNP7WRCQYPEa7jEpPTRuf4YytZCcFy1c92naIbZAH5Y076YX13IvcjzFhptqJVRvc0ouerFXYDe2uR7v7ZCygZDZD"
+  NEXT_PUBLIC_GA_MEASUREMENT_ID = "G-V9C14XZ9SG"
 
 # Headers for security
 [[headers]]
