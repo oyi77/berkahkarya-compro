@@ -1,7 +1,7 @@
 import styles from './PricingTable.module.css';
 import { trackAddToCart, trackInitiateCheckout, trackPricingSelect } from '@/lib/tracking';
 
-interface Tier { name: string; price: string; period: string; highlight?: boolean; features: string[]; cta: { text: string; href: string } }
+interface Tier { name: string; price: string; period: string; highlight?: boolean; features: string[]; cta: { text: string; href: string; data_plan?: string } }
 
 // Parse price string to number
 function parsePrice(priceStr: string): number {
@@ -9,7 +9,7 @@ function parsePrice(priceStr: string): number {
   return parseInt(cleaned, 10) || 0;
 }
 
-export default function PricingTable({ tiers }: { tiers: Tier[] }) {
+export default function PricingTable({ tiers, onPay }: { tiers: Tier[]; onPay?: (planId: string) => void }) {
   const handleClick = (tier: Tier) => {
     const priceValue = parsePrice(tier.price);
     const isExternal = tier.cta.href.startsWith('http');
@@ -64,11 +64,16 @@ export default function PricingTable({ tiers }: { tiers: Tier[] }) {
                 {t.features.map((f) => <li key={f}>{f}</li>)}
               </ul>
               <a
-                href={t.cta.href}
+                href={t.cta.href || '#'}
                 className={`${styles.btn} ${t.highlight ? styles.btnHighlight : ''}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => handleClick(t)}
+                data-plan={t.cta.data_plan || ''}
+                onClick={(e) => {
+                  if (t.cta.data_plan && onPay) {
+                    e.preventDefault();
+                    onPay(t.cta.data_plan);
+                  }
+                  handleClick(t);
+                }}
               >
                 {t.cta.text}
               </a>

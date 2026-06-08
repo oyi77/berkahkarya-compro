@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Layout from '@/components/Layout';
 import HeroSection from '@/components/HeroSection';
 import StatsRow from '@/components/StatsRow';
@@ -337,18 +337,10 @@ export default function BelajarAIPage({ locale }: { locale: Locale }) {
   const isId = locale === 'id';
   const [selectedPlan, setSelectedPlan] = useState<any>(null);
 
-  useEffect(() => {
-    const handler = (e: any) => {
-      const btn = e.target.closest('[data-plan]');
-      if (btn) {
-        const planId = btn.getAttribute('data-plan');
-        const plan = d.pricing.find((p: any) => p.id === planId);
-        if (plan) setSelectedPlan(plan);
-      }
-    };
-    document.addEventListener('click', handler);
-    return () => document.removeEventListener('click', handler);
-  }, [d.pricing]);
+  const handlePay = (planId: string) => {
+    const plan = d.pricing.find((p: any) => p.id === planId);
+    if (plan) setSelectedPlan(plan);
+  };
 
   return (
     <Layout title={d.meta.title} description={d.meta.description}>
@@ -521,11 +513,14 @@ export default function BelajarAIPage({ locale }: { locale: Locale }) {
 
       {/* Pricing with Tripay */}
       <section id="pricing">
-        <PricingTable tiers={d.pricing.map((t: any) => ({
-          ...t,
-          features: [...t.features],
-          cta: { ...t.cta, href: '#' },
-        }))} />
+        <PricingTable
+          tiers={d.pricing.map((t: any) => ({
+            ...t,
+            features: [...t.features],
+            cta: { ...t.cta },
+          }))}
+          onPay={handlePay}
+        />
       </section>
 
       {/* Payment Info */}
