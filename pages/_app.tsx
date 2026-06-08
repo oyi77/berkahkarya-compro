@@ -9,19 +9,23 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
+    // Guard: router may be null during static generation (SSG)
+    if (typeof window === 'undefined' || !router || !router.isReady) return;
+
     const handleRouteChange = (url: string) => {
+      if (typeof window === 'undefined') return;
       // GA4 page_view on route change
-      if (typeof window !== 'undefined' && window.gtag) {
+      if (window.gtag) {
         window.gtag('config', TRACKING.GA_ID, { page_path: url });
       }
 
       // Meta Pixel PageView on route change
-      if (typeof window !== 'undefined' && window.fbq && TRACKING.META_PIXEL_ID) {
+      if (window.fbq && TRACKING.META_PIXEL_ID) {
         window.fbq('track', 'PageView');
       }
 
       // TikTok Pixel — page view on route change
-      if (typeof window !== 'undefined' && window.ttq && TRACKING.TIKTOK_PIXEL_ID) {
+      if (window.ttq && TRACKING.TIKTOK_PIXEL_ID) {
         window.ttq.page();
       }
 
