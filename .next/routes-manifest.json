@@ -292,231 +292,231 @@
   "dataRoutes": [
     {
       "page": "/",
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/index.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/index.json$"
     },
     {
       "page": "/[locale]",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)\\.json$"
     },
     {
       "page": "/[locale]/adforge-ai",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/adforge\\-ai\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/adforge\\-ai\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/adforge\\-ai\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/adforge\\-ai\\.json$"
     },
     {
       "page": "/[locale]/ai-agent-pro",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/ai\\-agent\\-pro\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/ai\\-agent\\-pro\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/ai\\-agent\\-pro\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/ai\\-agent\\-pro\\.json$"
     },
     {
       "page": "/[locale]/ai-automation",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/ai\\-automation\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/ai\\-automation\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/ai\\-automation\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/ai\\-automation\\.json$"
     },
     {
       "page": "/[locale]/ai-video-studio",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/ai\\-video\\-studio\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/ai\\-video\\-studio\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/ai\\-video\\-studio\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/ai\\-video\\-studio\\.json$"
     },
     {
       "page": "/[locale]/ai-video-studio/lp1",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/ai\\-video\\-studio/lp1\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/ai\\-video\\-studio/lp1\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/ai\\-video\\-studio/lp1\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/ai\\-video\\-studio/lp1\\.json$"
     },
     {
       "page": "/[locale]/ai-video-studio/lp2",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/ai\\-video\\-studio/lp2\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/ai\\-video\\-studio/lp2\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/ai\\-video\\-studio/lp2\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/ai\\-video\\-studio/lp2\\.json$"
     },
     {
       "page": "/[locale]/ai-video-studio/lp3",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/ai\\-video\\-studio/lp3\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/ai\\-video\\-studio/lp3\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/ai\\-video\\-studio/lp3\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/ai\\-video\\-studio/lp3\\.json$"
     },
     {
       "page": "/[locale]/ai-video-studio/lp4",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/ai\\-video\\-studio/lp4\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/ai\\-video\\-studio/lp4\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/ai\\-video\\-studio/lp4\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/ai\\-video\\-studio/lp4\\.json$"
     },
     {
       "page": "/[locale]/ai-video-studio/lp5",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/ai\\-video\\-studio/lp5\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/ai\\-video\\-studio/lp5\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/ai\\-video\\-studio/lp5\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/ai\\-video\\-studio/lp5\\.json$"
     },
     {
       "page": "/[locale]/ai-video-studio/lp6",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/ai\\-video\\-studio/lp6\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/ai\\-video\\-studio/lp6\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/ai\\-video\\-studio/lp6\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/ai\\-video\\-studio/lp6\\.json$"
     },
     {
       "page": "/[locale]/algorithmic-trading",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/algorithmic\\-trading\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/algorithmic\\-trading\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/algorithmic\\-trading\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/algorithmic\\-trading\\.json$"
     },
     {
       "page": "/[locale]/belajarai",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/belajarai\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/belajarai\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/belajarai\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/belajarai\\.json$"
     },
     {
       "page": "/[locale]/certificate-design",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/certificate\\-design\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/certificate\\-design\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/certificate\\-design\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/certificate\\-design\\.json$"
     },
     {
       "page": "/[locale]/contact",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/contact\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/contact\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/contact\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/contact\\.json$"
     },
     {
       "page": "/[locale]/custom-documents",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/custom\\-documents\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/custom\\-documents\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/custom\\-documents\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/custom\\-documents\\.json$"
     },
     {
       "page": "/[locale]/deep-research",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/deep\\-research\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/deep\\-research\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/deep\\-research\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/deep\\-research\\.json$"
     },
     {
       "page": "/[locale]/digital-products",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/digital\\-products\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/digital\\-products\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/digital\\-products\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/digital\\-products\\.json$"
     },
     {
       "page": "/[locale]/digital-products/ebook-suami-sejati",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/digital\\-products/ebook\\-suami\\-sejati\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/digital\\-products/ebook\\-suami\\-sejati\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/digital\\-products/ebook\\-suami\\-sejati\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/digital\\-products/ebook\\-suami\\-sejati\\.json$"
     },
     {
       "page": "/[locale]/omniroute",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/omniroute\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/omniroute\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/omniroute\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/omniroute\\.json$"
     },
     {
       "page": "/[locale]/one-ai",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/one\\-ai\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/one\\-ai\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/one\\-ai\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/one\\-ai\\.json$"
     },
     {
       "page": "/[locale]/portfolio",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/portfolio\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/portfolio\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/portfolio\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/portfolio\\.json$"
     },
     {
       "page": "/[locale]/rev-system",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/rev\\-system\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/rev\\-system\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/rev\\-system\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/rev\\-system\\.json$"
     },
     {
       "page": "/[locale]/security-audit",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/security\\-audit\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/security\\-audit\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/security\\-audit\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/security\\-audit\\.json$"
     },
     {
       "page": "/[locale]/social-media-management",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/social\\-media\\-management\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/social\\-media\\-management\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/social\\-media\\-management\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/social\\-media\\-management\\.json$"
     },
     {
       "page": "/[locale]/team",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/team\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/team\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/team\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/team\\.json$"
     },
     {
       "page": "/[locale]/video-production",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/video\\-production\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/video\\-production\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/video\\-production\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/video\\-production\\.json$"
     },
     {
       "page": "/[locale]/website-development",
       "routeKeys": {
         "nxtPlocale": "nxtPlocale"
       },
-      "dataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/([^/]+?)/website\\-development\\.json$",
-      "namedDataRouteRegex": "^/_next/data/raH_L2R2tyCQAICLGl35r/(?<nxtPlocale>[^/]+?)/website\\-development\\.json$"
+      "dataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/([^/]+?)/website\\-development\\.json$",
+      "namedDataRouteRegex": "^/_next/data/QQY6MjNUUGl7nyXgbVGIx/(?<nxtPlocale>[^/]+?)/website\\-development\\.json$"
     }
   ],
   "rsc": {
