@@ -26,44 +26,59 @@ from pathlib import Path
 from textwrap import dedent
 
 # ─── Config ──────────────────────────────────────────────────────────────────
-DIR          = Path(__file__).parent
-BLOG_DIR     = DIR / "blog"
-ASSETS_DIR   = DIR / "assets" / "img" / "blog"
-DATA_CSV     = DIR / "data" / "cities.csv"
-BLOG_HTML    = DIR / "blog.html"
+DIR = Path(__file__).parent
+BLOG_DIR = DIR / "blog"
+ASSETS_DIR = DIR / "assets" / "img" / "blog"
+DATA_CSV = DIR / "data" / "cities.csv"
+BLOG_HTML = DIR / "blog.html"
 GENERATED_LOG = DIR / "data" / "generated_posts.json"
 
-OPENAI_KEY   = os.environ.get("OPENAI_API_KEY", "")
-LAOZHANG_KEY = os.environ.get("LAOZHANG_API_KEY", "sk-Yme2SkDrhbSbCD2F56871153658d4c0e841cA2B51cD0F4E3")
+OPENAI_KEY = os.environ.get("OPENAI_API_KEY", "")
+LAOZHANG_KEY = os.environ.get(
+    "LAOZHANG_API_KEY", "sk-Yme2SkDrhbSbCD2F56871153658d4c0e841cA2B51cD0F4E3"
+)
 # Use LaoZhang (OpenAI-compatible proxy) as primary, fallback to OpenAI
-AI_KEY       = LAOZHANG_KEY or OPENAI_KEY
-AI_BASE_URL  = "https://api.laozhang.ai/v1" if LAOZHANG_KEY else "https://api.openai.com/v1"
-AI_MODEL     = "gpt-4o-mini"
-PEXELS_KEY   = os.environ.get("PEXELS_API_KEY", "za1BFLjWysSEyJvGlVliyKhZxUtBuQq9fJ4mIW4YqdKPj9hEeClK0hAm")
-SITE_URL     = "https://berkahkarya.org"
-AUTHOR       = "Tim BerkahKarya"
-DATE_ID      = datetime.now().strftime("%d %B %Y").replace(
-    "January","Januari").replace("February","Februari").replace(
-    "March","Maret").replace("April","April").replace(
-    "May","Mei").replace("June","Juni").replace(
-    "July","Juli").replace("August","Agustus").replace(
-    "September","September").replace("October","Oktober").replace(
-    "November","November").replace("December","Desember")
-DATE_EN      = datetime.now().strftime("%B %d, %Y")
-DATE_ISO     = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+AI_KEY = LAOZHANG_KEY or OPENAI_KEY
+AI_BASE_URL = (
+    "https://api.laozhang.ai/v1" if LAOZHANG_KEY else "https://api.openai.com/v1"
+)
+AI_MODEL = "gpt-4o-mini"
+PEXELS_KEY = os.environ.get(
+    "PEXELS_API_KEY", "za1BFLjWysSEyJvGlVliyKhZxUtBuQq9fJ4mIW4YqdKPj9hEeClK0hAm"
+)
+SITE_URL = "https://berkahkarya.org"
+AUTHOR = "Tim BerkahKarya"
+DATE_ID = (
+    datetime.now()
+    .strftime("%d %B %Y")
+    .replace("January", "Januari")
+    .replace("February", "Februari")
+    .replace("March", "Maret")
+    .replace("April", "April")
+    .replace("May", "Mei")
+    .replace("June", "Juni")
+    .replace("July", "Juli")
+    .replace("August", "Agustus")
+    .replace("September", "September")
+    .replace("October", "Oktober")
+    .replace("November", "November")
+    .replace("December", "Desember")
+)
+DATE_EN = datetime.now().strftime("%B %d, %Y")
+DATE_ISO = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 # Curated Pexels image pool (keyword → photo_id) — fallback if API fails
 PEXELS_POOL = {
-    "ai_business":     "2599244",
-    "technology":      "574069",
-    "city_business":   "325185",
-    "social_media":    "4549411",
-    "marketing":       "6892902",
-    "ecommerce":       "230544",
-    "entrepreneur":    "3184465",
-    "meeting":         "3184418",
-    "laptop_work":     "461073",
-    "product_photo":   "6804871",
+    "ai_business": "2599244",
+    "technology": "574069",
+    "city_business": "325185",
+    "social_media": "4549411",
+    "marketing": "6892902",
+    "ecommerce": "230544",
+    "entrepreneur": "3184465",
+    "meeting": "3184418",
+    "laptop_work": "461073",
+    "product_photo": "6804871",
 }
 
 # Promo blocks
@@ -97,34 +112,74 @@ PROMO_DIGITAL = """
 
 # Category map by topic
 TOPICS = [
-    {"id": "Cara Pakai AI untuk {niche} di {city}", "en": "How to Use AI for {niche} in {city}", "niche_id": "Bisnis UMKM", "niche_en": "Small Business", "cat": "AI & Bisnis", "pexels_q": "artificial intelligence small business"},
-    {"id": "Strategi Pemasaran Digital untuk {niche} di {city}", "en": "Digital Marketing Strategies for {niche} in {city}", "niche_id": "Bisnis Online", "niche_en": "Online Business", "cat": "Marketing", "pexels_q": "digital marketing strategy laptop"},
-    {"id": "Otomasi WhatsApp untuk Bisnis di {city}", "en": "WhatsApp Automation for Business in {city}", "niche_id": "Pelanggan", "niche_en": "Customers", "cat": "AI Tools", "pexels_q": "messaging app smartphone business"},
-    {"id": "Panduan SEO Lokal untuk Bisnis {niche} di {city}", "en": "Local SEO Guide for {niche} Business in {city}", "niche_id": "Kuliner", "niche_en": "Food & Beverage", "cat": "SEO & Digital", "pexels_q": "seo website analytics laptop"},
-    {"id": "Cara Jualan Online untuk {niche} di {city}", "en": "How to Sell Online for {niche} in {city}", "niche_id": "UMKM", "niche_en": "SMEs", "cat": "E-Commerce", "pexels_q": "online shopping ecommerce store"},
+    {
+        "id": "Cara Pakai AI untuk {niche} di {city}",
+        "en": "How to Use AI for {niche} in {city}",
+        "niche_id": "Bisnis UMKM",
+        "niche_en": "Small Business",
+        "cat": "AI & Bisnis",
+        "pexels_q": "artificial intelligence small business",
+    },
+    {
+        "id": "Strategi Pemasaran Digital untuk {niche} di {city}",
+        "en": "Digital Marketing Strategies for {niche} in {city}",
+        "niche_id": "Bisnis Online",
+        "niche_en": "Online Business",
+        "cat": "Marketing",
+        "pexels_q": "digital marketing strategy laptop",
+    },
+    {
+        "id": "Otomasi WhatsApp untuk Bisnis di {city}",
+        "en": "WhatsApp Automation for Business in {city}",
+        "niche_id": "Pelanggan",
+        "niche_en": "Customers",
+        "cat": "AI Tools",
+        "pexels_q": "messaging app smartphone business",
+    },
+    {
+        "id": "Panduan SEO Lokal untuk Bisnis {niche} di {city}",
+        "en": "Local SEO Guide for {niche} Business in {city}",
+        "niche_id": "Kuliner",
+        "niche_en": "Food & Beverage",
+        "cat": "SEO & Digital",
+        "pexels_q": "seo website analytics laptop",
+    },
+    {
+        "id": "Cara Jualan Online untuk {niche} di {city}",
+        "en": "How to Sell Online for {niche} in {city}",
+        "niche_id": "UMKM",
+        "niche_en": "SMEs",
+        "cat": "E-Commerce",
+        "pexels_q": "online shopping ecommerce store",
+    },
 ]
 
 # ─── Helpers ─────────────────────────────────────────────────────────────────
 
+
 def slugify(text: str) -> str:
     text = text.lower().strip()
-    text = re.sub(r'[^\w\s-]', '', text)
-    text = re.sub(r'[\s_]+', '-', text)
-    text = re.sub(r'-+', '-', text).strip('-')
+    text = re.sub(r"[^\w\s-]", "", text)
+    text = re.sub(r"[\s_]+", "-", text)
+    text = re.sub(r"-+", "-", text).strip("-")
     return text
 
+
 def load_cities() -> list[dict]:
-    with open(DATA_CSV, newline='', encoding='utf-8') as f:
+    with open(DATA_CSV, newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
+
 
 def load_generated_log() -> dict:
     if GENERATED_LOG.exists():
         return json.loads(GENERATED_LOG.read_text())
     return {}
 
+
 def save_generated_log(log: dict):
     GENERATED_LOG.parent.mkdir(exist_ok=True)
     GENERATED_LOG.write_text(json.dumps(log, indent=2, ensure_ascii=False))
+
 
 def get_pexels_image(query: str) -> dict:
     """Returns dict with url, alt, credit"""
@@ -133,12 +188,18 @@ def get_pexels_image(query: str) -> dict:
         return {
             "url": f"https://images.pexels.com/photos/{key}/pexels-photo-{key}.jpeg?auto=compress&cs=tinysrgb&w=800&h=450&fit=crop",
             "alt": query,
-            "credit": "Pexels"
+            "credit": "Pexels",
         }
     result = subprocess.run(
-        ["curl", "-s", "-H", f"Authorization: {PEXELS_KEY}",
-         f"https://api.pexels.com/v1/search?query={query.replace(' ','+')}&per_page=5&orientation=landscape"],
-        capture_output=True, text=True
+        [
+            "curl",
+            "-s",
+            "-H",
+            f"Authorization: {PEXELS_KEY}",
+            f"https://api.pexels.com/v1/search?query={query.replace(' ','+')}&per_page=5&orientation=landscape",
+        ],
+        capture_output=True,
+        text=True,
     )
     try:
         data = json.loads(result.stdout)
@@ -148,7 +209,7 @@ def get_pexels_image(query: str) -> dict:
             return {
                 "url": p["src"]["large2x"],
                 "alt": p.get("alt", query),
-                "credit": p.get("photographer", "Pexels")
+                "credit": p.get("photographer", "Pexels"),
             }
     except Exception:
         pass
@@ -157,13 +218,16 @@ def get_pexels_image(query: str) -> dict:
     return {
         "url": f"https://images.pexels.com/photos/{key}/pexels-photo-{key}.jpeg?auto=compress&cs=tinysrgb&w=800&h=450&fit=crop",
         "alt": query,
-        "credit": "Pexels"
+        "credit": "Pexels",
     }
 
-def generate_article_content(city: str, country: str, lang_code: str, topic: dict, promo_type: str) -> dict:
+
+def generate_article_content(
+    city: str, country: str, lang_code: str, topic: dict, promo_type: str
+) -> dict:
     """Generate article content using OpenAI GPT-4o-mini"""
-    is_indonesia = (country == "Indonesia")
-    
+    is_indonesia = country == "Indonesia"
+
     if lang_code == "id":
         title = topic["id"].format(city=city, niche=topic["niche_id"])
         lang_name = "Bahasa Indonesia"
@@ -220,34 +284,59 @@ Keywords: AI, {city}, {topic['niche_en']}, automation, business."""
         return {"title": title, "body": body, "lang_name": lang_name}
 
     # Call AI API (LaoZhang/OpenAI compatible)
-    payload = json.dumps({
-        "model": AI_MODEL,
-        "max_tokens": 1500,
-        "messages": [{"role": "system", "content": system}, 
-                     {"role": "user", "content": f"Tulis artikel sekarang untuk: {title}"}]
-    })
-    
-    result = subprocess.run(
-        ["curl", "-s", "-X", "POST",
-         f"{AI_BASE_URL}/chat/completions",
-         "-H", f"Authorization: Bearer {AI_KEY}",
-         "-H", "Content-Type: application/json",
-         "-d", payload],
-        capture_output=True, text=True
+    payload = json.dumps(
+        {
+            "model": AI_MODEL,
+            "max_tokens": 1500,
+            "messages": [
+                {"role": "system", "content": system},
+                {"role": "user", "content": f"Tulis artikel sekarang untuk: {title}"},
+            ],
+        }
     )
-    
+
+    result = subprocess.run(
+        [
+            "curl",
+            "-s",
+            "-X",
+            "POST",
+            f"{AI_BASE_URL}/chat/completions",
+            "-H",
+            f"Authorization: Bearer {AI_KEY}",
+            "-H",
+            "Content-Type: application/json",
+            "-d",
+            payload,
+        ],
+        capture_output=True,
+        text=True,
+    )
+
     try:
         data = json.loads(result.stdout)
         body = data["choices"][0]["message"]["content"].strip()
         # Remove any markdown code blocks if present
-        body = re.sub(r'^```html?\n?', '', body)
-        body = re.sub(r'\n?```$', '', body)
+        body = re.sub(r"^```html?\n?", "", body)
+        body = re.sub(r"\n?```$", "", body)
         return {"title": title, "body": body, "lang_name": lang_name}
     except Exception as e:
         print(f"⚠️  OpenAI error: {e}, using template fallback")
-        return {"title": title, "body": f"<p>Article about AI for {topic['niche_en']} in {city}.</p>", "lang_name": lang_name}
+        return {
+            "title": title,
+            "body": f"<p>Article about AI for {topic['niche_en']} in {city}.</p>",
+            "lang_name": lang_name,
+        }
 
-def build_article_html(city: dict, topic: dict, content: dict, img: dict, slug: str, paired_slug: str | None = None) -> str:
+
+def build_article_html(
+    city: dict,
+    topic: dict,
+    content: dict,
+    img: dict,
+    slug: str,
+    paired_slug: str | None = None,
+) -> str:
     """Build full HTML article page"""
     is_id = city["lang_code"] == "id"
     is_indonesia = city["country_code"] == "ID"
@@ -257,35 +346,57 @@ def build_article_html(city: dict, topic: dict, content: dict, img: dict, slug: 
     read_more_label = "Baca Selengkapnya →" if is_id else "Read More →"
     share_label = "Bagikan:" if is_id else "Share:"
     related_label = "Artikel Terkait" if is_id else "Related Articles"
-    
+
     # hreflang — always point to both ID and EN versions
-    hreflang_id = f'<link rel="alternate" hreflang="id" href="{SITE_URL}/blog/{slug}.html" />' if is_id else \
-                  (f'<link rel="alternate" hreflang="id" href="{SITE_URL}/blog/{paired_slug}.html" />' if paired_slug else "")
-    hreflang_en = f'<link rel="alternate" hreflang="en" href="{SITE_URL}/blog/{slug}.html" />' if not is_id else \
-                  (f'<link rel="alternate" hreflang="en" href="{SITE_URL}/blog/{paired_slug}.html" />' if paired_slug else "")
+    hreflang_id = (
+        f'<link rel="alternate" hreflang="id" href="{SITE_URL}/blog/{slug}.html" />'
+        if is_id
+        else (
+            f'<link rel="alternate" hreflang="id" href="{SITE_URL}/blog/{paired_slug}.html" />'
+            if paired_slug
+            else ""
+        )
+    )
+    hreflang_en = (
+        f'<link rel="alternate" hreflang="en" href="{SITE_URL}/blog/{slug}.html" />'
+        if not is_id
+        else (
+            f'<link rel="alternate" hreflang="en" href="{SITE_URL}/blog/{paired_slug}.html" />'
+            if paired_slug
+            else ""
+        )
+    )
     canonical = f'<link rel="canonical" href="{SITE_URL}/blog/{slug}.html" />'
     xdefault = f'<link rel="alternate" hreflang="x-default" href="{SITE_URL}/blog/{slug}.html" />'
-    
+
     desc_id = f"Panduan lengkap cara memanfaatkan teknologi AI untuk bisnis di {city['city']}. Tips praktis, studi kasus, dan rekomendasi tools terbaik untuk pengusaha {city['city']}."
     desc_en = f"Complete guide to leveraging AI technology for business in {city['city']}. Practical tips, case studies, and the best AI tools for entrepreneurs in {city['city']}."
     description = desc_id if is_id else desc_en
-    
-    schema = json.dumps({
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": content["title"],
-        "image": img["url"],
-        "datePublished": DATE_ISO,
-        "author": {"@type": "Organization", "name": AUTHOR},
-        "publisher": {"@type": "Organization", "name": "BerkahKarya", "url": SITE_URL},
-        "inLanguage": lang_code,
-        "description": description,
-        "mainEntityOfPage": f"{SITE_URL}/blog/{slug}.html"
-    }, ensure_ascii=False, indent=2)
-    
+
+    schema = json.dumps(
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": content["title"],
+            "image": img["url"],
+            "datePublished": DATE_ISO,
+            "author": {"@type": "Organization", "name": AUTHOR},
+            "publisher": {
+                "@type": "Organization",
+                "name": "BerkahKarya",
+                "url": SITE_URL,
+            },
+            "inLanguage": lang_code,
+            "description": description,
+            "mainEntityOfPage": f"{SITE_URL}/blog/{slug}.html",
+        },
+        ensure_ascii=False,
+        indent=2,
+    )
+
     date_display = DATE_ID if is_id else DATE_EN
     back_label = "← Kembali ke Blog" if is_id else "← Back to Blog"
-    
+
     return f"""<!DOCTYPE html>
 <html lang="{lang_code}">
 <head>
@@ -374,12 +485,15 @@ def build_article_html(city: dict, topic: dict, content: dict, img: dict, slug: 
 </body>
 </html>"""
 
-def inject_into_blog_index(slug: str, title: str, img: dict, cat: str, is_id: bool, desc: str):
+
+def inject_into_blog_index(
+    slug: str, title: str, img: dict, cat: str, is_id: bool, desc: str
+):
     """Prepend new article card to blog.html"""
     content = BLOG_HTML.read_text(encoding="utf-8")
     date_display = DATE_ID if is_id else DATE_EN
     aria_label = title.replace('"', "'")
-    
+
     new_card = f"""
       <article class="blog-card" itemscope itemtype="https://schema.org/BlogPosting">
         <a href="blog/{slug}.html" class="blog-card-img-link" aria-label="{aria_label}">
@@ -414,12 +528,18 @@ def inject_into_blog_index(slug: str, title: str, img: dict, cat: str, is_id: bo
     print("⚠️  Could not find blog grid insertion point")
     return False
 
+
 # ─── Main ─────────────────────────────────────────────────────────────────────
+
 
 def main():
     parser = argparse.ArgumentParser(description="BerkahKarya Auto Blog Generator")
-    parser.add_argument("--count", type=int, default=5, help="Number of articles (default: 5)")
-    parser.add_argument("--dry-run", action="store_true", help="Preview without writing files")
+    parser.add_argument(
+        "--count", type=int, default=5, help="Number of articles (default: 5)"
+    )
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Preview without writing files"
+    )
     parser.add_argument("--city", type=str, help="Force specific city name")
     args = parser.parse_args()
 
@@ -428,10 +548,10 @@ def main():
     log = load_generated_log()
     today = datetime.now().strftime("%Y-%m-%d")
     today_generated = log.get(today, [])
-    
+
     # Filter out already generated today
     available_cities = [c for c in all_cities if c["city"] not in today_generated]
-    
+
     if args.city:
         selected = [c for c in all_cities if c["city"].lower() == args.city.lower()]
         if not selected:
@@ -442,70 +562,83 @@ def main():
         # Mix: prioritize Indonesia cities, then global
         id_cities = [c for c in available_cities if c["country_code"] == "ID"]
         global_cities = [c for c in available_cities if c["country_code"] != "ID"]
-        
+
         # 2 Indonesia + 3 global per batch
         id_pick = random.sample(id_cities, min(2, len(id_cities)))
-        global_pick = random.sample(global_cities, min(args.count - len(id_pick), len(global_cities)))
+        global_pick = random.sample(
+            global_cities, min(args.count - len(id_pick), len(global_cities))
+        )
         targets = id_pick + global_pick
-    
+
     if not targets:
         print("ℹ️  All cities already generated today. Reset log or use --city.")
         return
 
     BLOG_DIR.mkdir(exist_ok=True)
     ASSETS_DIR.mkdir(parents=True, exist_ok=True)
-    
+
     generated = []
     for i, city in enumerate(targets):
         topic = random.choice(TOPICS)
-        print(f"\n[{i+1}/{len(targets)}] 🏙️  {city['city']}, {city['country']} | {topic['cat']} | {city['lang_code']}")
-        
+        print(
+            f"\n[{i+1}/{len(targets)}] 🏙️  {city['city']}, {city['country']} | {topic['cat']} | {city['lang_code']}"
+        )
+
         # Get image
         img_q = f"{topic['pexels_q']} {city['city']}"
         img = get_pexels_image(img_q)
         print(f"  📷 Image: ...{img['url'][-40:]}")
-        
+
         # Generate content
         content = generate_article_content(
             city["city"], city["country"], city["lang_code"], topic, city["promo_type"]
         )
         print(f"  ✍️  Title: {content['title']}")
-        
+
         # Build slug: ai-{topic_slug}-{city_slug}
         city_slug = slugify(city["city"])
-        topic_slug = slugify(topic["en"].format(city="", niche="").strip())[:30].strip("-")
+        topic_slug = slugify(topic["en"].format(city="", niche="").strip())[:30].strip(
+            "-"
+        )
         slug = f"ai-{city_slug}-{city['lang_code']}"
-        
-        desc = f"Panduan AI untuk bisnis di {city['city']} — cara praktis memanfaatkan teknologi kecerdasan buatan untuk tumbuh lebih cepat." if city['lang_code'] == 'id' else \
-               f"AI guide for businesses in {city['city']} — practical ways to leverage artificial intelligence to grow faster."
-        
+
+        desc = (
+            f"Panduan AI untuk bisnis di {city['city']} — cara praktis memanfaatkan teknologi kecerdasan buatan untuk tumbuh lebih cepat."
+            if city["lang_code"] == "id"
+            else f"AI guide for businesses in {city['city']} — practical ways to leverage artificial intelligence to grow faster."
+        )
+
         if args.dry_run:
             print(f"  🔍 DRY RUN — slug: {slug}.html")
             print(f"  📝 Body preview: {content['body'][:200]}...")
             continue
-        
+
         # Write article HTML
         html = build_article_html(city, topic, content, img, slug)
         out_path = BLOG_DIR / f"{slug}.html"
         out_path.write_text(html, encoding="utf-8")
         print(f"  ✅ Written: blog/{slug}.html")
-        
+
         # Update blog index
-        inject_into_blog_index(slug, content["title"], img, topic["cat"],
-                               city["lang_code"] == "id", desc)
+        inject_into_blog_index(
+            slug, content["title"], img, topic["cat"], city["lang_code"] == "id", desc
+        )
         print(f"  ✅ blog.html updated")
-        
+
         generated.append(city["city"])
         today_generated.append(city["city"])
-    
+
     # Save log
     if not args.dry_run:
         log[today] = today_generated
         save_generated_log(log)
         print(f"\n✅ Generated {len(generated)} articles: {generated}")
-        print(f"📁 Commit with: git add -A && git commit -m 'content: auto-blog {today} ({len(generated)} articles)' && git push origin main && git push netlify main")
+        print(
+            f"📁 Commit with: git add -A && git commit -m 'content: auto-blog {today} ({len(generated)} articles)' && git push origin main && git push netlify main"
+        )
     else:
         print(f"\n🔍 Dry run complete — {len(targets)} articles would be generated")
+
 
 if __name__ == "__main__":
     main()

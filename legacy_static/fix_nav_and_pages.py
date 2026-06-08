@@ -4,6 +4,7 @@ Fix 1: Inject bk-nav into pages that still have old nav
 Fix 2: Inject bk-footer into pages that still have old footer
 Fix 3: Inject CSS override for portfolio/services (dark → cream)
 """
+
 import re, os
 
 DIR = os.path.dirname(os.path.abspath(__file__))
@@ -188,54 +189,63 @@ body { font-family: var(--font) !important; }
 
 
 def read(path):
-    with open(path, 'r', encoding='utf-8') as f:
+    with open(path, "r", encoding="utf-8") as f:
         return f.read()
 
+
 def write(path, content):
-    with open(path, 'w', encoding='utf-8') as f:
+    with open(path, "w", encoding="utf-8") as f:
         f.write(content)
 
-def inject_css(html, css, before_tag='</style>'):
+
+def inject_css(html, css, before_tag="</style>"):
     if before_tag in html:
-        return html.replace(before_tag, css + '\n' + before_tag, 1)
+        return html.replace(before_tag, css + "\n" + before_tag, 1)
     # fallback: inject before </head>
-    return html.replace('</head>', f'<style>{css}</style>\n</head>', 1)
+    return html.replace("</head>", f"<style>{css}</style>\n</head>", 1)
+
 
 def ensure_bk_nav(html, nav_html):
     """Add bk-nav before body content if not present"""
     if 'class="bk-nav"' in html:
         return html  # already has it
     # inject after <body>
-    return re.sub(r'(<body[^>]*>)', r'\1\n' + nav_html, html, count=1)
+    return re.sub(r"(<body[^>]*>)", r"\1\n" + nav_html, html, count=1)
+
 
 def ensure_bk_footer(html, footer_html):
     """Add bk-footer before </body> if not present"""
     if 'class="bk-footer"' in html:
         return html
-    return html.replace('</body>', footer_html + '\n</body>', 1)
+    return html.replace("</body>", footer_html + "\n</body>", 1)
+
 
 def ensure_style_css(html):
     """Ensure style.css is imported"""
-    if 'style.css' in html:
+    if "style.css" in html:
         return html
-    return html.replace('</head>', '<link rel="stylesheet" href="style.css" />\n</head>', 1)
+    return html.replace(
+        "</head>", '<link rel="stylesheet" href="style.css" />\n</head>', 1
+    )
+
 
 def ensure_pjs_font(html):
     """Ensure Plus Jakarta Sans is loaded"""
-    if 'Plus+Jakarta+Sans' in html or 'Plus Jakarta Sans' in html:
+    if "Plus+Jakarta+Sans" in html or "Plus Jakarta Sans" in html:
         return html
     font_link = '<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet" />\n'
-    return html.replace('</head>', font_link + '</head>', 1)
+    return html.replace("</head>", font_link + "</head>", 1)
+
 
 def add_mobile_nav_script(html):
     """Add mobile nav toggle if not present"""
-    if 'bk-nav-mobile' in html and 'addEventListener' not in html:
+    if "bk-nav-mobile" in html and "addEventListener" not in html:
         script = """<script>
   const _btn = document.querySelector('.bk-nav-mobile');
   const _nav = document.querySelector('.bk-nav');
   if (_btn && _nav) _btn.addEventListener('click', () => _nav.classList.toggle('open'));
 </script>"""
-        html = html.replace('</body>', script + '\n</body>', 1)
+        html = html.replace("</body>", script + "\n</body>", 1)
     return html
 
 
@@ -243,11 +253,11 @@ def add_mobile_nav_script(html):
 
 tasks = [
     # (filename, css_override, use_wa_nav)
-    ('portfolio.html', PORTFOLIO_CSS, True),
-    ('services.html', SERVICES_CSS, True),
-    ('ai-video-studio.html', AI_VIDEO_CSS, True),
-    ('contact.html', CONTACT_CSS, True),
-    ('pricing.html', CONTACT_CSS, False),   # pricing: keep contact.html nav
+    ("portfolio.html", PORTFOLIO_CSS, True),
+    ("services.html", SERVICES_CSS, True),
+    ("ai-video-studio.html", AI_VIDEO_CSS, True),
+    ("contact.html", CONTACT_CSS, True),
+    ("pricing.html", CONTACT_CSS, False),  # pricing: keep contact.html nav
 ]
 
 os.chdir(DIR)

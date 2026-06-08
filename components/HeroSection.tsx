@@ -10,9 +10,10 @@ interface HeroProps {
   buttons?: Button[];
   dark?: boolean;
   character?: { src: string; alt: string };
+  badges?: readonly string[];
 }
 
-export default function HeroSection({ eyebrow, title, description, buttons, character }: HeroProps) {
+export default function HeroSection({ eyebrow, title, description, buttons, character, badges }: HeroProps) {
   return (
     <section className={styles.hero}>
       <div className={`${styles.container} ${character ? styles.withCharacter : ''}`}>
@@ -37,9 +38,9 @@ export default function HeroSection({ eyebrow, title, description, buttons, char
             </div>
           )}
           <div className={styles.strip}>
-            <div className={styles.stripItem}><span>✓</span><span>Setup &lt;5 menit</span></div>
-            <div className={styles.stripItem}><span>✓</span><span>Garansi 7 hari</span></div>
-            <div className={styles.stripItem}><span>✓</span><span>Support via Telegram</span></div>
+            {(badges || ['Setup <5 menit', 'Garansi 7 hari', 'Support via Telegram']).map((b, i) => (
+              <div key={i} className={styles.stripItem}><span>✓</span><span>{b}</span></div>
+            ))}
           </div>
         </div>
         {character && (

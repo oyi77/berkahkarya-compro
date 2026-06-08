@@ -68,14 +68,14 @@ EN_TRANSLATIONS = {
     f"// BerkahKarya — Indonesian translations\n"
     f"const BK_LANG_ID = {json.dumps(ID_TRANSLATIONS, ensure_ascii=False, indent=2)};\n"
     f"if (typeof module !== 'undefined') module.exports = BK_LANG_ID;\n",
-    encoding="utf-8"
+    encoding="utf-8",
 )
 
 (DIR / "lang" / "en.js").write_text(
     f"// BerkahKarya — English translations\n"
     f"const BK_LANG_EN = {json.dumps(EN_TRANSLATIONS, ensure_ascii=False, indent=2)};\n"
     f"if (typeof module !== 'undefined') module.exports = BK_LANG_EN;\n",
-    encoding="utf-8"
+    encoding="utf-8",
 )
 
 print("✅ lang/id.js + lang/en.js")
@@ -252,9 +252,15 @@ else:
 
 # ─── 4. Update ALL HTML files: nav + script tag ───────────────────────────────
 
+
 # Standard nav HTML for root-level pages
 def make_nav_html(wa_greeting="Halo Berkah Karya, saya ingin konsultasi", prefix=""):
-    wa_enc = wa_greeting.replace(" ", "%20").replace("?", "%3F").replace(",", "%2C").replace("'", "%27")
+    wa_enc = (
+        wa_greeting.replace(" ", "%20")
+        .replace("?", "%3F")
+        .replace(",", "%2C")
+        .replace("'", "%27")
+    )
     return f"""<nav class="bk-nav" id="mainNav">
   <div class="bk-nav-inner">
     <a href="{prefix}index.html" class="bk-logo">Berkah<span>Karya</span></a>
@@ -284,6 +290,7 @@ def make_nav_html(wa_greeting="Halo Berkah Karya, saya ingin konsultasi", prefix
   </div>
 </nav>"""
 
+
 NAV_MOBILE_CSS = """
   .bk-nav.open .bk-nav-mobile-menu {
     display: flex; flex-direction: column; gap: 0;
@@ -298,6 +305,7 @@ NAV_MOBILE_CSS = """
   }
   .bk-nav-mobile-menu a:last-of-type { border-bottom: none; }"""
 
+
 def inject_nav_and_script(html_content, nav_html, prefix=""):
     """Replace existing bk-nav block with new standardized nav, inject nav.js."""
     # Replace nav block
@@ -306,17 +314,19 @@ def inject_nav_and_script(html_content, nav_html, prefix=""):
         nav_html,
         html_content,
         count=1,
-        flags=re.DOTALL
+        flags=re.DOTALL,
     )
 
     # Ensure nav.js is loaded (before </body>)
     nav_script = f'<script src="{prefix}nav.js"></script>'
-    if 'nav.js' not in html_content:
-        html_content = html_content.replace('</body>', f'{nav_script}\n</body>')
+    if "nav.js" not in html_content:
+        html_content = html_content.replace("</body>", f"{nav_script}\n</body>")
 
     # Inject mobile menu CSS if not present
-    if 'bk-nav-mobile-menu' not in html_content:
-        html_content = html_content.replace('</style>', NAV_MOBILE_CSS + '\n</style>', 1)
+    if "bk-nav-mobile-menu" not in html_content:
+        html_content = html_content.replace(
+            "</style>", NAV_MOBILE_CSS + "\n</style>", 1
+        )
 
     return html_content
 
@@ -329,7 +339,7 @@ for html_path in html_files:
     content = html_path.read_text(encoding="utf-8")
 
     # Skip if no bk-nav (shouldn't happen, but safe)
-    if 'bk-nav' not in content:
+    if "bk-nav" not in content:
         continue
 
     # Determine WA greeting based on page type
@@ -346,9 +356,13 @@ for html_path in html_files:
         svc = service_map.get(name, "layanan Berkah Karya")
         wa_greeting = f"Halo Berkah Karya, saya tertarik dengan {svc}. Bisa konsultasi?"
     elif name.startswith("dp-"):
-        wa_greeting = "Halo Berkah Karya, saya tertarik dengan produk digital. Bisa konsultasi?"
+        wa_greeting = (
+            "Halo Berkah Karya, saya tertarik dengan produk digital. Bisa konsultasi?"
+        )
     elif name == "omniroute":
-        wa_greeting = "Halo Berkah Karya, saya tertarik dengan Omniroute. Bisa konsultasi?"
+        wa_greeting = (
+            "Halo Berkah Karya, saya tertarik dengan Omniroute. Bisa konsultasi?"
+        )
     elif name == "blog":
         wa_greeting = "Halo Berkah Karya, saya ingin konsultasi"
     else:
@@ -452,11 +466,13 @@ BLOG_ARTICLES = [
     },
 ]
 
+
 # Generate thumb SVG placeholder (colored box with category label)
 def thumb_svg(category, color="#c8920a"):
     return f"""<div class="blog-thumb-placeholder" style="background:linear-gradient(135deg,#fef9ec 0%,#fde68a 100%);display:flex;align-items:center;justify-content:center;height:100%;min-height:180px;border-radius:4px 4px 0 0;">
       <span style="font-size:2.5rem">📝</span>
     </div>"""
+
 
 # Blog index HTML
 def make_blog_html():
@@ -483,28 +499,48 @@ def make_blog_html():
     </article>\n"""
 
     # Schema.org Organization
-    schema_org = json.dumps({
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "BerkahKarya",
-        "url": "https://berkahkarya.org",
-        "logo": "https://berkahkarya.org/images/logo.png",
-        "description": "AI Ecosystem untuk bisnis Indonesia — agency kreatif, AI tools, dan produk digital.",
-        "contactPoint": {"@type": "ContactPoint", "contactType": "customer service",
-                         "availableLanguage": ["Indonesian", "English"]},
-        "sameAs": ["https://www.instagram.com/berkahkarya", "https://www.tiktok.com/@berkahkarya"]
-    }, ensure_ascii=False, indent=2)
+    schema_org = json.dumps(
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "BerkahKarya",
+            "url": "https://berkahkarya.org",
+            "logo": "https://berkahkarya.org/images/logo.png",
+            "description": "AI Ecosystem untuk bisnis Indonesia — agency kreatif, AI tools, dan produk digital.",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "availableLanguage": ["Indonesian", "English"],
+            },
+            "sameAs": [
+                "https://www.instagram.com/berkahkarya",
+                "https://www.tiktok.com/@berkahkarya",
+            ],
+        },
+        ensure_ascii=False,
+        indent=2,
+    )
 
-    schema_blog = json.dumps({
-        "@context": "https://schema.org",
-        "@type": "Blog",
-        "name": "BerkahKarya Blog",
-        "url": "https://berkahkarya.org/blog.html",
-        "description": "Artikel tentang AI, bisnis digital, strategi konten, dan pertumbuhan UMKM Indonesia.",
-        "publisher": {"@type": "Organization", "name": "BerkahKarya", "url": "https://berkahkarya.org"}
-    }, ensure_ascii=False, indent=2)
+    schema_blog = json.dumps(
+        {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "name": "BerkahKarya Blog",
+            "url": "https://berkahkarya.org/blog.html",
+            "description": "Artikel tentang AI, bisnis digital, strategi konten, dan pertumbuhan UMKM Indonesia.",
+            "publisher": {
+                "@type": "Organization",
+                "name": "BerkahKarya",
+                "url": "https://berkahkarya.org",
+            },
+        },
+        ensure_ascii=False,
+        indent=2,
+    )
 
-    nav_html_blog = make_nav_html(wa_greeting="Halo Berkah Karya, saya ingin konsultasi", prefix="")
+    nav_html_blog = make_nav_html(
+        wa_greeting="Halo Berkah Karya, saya ingin konsultasi", prefix=""
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="id">
@@ -666,12 +702,14 @@ document.querySelectorAll('.filter-btn').forEach(function(btn) {{
 </body>
 </html>"""
 
+
 (DIR / "blog.html").write_text(make_blog_html(), encoding="utf-8")
 print("✅ blog.html")
 
 # ─── 6. Create blog/ directory and articles ───────────────────────────────────
 
 (DIR / "blog").mkdir(exist_ok=True)
+
 
 def make_article_html(art, lang="id"):
     is_en = lang == "en"
@@ -779,23 +817,37 @@ def make_article_html(art, lang="id"):
 """
 
     # Schema.org Article
-    schema_article = json.dumps({
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": title,
-        "description": excerpt,
-        "datePublished": art["date"],
-        "author": {"@type": "Organization", "name": art["author"], "url": "https://berkahkarya.org"},
-        "publisher": {"@type": "Organization", "name": "BerkahKarya", "url": "https://berkahkarya.org",
-                      "logo": {"@type": "ImageObject", "url": "https://berkahkarya.org/images/logo.png"}},
-        "inLanguage": lang_code,
-        "url": f"https://berkahkarya.org/{slug_self}",
-        "image": f"https://berkahkarya.org/images/blog/{art['slug'].split('/')[-1].replace('.html', '.jpg')}"
-    }, ensure_ascii=False, indent=2)
+    schema_article = json.dumps(
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": title,
+            "description": excerpt,
+            "datePublished": art["date"],
+            "author": {
+                "@type": "Organization",
+                "name": art["author"],
+                "url": "https://berkahkarya.org",
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "BerkahKarya",
+                "url": "https://berkahkarya.org",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://berkahkarya.org/images/logo.png",
+                },
+            },
+            "inLanguage": lang_code,
+            "url": f"https://berkahkarya.org/{slug_self}",
+            "image": f"https://berkahkarya.org/images/blog/{art['slug'].split('/')[-1].replace('.html', '.jpg')}",
+        },
+        ensure_ascii=False,
+        indent=2,
+    )
 
     nav_html_article = make_nav_html(
-        wa_greeting="Halo Berkah Karya, saya ingin konsultasi",
-        prefix="../"
+        wa_greeting="Halo Berkah Karya, saya ingin konsultasi", prefix="../"
     )
 
     return f"""<!DOCTYPE html>
@@ -972,9 +1024,13 @@ base = "https://berkahkarya.org"
 
 sitemap_urls = []
 for f in all_html:
-    sitemap_urls.append(f"  <url><loc>{base}/{f.name}</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>")
+    sitemap_urls.append(
+        f"  <url><loc>{base}/{f.name}</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>"
+    )
 for f in blog_html:
-    sitemap_urls.append(f"  <url><loc>{base}/blog/{f.name}</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>")
+    sitemap_urls.append(
+        f"  <url><loc>{base}/blog/{f.name}</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>"
+    )
 
 sitemap_content = '<?xml version="1.0" encoding="UTF-8"?>\n'
 sitemap_content += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
@@ -1018,4 +1074,6 @@ print(f"  blog.html created (6 articles in grid)")
 print(f"  blog/ directory: {len(BLOG_ARTICLES)*2} article pages")
 print(f"  sitemap.xml: {len(sitemap_urls)} URLs")
 print(f"  robots.txt updated")
-print(f"  {len(updated)} HTML pages: nav updated with Blog menu + data-i18n + nav.js injection")
+print(
+    f"  {len(updated)} HTML pages: nav updated with Blog menu + data-i18n + nav.js injection"
+)

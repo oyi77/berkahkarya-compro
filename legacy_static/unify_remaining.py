@@ -2,13 +2,17 @@
 """
 Unify remaining pages: omniroute.html, about.html, tools.html, digital-product.html
 """
+
 import re, os
 
 BK_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # ── Standard nav & footer ─────────────────────────────────────────────────────
 
-def make_nav(cta_url="contact.html", cta_label="Konsultasi Gratis →", cta_external=False):
+
+def make_nav(
+    cta_url="contact.html", cta_label="Konsultasi Gratis →", cta_external=False
+):
     target = ' target="_blank"' if cta_external else ""
     return f"""<nav class="bk-nav">
   <div class="bk-nav-inner">
@@ -23,6 +27,7 @@ def make_nav(cta_url="contact.html", cta_label="Konsultasi Gratis →", cta_exte
     <button class="bk-nav-mobile" aria-label="Menu">☰</button>
   </div>
 </nav>"""
+
 
 FOOTER = """<footer class="bk-footer">
   <div class="bk-footer-inner">
@@ -294,21 +299,38 @@ h1, h2, h3, h4 { font-family: var(--font) !important; letter-spacing: -0.02em; }
 .bk-card-price-amount { color: var(--mustard) !important; font-weight: 900 !important; }
 """
 
+
 def inject_css(html, css):
     """Inject CSS before closing </style>"""
-    return html.replace('</style>', css + '\n</style>', 1)
+    return html.replace("</style>", css + "\n</style>", 1)
+
 
 def swap_nav(html, nav_html):
-    return re.sub(r'<nav[\s\S]*?</nav>', nav_html, html, count=1)
+    return re.sub(r"<nav[\s\S]*?</nav>", nav_html, html, count=1)
+
 
 def swap_footer(html, footer_html):
-    return re.sub(r'<footer[\s\S]*?</footer>', footer_html, html, count=1)
+    return re.sub(r"<footer[\s\S]*?</footer>", footer_html, html, count=1)
+
 
 def remove_font_links(html):
-    html = re.sub(r'<link href="https://fonts\.googleapis\.com/css2\?[^"]*Cormorant[^"]*"[^>]*>', '', html)
-    html = re.sub(r'<link href="https://fonts\.googleapis\.com/css2\?[^"]*Outfit[^"]*"[^>]*>', '', html)
-    html = re.sub(r'<link rel="stylesheet" href="https://cdnjs\.cloudflare\.com/ajax_libs/font-awesome[^"]*"[^>]*>', '', html)
+    html = re.sub(
+        r'<link href="https://fonts\.googleapis\.com/css2\?[^"]*Cormorant[^"]*"[^>]*>',
+        "",
+        html,
+    )
+    html = re.sub(
+        r'<link href="https://fonts\.googleapis\.com/css2\?[^"]*Outfit[^"]*"[^>]*>',
+        "",
+        html,
+    )
+    html = re.sub(
+        r'<link rel="stylesheet" href="https://cdnjs\.cloudflare\.com/ajax_libs/font-awesome[^"]*"[^>]*>',
+        "",
+        html,
+    )
     return html
+
 
 def process_file(fname, css_override, nav_html, footer_html, font_cleanup=True):
     path = os.path.join(BK_DIR, fname)
@@ -316,7 +338,7 @@ def process_file(fname, css_override, nav_html, footer_html, font_cleanup=True):
         print(f"❌ Not found: {fname}")
         return False
 
-    with open(path, 'r', encoding='utf-8') as f:
+    with open(path, "r", encoding="utf-8") as f:
         html = f.read()
 
     if font_cleanup:
@@ -331,11 +353,12 @@ def process_file(fname, css_override, nav_html, footer_html, font_cleanup=True):
     if footer_html:
         html = swap_footer(html, footer_html)
 
-    with open(path, 'w', encoding='utf-8') as f:
+    with open(path, "w", encoding="utf-8") as f:
         f.write(html)
 
     print(f"✅ Updated: {fname}")
     return True
+
 
 if __name__ == "__main__":
     os.chdir(BK_DIR)
@@ -347,7 +370,7 @@ if __name__ == "__main__":
         nav_html=make_nav(
             cta_url="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20tertarik%20dengan%20Omniroute.%20Bisa%20konsultasi%3F",
             cta_label="Coba Omniroute →",
-            cta_external=True
+            cta_external=True,
         ),
         footer_html=FOOTER,
     )
@@ -359,7 +382,7 @@ if __name__ == "__main__":
         nav_html=make_nav(
             cta_url="https://wa.me/6285732740006?text=Halo%20Berkah%20Karya%2C%20saya%20ingin%20konsultasi%20layanan",
             cta_label="Konsultasi Gratis →",
-            cta_external=True
+            cta_external=True,
         ),
         footer_html=FOOTER,
     )
@@ -368,8 +391,8 @@ if __name__ == "__main__":
     process_file(
         "tools.html",
         css_override=TOOLS_CSS_MINOR,
-        nav_html=None,   # already bk-nav
-        footer_html=None, # already bk-footer
+        nav_html=None,  # already bk-nav
+        footer_html=None,  # already bk-footer
         font_cleanup=True,
     )
 

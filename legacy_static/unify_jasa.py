@@ -4,6 +4,7 @@ Unify all jasa-*.html pages to match design system.
 Swaps: navbar, footer, CSS vars, fonts, button classes.
 Keeps: all content, copy, section structure.
 """
+
 import re, os
 
 WA_BASE = "https://wa.me/6285732740006?text="
@@ -182,6 +183,7 @@ section { padding: 5rem 0; }
 #hamburger, .mobile-menu { display: none !important; }
 """
 
+
 def transform_file(fname, wa_text, title):
     path = fname
     if not os.path.exists(path):
@@ -196,45 +198,51 @@ def transform_file(fname, wa_text, title):
     # 1. Replace Google Font link (Cormorant/Outfit) — remove, style.css already has PJS
     html = re.sub(
         r'<link href="https://fonts\.googleapis\.com/css2\?family=Cormorant[^"]*"[^>]*>',
-        '',
-        html
+        "",
+        html,
     )
     html = re.sub(
         r'<link href="https://fonts\.googleapis\.com/css2\?family=Outfit[^"]*"[^>]*>',
-        '',
-        html
+        "",
+        html,
     )
     # Also remove combined font links with Cormorant in them
     html = re.sub(
         r'<link href="https://fonts\.googleapis\.com/css2\?[^"]*Cormorant[^"]*"[^>]*>',
-        '',
-        html
+        "",
+        html,
     )
 
     # 2. Inject CSS overrides at end of <style> block (before </style>)
-    html = html.replace('</style>', CSS_OVERRIDES + '\n</style>', 1)
+    html = html.replace("</style>", CSS_OVERRIDES + "\n</style>", 1)
 
     # 3. Replace old <nav>...</nav> block with standard bk-nav
     nav_html = NAV_TEMPLATE.format(wa_link=wa_link)
     # Match nav from <nav> to </nav> (first occurrence only)
-    html = re.sub(r'<nav[\s\S]*?</nav>', nav_html, html, count=1)
+    html = re.sub(r"<nav[\s\S]*?</nav>", nav_html, html, count=1)
 
     # 4. Replace old <footer>...</footer> with standard bk-footer
-    html = re.sub(r'<footer[\s\S]*?</footer>', FOOTER_TEMPLATE, html, count=1)
+    html = re.sub(r"<footer[\s\S]*?</footer>", FOOTER_TEMPLATE, html, count=1)
 
     # 5. Button class replacements
     # btn btn-mustard btn-lg → btn-primary btn-lg
     html = re.sub(r'class="btn btn-mustard btn-lg"', 'class="btn-primary btn-lg"', html)
-    html = re.sub(r'class="btn btn-mustard btn-sm[^"]*"', 'class="btn-primary btn-sm"', html)
+    html = re.sub(
+        r'class="btn btn-mustard btn-sm[^"]*"', 'class="btn-primary btn-sm"', html
+    )
     html = re.sub(r'class="btn btn-mustard"', 'class="btn-primary"', html)
     # btn btn-outline btn-lg → btn-secondary btn-lg
-    html = re.sub(r'class="btn btn-outline btn-lg"', 'class="btn-secondary btn-lg"', html)
-    html = re.sub(r'class="btn btn-outline btn-sm"', 'class="btn-secondary btn-sm"', html)
+    html = re.sub(
+        r'class="btn btn-outline btn-lg"', 'class="btn-secondary btn-lg"', html
+    )
+    html = re.sub(
+        r'class="btn btn-outline btn-sm"', 'class="btn-secondary btn-sm"', html
+    )
     html = re.sub(r'class="btn btn-outline"', 'class="btn-secondary"', html)
 
     # 6. Add body class page-jasa if missing
     if 'class="page-jasa"' not in html:
-        html = html.replace('<body>', '<body class="page-jasa">')
+        html = html.replace("<body>", '<body class="page-jasa">')
         html = html.replace('<body class="">', '<body class="page-jasa">')
 
     with open(path, "w", encoding="utf-8") as f:

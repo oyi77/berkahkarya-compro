@@ -18,32 +18,108 @@ SERVICES = [
         "hero_sub": "Landing page, company profile, sampai toko online — dibangun cepat, mobile-friendly, dan siap convert pengunjung jadi pelanggan.",
         "wa_greeting": "Halo Berkah Karya, saya tertarik dengan Jasa Pembuatan Website. Bisa konsultasi?",
         "problems": [
-            ("😩", "Vendor butuh 1–3 bulan", "Bisnis kamu menunggu terlalu lama untuk go online"),
-            ("💸", "Budget tidak predictable", "Freelancer sering over budget dan tidak transparan"),
-            ("😐", "Template generik", "Website template yang sama dipakai ribuan bisnis lain"),
-            ("🐌", "Website lambat", "Loading lama = bounce rate tinggi = kehilangan pelanggan"),
-            ("🔧", "Tidak tahu cara maintain", "Setelah jadi, tidak ada yang bisa bantu kalau ada masalah"),
+            (
+                "😩",
+                "Vendor butuh 1–3 bulan",
+                "Bisnis kamu menunggu terlalu lama untuk go online",
+            ),
+            (
+                "💸",
+                "Budget tidak predictable",
+                "Freelancer sering over budget dan tidak transparan",
+            ),
+            (
+                "😐",
+                "Template generik",
+                "Website template yang sama dipakai ribuan bisnis lain",
+            ),
+            (
+                "🐌",
+                "Website lambat",
+                "Loading lama = bounce rate tinggi = kehilangan pelanggan",
+            ),
+            (
+                "🔧",
+                "Tidak tahu cara maintain",
+                "Setelah jadi, tidak ada yang bisa bantu kalau ada masalah",
+            ),
         ],
         "deliverables": [
-            ("🎨", "Desain Custom", "Bukan template. Setiap elemen dirancang sesuai brand identity kamu."),
-            ("📱", "100% Responsive", "Sempurna di semua perangkat — desktop, tablet, dan HP."),
-            ("🔍", "SEO On-Page", "Meta tags, heading structure, dan speed optimasi agar mudah ditemukan Google."),
-            ("💬", "CTA WhatsApp", "Tombol WA strategis di setiap halaman untuk maksimalkan lead."),
-            ("🌐", "Domain & Hosting", "Setup domain dan hosting — website langsung live setelah selesai."),
-            ("🔄", "Revisi Tanpa Batas", "Kita terus refine sampai kamu benar-benar puas."),
+            (
+                "🎨",
+                "Desain Custom",
+                "Bukan template. Setiap elemen dirancang sesuai brand identity kamu.",
+            ),
+            (
+                "📱",
+                "100% Responsive",
+                "Sempurna di semua perangkat — desktop, tablet, dan HP.",
+            ),
+            (
+                "🔍",
+                "SEO On-Page",
+                "Meta tags, heading structure, dan speed optimasi agar mudah ditemukan Google.",
+            ),
+            (
+                "💬",
+                "CTA WhatsApp",
+                "Tombol WA strategis di setiap halaman untuk maksimalkan lead.",
+            ),
+            (
+                "🌐",
+                "Domain & Hosting",
+                "Setup domain dan hosting — website langsung live setelah selesai.",
+            ),
+            (
+                "🔄",
+                "Revisi Tanpa Batas",
+                "Kita terus refine sampai kamu benar-benar puas.",
+            ),
         ],
         "steps": [
-            ("01", "Brief & Referensi", "Diskusi kebutuhan, tujuan, dan kumpulkan referensi desain"),
-            ("02", "Wireframe & Mockup", "Preview tampilan sebelum masuk development — kamu approve dulu"),
+            (
+                "01",
+                "Brief & Referensi",
+                "Diskusi kebutuhan, tujuan, dan kumpulkan referensi desain",
+            ),
+            (
+                "02",
+                "Wireframe & Mockup",
+                "Preview tampilan sebelum masuk development — kamu approve dulu",
+            ),
             ("03", "Development", "Bangun dengan code clean, cepat, dan SEO-friendly"),
-            ("04", "Review & Revisi", "Kamu review semua halaman, kami revisi sampai puas"),
-            ("05", "Launch & Handover", "Website live, kamu terima akses penuh + panduan maintenance"),
+            (
+                "04",
+                "Review & Revisi",
+                "Kamu review semua halaman, kami revisi sampai puas",
+            ),
+            (
+                "05",
+                "Launch & Handover",
+                "Website live, kamu terima akses penuh + panduan maintenance",
+            ),
         ],
         "benefits": [
-            ("⚡", "7 Hari Selesai", "Bukan 3 bulan seperti vendor biasa. Launch online dalam seminggu."),
-            ("🎯", "Desain Sesuai Brand", "Setiap pixel mencerminkan identitas kamu — bukan template ribuan bisnis."),
-            ("🚀", "Loading Super Cepat", "Code dioptimasi. Tidak ada pengunjung yang kabur karena loading lama."),
-            ("📈", "Didesain untuk Konversi", "Struktur, CTA, dan flow dirancang mengubah pengunjung jadi pelanggan."),
+            (
+                "⚡",
+                "7 Hari Selesai",
+                "Bukan 3 bulan seperti vendor biasa. Launch online dalam seminggu.",
+            ),
+            (
+                "🎯",
+                "Desain Sesuai Brand",
+                "Setiap pixel mencerminkan identitas kamu — bukan template ribuan bisnis.",
+            ),
+            (
+                "🚀",
+                "Loading Super Cepat",
+                "Code dioptimasi. Tidak ada pengunjung yang kabur karena loading lama.",
+            ),
+            (
+                "📈",
+                "Didesain untuk Konversi",
+                "Struktur, CTA, dan flow dirancang mengubah pengunjung jadi pelanggan.",
+            ),
         ],
         "pricing": [
             {
@@ -103,10 +179,26 @@ SERVICES = [
             },
         ],
         "usecases": [
-            ("🆕", "Bisnis Baru", "Butuh kehadiran online dari hari pertama. Website = credibility instan."),
-            ("🔗", "UMKM yang Pakai Linktree", "Saatnya upgrade ke website profesional yang kamu miliki sepenuhnya."),
-            ("💼", "Brand yang Mau Credible", "Tampilan profesional membangun kepercayaan calon klien dan investor."),
-            ("📣", "Kampanye Iklan", "Landing page dedicated untuk iklan Meta/Google — bukan halaman beranda generik."),
+            (
+                "🆕",
+                "Bisnis Baru",
+                "Butuh kehadiran online dari hari pertama. Website = credibility instan.",
+            ),
+            (
+                "🔗",
+                "UMKM yang Pakai Linktree",
+                "Saatnya upgrade ke website profesional yang kamu miliki sepenuhnya.",
+            ),
+            (
+                "💼",
+                "Brand yang Mau Credible",
+                "Tampilan profesional membangun kepercayaan calon klien dan investor.",
+            ),
+            (
+                "📣",
+                "Kampanye Iklan",
+                "Landing page dedicated untuk iklan Meta/Google — bukan halaman beranda generik.",
+            ),
         ],
     },
     {
@@ -118,32 +210,112 @@ SERVICES = [
         "hero_sub": "Konten konsisten, engagement tumbuh, dan follower bertambah — sementara kamu fokus menjalankan bisnis.",
         "wa_greeting": "Halo Berkah Karya, saya tertarik dengan Jasa Kelola Social Media. Bisa konsultasi?",
         "problems": [
-            ("🕐", "Tidak ada waktu", "Kelola bisnis sudah full — tidak ada waktu buat konten setiap hari"),
-            ("💭", "Kehabisan ide konten", "Bingung mau posting apa, akhirnya tidak posting sama sekali"),
-            ("📉", "Engagement stagnan", "Follower ada tapi tidak ada yang interact, reach terus turun"),
-            ("🎨", "Kualitas visual tidak konsisten", "Desain postingan tidak seragam, tidak mencerminkan brand"),
-            ("⏰", "Jadwal posting tidak teratur", "Tidak ada konsistensi waktu posting, algoritma tidak memihak"),
+            (
+                "🕐",
+                "Tidak ada waktu",
+                "Kelola bisnis sudah full — tidak ada waktu buat konten setiap hari",
+            ),
+            (
+                "💭",
+                "Kehabisan ide konten",
+                "Bingung mau posting apa, akhirnya tidak posting sama sekali",
+            ),
+            (
+                "📉",
+                "Engagement stagnan",
+                "Follower ada tapi tidak ada yang interact, reach terus turun",
+            ),
+            (
+                "🎨",
+                "Kualitas visual tidak konsisten",
+                "Desain postingan tidak seragam, tidak mencerminkan brand",
+            ),
+            (
+                "⏰",
+                "Jadwal posting tidak teratur",
+                "Tidak ada konsistensi waktu posting, algoritma tidak memihak",
+            ),
         ],
         "deliverables": [
-            ("✍️", "Copywriting & Caption", "Teks konten yang menarik, relevan, dan disesuaikan tone of voice brand."),
-            ("🎨", "Desain Visual", "Grafis dan kreasi visual konsisten sesuai brand guideline."),
-            ("📅", "Content Calendar", "Jadwal konten terencana sebulan penuh — tidak ada hari tanpa konten."),
-            ("📊", "Laporan Bulanan", "Report engagement, reach, dan pertumbuhan follower setiap bulan."),
-            ("💬", "Community Management", "Balas komentar dan DM — bangun relasi nyata dengan audiens."),
-            ("🤖", "AI-Assisted Production", "Produksi konten lebih cepat dan konsisten dengan bantuan AI tools."),
+            (
+                "✍️",
+                "Copywriting & Caption",
+                "Teks konten yang menarik, relevan, dan disesuaikan tone of voice brand.",
+            ),
+            (
+                "🎨",
+                "Desain Visual",
+                "Grafis dan kreasi visual konsisten sesuai brand guideline.",
+            ),
+            (
+                "📅",
+                "Content Calendar",
+                "Jadwal konten terencana sebulan penuh — tidak ada hari tanpa konten.",
+            ),
+            (
+                "📊",
+                "Laporan Bulanan",
+                "Report engagement, reach, dan pertumbuhan follower setiap bulan.",
+            ),
+            (
+                "💬",
+                "Community Management",
+                "Balas komentar dan DM — bangun relasi nyata dengan audiens.",
+            ),
+            (
+                "🤖",
+                "AI-Assisted Production",
+                "Produksi konten lebih cepat dan konsisten dengan bantuan AI tools.",
+            ),
         ],
         "steps": [
-            ("01", "Discovery & Onboarding", "Kenali brand, tujuan, dan target audiens kamu"),
-            ("02", "Brand & Content Strategy", "Susun strategi konten, tone of voice, dan pillar konten"),
-            ("03", "Content Calendar Approval", "Kamu review dan approve jadwal konten bulanan"),
-            ("04", "Produksi & Publish", "Tim kami buat dan publish konten sesuai jadwal"),
-            ("05", "Laporan & Evaluasi", "Review performa bulanan dan penyesuaian strategi"),
+            (
+                "01",
+                "Discovery & Onboarding",
+                "Kenali brand, tujuan, dan target audiens kamu",
+            ),
+            (
+                "02",
+                "Brand & Content Strategy",
+                "Susun strategi konten, tone of voice, dan pillar konten",
+            ),
+            (
+                "03",
+                "Content Calendar Approval",
+                "Kamu review dan approve jadwal konten bulanan",
+            ),
+            (
+                "04",
+                "Produksi & Publish",
+                "Tim kami buat dan publish konten sesuai jadwal",
+            ),
+            (
+                "05",
+                "Laporan & Evaluasi",
+                "Review performa bulanan dan penyesuaian strategi",
+            ),
         ],
         "benefits": [
-            ("⏰", "Hemat Waktu Total", "Kamu tidak perlu memikirkan konten lagi — semua ditangani tim kami."),
-            ("📈", "Engagement Tumbuh", "Strategi berbasis data memastikan konten kamu disukai algoritma."),
-            ("🎯", "Konsisten & On-Brand", "Tampilan visual dan tone of voice yang konsisten setiap postingan."),
-            ("🤖", "AI-Powered Efficiency", "Produksi lebih cepat, lebih banyak variasi, kualitas tetap terjaga."),
+            (
+                "⏰",
+                "Hemat Waktu Total",
+                "Kamu tidak perlu memikirkan konten lagi — semua ditangani tim kami.",
+            ),
+            (
+                "📈",
+                "Engagement Tumbuh",
+                "Strategi berbasis data memastikan konten kamu disukai algoritma.",
+            ),
+            (
+                "🎯",
+                "Konsisten & On-Brand",
+                "Tampilan visual dan tone of voice yang konsisten setiap postingan.",
+            ),
+            (
+                "🤖",
+                "AI-Powered Efficiency",
+                "Produksi lebih cepat, lebih banyak variasi, kualitas tetap terjaga.",
+            ),
         ],
         "pricing": [
             {
@@ -198,10 +370,26 @@ SERVICES = [
             },
         ],
         "usecases": [
-            ("🏪", "Pemilik Bisnis Sibuk", "Tidak ada waktu untuk social media tapi butuh online presence yang kuat."),
-            ("🏠", "Brand Rumahan & UMKM", "Produk bagus tapi belum dikenal — butuh strategi konten yang tepat."),
-            ("🏢", "Bisnis yang Mau Scale", "Sudah ada tim tapi butuh profesional yang handle social media."),
-            ("🚀", "Brand Baru", "Baru launch dan butuh strategi dari nol untuk membangun audiens."),
+            (
+                "🏪",
+                "Pemilik Bisnis Sibuk",
+                "Tidak ada waktu untuk social media tapi butuh online presence yang kuat.",
+            ),
+            (
+                "🏠",
+                "Brand Rumahan & UMKM",
+                "Produk bagus tapi belum dikenal — butuh strategi konten yang tepat.",
+            ),
+            (
+                "🏢",
+                "Bisnis yang Mau Scale",
+                "Sudah ada tim tapi butuh profesional yang handle social media.",
+            ),
+            (
+                "🚀",
+                "Brand Baru",
+                "Baru launch dan butuh strategi dari nol untuk membangun audiens.",
+            ),
         ],
     },
     {
@@ -213,32 +401,112 @@ SERVICES = [
         "hero_sub": "Tidak perlu pusing mikir mau posting apa. Kami siapkan strategi, jadwal, dan ide konten lengkap sebulan penuh.",
         "wa_greeting": "Halo Berkah Karya, saya tertarik dengan Jasa Content Planner. Bisa konsultasi?",
         "problems": [
-            ("🤔", "Bingung mau posting apa", "Duduk di depan HP, tidak ada ide, akhirnya tidak posting"),
-            ("📉", "Konten tidak terencana", "Posting sesuka hati tanpa strategi — hasilnya tidak optimal"),
-            ("🎯", "Tidak tahu target audiens", "Konten dibuat tapi tidak relevan dengan orang yang mau dibeli"),
-            ("🔀", "Konten tidak terarah", "Campuran antara promosi, personal, dan konten random tanpa purpose"),
-            ("⚡", "Tim tidak tahu harus mulai dari mana", "Sudah ada tim tapi tidak ada panduan yang jelas"),
+            (
+                "🤔",
+                "Bingung mau posting apa",
+                "Duduk di depan HP, tidak ada ide, akhirnya tidak posting",
+            ),
+            (
+                "📉",
+                "Konten tidak terencana",
+                "Posting sesuka hati tanpa strategi — hasilnya tidak optimal",
+            ),
+            (
+                "🎯",
+                "Tidak tahu target audiens",
+                "Konten dibuat tapi tidak relevan dengan orang yang mau dibeli",
+            ),
+            (
+                "🔀",
+                "Konten tidak terarah",
+                "Campuran antara promosi, personal, dan konten random tanpa purpose",
+            ),
+            (
+                "⚡",
+                "Tim tidak tahu harus mulai dari mana",
+                "Sudah ada tim tapi tidak ada panduan yang jelas",
+            ),
         ],
         "deliverables": [
-            ("🗺️", "Strategi Konten", "Framework lengkap: content pillar, tone of voice, dan content mix yang optimal."),
-            ("📅", "Content Calendar 30 Hari", "Jadwal konten sebulan penuh: topik, format, dan waktu posting optimal."),
-            ("💡", "100+ Ide Konten", "Bank ide yang bisa dieksekusi tim internal kamu kapanpun dibutuhkan."),
-            ("📝", "Template Caption", "50+ template caption siap pakai per content pillar — tinggal customisasi."),
-            ("🎬", "Brief Produksi", "Panduan teknis untuk tim konten: visual reference, hook, dan angle."),
-            ("📊", "KPI & Tracking Sheet", "Target metrik per bulan dan spreadsheet monitoring performa."),
+            (
+                "🗺️",
+                "Strategi Konten",
+                "Framework lengkap: content pillar, tone of voice, dan content mix yang optimal.",
+            ),
+            (
+                "📅",
+                "Content Calendar 30 Hari",
+                "Jadwal konten sebulan penuh: topik, format, dan waktu posting optimal.",
+            ),
+            (
+                "💡",
+                "100+ Ide Konten",
+                "Bank ide yang bisa dieksekusi tim internal kamu kapanpun dibutuhkan.",
+            ),
+            (
+                "📝",
+                "Template Caption",
+                "50+ template caption siap pakai per content pillar — tinggal customisasi.",
+            ),
+            (
+                "🎬",
+                "Brief Produksi",
+                "Panduan teknis untuk tim konten: visual reference, hook, dan angle.",
+            ),
+            (
+                "📊",
+                "KPI & Tracking Sheet",
+                "Target metrik per bulan dan spreadsheet monitoring performa.",
+            ),
         ],
         "steps": [
-            ("01", "Discovery Session", "Riset brand, kompetitor, dan target audiens kamu secara mendalam"),
-            ("02", "Strategy Development", "Susun content pillar, tone, dan strategi distribusi per platform"),
-            ("03", "Calendar Creation", "Buat jadwal konten lengkap 30 hari dengan topik detail setiap slot"),
-            ("04", "Presentasi & Revisi", "Review bersama, sesuaikan sampai kamu setuju dengan arahnya"),
-            ("05", "Handover & Briefing", "Terima semua dokumen + sesi briefing untuk tim eksekusi kamu"),
+            (
+                "01",
+                "Discovery Session",
+                "Riset brand, kompetitor, dan target audiens kamu secara mendalam",
+            ),
+            (
+                "02",
+                "Strategy Development",
+                "Susun content pillar, tone, dan strategi distribusi per platform",
+            ),
+            (
+                "03",
+                "Calendar Creation",
+                "Buat jadwal konten lengkap 30 hari dengan topik detail setiap slot",
+            ),
+            (
+                "04",
+                "Presentasi & Revisi",
+                "Review bersama, sesuaikan sampai kamu setuju dengan arahnya",
+            ),
+            (
+                "05",
+                "Handover & Briefing",
+                "Terima semua dokumen + sesi briefing untuk tim eksekusi kamu",
+            ),
         ],
         "benefits": [
-            ("⏰", "Tidak Pusing Lagi", "Dari bingung ke eksekusi dalam hitungan hari — semuanya sudah ada."),
-            ("🎯", "Konten Lebih Terarah", "Setiap postingan punya tujuan yang jelas: awareness, trust, atau konversi."),
-            ("📈", "Hasil Lebih Terukur", "Target dan KPI yang jelas — kamu tahu persis apa yang mau dicapai."),
-            ("👥", "Tim Lebih Produktif", "Tim konten punya panduan yang jelas; tidak perlu brainstorm dari nol tiap hari."),
+            (
+                "⏰",
+                "Tidak Pusing Lagi",
+                "Dari bingung ke eksekusi dalam hitungan hari — semuanya sudah ada.",
+            ),
+            (
+                "🎯",
+                "Konten Lebih Terarah",
+                "Setiap postingan punya tujuan yang jelas: awareness, trust, atau konversi.",
+            ),
+            (
+                "📈",
+                "Hasil Lebih Terukur",
+                "Target dan KPI yang jelas — kamu tahu persis apa yang mau dicapai.",
+            ),
+            (
+                "👥",
+                "Tim Lebih Produktif",
+                "Tim konten punya panduan yang jelas; tidak perlu brainstorm dari nol tiap hari.",
+            ),
         ],
         "pricing": [
             {
@@ -294,10 +562,26 @@ SERVICES = [
             },
         ],
         "usecases": [
-            ("👤", "Solo Content Creator", "Butuh sistem yang terorganisir agar bisa konsisten posting tanpa burnout."),
-            ("🏪", "UMKM yang Kelola Sendiri", "Pemilik bisnis yang ingin handle konten tapi butuh panduan yang jelas."),
-            ("👥", "Tim Konten yang Butuh Struktur", "Tim ada tapi belum punya sistem dan framework yang efisien."),
-            ("🚀", "Brand yang Mau Scale Cepat", "Konten harus konsisten dan terarah untuk support pertumbuhan bisnis."),
+            (
+                "👤",
+                "Solo Content Creator",
+                "Butuh sistem yang terorganisir agar bisa konsisten posting tanpa burnout.",
+            ),
+            (
+                "🏪",
+                "UMKM yang Kelola Sendiri",
+                "Pemilik bisnis yang ingin handle konten tapi butuh panduan yang jelas.",
+            ),
+            (
+                "👥",
+                "Tim Konten yang Butuh Struktur",
+                "Tim ada tapi belum punya sistem dan framework yang efisien.",
+            ),
+            (
+                "🚀",
+                "Brand yang Mau Scale Cepat",
+                "Konten harus konsisten dan terarah untuk support pertumbuhan bisnis.",
+            ),
         ],
     },
     {
@@ -309,32 +593,112 @@ SERVICES = [
         "hero_sub": "TikTok, Reels, YouTube Shorts — konten video berkualitas tinggi diproduksi lebih cepat dan lebih konsisten dengan teknologi AI.",
         "wa_greeting": "Halo Berkah Karya, saya tertarik dengan Jasa Video AI. Bisa konsultasi?",
         "problems": [
-            ("💸", "Produksi video mahal", "Videografer, studio, dan editing menguras budget besar setiap konten"),
-            ("🕐", "Proses lama", "Dari brief ke final bisa berminggu-minggu — sementara tren sudah berlalu"),
-            ("🔁", "Tidak konsisten", "Sulit maintain kualitas dan frekuensi upload yang stabil"),
-            ("😰", "Takut di depan kamera", "Tidak semua pemilik bisnis nyaman jadi talent video sendiri"),
-            ("📉", "Video tidak perform", "Sudah buat konten tapi views rendah dan tidak ada engagement"),
+            (
+                "💸",
+                "Produksi video mahal",
+                "Videografer, studio, dan editing menguras budget besar setiap konten",
+            ),
+            (
+                "🕐",
+                "Proses lama",
+                "Dari brief ke final bisa berminggu-minggu — sementara tren sudah berlalu",
+            ),
+            (
+                "🔁",
+                "Tidak konsisten",
+                "Sulit maintain kualitas dan frekuensi upload yang stabil",
+            ),
+            (
+                "😰",
+                "Takut di depan kamera",
+                "Tidak semua pemilik bisnis nyaman jadi talent video sendiri",
+            ),
+            (
+                "📉",
+                "Video tidak perform",
+                "Sudah buat konten tapi views rendah dan tidak ada engagement",
+            ),
         ],
         "deliverables": [
-            ("🎬", "Video Konten AI", "Short-form video (15–90 detik) yang dioptimasi untuk TikTok, Reels, dan Shorts."),
-            ("🎙️", "Voiceover Profesional", "Narasi suara AI atau talent yang natural dan on-brand."),
-            ("✂️", "Editing & Motion", "Cut, transisi, teks animasi, musik, dan sound effect yang menarik."),
-            ("📝", "Script & Konsep", "Dari ide ke skrip — termasuk hook, konten, dan CTA yang convert."),
-            ("🎯", "Optimasi Platform", "Format, rasio aspek, dan thumbnail yang dioptimasi per platform."),
-            ("📊", "Brief & Referensi", "Panduan visual dan referensi untuk konsistensi brand di setiap video."),
+            (
+                "🎬",
+                "Video Konten AI",
+                "Short-form video (15–90 detik) yang dioptimasi untuk TikTok, Reels, dan Shorts.",
+            ),
+            (
+                "🎙️",
+                "Voiceover Profesional",
+                "Narasi suara AI atau talent yang natural dan on-brand.",
+            ),
+            (
+                "✂️",
+                "Editing & Motion",
+                "Cut, transisi, teks animasi, musik, dan sound effect yang menarik.",
+            ),
+            (
+                "📝",
+                "Script & Konsep",
+                "Dari ide ke skrip — termasuk hook, konten, dan CTA yang convert.",
+            ),
+            (
+                "🎯",
+                "Optimasi Platform",
+                "Format, rasio aspek, dan thumbnail yang dioptimasi per platform.",
+            ),
+            (
+                "📊",
+                "Brief & Referensi",
+                "Panduan visual dan referensi untuk konsistensi brand di setiap video.",
+            ),
         ],
         "steps": [
-            ("01", "Brief & Konsep", "Tentukan tujuan, gaya video, dan topik yang mau diangkat"),
-            ("02", "Script & Storyboard", "Tim kami tulis skrip dan buat storyboard untuk approval kamu"),
-            ("03", "Produksi AI", "Generate visual, voiceover, dan elemen video dengan AI"),
-            ("04", "Editing & Finishing", "Assembly, color grade, sound design, dan animasi teks"),
-            ("05", "Review & Deliver", "Kamu review, kami revisi, file final dalam format siap upload"),
+            (
+                "01",
+                "Brief & Konsep",
+                "Tentukan tujuan, gaya video, dan topik yang mau diangkat",
+            ),
+            (
+                "02",
+                "Script & Storyboard",
+                "Tim kami tulis skrip dan buat storyboard untuk approval kamu",
+            ),
+            (
+                "03",
+                "Produksi AI",
+                "Generate visual, voiceover, dan elemen video dengan AI",
+            ),
+            (
+                "04",
+                "Editing & Finishing",
+                "Assembly, color grade, sound design, dan animasi teks",
+            ),
+            (
+                "05",
+                "Review & Deliver",
+                "Kamu review, kami revisi, file final dalam format siap upload",
+            ),
         ],
         "benefits": [
-            ("⚡", "3–5× Lebih Cepat", "Produksi video yang biasa butuh seminggu bisa selesai dalam 2 hari."),
-            ("💰", "60% Lebih Hemat", "Kualitas setara produksi konvensional dengan biaya yang jauh lebih terjangkau."),
-            ("📅", "Konsisten Tiap Minggu", "Pipeline produksi yang stabil — upload schedule tidak pernah miss."),
-            ("🎯", "Dioptimasi Algoritma", "Setiap video dibuat dengan mempertimbangkan cara kerja algoritma platform."),
+            (
+                "⚡",
+                "3–5× Lebih Cepat",
+                "Produksi video yang biasa butuh seminggu bisa selesai dalam 2 hari.",
+            ),
+            (
+                "💰",
+                "60% Lebih Hemat",
+                "Kualitas setara produksi konvensional dengan biaya yang jauh lebih terjangkau.",
+            ),
+            (
+                "📅",
+                "Konsisten Tiap Minggu",
+                "Pipeline produksi yang stabil — upload schedule tidak pernah miss.",
+            ),
+            (
+                "🎯",
+                "Dioptimasi Algoritma",
+                "Setiap video dibuat dengan mempertimbangkan cara kerja algoritma platform.",
+            ),
         ],
         "pricing": [
             {
@@ -394,10 +758,26 @@ SERVICES = [
             },
         ],
         "usecases": [
-            ("🏪", "Brand & Produk UMKM", "Video produk yang menarik untuk meningkatkan penjualan di semua platform."),
-            ("🎓", "Edukasi & Coach", "Konten edukatif yang konsisten untuk membangun authority dan audiens."),
-            ("🏢", "Bisnis yang Mau Viral", "Strategi video yang terencana untuk reach organik yang maksimal."),
-            ("📣", "Campaign & Iklan", "Video iklan yang dioptimasi untuk Meta Ads, TikTok Ads, dan YouTube Ads."),
+            (
+                "🏪",
+                "Brand & Produk UMKM",
+                "Video produk yang menarik untuk meningkatkan penjualan di semua platform.",
+            ),
+            (
+                "🎓",
+                "Edukasi & Coach",
+                "Konten edukatif yang konsisten untuk membangun authority dan audiens.",
+            ),
+            (
+                "🏢",
+                "Bisnis yang Mau Viral",
+                "Strategi video yang terencana untuk reach organik yang maksimal.",
+            ),
+            (
+                "📣",
+                "Campaign & Iklan",
+                "Video iklan yang dioptimasi untuk Meta Ads, TikTok Ads, dan YouTube Ads.",
+            ),
         ],
     },
     {
@@ -409,32 +789,108 @@ SERVICES = [
         "hero_sub": "Foto produk setara fotografer profesional untuk marketplace, iklan, dan social media — lebih cepat dan lebih hemat dari studio konvensional.",
         "wa_greeting": "Halo Berkah Karya, saya tertarik dengan Jasa Foto Produk AI. Bisa konsultasi?",
         "problems": [
-            ("💸", "Studio foto mahal", "Sewa studio bisa ratusan ribu per jam — belum termasuk fotografer dan editing"),
-            ("🕐", "Proses lama", "Antri fotografer, sesi foto, editing — bisa berminggu-minggu untuk 10 foto"),
-            ("📷", "Foto sendiri tidak bagus", "Foto dengan HP biasa tidak cukup profesional untuk marketplace kompetitif"),
-            ("🔁", "Tidak konsisten", "Tiap sesi foto berbeda style — brand terlihat tidak profesional"),
-            ("📉", "Foto yang buruk = penjualan turun", "Di marketplace, foto produk adalah faktor #1 keputusan beli"),
+            (
+                "💸",
+                "Studio foto mahal",
+                "Sewa studio bisa ratusan ribu per jam — belum termasuk fotografer dan editing",
+            ),
+            (
+                "🕐",
+                "Proses lama",
+                "Antri fotografer, sesi foto, editing — bisa berminggu-minggu untuk 10 foto",
+            ),
+            (
+                "📷",
+                "Foto sendiri tidak bagus",
+                "Foto dengan HP biasa tidak cukup profesional untuk marketplace kompetitif",
+            ),
+            (
+                "🔁",
+                "Tidak konsisten",
+                "Tiap sesi foto berbeda style — brand terlihat tidak profesional",
+            ),
+            (
+                "📉",
+                "Foto yang buruk = penjualan turun",
+                "Di marketplace, foto produk adalah faktor #1 keputusan beli",
+            ),
         ],
         "deliverables": [
-            ("🖼️", "Foto Produk Berlatar Putih", "Background putih bersih standar marketplace — siap upload ke Shopee, Tokopedia, dll."),
-            ("🎨", "Foto Lifestyle & Scene", "Produk dalam konteks penggunaan nyata — meningkatkan keinginan beli."),
-            ("✂️", "Background Removal", "Produk dengan background transparan (PNG) — fleksibel untuk berbagai kebutuhan."),
-            ("🌟", "Enhancement & Retouching", "Perbaikan pencahayaan, shadow, dan detail — produk terlihat terbaik."),
-            ("📐", "Multiple Format & Rasio", "Siap untuk berbagai platform: square, portrait, landscape, banner."),
-            ("⚡", "Pengiriman 24 Jam", "File final dikirim dalam 24 jam setelah foto produk diterima."),
+            (
+                "🖼️",
+                "Foto Produk Berlatar Putih",
+                "Background putih bersih standar marketplace — siap upload ke Shopee, Tokopedia, dll.",
+            ),
+            (
+                "🎨",
+                "Foto Lifestyle & Scene",
+                "Produk dalam konteks penggunaan nyata — meningkatkan keinginan beli.",
+            ),
+            (
+                "✂️",
+                "Background Removal",
+                "Produk dengan background transparan (PNG) — fleksibel untuk berbagai kebutuhan.",
+            ),
+            (
+                "🌟",
+                "Enhancement & Retouching",
+                "Perbaikan pencahayaan, shadow, dan detail — produk terlihat terbaik.",
+            ),
+            (
+                "📐",
+                "Multiple Format & Rasio",
+                "Siap untuk berbagai platform: square, portrait, landscape, banner.",
+            ),
+            (
+                "⚡",
+                "Pengiriman 24 Jam",
+                "File final dikirim dalam 24 jam setelah foto produk diterima.",
+            ),
         ],
         "steps": [
-            ("01", "Kirim Produk", "Kirim produk fisik atau foto produk yang sudah kamu miliki"),
-            ("02", "Brief & Style", "Tentukan gaya foto: minimalis, lifestyle, studio, atau premium"),
-            ("03", "AI Processing", "Proses enhancement, background, dan komposisi dengan AI"),
+            (
+                "01",
+                "Kirim Produk",
+                "Kirim produk fisik atau foto produk yang sudah kamu miliki",
+            ),
+            (
+                "02",
+                "Brief & Style",
+                "Tentukan gaya foto: minimalis, lifestyle, studio, atau premium",
+            ),
+            (
+                "03",
+                "AI Processing",
+                "Proses enhancement, background, dan komposisi dengan AI",
+            ),
             ("04", "Review", "Kamu review semua foto, kami revisi sesuai feedback"),
-            ("05", "Deliver", "File final dalam format siap pakai dikirim dalam 24–48 jam"),
+            (
+                "05",
+                "Deliver",
+                "File final dalam format siap pakai dikirim dalam 24–48 jam",
+            ),
         ],
         "benefits": [
-            ("💰", "70% Lebih Hemat", "Dibanding sewa studio + fotografer + editor, biaya jauh lebih terjangkau."),
-            ("⚡", "Pengiriman 24 Jam", "Produk baru bisa langsung listing dalam 1 hari — tidak ada delay."),
-            ("🎨", "Konsisten Every Time", "Setiap foto punya quality standard yang sama — brand terlihat profesional."),
-            ("♾️", "Unlimited Variasi", "Satu produk bisa jadi banyak foto dengan scene dan angle berbeda."),
+            (
+                "💰",
+                "70% Lebih Hemat",
+                "Dibanding sewa studio + fotografer + editor, biaya jauh lebih terjangkau.",
+            ),
+            (
+                "⚡",
+                "Pengiriman 24 Jam",
+                "Produk baru bisa langsung listing dalam 1 hari — tidak ada delay.",
+            ),
+            (
+                "🎨",
+                "Konsisten Every Time",
+                "Setiap foto punya quality standard yang sama — brand terlihat profesional.",
+            ),
+            (
+                "♾️",
+                "Unlimited Variasi",
+                "Satu produk bisa jadi banyak foto dengan scene dan angle berbeda.",
+            ),
         ],
         "pricing": [
             {
@@ -491,10 +947,26 @@ SERVICES = [
             },
         ],
         "usecases": [
-            ("🛍️", "Seller Marketplace", "Foto produk yang membuat listing kamu bersaing di Shopee, Tokopedia, Lazada."),
-            ("📸", "Brand Baru yang Baru Launch", "Butuh semua aset foto produk untuk launch — cepat dan affordable."),
-            ("📱", "Konten Social Media", "Foto produk untuk feed Instagram, TikTok, dan iklan yang menarik perhatian."),
-            ("🏷️", "Reseller & Dropshipper", "Diferensiasi listing dari kompetitor yang pakai foto yang sama."),
+            (
+                "🛍️",
+                "Seller Marketplace",
+                "Foto produk yang membuat listing kamu bersaing di Shopee, Tokopedia, Lazada.",
+            ),
+            (
+                "📸",
+                "Brand Baru yang Baru Launch",
+                "Butuh semua aset foto produk untuk launch — cepat dan affordable.",
+            ),
+            (
+                "📱",
+                "Konten Social Media",
+                "Foto produk untuk feed Instagram, TikTok, dan iklan yang menarik perhatian.",
+            ),
+            (
+                "🏷️",
+                "Reseller & Dropshipper",
+                "Diferensiasi listing dari kompetitor yang pakai foto yang sama.",
+            ),
         ],
     },
 ]
@@ -732,7 +1204,9 @@ JASA_CSS = """
 
 
 def make_jasa_page(s):
-    wa_enc = s["wa_greeting"].replace(" ", "%20").replace("?", "%3F").replace(",", "%2C")
+    wa_enc = (
+        s["wa_greeting"].replace(" ", "%20").replace("?", "%3F").replace(",", "%2C")
+    )
 
     # Problems
     probs = ""
