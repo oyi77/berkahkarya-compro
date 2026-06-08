@@ -1,7 +1,7 @@
 // TriPay Payment Gateway Configuration
 // Production credentials
 export const TRIPAY = {
-  API_KEY: 'kaBC...3Yc',
+  API_KEY: 'kaBCRmNfkqKXHdDgIfsYJhusaTPxBlAdyWCYO3Yc',
   PRIVATE_KEY: 'o74UP-6zUg1-4nOA7-8DJ32-4y0Rv',
   MERCHANT_CODE: 'T23409',
   BASE_URL: 'https://tripay.co.id/api',
