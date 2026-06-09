@@ -355,13 +355,21 @@ export default function BelajarAIPage({ locale }: { locale: Locale }) {
         character={{ src: '/characters/vilona-side.jpg', alt: 'Belajar AI' }}
       />
 
-      {/* Founder Section */}
-      {d.founder && <FounderSection d={d.founder} isId={isId} />}
+      {/* ━━ P = PAIN (Hero subtitle + Amplify) ━━ */}
+      {d.hero.subtitle && (
+        <section style={{ padding: '0 1.5rem 3rem', maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ fontSize: '1.15rem', fontWeight: 600, color: 'var(--teal-primary)', marginBottom: '0.75rem' }}>
+            {d.hero.subtitle}
+          </p>
+          {d.hero.painAmplify && (
+            <p style={{ fontSize: '0.95rem', color: 'var(--text-white-70)', lineHeight: 1.7, maxWidth: 650, margin: '0 auto', fontStyle: 'italic' }}>
+              {d.hero.painAmplify}
+            </p>
+          )}
+        </section>
+      )}
 
-      {/* Stats */}
-      <StatsRow items={[...d.stats]} />
-
-      {/* Problem Section */}
+      {/* ━━ A = AGITATE LEVEL 1 ━━ */}
       {d.problem && (
         <ProblemSection
           hook={d.problem.hook}
@@ -369,6 +377,55 @@ export default function BelajarAIPage({ locale }: { locale: Locale }) {
           bridge={d.problem.bridge}
         />
       )}
+
+      {/* ━━ A = AGITATE LEVEL 2 — Consequences ━━ */}
+      {d.pains && d.pains.length > 0 && (
+        <section style={{ padding: '4rem 0', background: 'rgba(239,68,68,0.03)', borderTop: '1px solid rgba(239,68,68,0.1)', borderBottom: '1px solid rgba(239,68,68,0.1)' }}>
+          <div style={{ maxWidth: 900, margin: '0 auto', padding: '0 1.5rem' }}>
+            <p className="eyebrow" style={{ textAlign: 'center', width: '100%', marginBottom: '0.5rem' }}>⏰ REALITAS</p>
+            <h2 style={{ textAlign: 'center', fontSize: '1.6rem', fontWeight: 800, fontFamily: 'var(--font-heading)', marginBottom: '2.5rem' }}>
+              {isId ? 'Ini Yang Terjadi Kalo Lo Gak Gerak Sekarang:' : 'This Is What Happens If You Don\'t Act Now:'}
+            </h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+              {d.pains.map((p: any, i: number) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '1rem', padding: '1.5rem', border: '1px solid rgba(239,68,68,0.15)', textAlign: 'center' }}>
+                  <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{p.icon}</div>
+                  <h3 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.35rem' }}>{p.title}</h3>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-white-60)', lineHeight: 1.5 }}>{p.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ━━ A = ASPIRE — Vision / Transformation ━━ */}
+      {d.vision && (
+        <section style={{ padding: '5rem 0', background: 'linear-gradient(180deg, rgba(29,158,117,0.03), var(--dark-primary), rgba(124,58,237,0.03))' }}>
+          <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 1.5rem' }}>
+            <p className="eyebrow" style={{ textAlign: 'center', width: '100%', marginBottom: '0.5rem' }}>✨ {d.vision.headline}</p>
+            <h2 style={{ textAlign: 'center', fontSize: '1.8rem', fontWeight: 800, fontFamily: 'var(--font-heading)', marginBottom: '2.5rem' }}>
+              {d.vision.title}
+            </h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem' }}>
+              {d.vision.items.map((v: any, i: number) => (
+                <div key={i} style={{ background: 'rgba(29,158,117,0.05)', borderRadius: '1rem', padding: '1.5rem', border: '1px solid rgba(29,158,117,0.15)', textAlign: 'center' }}>
+                  <div style={{ fontSize: '2.2rem', marginBottom: '0.75rem' }}>{v.icon}</div>
+                  <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.4rem' }}>{v.title}</h3>
+                  <p style={{ fontSize: '0.83rem', color: 'var(--text-white-70)', lineHeight: 1.6 }}>{v.desc}</p>
+                </div>
+              ))}
+            </div>
+            <p style={{ textAlign: 'center', marginTop: '2rem', fontSize: '1.05rem', fontWeight: 600, color: 'var(--teal-primary)' }}>
+              {d.vision.hook}
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* ━━ S = SOLUTION — Credibility ━━ */}
+      {d.founder && <FounderSection d={d.founder} isId={isId} />}
+      <StatsRow items={[...d.stats]} />
 
       {/* For Whom */}
       {d.forWhom && (
