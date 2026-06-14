@@ -22,7 +22,9 @@ const nextConfig = {
      // /1ai → /one-ai (301 permanent)
      { source: '/id/1ai', destination: '/id/one-ai', permanent: true },
      { source: '/en/1ai', destination: '/en/one-ai', permanent: true },
-   ];
+     // /webhook/tripay → /api/webhook/tripay (Tripay callback)
+     { source: '/webhook/tripay', destination: '/api/webhook/tripay', permanent: false },
+     ];
  },
 };
 
