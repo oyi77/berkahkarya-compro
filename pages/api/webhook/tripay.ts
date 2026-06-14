@@ -38,7 +38,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .update(rawBody)
       .digest('hex');
 
-    if (!crypto.timingSafeEqual(Buffer.from(expectedSig), Buffer.from(callbackSig))) {
+    if (!callbackSig || callbackSig.length !== expectedSig.length ||
+        !crypto.timingSafeEqual(Buffer.from(expectedSig), Buffer.from(callbackSig))) {
       console.warn('[TRIPAY-WEBHOOK] Invalid signature', {
         expected: expectedSig.slice(0, 16) + '...',
         got: callbackSig.slice(0, 16) + '...',
