@@ -64,3 +64,10 @@
   to = "/id/one-ai"
   status = 301
   force = true
+
+# Tripay webhook — /webhook/tripay → API route
+[[redirects]]
+  from = "/webhook/tripay"
+  to = "/api/webhook/tripay"
+  status = 200
+  force = true
