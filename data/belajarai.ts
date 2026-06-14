@@ -61,7 +61,7 @@ export const belajaraiData = {
       items: [
         { icon: '💼', title: 'Mapan Dari AI', desc: 'Punya skill AI yg dibutuhin pasar. Bisa freelance, bisa naik jabatan, bisa mulai agency sendiri.' },
         { icon: '⚡', title: 'Kerja 10× Cepet', desc: 'AI ngerjain 80% kerjaan lo. Lo tinggal review dan improve. Kerja 2 jam, hasil 8 jam.' },
-        { icon: '🤖', title: 'Punya AI Agent Sendiri', desc: 'Bikin AI yg kerja 24/7 buat lo — trading, marketing, content, semua otomatis.' },
+        { icon: '🤖', title: 'Punya AI Agent Sendiri', desc: 'Bikin AI yg kerja 24/7 buat lo — marketing, content, support, semua otomatis.' },
         { icon: '💰', title: 'Penghasilan Nambah', desc: 'Minimal 3-5× lipat dari sekarang. Itu realistic. Bukan janji manis.' },
       ],
       hook: 'Ini Bukan Mimpi. Ini Udah Terjadi Sama Ratusan Orang.' ,
@@ -130,9 +130,9 @@ export const belajaraiData = {
       items: [
         {
           icon: '📈',
-          title: 'AI for Trading',
-          desc: 'Strategi trading otomatis XAUUSD & Crypto. Backtesting AI, risk management algoritmik, signal bot. Dipake real di phantomfx & 1ai-trade-bot.',
-          badge: '💰 Ratusan Juta',
+          title: 'AI for Business Automation',
+          desc: 'Otomasi proses bisnis end-to-end pake AI. Dari CRM, inventory, customer support, sampe analytics. Dipake real di BerkahKarya ecosystem — 5 layanan jalan 24/7.',
+          badge: '🤖 100% Otomatis',
         },
         {
           icon: '📢',
@@ -242,7 +242,7 @@ export const belajaraiData = {
           '🔥 Technical Track: Hermes & OpenClaw',
           'VIP 1-on-1 mentoring dengan Paijo',
           'Grup eksklusif Telegram Platinum',
-          'Materi Trading & Affiliate',
+          'Materi Bisnis & SaaS',
           'Proyek portfolio real-world',
           'Prioritas update & fitur baru',
           'Investasi sekali, akses seumur hidup',
@@ -268,7 +268,7 @@ export const belajaraiData = {
         { q: 'Apa itu Technical Track?', a: 'Materi eksklusif Platinum Pass. Lo belajar bikin AI agent yg bisa browsing, coding, execute tools — framework produksi yg beneran dipake di BerkahKarya ecosystem. Bukan teori, kode beneran.' },
         { q: 'Gimana cara bayar?', a: 'Via Tripay — QRIS (GoPay/OVO/DANA/ShopeePay), Virtual Account (BCA/Mandiri/BRI/BNI), atau bayar di Alfamart/Indomaret. Semua otomatis.' },
         { q: 'Ada garansi?', a: '7 hari uang kembali. Gak cocok? Full refund. Gak pake tanya. Risiko di kami, bukan di lo.' },
-        { q: 'Mau konsultasi dulu?', a: `Chat langsung ke Telegram → ${TG}. Gratis. Gak ada kewajiban beli. Seneng ngobrolin AI, trading, atau affiliate.` },
+        { q: 'Mau konsultasi dulu?', a: `Chat langsung ke Telegram → ${TG}. Gratis. Gak ada kewajiban beli. Seneng ngobrolin AI, bisnis, atau affiliate.` },
       ],
     },
 
@@ -326,7 +326,7 @@ export const belajaraiData = {
       items: [
         { icon: '💼', title: 'AI-Skilled & In Demand', desc: 'Skills the market desperately needs. Freelance, promotion, or start your own agency.' },
         { icon: '⚡', title: 'Work 10× Faster', desc: 'AI does 80% of your work. You just review and improve. 2 hours of work, 8 hours of results.' },
-        { icon: '🤖', title: 'Own AI Agents', desc: '24/7 workers — trading, marketing, content, all automated.' },
+        { icon: '🤖', title: 'Own AI Agents', desc: '24/7 workers — marketing, content, support, all automated.' },
         { icon: '💰', title: 'Income Multiplied', desc: 'At least 3-5× your current income. Realistic, not empty promises.' },
       ],
       hook: 'This Isn\'t a Dream. It\'s Already Happened to Hundreds.' ,
@@ -411,7 +411,7 @@ export const belajaraiData = {
         price: 'Rp 9M',
         period: '· all-access',
         highlight: true,
-        features: ['Access to EVERYTHING', '🔥 Technical Track: Hermes & OpenClaw', '1-on-1 VIP mentoring with Paijo', 'Exclusive Platinum Telegram group', 'Trading & Affiliate materials', 'Real-world portfolio projects', 'Priority feature updates', 'Lifetime investment'],
+        features: ['Access to EVERYTHING', '🔥 Technical Track: Hermes & OpenClaw', '1-on-1 VIP mentoring with Paijo', 'Exclusive Platinum Telegram group', 'Business & SaaS materials', 'Real-world portfolio projects', 'Priority feature updates', 'Lifetime investment'],
         cta: { text: '👑 Get Platinum Pass →', href: '#', data_plan: 'platinum-pass' },
       },
     ],
@@ -438,7 +438,7 @@ export const belajaraiData = {
         { q: 'Who is Paijo? Why learn from him?', a: 'Paijo (oyi77) is an OSS contributor with merged PRs in Next.js (127k⭐), trpc (36k⭐), Prisma (41k⭐), Vue.js Core (48k⭐), Excalidraw (88k⭐). Creator of 1ai-skills — the world\'s largest AI agent skill repo with 1282 skills. A practitioner whose code is used by thousands.' },
         { q: 'What payment methods?', a: 'Via Tripay — QRIS (GoPay/OVO/DANA/ShopeePay), Virtual Account (BCA/Mandiri/BRI/BNI), or Alfamart/Indomaret. Auto-verified.' },
         { q: 'Is there a money-back guarantee?', a: '7-day full refund. Not satisfied? Full refund. No questions asked. Risk is on us, not you.' },
-        { q: 'Can I chat with Paijo first?', a: 'Yes! DM on Telegram → @codergaboets. Free, no obligation. Happy to discuss AI, trading, or affiliate marketing.' },
+        { q: 'Can I chat with Paijo first?', a: 'Yes! DM on Telegram → @codergaboets. Free, no obligation. Happy to discuss AI, business, or affiliate marketing.' },
       ],
     },
     contact: {
